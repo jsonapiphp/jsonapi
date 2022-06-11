@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue236;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,13 +23,10 @@ namespace Neomerx\Tests\JsonApi\Extensions\Issue236;
 use Neomerx\JsonApi\Contracts\Schema\ContextInterface;
 use Neomerx\Tests\JsonApi\Data\Models\Comment;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 final class CustomCommentSchema extends BaseCustomSchema
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getType(): string
     {
@@ -35,17 +34,17 @@ final class CustomCommentSchema extends BaseCustomSchema
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getId($resource): ?string
     {
         \assert($resource instanceof Comment);
 
-        return (string)$resource->{Comment::ATTRIBUTE_ID};
+        return (string) $resource->{Comment::ATTRIBUTE_ID};
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getAttributes($resource, ContextInterface $context): iterable
     {
@@ -57,7 +56,7 @@ final class CustomCommentSchema extends BaseCustomSchema
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getNonHorrificRelationships($resource, string $currentPath): iterable
     {
@@ -68,14 +67,14 @@ final class CustomCommentSchema extends BaseCustomSchema
 
         return [
             Comment::LINK_AUTHOR => [
-                self::RELATIONSHIP_DATA          => $resource->{Comment::LINK_AUTHOR},
+                self::RELATIONSHIP_DATA => $resource->{Comment::LINK_AUTHOR},
                 self::RELATIONSHIP_LINKS_RELATED => false,
-                self::RELATIONSHIP_META          => [
-                    'current_path'             => $currentPath,
-                    'fields_filter'            => $this->getSchemaFields()->getRequestedFields($this->getType()),
+                self::RELATIONSHIP_META => [
+                    'current_path' => $currentPath,
+                    'fields_filter' => $this->getSchemaFields()->getRequestedFields($this->getType()),
                     'relationships_to_include' => $this->getSchemaFields()->getRequestedRelationships($currentPath),
                 ],
-            ]
+            ],
         ];
     }
 }

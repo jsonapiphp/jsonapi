@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Parser;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,12 +33,10 @@ use Neomerx\JsonApi\Contracts\Schema\IdentifierInterface as SchemaIdentifierInte
 use Neomerx\JsonApi\Contracts\Schema\PositionInterface;
 use Neomerx\JsonApi\Contracts\Schema\SchemaContainerInterface;
 use Neomerx\JsonApi\Exceptions\InvalidArgumentException;
-use Traversable;
 use function Neomerx\JsonApi\I18n\format as _;
+use Traversable;
 
 /**
- * @package Neomerx\JsonApi
- *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class Parser implements ParserInterface
@@ -67,30 +67,25 @@ class Parser implements ParserInterface
 
     private \Neomerx\JsonApi\Contracts\Parser\EditableContextInterface $context;
 
-    /**
-     * @param FactoryInterface         $factory
-     * @param SchemaContainerInterface $container
-     * @param EditableContextInterface $context
-     */
     public function __construct(
         FactoryInterface $factory,
         SchemaContainerInterface $container,
         EditableContextInterface $context
     ) {
         $this->resourcesTracker = [];
-        $this->factory          = $factory;
-        $this->schemaContainer  = $container;
-        $this->context          = $context;
+        $this->factory = $factory;
+        $this->schemaContainer = $container;
+        $this->context = $context;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      *
      * @SuppressWarnings(PHPMD.ElseExpression)
      */
     public function parse($data, array $paths = []): iterable
     {
-        \assert(\is_array($data) === true || \is_object($data) === true || $data === null);
+        \assert(true === \is_array($data) || true === \is_object($data) || null === $data);
 
         $this->paths = $this->normalizePaths($paths);
 
@@ -101,41 +96,53 @@ class Parser implements ParserInterface
             null
         );
 
-        if ($this->schemaContainer->hasSchema($data) === true) {
+        if (true === $this->schemaContainer->hasSchema($data)) {
             yield $this->createDocumentDataIsResource($rootPosition);
             yield from $this->parseAsResource($rootPosition, $data);
         } elseif ($data instanceof SchemaIdentifierInterface) {
             yield $this->createDocumentDataIsIdentifier($rootPosition);
             yield $this->parseAsIdentifier($rootPosition, $data);
-        } elseif (\is_array($data) === true) {
+        } elseif (true === \is_array($data)) {
             yield $this->createDocumentDataIsCollection($rootPosition);
             yield from $this->parseAsResourcesOrIdentifiers($rootPosition, $data);
         } elseif ($data instanceof Traversable) {
             $data = $data instanceof IteratorAggregate ? $data->getIterator() : $data;
             yield $this->createDocumentDataIsCollection($rootPosition);
             yield from $this->parseAsResourcesOrIdentifiers($rootPosition, $data);
-        } elseif ($data === null) {
+        } elseif (null === $data) {
             yield $this->createDocumentDataIsNull($rootPosition);
         } else {
             throw new InvalidArgumentException(_(static::MSG_NO_SCHEMA_FOUND, \get_class($data)));
         }
     }
 
+    protected function getContext(): EditableContextInterface
+    {
+        return $this->context;
+    }
+
+    protected function getNormalizedPaths(): array
+    {
+        \assert(null !== $this->paths, _(static::MSG_PATHS_HAVE_NOT_BEEN_NORMALIZED_YET));
+
+        return $this->paths;
+    }
+
+    protected function isPathRequested(string $path): bool
+    {
+        return isset($this->paths[$path]);
+    }
+
     /**
-     * @param PositionInterface $position
-     * @param iterable          $dataOrIds
-     *
      * @see ResourceInterface
      * @see IdentifierInterface
-     *
-     * @return iterable
      */
     private function parseAsResourcesOrIdentifiers(
         PositionInterface $position,
         iterable $dataOrIds
     ): iterable {
         foreach ($dataOrIds as $dataOrId) {
-            if ($this->schemaContainer->hasSchema($dataOrId) === true) {
+            if (true === $this->schemaContainer->hasSchema($dataOrId)) {
                 yield from $this->parseAsResource($position, $dataOrId);
 
                 continue;
@@ -147,47 +154,15 @@ class Parser implements ParserInterface
     }
 
     /**
-     * @return EditableContextInterface
-     */
-    protected function getContext(): EditableContextInterface
-    {
-        return $this->context;
-    }
-
-    /**
-     * @return array
-     */
-    protected function getNormalizedPaths(): array
-    {
-        \assert($this->paths !== null, _(static::MSG_PATHS_HAVE_NOT_BEEN_NORMALIZED_YET));
-
-        return $this->paths;
-    }
-
-    /**
-     * @param string $path
-     *
-     * @return bool
-     */
-    protected function isPathRequested(string $path): bool
-    {
-        return isset($this->paths[$path]);
-    }
-
-    /**
-     * @param PositionInterface $position
-     * @param mixed             $data
+     * @param mixed $data
      *
      * @see ResourceInterface
-     *
-     * @return iterable
-     *
      */
     private function parseAsResource(
         PositionInterface $position,
         $data
     ): iterable {
-        \assert($this->schemaContainer->hasSchema($data) === true);
+        \assert(true === $this->schemaContainer->hasSchema($data));
 
         $resource = $this->factory->createParsedResource(
             $this->getContext(),
@@ -200,10 +175,6 @@ class Parser implements ParserInterface
     }
 
     /**
-     * @param ResourceInterface $resource
-     *
-     * @return iterable
-     *
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
     private function parseResource(ResourceInterface $resource): iterable
@@ -214,12 +185,12 @@ class Parser implements ParserInterface
         // for deeper levels it's not needed as they go to `included` section and it must have no more
         // than one instance of the same resource.
 
-        if ($seenBefore === false || $resource->getPosition()->getLevel() <= ParserInterface::ROOT_LEVEL) {
+        if (false === $seenBefore || $resource->getPosition()->getLevel() <= ParserInterface::ROOT_LEVEL) {
             yield $resource;
         }
 
         // parse relationships only for resources not seen before (prevents infinite loop for circular references)
-        if ($seenBefore === false) {
+        if (false === $seenBefore) {
             // remember by id and type
             $this->resourcesTracker[$resource->getId()][$resource->getType()] = true;
 
@@ -229,13 +200,13 @@ class Parser implements ParserInterface
 
                 $isShouldParse = $this->isPathRequested($relationship->getPosition()->getPath());
 
-                if ($isShouldParse === true && $relationship->hasData() === true) {
+                if (true === $isShouldParse && true === $relationship->hasData()) {
                     $relData = $relationship->getData();
-                    if ($relData->isResource() === true) {
+                    if (true === $relData->isResource()) {
                         yield from $this->parseResource($relData->getResource());
 
                         continue;
-                    } elseif ($relData->isCollection() === true) {
+                    } elseif (true === $relData->isCollection()) {
                         foreach ($relData->getResources() as $relResource) {
                             \assert($relResource instanceof ResourceInterface ||
                                 $relResource instanceof IdentifierInterface);
@@ -253,34 +224,23 @@ class Parser implements ParserInterface
         }
     }
 
-    /**
-     * @param PositionInterface         $position
-     * @param SchemaIdentifierInterface $identifier
-     *
-     * @return IdentifierInterface
-     */
     private function parseAsIdentifier(
         PositionInterface $position,
         SchemaIdentifierInterface $identifier
     ): IdentifierInterface {
-        return new class ($position, $identifier) implements IdentifierInterface
-        {
+        return new class($position, $identifier) implements IdentifierInterface {
             private \Neomerx\JsonApi\Contracts\Schema\PositionInterface $position;
 
             private SchemaIdentifierInterface $identifier;
 
-            /**
-             * @param PositionInterface         $position
-             * @param SchemaIdentifierInterface $identifier
-             */
             public function __construct(PositionInterface $position, SchemaIdentifierInterface $identifier)
             {
-                $this->position   = $position;
+                $this->position = $position;
                 $this->identifier = $identifier;
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function getPosition(): PositionInterface
             {
@@ -288,7 +248,7 @@ class Parser implements ParserInterface
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function getId(): ?string
             {
@@ -296,7 +256,7 @@ class Parser implements ParserInterface
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function getType(): string
             {
@@ -304,7 +264,7 @@ class Parser implements ParserInterface
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function hasIdentifierMeta(): bool
             {
@@ -312,7 +272,7 @@ class Parser implements ParserInterface
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function getIdentifierMeta()
             {
@@ -321,86 +281,49 @@ class Parser implements ParserInterface
         };
     }
 
-    /**
-     * @param PositionInterface $position
-     *
-     * @return DocumentDataInterface
-     */
     private function createDocumentDataIsCollection(PositionInterface $position): DocumentDataInterface
     {
         return $this->createParsedDocumentData($position, true, false);
     }
 
-    /**
-     * @param PositionInterface $position
-     *
-     * @return DocumentDataInterface
-     */
     private function createDocumentDataIsNull(PositionInterface $position): DocumentDataInterface
     {
         return $this->createParsedDocumentData($position, false, true);
     }
 
-    /**
-     * @param PositionInterface $position
-     *
-     * @return DocumentDataInterface
-     */
     private function createDocumentDataIsResource(PositionInterface $position): DocumentDataInterface
     {
         return $this->createParsedDocumentData($position, false, false);
     }
 
-    /**
-     * @param PositionInterface $position
-     *
-     * @return DocumentDataInterface
-     */
     private function createDocumentDataIsIdentifier(PositionInterface $position): DocumentDataInterface
     {
         return $this->createParsedDocumentData($position, false, false);
     }
 
-    /**
-     * @param PositionInterface $position
-     * @param bool              $isCollection
-     * @param bool              $isNull
-     *
-     * @return DocumentDataInterface
-     */
     private function createParsedDocumentData(
         PositionInterface $position,
         bool $isCollection,
         bool $isNull
     ): DocumentDataInterface {
-        return new class (
-            $position,
-            $isCollection,
-            $isNull
-        ) implements DocumentDataInterface
-        {
+        return new class($position, $isCollection, $isNull) implements DocumentDataInterface {
             private \Neomerx\JsonApi\Contracts\Schema\PositionInterface $position;
             private bool $isCollection;
 
             private bool $isNull;
 
-            /**
-             * @param PositionInterface $position
-             * @param bool              $isCollection
-             * @param bool              $isNull
-             */
             public function __construct(
                 PositionInterface $position,
                 bool $isCollection,
                 bool $isNull
             ) {
-                $this->position     = $position;
+                $this->position = $position;
                 $this->isCollection = $isCollection;
-                $this->isNull       = $isNull;
+                $this->isNull = $isNull;
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function getPosition(): PositionInterface
             {
@@ -408,7 +331,7 @@ class Parser implements ParserInterface
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function isCollection(): bool
             {
@@ -416,7 +339,7 @@ class Parser implements ParserInterface
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function isNull(): bool
             {
@@ -425,11 +348,6 @@ class Parser implements ParserInterface
         };
     }
 
-    /**
-     * @param iterable $paths
-     *
-     * @return array
-     */
     private function normalizePaths(iterable $paths): array
     {
         $separator = DocumentInterface::PATH_SEPARATOR;
@@ -439,7 +357,7 @@ class Parser implements ParserInterface
         foreach ($paths as $path) {
             $curPath = '';
             foreach (\explode($separator, $path) as $pathPart) {
-                $curPath                   = empty($curPath) === true ? $pathPart : $curPath . $separator . $pathPart;
+                $curPath = true === empty($curPath) ? $pathPart : $curPath . $separator . $pathPart;
                 $normalizedPaths[$curPath] = true;
             }
         }

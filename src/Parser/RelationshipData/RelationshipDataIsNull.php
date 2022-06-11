@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Parser\RelationshipData;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,16 +26,13 @@ use Neomerx\JsonApi\Contracts\Parser\ResourceInterface;
 use Neomerx\JsonApi\Exceptions\LogicException;
 use function Neomerx\JsonApi\I18n\format as _;
 
-/**
- * @package Neomerx\JsonApi
- */
 class RelationshipDataIsNull implements RelationshipDataInterface
 {
     /** @var string */
     public const MSG_INVALID_OPERATION = 'Invalid operation.';
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function isCollection(): bool
     {
@@ -41,7 +40,7 @@ class RelationshipDataIsNull implements RelationshipDataInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function isNull(): bool
     {
@@ -49,7 +48,7 @@ class RelationshipDataIsNull implements RelationshipDataInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function isResource(): bool
     {
@@ -57,7 +56,7 @@ class RelationshipDataIsNull implements RelationshipDataInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function isIdentifier(): bool
     {
@@ -65,7 +64,7 @@ class RelationshipDataIsNull implements RelationshipDataInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getIdentifier(): IdentifierInterface
     {
@@ -73,7 +72,7 @@ class RelationshipDataIsNull implements RelationshipDataInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getIdentifiers(): iterable
     {
@@ -81,7 +80,7 @@ class RelationshipDataIsNull implements RelationshipDataInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getResource(): ResourceInterface
     {
@@ -89,7 +88,7 @@ class RelationshipDataIsNull implements RelationshipDataInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getResources(): iterable
     {

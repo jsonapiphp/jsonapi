@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Schema;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,25 +26,19 @@ use Neomerx\JsonApi\Contracts\Schema\LinkInterface;
 use Neomerx\JsonApi\Contracts\Schema\SchemaInterface;
 use Neomerx\JsonApi\Exceptions\LogicException;
 
-/**
- * @package Neomerx\JsonApi
- */
 abstract class BaseSchema implements SchemaInterface
 {
     private \Neomerx\JsonApi\Contracts\Factories\FactoryInterface $factory;
 
     private ?string $subUrl = null;
 
-    /**
-     * @param FactoryInterface $factory
-     */
     public function __construct(FactoryInterface $factory)
     {
         $this->factory = $factory;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getSelfLink($resource): LinkInterface
     {
@@ -50,7 +46,7 @@ abstract class BaseSchema implements SchemaInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getLinks($resource): iterable
     {
@@ -62,7 +58,7 @@ abstract class BaseSchema implements SchemaInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getRelationshipSelfLink($resource, string $name): LinkInterface
     {
@@ -74,7 +70,7 @@ abstract class BaseSchema implements SchemaInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getRelationshipRelatedLink($resource, string $name): LinkInterface
     {
@@ -86,7 +82,7 @@ abstract class BaseSchema implements SchemaInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function hasIdentifierMeta($resource): bool
     {
@@ -94,7 +90,7 @@ abstract class BaseSchema implements SchemaInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getIdentifierMeta($resource)
     {
@@ -103,7 +99,7 @@ abstract class BaseSchema implements SchemaInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function hasResourceMeta($resource): bool
     {
@@ -111,7 +107,7 @@ abstract class BaseSchema implements SchemaInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getResourceMeta($resource)
     {
@@ -120,7 +116,7 @@ abstract class BaseSchema implements SchemaInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function isAddSelfLinkInRelationshipByDefault(string $relationshipName): bool
     {
@@ -128,16 +124,13 @@ abstract class BaseSchema implements SchemaInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function isAddRelatedLinkInRelationshipByDefault(string $relationshipName): bool
     {
         return true;
     }
 
-    /**
-     * @return FactoryInterface
-     */
     protected function getFactory(): FactoryInterface
     {
         return $this->factory;
@@ -145,12 +138,10 @@ abstract class BaseSchema implements SchemaInterface
 
     /**
      * Get resources sub-URL.
-     *
-     * @return string
      */
     protected function getResourcesSubUrl(): string
     {
-        if ($this->subUrl === null) {
+        if (null === $this->subUrl) {
             $this->subUrl = '/' . $this->getType();
         }
 
@@ -159,8 +150,6 @@ abstract class BaseSchema implements SchemaInterface
 
     /**
      * @param mixed $resource
-     *
-     * @return string
      */
     protected function getSelfSubUrl($resource): string
     {

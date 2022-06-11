@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue169;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,23 +26,10 @@ use Neomerx\JsonApi\Contracts\Schema\ErrorInterface;
 use Neomerx\JsonApi\Encoder\Encoder;
 use Neomerx\JsonApi\Schema\ErrorCollection;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class CustomEncoder extends Encoder
 {
     /**
-     * @return FactoryInterface
-     */
-    protected static function createFactory(): FactoryInterface
-    {
-        return new CustomFactory();
-    }
-
-    /**
      * @param object|array|Iterator|null $data
-     *
-     * @return array
      */
     public function serializeData($data): array
     {
@@ -49,19 +38,12 @@ class CustomEncoder extends Encoder
 
     /**
      * @param object|array|Iterator|null $data
-     *
-     * @return array
      */
     public function serializeIdentifiers($data): array
     {
         return $this->encodeIdentifiersToArray($data);
     }
 
-    /**
-     * @param ErrorInterface $error
-     *
-     * @return array
-     */
     public function serializeError(ErrorInterface $error): array
     {
         return $this->encodeErrorToArray($error);
@@ -69,8 +51,6 @@ class CustomEncoder extends Encoder
 
     /**
      * @param ErrorInterface[]|ErrorCollection $errors
-     *
-     * @return array
      */
     public function serializeErrors($errors): array
     {
@@ -79,11 +59,14 @@ class CustomEncoder extends Encoder
 
     /**
      * @param array|object $meta
-     *
-     * @return array
      */
     public function serializeMeta($meta): array
     {
         return $this->encodeMetaToArray($meta);
+    }
+
+    protected static function createFactory(): FactoryInterface
+    {
+        return new CustomFactory();
     }
 }

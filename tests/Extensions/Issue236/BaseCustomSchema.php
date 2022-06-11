@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue236;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,9 +24,6 @@ use Neomerx\JsonApi\Contracts\Factories\FactoryInterface;
 use Neomerx\JsonApi\Contracts\Schema\ContextInterface;
 use Neomerx\JsonApi\Schema\BaseSchema;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 abstract class BaseCustomSchema extends BaseSchema
 {
     use SchemaFieldsTrait;
@@ -32,18 +31,6 @@ abstract class BaseCustomSchema extends BaseSchema
     /** @var int If data should be really used */
     public const RELATIONSHIP_HAS_DATA = self::RELATIONSHIP_LINKS_RELATED + 1;
 
-    /**
-     * @param mixed  $resource
-     * @param string $currentPath
-     *
-     * @return iterable
-     */
-    abstract public function getNonHorrificRelationships($resource, string $currentPath): iterable;
-
-    /**
-     * @param FactoryInterface $factory
-     * @param SchemaFields     $fields
-     */
     public function __construct(FactoryInterface $factory, SchemaFields $fields)
     {
         parent::__construct($factory);
@@ -52,7 +39,12 @@ abstract class BaseCustomSchema extends BaseSchema
     }
 
     /**
-     * @inheritdoc
+     * @param mixed $resource
+     */
+    abstract public function getNonHorrificRelationships($resource, string $currentPath): iterable;
+
+    /**
+     * {@inheritdoc}
      */
     public function getRelationships($resource, ContextInterface $context): iterable
     {

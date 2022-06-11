@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Contracts\Parser;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,17 +23,10 @@ namespace Neomerx\JsonApi\Contracts\Parser;
 use Neomerx\JsonApi\Contracts\Schema\ContextInterface;
 use Neomerx\JsonApi\Contracts\Schema\PositionInterface;
 
-/**
- * @package Neomerx\JsonApi
- */
 interface EditableContextInterface extends ContextInterface
 {
     /**
      * Remember current position for parsed data.
-     *
-     * @param PositionInterface $position
-     *
-     * @return void
      */
     public function setPosition(PositionInterface $position): void;
 }

@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Exceptions;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,9 +24,6 @@ use Exception;
 use Neomerx\JsonApi\Contracts\Schema\ErrorInterface;
 use Neomerx\JsonApi\Schema\ErrorCollection;
 
-/**
- * @package Neomerx\JsonApi
- */
 class JsonApiException extends BaseJsonApiException
 {
     /** Default HTTP code */
@@ -54,8 +53,6 @@ class JsonApiException extends BaseJsonApiException
 
     /**
      * @param ErrorInterface|iterable $errors
-     * @param int                     $httpCode
-     * @param Exception|null          $previous
      *
      * @SuppressWarnings(PHPMD.StaticAccess)
      * @SuppressWarnings(PHPMD.ElseExpression)
@@ -66,7 +63,7 @@ class JsonApiException extends BaseJsonApiException
 
         if ($errors instanceof ErrorCollection) {
             $this->errors = clone $errors;
-        } elseif (\is_iterable($errors) === true) {
+        } elseif (true === \is_iterable($errors)) {
             $this->errors = new ErrorCollection();
             $this->addErrors($errors);
         } else {
@@ -78,21 +75,11 @@ class JsonApiException extends BaseJsonApiException
         $this->httpCode = $httpCode;
     }
 
-    /**
-     * @param ErrorInterface $error
-     *
-     * @return void
-     */
     public function addError(ErrorInterface $error): void
     {
         $this->errors[] = $error;
     }
 
-    /**
-     * @param iterable $errors
-     *
-     * @return void
-     */
     public function addErrors(iterable $errors): void
     {
         foreach ($errors as $error) {
@@ -100,17 +87,11 @@ class JsonApiException extends BaseJsonApiException
         }
     }
 
-    /**
-     * @return ErrorCollection
-     */
     public function getErrors(): ErrorCollection
     {
         return $this->errors;
     }
 
-    /**
-     * @return int
-     */
     public function getHttpCode(): int
     {
         return $this->httpCode;

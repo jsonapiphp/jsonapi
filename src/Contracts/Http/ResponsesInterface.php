@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Contracts\Http;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,9 +22,6 @@ namespace Neomerx\JsonApi\Contracts\Http;
 
 use Neomerx\JsonApi\Contracts\Schema\ErrorInterface;
 
-/**
- * @package Neomerx\JsonApi
- */
 interface ResponsesInterface
 {
     /**
@@ -43,9 +42,9 @@ interface ResponsesInterface
     /**
      * Get response with regular JSON API Document in body.
      *
-     * @param object|array $data       Resource or resources to encode.
-     * @param int          $statusCode HTTP status code.
-     * @param array        $headers    Additional headers.
+     * @param object|array $data       resource or resources to encode
+     * @param int          $statusCode HTTP status code
+     * @param array        $headers    additional headers
      *
      * @return mixed
      */
@@ -54,9 +53,9 @@ interface ResponsesInterface
     /**
      * Get response for newly created resource with HTTP code 201 (adds 'location' header).
      *
-     * @param object $resource Newly created resource to encode.
-     * @param string $url      URL of the resource.
-     * @param array  $headers  Additional headers.
+     * @param object $resource newly created resource to encode
+     * @param string $url      URL of the resource
+     * @param array  $headers  additional headers
      *
      * @return mixed
      */
@@ -65,8 +64,8 @@ interface ResponsesInterface
     /**
      * Get response with HTTP code only.
      *
-     * @param int   $statusCode HTTP status code.
-     * @param array $headers    Additional headers.
+     * @param int   $statusCode HTTP status code
+     * @param array $headers    additional headers
      *
      * @return mixed
      */
@@ -75,9 +74,9 @@ interface ResponsesInterface
     /**
      * Get response with meta information only.
      *
-     * @param array|object $meta       Meta information.
-     * @param int          $statusCode HTTP status code.
-     * @param array        $headers    Additional headers.
+     * @param array|object $meta       meta information
+     * @param int          $statusCode HTTP status code
+     * @param array        $headers    additional headers
      *
      * @return mixed
      */
@@ -86,9 +85,9 @@ interface ResponsesInterface
     /**
      * Get response with only resource identifiers.
      *
-     * @param object|array $data       Resource or resources to encode.
-     * @param int          $statusCode HTTP status code.
-     * @param array        $headers    Additional headers.
+     * @param object|array $data       resource or resources to encode
+     * @param int          $statusCode HTTP status code
+     * @param array        $headers    additional headers
      *
      * @return mixed
      */
@@ -97,9 +96,9 @@ interface ResponsesInterface
     /**
      * Get response with JSON API Error in body.
      *
-     * @param ErrorInterface|iterable $errors     Error or errors to encode.
-     * @param int                     $statusCode HTTP status code.
-     * @param array                   $headers    Additional headers.
+     * @param ErrorInterface|iterable $errors     error or errors to encode
+     * @param int                     $statusCode HTTP status code
+     * @param array                   $headers    additional headers
      *
      * @return mixed
      */

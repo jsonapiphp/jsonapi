@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue91;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,13 +23,10 @@ namespace Neomerx\Tests\JsonApi\Extensions\Issue91;
 use Neomerx\JsonApi\Contracts\Schema\ContextInterface;
 use Neomerx\JsonApi\Schema\BaseSchema;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class CategorySchema extends BaseSchema
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getType(): string
     {
@@ -35,39 +34,39 @@ class CategorySchema extends BaseSchema
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getId($resource): ?string
     {
-        assert($resource instanceof Category);
+        \assert($resource instanceof Category);
 
-        return (string)$resource->index;
+        return (string) $resource->index;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getAttributes($resource, ContextInterface $context): iterable
     {
-        /** @var Category $resource */
+        /* @var Category $resource */
         return [
             'description' => $resource->description,
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getRelationships($resource, ContextInterface $context): iterable
     {
-        /** @var Category $resource */
+        /* @var Category $resource */
         return [
             'parent' => [self::RELATIONSHIP_DATA => $resource->parent],
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function isAddSelfLinkInRelationshipByDefault(string $relationshipName): bool
     {
@@ -75,7 +74,7 @@ class CategorySchema extends BaseSchema
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function isAddRelatedLinkInRelationshipByDefault(string $relationshipName): bool
     {

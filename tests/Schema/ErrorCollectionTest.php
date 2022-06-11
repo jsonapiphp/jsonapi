@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Schema;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,9 +24,6 @@ use Neomerx\JsonApi\Contracts\Schema\ErrorInterface;
 use Neomerx\JsonApi\Schema\ErrorCollection;
 use Neomerx\Tests\JsonApi\BaseTestCase;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class ErrorCollectionTest extends BaseTestCase
 {
     /** Path constant */
@@ -45,7 +44,7 @@ class ErrorCollectionTest extends BaseTestCase
     private \Neomerx\JsonApi\Schema\ErrorCollection $collection;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function setUp(): void
     {
@@ -54,7 +53,7 @@ class ErrorCollectionTest extends BaseTestCase
         $this->collection = new ErrorCollection();
     }
 
-    public function testBasicCollectionMethods(): void
+    public function test_basic_collection_methods(): void
     {
         $this->assertCount(0, $this->collection);
         $title1 = 'some title 1';
@@ -81,134 +80,134 @@ class ErrorCollectionTest extends BaseTestCase
             $this->assertInstanceOf(ErrorInterface::class, $error);
         }
 
-        $serialized        = $this->collection->serialize();
+        $serialized = $this->collection->serialize();
         $anotherCollection = new ErrorCollection();
         $anotherCollection->unserialize($serialized);
         $this->assertEquals($this->collection, $anotherCollection);
 
         $this->assertCount(2, $this->collection);
-        unset($this->collection[0]);
-        unset($this->collection[1]);
+        unset($this->collection[0], $this->collection[1]);
+
         $this->assertCount(0, $this->collection);
     }
 
     /**
      * Test adding error.
      */
-    public function testAddDataError(): void
+    public function test_add_data_error(): void
     {
         $this->collection->addDataError('some title');
         $this->assertNotEmpty($this->collection);
         $this->assertEquals([
-            ErrorInterface::SOURCE_POINTER => self::DATA_PATH
+            ErrorInterface::SOURCE_POINTER => self::DATA_PATH,
         ], $this->collection[0]->getSource());
     }
 
     /**
      * Test adding error.
      */
-    public function testAddDataTypeError(): void
+    public function test_add_data_type_error(): void
     {
         $this->collection->addDataTypeError('some title');
         $this->assertNotEmpty($this->collection);
         $this->assertEquals([
-            ErrorInterface::SOURCE_POINTER => self::DATA_TYPE_PATH
+            ErrorInterface::SOURCE_POINTER => self::DATA_TYPE_PATH,
         ], $this->collection[0]->getSource());
     }
 
     /**
      * Test adding error.
      */
-    public function testAddDataIdError(): void
+    public function test_add_data_id_error(): void
     {
         $this->collection->addDataIdError('some title');
         $this->assertNotEmpty($this->collection);
         $this->assertEquals([
-            ErrorInterface::SOURCE_POINTER => self::DATA_ID_PATH
+            ErrorInterface::SOURCE_POINTER => self::DATA_ID_PATH,
         ], $this->collection[0]->getSource());
     }
 
     /**
      * Test adding error.
      */
-    public function testAddAttributesError(): void
+    public function test_add_attributes_error(): void
     {
         $this->collection->addAttributesError('some title');
         $this->assertNotEmpty($this->collection);
         $this->assertEquals([
-            ErrorInterface::SOURCE_POINTER => self::ATTR_PATH
+            ErrorInterface::SOURCE_POINTER => self::ATTR_PATH,
         ], $this->collection[0]->getSource());
     }
 
     /**
      * Test adding error.
      */
-    public function testAddDataAttributeError(): void
+    public function test_add_data_attribute_error(): void
     {
         $this->collection->addDataAttributeError('name', 'some title');
         $this->assertNotEmpty($this->collection);
         $this->assertEquals([
-            ErrorInterface::SOURCE_POINTER => self::ATTR_PATH . '/name'
+            ErrorInterface::SOURCE_POINTER => self::ATTR_PATH . '/name',
         ], $this->collection[0]->getSource());
     }
 
     /**
      * Test adding error.
      */
-    public function testAddRelationshipsError(): void
+    public function test_add_relationships_error(): void
     {
         $this->collection->addRelationshipsError('some title');
         $this->assertNotEmpty($this->collection);
         $this->assertEquals([
-            ErrorInterface::SOURCE_POINTER => self::RELS_PATH
+            ErrorInterface::SOURCE_POINTER => self::RELS_PATH,
         ], $this->collection[0]->getSource());
     }
 
     /**
      * Test adding error.
      */
-    public function testAddRelationshipError(): void
+    public function test_add_relationship_error(): void
     {
         $this->collection->addRelationshipError('name', 'some title');
         $this->assertNotEmpty($this->collection);
         $this->assertEquals([
-            ErrorInterface::SOURCE_POINTER => self::RELS_PATH . '/name'
+            ErrorInterface::SOURCE_POINTER => self::RELS_PATH . '/name',
         ], $this->collection[0]->getSource());
     }
 
     /**
      * Test adding error.
      */
-    public function testAddRelationshipTypeError(): void
+    public function test_add_relationship_type_error(): void
     {
         $this->collection->addRelationshipTypeError('name', 'some title');
         $this->assertNotEmpty($this->collection);
         $this->assertEquals([
-            ErrorInterface::SOURCE_POINTER => self::RELS_PATH . '/name' . self::DATA_TYPE_PATH
+            ErrorInterface::SOURCE_POINTER => self::RELS_PATH . '/name' . self::DATA_TYPE_PATH,
         ], $this->collection[0]->getSource());
     }
 
     /**
      * Test adding error.
      */
-    public function testAddRelationshipIdError(): void
+    public function test_add_relationship_id_error(): void
     {
         $this->collection->addRelationshipIdError('name', 'some title');
         $this->assertNotEmpty($this->collection);
         $this->assertEquals([
-            ErrorInterface::SOURCE_POINTER => self::RELS_PATH . '/name' . self::DATA_ID_PATH
+            ErrorInterface::SOURCE_POINTER => self::RELS_PATH . '/name' . self::DATA_ID_PATH,
         ], $this->collection[0]->getSource());
     }
 
     /**
      * Test adding error.
      */
-    public function testAddQueryParameterError(): void
+    public function test_add_query_parameter_error(): void
     {
         $this->collection->addQueryParameterError('name', 'some title');
         $this->assertNotEmpty($this->collection);
         $this->assertEquals([
-            ErrorInterface::SOURCE_PARAMETER => 'name'
+            ErrorInterface::SOURCE_PARAMETER => 'name',
         ], $this->collection[0]->getSource());
     }
 }

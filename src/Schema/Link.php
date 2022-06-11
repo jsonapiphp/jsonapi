@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Schema;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,26 +23,20 @@ namespace Neomerx\JsonApi\Schema;
 use Neomerx\JsonApi\Contracts\Schema\DocumentInterface;
 use Neomerx\JsonApi\Contracts\Schema\LinkInterface;
 
-/**
- * @package Neomerx\JsonApi
- */
 class Link implements LinkInterface
 {
     /**
      * If link contains sub-URL value and URL prefix should be added.
-     *
      */
     private bool $isSubUrl;
 
     /**
      * Get link’s URL value (full URL or sub-URL).
-     *
      */
     private string $value;
 
     /**
      * If link has meta information.
-     *
      */
     private bool $hasMeta;
 
@@ -50,43 +46,40 @@ class Link implements LinkInterface
     private $meta;
 
     /**
-     * @param bool   $isSubUrl
-     * @param string $value
-     * @param bool   $hasMeta
-     * @param mixed  $meta
+     * @param mixed $meta
      */
     public function __construct(bool $isSubUrl, string $value, bool $hasMeta, $meta = null)
     {
         $this->isSubUrl = $isSubUrl;
-        $this->value    = $value;
-        $this->hasMeta  = $hasMeta;
-        $this->meta     = $meta;
+        $this->value = $value;
+        $this->hasMeta = $hasMeta;
+        $this->meta = $meta;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function canBeShownAsString(): bool
     {
-        return $this->hasMeta === false;
+        return false === $this->hasMeta;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getStringRepresentation(string $prefix): string
     {
-        \assert($this->canBeShownAsString() === true);
+        \assert(true === $this->canBeShownAsString());
 
         return $this->buildUrl($prefix);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getArrayRepresentation(string $prefix): array
     {
-        \assert($this->canBeShownAsString() === false);
+        \assert(false === $this->canBeShownAsString());
 
         \assert($this->hasMeta);
 
@@ -96,11 +89,6 @@ class Link implements LinkInterface
         ];
     }
 
-    /**
-     * @param string $prefix
-     *
-     * @return string
-     */
     protected function buildUrl(string $prefix): string
     {
         return $this->isSubUrl ? $prefix . $this->value : $this->value;

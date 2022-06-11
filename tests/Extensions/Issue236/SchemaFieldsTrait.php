@@ -1,9 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue236;
 
 /**
- * Copyright 2015-2020 info@neomerx.com
+ * Copyright 2015-2020 info@neomerx.com.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +19,6 @@ namespace Neomerx\Tests\JsonApi\Extensions\Issue236;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-/**
- * @package Neomerx\Tests\JsonApi
- */
 trait SchemaFieldsTrait
 {
     /**
@@ -28,19 +26,11 @@ trait SchemaFieldsTrait
      */
     private $schemaFields;
 
-    /**
-     * @return SchemaFields
-     */
     public function getSchemaFields(): SchemaFields
     {
         return $this->schemaFields;
     }
 
-    /**
-     * @param SchemaFields $schemaFields
-     *
-     * @return void
-     */
     public function setSchemaFields(SchemaFields $schemaFields): void
     {
         $this->schemaFields = $schemaFields;

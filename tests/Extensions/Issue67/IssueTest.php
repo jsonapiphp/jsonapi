@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue67;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,9 +22,6 @@ namespace Neomerx\Tests\JsonApi\Extensions\Issue67;
 
 use Neomerx\Tests\JsonApi\BaseTestCase;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class IssueTest extends BaseTestCase
 {
     /**
@@ -30,9 +29,9 @@ class IssueTest extends BaseTestCase
      *
      * @see https://github.com/neomerx/json-api/issues/67
      */
-    public function testEnheritedEncoder(): void
+    public function test_enherited_encoder(): void
     {
         $childEncoder = CustomEncoder::instance();
-        $this->assertEquals(CustomEncoder::class, get_class($childEncoder));
+        $this->assertEquals(CustomEncoder::class, \get_class($childEncoder));
     }
 }

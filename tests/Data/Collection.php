@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Data;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,23 +24,20 @@ use ArrayAccess;
 use ArrayIterator;
 use IteratorAggregate;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class Collection implements ArrayAccess, IteratorAggregate
 {
     private array $data = [];
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function offsetExists($offset)
     {
-        return array_key_exists($offset, $this->data);
+        return \array_key_exists($offset, $this->data);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function offsetGet($offset)
     {
@@ -46,15 +45,15 @@ class Collection implements ArrayAccess, IteratorAggregate
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function offsetSet($offset, $value)
     {
-        $offset === null ? $this->data[] = $value : $this->data[$offset] = $value;
+        null === $offset ? $this->data[] = $value : $this->data[$offset] = $value;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function offsetUnset($offset)
     {
@@ -62,7 +61,7 @@ class Collection implements ArrayAccess, IteratorAggregate
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getIterator()
     {

@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Encoder;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,9 +32,6 @@ use Neomerx\Tests\JsonApi\Data\Schemas\CommentSchema;
 use Neomerx\Tests\JsonApi\Data\Schemas\PostSchema;
 use Neomerx\Tests\JsonApi\Data\Schemas\SiteSchema;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class EncodeIncludedObjectsTest extends BaseTestCase
 {
     private \Neomerx\Tests\JsonApi\Data\Models\Author $author;
@@ -53,40 +52,42 @@ class EncodeIncludedObjectsTest extends BaseTestCase
     {
         parent::setUp();
 
-        $this->author   = Author::instance(9, 'Dan', 'Gebhardt');
+        $this->author = Author::instance(9, 'Dan', 'Gebhardt');
         $this->comments = [
             Comment::instance(5, 'First!', $this->author),
             Comment::instance(12, 'I like XML better', $this->author),
         ];
-        $this->post     = Post::instance(
+        $this->post = Post::instance(
             1,
             'JSON API paints my bikeshed!',
             'Outside every fat man there was an even fatter man trying to close in',
             $this->author,
             $this->comments
         );
-        $this->site     = Site::instance(2, 'site name', [$this->post]);
+        $this->site = Site::instance(2, 'site name', [$this->post]);
     }
 
     /**
      * Test encode included objects.
      */
-    public function testEncodeWithIncludedObjects(): void
+    public function test_encode_with_included_objects(): void
     {
         $this->author->setIdentifierMeta('id meta');
 
         $actual = Encoder::instance(
             [
-                Author::class  => AuthorSchema::class,
+                Author::class => AuthorSchema::class,
                 Comment::class => function ($factory) {
                     $schema = new CommentSchema($factory);
                     $schema->removeRelationship(Comment::LINK_AUTHOR);
+
                     return $schema;
                 },
-                Post::class    => function ($factory) {
+                Post::class => function ($factory) {
                     $schema = new PostSchema($factory);
                     $schema->hideDefaultLinksInRelationship(Post::LINK_AUTHOR);
                     $schema->hideDefaultLinksInRelationship(Post::LINK_COMMENTS);
+
                     return $schema;
                 },
             ]
@@ -145,27 +146,30 @@ EOL;
     /**
      * Test encode nested included objects with cyclic dependencies and sparse support.
      */
-    public function testEncodeWithRecursiveIncludedObjects(): void
+    public function test_encode_with_recursive_included_objects(): void
     {
         $this->author->{Author::LINK_COMMENTS} = $this->comments;
 
         $actual = Encoder::instance(
             [
-                Author::class  => AuthorSchema::class,
+                Author::class => AuthorSchema::class,
                 Comment::class => function ($factory) {
                     $schema = new CommentSchema($factory);
                     $schema->hideDefaultLinksInRelationship(Comment::LINK_AUTHOR);
+
                     return $schema;
                 },
-                Post::class    => function ($factory) {
+                Post::class => function ($factory) {
                     $schema = new PostSchema($factory);
                     $schema->hideDefaultLinksInRelationship(Post::LINK_AUTHOR);
                     $schema->hideDefaultLinksInRelationship(Post::LINK_COMMENTS);
+
                     return $schema;
                 },
-                Site::class    => function ($factory) {
+                Site::class => function ($factory) {
                     $schema = new SiteSchema($factory);
                     $schema->hideDefaultLinksInRelationship(Site::LINK_POSTS);
+
                     return $schema;
                 },
             ]
@@ -180,8 +184,8 @@ EOL;
                     // include only these attributes and links (note we specify relationships for linkage,
                     // otherwise those intermediate resources will not be included in the output)
                     'comments' => [Comment::ATTRIBUTE_BODY, Comment::LINK_AUTHOR],
-                    'posts'    => [Post::LINK_COMMENTS],
-                    'sites'    => [Site::LINK_POSTS],
+                    'posts' => [Post::LINK_COMMENTS],
+                    'sites' => [Site::LINK_POSTS],
                 ]
             )->encodeData($this->site);
 
@@ -253,9 +257,9 @@ EOL;
     /**
      * Test encode included objects with null and empty links.
      */
-    public function testEncodeWithNullAndEmptyLinks(): void
+    public function test_encode_with_null_and_empty_links(): void
     {
-        $this->post->{Post::LINK_AUTHOR}   = null;
+        $this->post->{Post::LINK_AUTHOR} = null;
         $this->post->{Post::LINK_COMMENTS} = [];
 
         $actual = Encoder::instance(
@@ -265,11 +269,13 @@ EOL;
                     $schema->hideResourceLinks();
                     $schema->hideDefaultLinksInRelationship(Post::LINK_AUTHOR);
                     $schema->hideDefaultLinksInRelationship(Post::LINK_COMMENTS);
+
                     return $schema;
                 },
                 Site::class => function ($factory) {
                     $schema = new SiteSchema($factory);
                     $schema->hideDefaultLinksInRelationship(Site::LINK_POSTS);
+
                     return $schema;
                 },
             ]
@@ -315,7 +321,7 @@ EOL;
     /**
      * Test encode duplicate included objects with cyclic dependencies.
      */
-    public function testEncodeDuplicatesWithCyclicDeps(): void
+    public function test_encode_duplicates_with_cyclic_deps(): void
     {
         $this->post->{Post::LINK_COMMENTS} = [];
 
@@ -329,11 +335,13 @@ EOL;
                     $schema->hideResourceLinks();
                     $schema->hideDefaultLinksInRelationship(Post::LINK_AUTHOR);
                     $schema->hideDefaultLinksInRelationship(Post::LINK_COMMENTS);
+
                     return $schema;
                 },
                 Site::class => function ($factory) {
                     $schema = new SiteSchema($factory);
                     $schema->hideDefaultLinksInRelationship(Site::LINK_POSTS);
+
                     return $schema;
                 },
             ]
@@ -382,22 +390,24 @@ EOL;
      * Test link objects that should not be included but these objects link to others that should.
      * Parser should stop parsing even if deeper objects exist.
      */
-    public function testEncodeLinkNonIncludableWithIncludableLinks(): void
+    public function test_encode_link_non_includable_with_includable_links(): void
     {
         $actual = Encoder::instance(
             [
-                Author::class  => AuthorSchema::class,
+                Author::class => AuthorSchema::class,
                 Comment::class => CommentSchema::class,
-                Post::class    => function ($factory) {
+                Post::class => function ($factory) {
                     $schema = new PostSchema($factory);
                     $schema->hideResourceLinks();
                     $schema->hideDefaultLinksInRelationship(Post::LINK_AUTHOR);
                     $schema->hideDefaultLinksInRelationship(Post::LINK_COMMENTS);
+
                     return $schema;
                 },
-                Site::class    => function ($factory) {
+                Site::class => function ($factory) {
                     $schema = new SiteSchema($factory);
                     $schema->hideDefaultLinksInRelationship(Site::LINK_POSTS);
+
                     return $schema;
                 },
             ]
@@ -453,13 +463,13 @@ EOL;
     /**
      * Test encode included objects.
      */
-    public function testEncodeWithLinkWithPagination(): void
+    public function test_encode_with_link_with_pagination(): void
     {
         $actual = Encoder::instance(
             [
-                Author::class  => AuthorSchema::class,
+                Author::class => AuthorSchema::class,
                 Comment::class => CommentSchema::class,
-                Post::class    => function ($factory) {
+                Post::class => function ($factory) {
                     $schema = new PostSchema($factory);
                     $schema->hideDefaultLinksInRelationship(Post::LINK_AUTHOR);
                     $schema->hideRelatedLinkInRelationship(Post::LINK_COMMENTS);
@@ -467,9 +477,10 @@ EOL;
                         Post::LINK_COMMENTS,
                         PostSchema::RELATIONSHIP_LINKS,
                         [
-                            Link::FIRST => fn(PostSchema $schema, Post $post) => new Link(true, $schema->getSelfSubUrl($post) . '/comments/first', false),
+                            Link::FIRST => fn (PostSchema $schema, Post $post) => new Link(true, $schema->getSelfSubUrl($post) . '/comments/first', false),
                         ]
                     );
+
                     return $schema;
                 },
             ]
@@ -513,31 +524,35 @@ EOL;
      *
      * Test for issue 35
      */
-    public function testEncodeDeepDuplicateHierarchies(): void
+    public function test_encode_deep_duplicate_hierarchies(): void
     {
         $actual = Encoder::instance(
             [
-                Author::class  => function ($factory) {
+                Author::class => function ($factory) {
                     $schema = new AuthorSchema($factory);
                     $schema->hideResourceLinks();
                     $schema->hideDefaultLinksInRelationship(Author::LINK_COMMENTS);
+
                     return $schema;
                 },
                 Comment::class => function ($factory) {
                     $schema = new CommentSchema($factory);
                     $schema->hideDefaultLinksInRelationship(Comment::LINK_AUTHOR);
+
                     return $schema;
                 },
-                Post::class    => function ($factory) {
+                Post::class => function ($factory) {
                     $schema = new PostSchema($factory);
                     $schema->hideResourceLinks();
                     $schema->hideDefaultLinksInRelationship(Post::LINK_AUTHOR);
                     $schema->hideDefaultLinksInRelationship(Post::LINK_COMMENTS);
+
                     return $schema;
                 },
-                Site::class    => function ($factory) {
+                Site::class => function ($factory) {
                     $schema = new SiteSchema($factory);
                     $schema->hideDefaultLinksInRelationship(Site::LINK_POSTS);
+
                     return $schema;
                 },
             ]
@@ -653,32 +668,36 @@ EOL;
     /**
      * Test encode nested included objects for polymorphic arrays.
      */
-    public function testEncodeWithIncludedForPolymorphicArrays(): void
+    public function test_encode_with_included_for_polymorphic_arrays(): void
     {
         $this->author->{Author::LINK_COMMENTS} = $this->comments;
 
         $actual = Encoder::instance(
             [
-                Author::class  => function ($factory) {
+                Author::class => function ($factory) {
                     $schema = new AuthorSchema($factory);
                     $schema->hideDefaultLinksInRelationship(Author::LINK_COMMENTS);
+
                     return $schema;
                 },
                 Comment::class => function ($factory) {
                     $schema = new CommentSchema($factory);
                     $schema->hideDefaultLinksInRelationship(Comment::LINK_AUTHOR);
+
                     return $schema;
                 },
-                Post::class    => function ($factory) {
+                Post::class => function ($factory) {
                     $schema = new PostSchema($factory);
                     $schema->hideResourceLinks();
                     $schema->hideDefaultLinksInRelationship(Post::LINK_AUTHOR);
                     $schema->hideDefaultLinksInRelationship(Post::LINK_COMMENTS);
+
                     return $schema;
                 },
-                Site::class    => function ($factory) {
+                Site::class => function ($factory) {
                     $schema = new SiteSchema($factory);
                     $schema->hideDefaultLinksInRelationship(Site::LINK_POSTS);
+
                     return $schema;
                 },
             ]
@@ -792,34 +811,38 @@ EOL;
     /**
      * Test encode relationship with polymorphic data.
      */
-    public function testEncodePolymorphicRelationship(): void
+    public function test_encode_polymorphic_relationship(): void
     {
         // let's hack a little bit and place additional resource(s) into relationship
-        $this->author->{Author::LINK_COMMENTS} = array_merge([$this->site], $this->comments);
+        $this->author->{Author::LINK_COMMENTS} = \array_merge([$this->site], $this->comments);
 
         $actual = Encoder::instance(
             [
-                Author::class  => function ($factory) {
+                Author::class => function ($factory) {
                     $schema = new AuthorSchema($factory);
                     $schema->hideDefaultLinksInRelationship(Author::LINK_COMMENTS);
+
                     return $schema;
                 },
                 Comment::class => function ($factory) {
                     $schema = new CommentSchema($factory);
                     $schema->hideDefaultLinksInRelationship(Comment::LINK_AUTHOR);
+
                     return $schema;
                 },
-                Post::class    => function ($factory) {
+                Post::class => function ($factory) {
                     $schema = new PostSchema($factory);
                     $schema->hideResourceLinks();
                     $schema->hideDefaultLinksInRelationship(Post::LINK_AUTHOR);
                     $schema->hideDefaultLinksInRelationship(Post::LINK_COMMENTS);
+
                     return $schema;
                 },
-                Site::class    => function ($factory) {
+                Site::class => function ($factory) {
                     $schema = new SiteSchema($factory);
                     $schema->hideResourceLinks();
                     $schema->hideDefaultLinksInRelationship(Site::LINK_POSTS);
+
                     return $schema;
                 },
             ]
@@ -910,10 +933,9 @@ EOL;
      *
      * @see https://github.com/neomerx/json-api/issues/121
      */
-    public function testEncodeRelationshipsAsLinksDoNotFollowLinksWhenIncludePathSet(): void
+    public function test_encode_relationships_as_links_do_not_follow_links_when_include_path_set(): void
     {
-        unset($this->post->{Post::LINK_AUTHOR});
-        unset($this->post->{Post::LINK_COMMENTS});
+        unset($this->post->{Post::LINK_AUTHOR}, $this->post->{Post::LINK_COMMENTS});
 
         $actual = Encoder::instance(
             [
@@ -921,6 +943,7 @@ EOL;
                     $schema = new PostSchema($factory);
                     $schema->hideDefaultLinksInRelationship(Post::LINK_AUTHOR);
                     $schema->hideDefaultLinksInRelationship(Post::LINK_COMMENTS);
+
                     return $schema;
                 },
             ]
@@ -963,27 +986,30 @@ EOL;
      *
      * @see https://github.com/neomerx/json-api/issues/121
      */
-    public function testEncodeRelationshipsAsLinks(): void
+    public function test_encode_relationships_as_links(): void
     {
         unset($this->author->{Author::LINK_COMMENTS});
 
         $actual = Encoder::instance(
             [
-                Author::class  => function ($factory) {
+                Author::class => function ($factory) {
                     $schema = new AuthorSchema($factory);
                     $schema->hideResourceLinks();
                     $schema->hideDefaultLinksInRelationship(Author::LINK_COMMENTS);
+
                     return $schema;
                 },
                 Comment::class => function ($factory) {
                     $schema = new CommentSchema($factory);
                     $schema->removeRelationship(Comment::LINK_AUTHOR);
+
                     return $schema;
                 },
-                Post::class    => function ($factory) {
+                Post::class => function ($factory) {
                     $schema = new PostSchema($factory);
                     $schema->hideDefaultLinksInRelationship(Post::LINK_AUTHOR);
                     $schema->hideDefaultLinksInRelationship(Post::LINK_COMMENTS);
+
                     return $schema;
                 },
             ]
@@ -1040,14 +1066,14 @@ EOL;
      *
      * @see https://github.com/neomerx/json-api/issues/238
      */
-    public function testIterableParameterForWithIncludedPaths(): void
+    public function test_iterable_parameter_for_with_included_paths(): void
     {
         $author = Author::instance(238, 'Susan', 'Smith');
-        $post   = Post::instance(11, 'Generators and Arrays', 'A tale of incompatible types', $author);
+        $post = Post::instance(11, 'Generators and Arrays', 'A tale of incompatible types', $author);
 
         $encoder = Encoder::instance([
             Author::class => AuthorSchema::class,
-            Post::class   => PostSchema::class,
+            Post::class => PostSchema::class,
         ]);
 
         $encoder = $encoder->withIncludedPaths($this->generateIncludeList());
@@ -1057,9 +1083,6 @@ EOL;
         self::assertJson($json);
     }
 
-    /**
-     * @return iterable
-     */
     private function generateIncludeList(): iterable
     {
         foreach (['author'] as $item) {

@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Http;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,9 +26,6 @@ use Neomerx\JsonApi\Contracts\Http\Headers\MediaTypeInterface;
 use Neomerx\JsonApi\Contracts\Http\ResponsesInterface;
 use Neomerx\JsonApi\Contracts\Schema\ErrorInterface;
 
-/**
- * @package Neomerx\JsonApi
- */
 abstract class BaseResponses implements ResponsesInterface
 {
     /** Header name that contains format of input data from client */
@@ -36,28 +35,7 @@ abstract class BaseResponses implements ResponsesInterface
     public const HEADER_LOCATION = 'Location';
 
     /**
-     * Create HTTP response.
-     *
-     * @param string|null $content
-     * @param int         $statusCode
-     * @param array       $headers
-     *
-     * @return mixed
-     */
-    abstract protected function createResponse(?string $content, int $statusCode, array $headers);
-
-    /**
-     * @return EncoderInterface
-     */
-    abstract protected function getEncoder(): EncoderInterface;
-
-    /**
-     * @return MediaTypeInterface
-     */
-    abstract protected function getMediaType(): MediaTypeInterface;
-
-    /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getContentResponse($data, int $statusCode = self::HTTP_OK, array $headers = [])
     {
@@ -67,18 +45,18 @@ abstract class BaseResponses implements ResponsesInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getCreatedResponse($resource, string $url, array $headers = [])
     {
-        $content                        = $this->getEncoder()->encodeData($resource);
+        $content = $this->getEncoder()->encodeData($resource);
         $headers[self::HEADER_LOCATION] = $url;
 
         return $this->createJsonApiResponse($content, self::HTTP_CREATED, $headers, true);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getCodeResponse(int $statusCode, array $headers = [])
     {
@@ -86,7 +64,7 @@ abstract class BaseResponses implements ResponsesInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getMetaResponse($meta, int $statusCode = self::HTTP_OK, array $headers = [])
     {
@@ -96,7 +74,7 @@ abstract class BaseResponses implements ResponsesInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getIdentifiersResponse($data, int $statusCode = self::HTTP_OK, array $headers = [])
     {
@@ -106,13 +84,13 @@ abstract class BaseResponses implements ResponsesInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      *
      * @SuppressWarnings(PHPMD.ElseExpression)
      */
     public function getErrorResponse($errors, int $statusCode = self::HTTP_BAD_REQUEST, array $headers = [])
     {
-        if (\is_iterable($errors) === true) {
+        if (true === \is_iterable($errors)) {
             /** @var iterable $errors */
             $content = $this->getEncoder()->encodeErrors($errors);
         } else {
@@ -124,10 +102,18 @@ abstract class BaseResponses implements ResponsesInterface
     }
 
     /**
-     * @param string|null $content
-     * @param int         $statusCode
-     * @param array       $headers
-     * @param bool        $addContentType
+     * Create HTTP response.
+     *
+     * @return mixed
+     */
+    abstract protected function createResponse(?string $content, int $statusCode, array $headers);
+
+    abstract protected function getEncoder(): EncoderInterface;
+
+    abstract protected function getMediaType(): MediaTypeInterface;
+
+    /**
+     * @param bool $addContentType
      *
      * @return mixed
      *
@@ -139,7 +125,7 @@ abstract class BaseResponses implements ResponsesInterface
         array $headers = [],
         $addContentType = true
     ) {
-        if ($addContentType === true) {
+        if (true === $addContentType) {
             $headers[self::HEADER_CONTENT_TYPE] = $this->getMediaType()->getMediaType();
         }
 

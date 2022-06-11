@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,9 +25,6 @@ use Neomerx\JsonApi\Contracts\Factories\FactoryInterface;
 use Neomerx\JsonApi\Factories\Factory;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @package Neomerx\JsonApi
- */
 abstract class BaseTestCase extends TestCase
 {
     /**
@@ -37,9 +36,6 @@ abstract class BaseTestCase extends TestCase
         Mockery::close();
     }
 
-    /**
-     * @return FactoryInterface
-     */
     protected function createFactory(): FactoryInterface
     {
         return new Factory();

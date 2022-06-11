@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Data\Models;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,9 +22,6 @@ namespace Neomerx\Tests\JsonApi\Data\Models;
 
 use stdClass;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class Author extends stdClass
 {
     public const ATTRIBUTE_ID = 'author_id';
@@ -33,30 +32,23 @@ class Author extends stdClass
     public const RESOURCE_META = 'resource_meta';
 
     /**
-     * @param int        $identity
-     * @param string     $firstName
-     * @param string     $lastName
-     * @param array|null $comments
-     *
      * @return Author
      */
     public static function instance(int $identity, string $firstName, string $lastName, array $comments = null)
     {
         $author = new self();
 
-        $author->{self::ATTRIBUTE_ID}         = $identity;
+        $author->{self::ATTRIBUTE_ID} = $identity;
         $author->{self::ATTRIBUTE_FIRST_NAME} = $firstName;
-        $author->{self::ATTRIBUTE_LAST_NAME}  = $lastName;
+        $author->{self::ATTRIBUTE_LAST_NAME} = $lastName;
 
-        $comments === null ?: $author->{self::LINK_COMMENTS} = $comments;
+        null === $comments ?: $author->{self::LINK_COMMENTS} = $comments;
 
         return $author;
     }
 
     /**
      * @param mixed $meta
-     *
-     * @return self
      */
     public function setIdentifierMeta($meta): self
     {
@@ -67,8 +59,6 @@ class Author extends stdClass
 
     /**
      * @param mixed $meta
-     *
-     * @return self
      */
     public function setResourceMeta($meta): self
     {

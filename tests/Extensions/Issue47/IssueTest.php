@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue47;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,15 +22,12 @@ namespace Neomerx\Tests\JsonApi\Extensions\Issue47;
 
 use Neomerx\Tests\JsonApi\BaseTestCase;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class IssueTest extends BaseTestCase
 {
     /**
      * Test filter nested attributes.
      */
-    public function testFilterNestedAttributes(): void
+    public function test_filter_nested_attributes(): void
     {
         $user = new User('12287', 'vivalacrowe', ['email' => 'hello@vivalacrowe.com', 'name' => 'Rob']);
 

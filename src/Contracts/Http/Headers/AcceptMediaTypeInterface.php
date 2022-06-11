@@ -1,9 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Contracts\Http\Headers;
 
 /**
- * Copyright 2015-2020 info@neomerx.com
+ * Copyright 2015-2020 info@neomerx.com.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,21 +19,6 @@ namespace Neomerx\JsonApi\Contracts\Http\Headers;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-/**
- * @package Neomerx\JsonApi
- *
- * A quick review of RFC 2616 (14.1 Accept)
- *
- * Accept header has the following structure
- *
- * Accept: type/subtype;media=parameters;q=1.0, ... (other comma separated media types)
- *           ^    ^                      ^
- *           |    |                      |___ Special 'q' parameter sets quality factor and separates media(-range/type)
- *           |    |                           parameters from accept extension parameters.
- *           |    |
- *           ---------- Media type and subtype
- */
 interface AcceptMediaTypeInterface extends MediaTypeInterface
 {
     /**
@@ -43,8 +30,6 @@ interface AcceptMediaTypeInterface extends MediaTypeInterface
 
     /**
      * Get initial position of the media type in header (needed for stable sorting).
-     *
-     * @return int
      */
     public function getPosition(): int;
 }

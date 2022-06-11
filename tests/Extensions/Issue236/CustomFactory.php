@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue236;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,13 +26,10 @@ use Neomerx\JsonApi\Contracts\Schema\PositionInterface;
 use Neomerx\JsonApi\Contracts\Schema\SchemaContainerInterface;
 use Neomerx\JsonApi\Factories\Factory;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 final class CustomFactory extends Factory
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function createParsedResource(
         EditableContextInterface $context,

@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Http\Headers;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,36 +25,30 @@ use Neomerx\JsonApi\Contracts\Http\Headers\HeaderParametersParserInterface;
 use Neomerx\JsonApi\Contracts\Http\Headers\MediaTypeInterface;
 use Neomerx\JsonApi\Exceptions\InvalidArgumentException;
 
-/**
- * @package Neomerx\JsonApi
- */
 class HeaderParametersParser implements HeaderParametersParserInterface
 {
     private \Neomerx\JsonApi\Contracts\Factories\FactoryInterface $factory;
 
-    /**
-     * @param FactoryInterface $factory
-     */
     public function __construct(FactoryInterface $factory)
     {
         $this->factory = $factory;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function parseAcceptHeader(string $value): iterable
     {
-        if (empty($value) === true) {
+        if (true === empty($value)) {
             throw new InvalidArgumentException('value');
         }
 
-        $ranges = \preg_split("/,(?=([^\"]*\"[^\"]*\")*[^\"]*$)/", $value);
-        $count  = is_countable($ranges) ? \count($ranges) : 0;
+        $ranges = \preg_split('/,(?=([^"]*"[^"]*")*[^"]*$)/', $value);
+        $count = \is_countable($ranges) ? \count($ranges) : 0;
         for ($idx = 0; $idx < $count; ++$idx) {
             $fields = \explode(';', $ranges[$idx]);
 
-            if (\strpos($fields[0], '/') === false) {
+            if (false === \mb_strpos($fields[0], '/')) {
                 throw new InvalidArgumentException('mediaType');
             }
 
@@ -66,27 +62,27 @@ class HeaderParametersParser implements HeaderParametersParserInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function parseContentTypeHeader(string $mediaType): MediaTypeInterface
     {
         $fields = \explode(';', $mediaType);
 
-        if (\strpos($fields[0], '/') === false) {
+        if (false === \mb_strpos($fields[0], '/')) {
             throw new InvalidArgumentException('mediaType');
         }
 
         [$type, $subType] = \explode('/', $fields[0], 2);
 
         $parameters = null;
-        $count      = \count($fields);
+        $count = \count($fields);
         for ($idx = 1; $idx < $count; ++$idx) {
             $fieldValue = $fields[$idx];
-            if (empty($fieldValue) === true) {
+            if (true === empty($fieldValue)) {
                 continue;
             }
 
-            if (\strpos($fieldValue, '=') === false) {
+            if (false === \mb_strpos($fieldValue, '=')) {
                 throw new InvalidArgumentException('mediaType');
             }
 
@@ -97,42 +93,37 @@ class HeaderParametersParser implements HeaderParametersParserInterface
         return $this->factory->createMediaType($type, $subType, $parameters);
     }
 
-    /**
-     * @param array $fields
-     *
-     * @return array
-     */
     private function parseQualityAndParameters(array $fields): array
     {
-        $quality     = 1;
+        $quality = 1;
         $qParamFound = false;
-        $parameters  = null;
+        $parameters = null;
 
         $count = \count($fields);
         for ($idx = 1; $idx < $count; ++$idx) {
             $fieldValue = $fields[$idx];
-            if (empty($fieldValue) === true) {
+            if (true === empty($fieldValue)) {
                 continue;
             }
 
-            if (\strpos($fieldValue, '=') === false) {
+            if (false === \mb_strpos($fieldValue, '=')) {
                 throw new InvalidArgumentException('mediaType');
             }
 
             [$key, $value] = \explode('=', $fieldValue, 2);
 
-            $key   = \trim($key);
+            $key = \trim($key);
             $value = \trim($value, ' "');
 
             // 'q' param separates media parameters from extension parameters
 
-            if ($key === 'q' && $qParamFound === false) {
-                $quality     = (float)$value;
+            if ('q' === $key && false === $qParamFound) {
+                $quality = (float) $value;
                 $qParamFound = true;
                 continue;
             }
 
-            if ($qParamFound === false) {
+            if (false === $qParamFound) {
                 $parameters[$key] = $value;
             }
         }

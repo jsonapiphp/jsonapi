@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Parser\RelationshipData;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,9 +31,6 @@ use Neomerx\JsonApi\Contracts\Schema\SchemaContainerInterface;
 use Neomerx\JsonApi\Exceptions\LogicException;
 use function Neomerx\JsonApi\I18n\format as _;
 
-/**
- * @package Neomerx\JsonApi
- */
 class RelationshipDataIsCollection extends BaseRelationshipData implements RelationshipDataInterface
 {
     /** @var string */
@@ -41,13 +40,6 @@ class RelationshipDataIsCollection extends BaseRelationshipData implements Relat
 
     private ?iterable $parsedResources = null;
 
-    /**
-     * @param FactoryInterface         $factory
-     * @param SchemaContainerInterface $schemaContainer
-     * @param EditableContextInterface $context
-     * @param PositionInterface        $position
-     * @param iterable                 $resources
-     */
     public function __construct(
         FactoryInterface $factory,
         SchemaContainerInterface $schemaContainer,
@@ -61,7 +53,7 @@ class RelationshipDataIsCollection extends BaseRelationshipData implements Relat
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function isCollection(): bool
     {
@@ -69,7 +61,7 @@ class RelationshipDataIsCollection extends BaseRelationshipData implements Relat
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function isNull(): bool
     {
@@ -77,7 +69,7 @@ class RelationshipDataIsCollection extends BaseRelationshipData implements Relat
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function isResource(): bool
     {
@@ -85,7 +77,7 @@ class RelationshipDataIsCollection extends BaseRelationshipData implements Relat
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function isIdentifier(): bool
     {
@@ -93,7 +85,7 @@ class RelationshipDataIsCollection extends BaseRelationshipData implements Relat
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getIdentifier(): ParserIdentifierInterface
     {
@@ -101,7 +93,7 @@ class RelationshipDataIsCollection extends BaseRelationshipData implements Relat
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getIdentifiers(): iterable
     {
@@ -109,7 +101,7 @@ class RelationshipDataIsCollection extends BaseRelationshipData implements Relat
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getResource(): ResourceInterface
     {
@@ -117,13 +109,13 @@ class RelationshipDataIsCollection extends BaseRelationshipData implements Relat
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getResources(): iterable
     {
-        if ($this->parsedResources === null) {
+        if (null === $this->parsedResources) {
             foreach ($this->resources as $resourceOrIdentifier) {
-                $parsedResource          = $resourceOrIdentifier instanceof SchemaIdentifierInterface ?
+                $parsedResource = $resourceOrIdentifier instanceof SchemaIdentifierInterface ?
                     $this->createParsedIdentifier($resourceOrIdentifier) :
                     $this->createParsedResource($resourceOrIdentifier);
                 $this->parsedResources[] = $parsedResource;

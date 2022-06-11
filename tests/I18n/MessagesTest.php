@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\I18n;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,19 +20,16 @@ namespace Neomerx\Tests\JsonApi\I18n;
  * limitations under the License.
  */
 
+use function Neomerx\JsonApi\I18n\format as _;
 use Neomerx\JsonApi\I18n\Messages;
 use Neomerx\Tests\JsonApi\BaseTestCase;
-use function Neomerx\JsonApi\I18n\format as _;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class MessagesTest extends BaseTestCase
 {
     /**
      * Test basic function like get translation with and without custom dictionary.
      */
-    public function testBasicFunctions(): void
+    public function test_basic_functions(): void
     {
         // without custom dictionary
         self::assertEquals('foo', _('foo'));

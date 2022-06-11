@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue47;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,13 +23,10 @@ namespace Neomerx\Tests\JsonApi\Extensions\Issue47;
 use Neomerx\JsonApi\Contracts\Schema\ContextInterface;
 use Neomerx\JsonApi\Schema\BaseSchema;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class UserBaseSchema extends BaseSchema
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getType(): string
     {
@@ -35,30 +34,30 @@ class UserBaseSchema extends BaseSchema
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getId($user): ?string
     {
-        assert($user instanceof User);
+        \assert($user instanceof User);
 
         return $user->identity;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getAttributes($user, ContextInterface $context): iterable
     {
-        assert($user instanceof User);
+        \assert($user instanceof User);
 
         return [
             'username' => $user->name,
-            'private'  => $user->contactDetails,
+            'private' => $user->contactDetails,
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getRelationships($resource, ContextInterface $context): iterable
     {

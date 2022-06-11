@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Data\Schemas;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,16 +23,11 @@ namespace Neomerx\Tests\JsonApi\Data\Schemas;
 use Neomerx\JsonApi\Contracts\Schema\ContextInterface;
 use Neomerx\JsonApi\Contracts\Schema\LinkInterface;
 use Neomerx\Tests\JsonApi\Data\Models\Author;
-use function assert;
-use function property_exists;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class AuthorSchema extends DevSchema
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getType(): string
     {
@@ -38,49 +35,49 @@ class AuthorSchema extends DevSchema
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getId($resource): ?string
     {
-        assert($resource instanceof Author);
+        \assert($resource instanceof Author);
 
         $index = $resource->{Author::ATTRIBUTE_ID};
 
-        return $index === null ? $index : (string)$index;
+        return null === $index ? $index : (string) $index;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getAttributes($resource, ContextInterface $context): iterable
     {
-        assert($resource instanceof Author);
+        \assert($resource instanceof Author);
 
         return [
             Author::ATTRIBUTE_FIRST_NAME => $resource->{Author::ATTRIBUTE_FIRST_NAME},
-            Author::ATTRIBUTE_LAST_NAME  => $resource->{Author::ATTRIBUTE_LAST_NAME},
+            Author::ATTRIBUTE_LAST_NAME => $resource->{Author::ATTRIBUTE_LAST_NAME},
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getRelationships($resource, ContextInterface $context): iterable
     {
-        assert($resource instanceof Author);
+        \assert($resource instanceof Author);
 
         // add test coverage for context param
-        assert($context->getPosition() !== null);
-        assert($context->getFieldSets() !== null);
-        assert($context->getIncludePaths() !== null);
+        \assert(null !== $context->getPosition());
+        \assert(null !== $context->getFieldSets());
+        \assert(null !== $context->getIncludePaths());
 
         // test and cover with test that factory could be used from a Schema.
-        assert($this->getFactory()->createLink(true, 'test-example', false) !== null);
+        \assert(null !== $this->getFactory()->createLink(true, 'test-example', false));
 
-        if (property_exists($resource, Author::LINK_COMMENTS) === true) {
+        if (true === \property_exists($resource, Author::LINK_COMMENTS)) {
             $description = [self::RELATIONSHIP_DATA => $resource->{Author::LINK_COMMENTS}];
         } else {
-            $selfLink    = $this->getRelationshipSelfLink($resource, Author::LINK_COMMENTS);
+            $selfLink = $this->getRelationshipSelfLink($resource, Author::LINK_COMMENTS);
             $description = [self::RELATIONSHIP_LINKS => [LinkInterface::SELF => $selfLink]];
         }
 
@@ -94,41 +91,41 @@ class AuthorSchema extends DevSchema
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function hasIdentifierMeta($resource): bool
     {
-        assert($resource instanceof Author);
+        \assert($resource instanceof Author);
 
-        return parent::hasIdentifierMeta($resource) || property_exists($resource, Author::IDENTIFIER_META);
+        return parent::hasIdentifierMeta($resource) || \property_exists($resource, Author::IDENTIFIER_META);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getIdentifierMeta($resource)
     {
-        assert($resource instanceof Author);
+        \assert($resource instanceof Author);
 
         return $resource->{Author::IDENTIFIER_META};
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function hasResourceMeta($resource): bool
     {
-        assert($resource instanceof Author);
+        \assert($resource instanceof Author);
 
-        return parent::hasResourceMeta($resource) || property_exists($resource, Author::RESOURCE_META);
+        return parent::hasResourceMeta($resource) || \property_exists($resource, Author::RESOURCE_META);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getResourceMeta($resource)
     {
-        assert($resource instanceof Author);
+        \assert($resource instanceof Author);
 
         return $resource->{Author::RESOURCE_META};
     }

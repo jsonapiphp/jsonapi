@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Representation;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,9 +25,6 @@ use Neomerx\JsonApi\Contracts\Schema\BaseLinkInterface;
 use Neomerx\JsonApi\Contracts\Schema\DocumentInterface;
 use Neomerx\JsonApi\Contracts\Schema\LinkInterface;
 
-/**
- * @package Neomerx\JsonApi
- */
 abstract class BaseWriter implements BaseWriterInterface
 {
     /**
@@ -46,21 +45,21 @@ abstract class BaseWriter implements BaseWriterInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function setDataAsArray(): BaseWriterInterface
     {
-        \assert($this->isDataAnArray === false);
-        \assert(\array_key_exists(DocumentInterface::KEYWORD_DATA, $this->data) === false);
+        \assert(false === $this->isDataAnArray);
+        \assert(false === \array_key_exists(DocumentInterface::KEYWORD_DATA, $this->data));
 
         $this->data[DocumentInterface::KEYWORD_DATA] = [];
-        $this->isDataAnArray                         = true;
+        $this->isDataAnArray = true;
 
         return $this;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getDocument(): array
     {
@@ -68,11 +67,11 @@ abstract class BaseWriter implements BaseWriterInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function setMeta($meta): BaseWriterInterface
     {
-        \assert(\is_resource($meta) === false);
+        \assert(false === \is_resource($meta));
 
         $this->data[DocumentInterface::KEYWORD_META] = $meta;
 
@@ -80,7 +79,7 @@ abstract class BaseWriter implements BaseWriterInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function setJsonApiVersion(string $version): BaseWriterInterface
     {
@@ -90,11 +89,11 @@ abstract class BaseWriter implements BaseWriterInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function setJsonApiMeta($meta): BaseWriterInterface
     {
-        \assert(\is_resource($meta) === false);
+        \assert(false === \is_resource($meta));
 
         $this->data[DocumentInterface::KEYWORD_JSON_API][DocumentInterface::KEYWORD_META] = $meta;
 
@@ -102,7 +101,7 @@ abstract class BaseWriter implements BaseWriterInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function setUrlPrefix(string $prefix): BaseWriterInterface
     {
@@ -112,7 +111,7 @@ abstract class BaseWriter implements BaseWriterInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function setLinks(iterable $links): BaseWriterInterface
     {
@@ -121,7 +120,7 @@ abstract class BaseWriter implements BaseWriterInterface
             $links
         );
 
-        if (empty($representation) === false) {
+        if (false === empty($representation)) {
             $this->data[DocumentInterface::KEYWORD_LINKS] = $representation;
         }
 
@@ -129,7 +128,7 @@ abstract class BaseWriter implements BaseWriterInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function setProfile(iterable $links): BaseWriterInterface
     {
@@ -138,72 +137,51 @@ abstract class BaseWriter implements BaseWriterInterface
             $links
         );
 
-        if (empty($representation) === false) {
+        if (false === empty($representation)) {
             $this->data[DocumentInterface::KEYWORD_LINKS][DocumentInterface::KEYWORD_PROFILE] = $representation;
         }
 
         return $this;
     }
 
-    /**
-     * @return void
-     */
     protected function reset(): void
     {
-        $this->data          = [];
-        $this->urlPrefix     = '';
+        $this->data = [];
+        $this->urlPrefix = '';
         $this->isDataAnArray = false;
     }
 
-    /**
-     * @return string
-     */
     protected function getUrlPrefix(): string
     {
         return $this->urlPrefix;
     }
 
-    /**
-     * @param null|string $prefix
-     * @param iterable    $links
-     *
-     * @return array
-     */
     protected function getLinksRepresentation(?string $prefix, iterable $links): array
     {
         $result = [];
 
         foreach ($links as $name => $link) {
             \assert($link instanceof LinkInterface);
-            $result[$name] = $link->canBeShownAsString() === true ?
+            $result[$name] = true === $link->canBeShownAsString() ?
                 $link->getStringRepresentation($prefix) : $link->getArrayRepresentation($prefix);
         }
 
         return $result;
     }
 
-    /**
-     * @param null|string $prefix
-     * @param iterable    $links
-     *
-     * @return array
-     */
     protected function getLinksListRepresentation(?string $prefix, iterable $links): array
     {
         $result = [];
 
         foreach ($links as $link) {
             \assert($link instanceof BaseLinkInterface);
-            $result[] = $link->canBeShownAsString() === true ?
+            $result[] = true === $link->canBeShownAsString() ?
                 $link->getStringRepresentation($prefix) : $link->getArrayRepresentation($prefix);
         }
 
         return $result;
     }
 
-    /**
-     * @return bool
-     */
     protected function isDataAnArray(): bool
     {
         return $this->isDataAnArray;

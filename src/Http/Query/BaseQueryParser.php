@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Http\Query;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,9 +22,6 @@ namespace Neomerx\JsonApi\Http\Query;
 
 use Neomerx\JsonApi\Contracts\Http\Query\BaseQueryParserInterface;
 
-/**
- * @package Neomerx\JsonApi
- */
 class BaseQueryParser implements BaseQueryParserInterface
 {
     use BaseQueryParserTrait {
@@ -44,7 +43,6 @@ class BaseQueryParser implements BaseQueryParserInterface
     private $messages;
 
     /**
-     * @param array         $parameters
      * @param string[]|null $messages
      */
     public function __construct(array $parameters = [], array $messages = null)
@@ -53,7 +51,7 @@ class BaseQueryParser implements BaseQueryParserInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getFields(): iterable
     {
@@ -61,7 +59,7 @@ class BaseQueryParser implements BaseQueryParserInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getIncludes(): iterable
     {
@@ -69,7 +67,7 @@ class BaseQueryParser implements BaseQueryParserInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getIncludePaths(): iterable
     {
@@ -77,7 +75,7 @@ class BaseQueryParser implements BaseQueryParserInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getSorts(): iterable
     {
@@ -85,18 +83,13 @@ class BaseQueryParser implements BaseQueryParserInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getProfileUrls(): iterable
     {
         return $this->getProfileUrlsImpl($this->getParameters(), $this->getMessage(static::MSG_ERR_INVALID_PARAMETER));
     }
 
-    /**
-     * @param array $parameters
-     *
-     * @return self
-     */
     protected function setParameters(array $parameters): self
     {
         $this->parameters = $parameters;
@@ -104,9 +97,6 @@ class BaseQueryParser implements BaseQueryParserInterface
         return $this;
     }
 
-    /**
-     * @return array
-     */
     protected function getParameters(): array
     {
         return $this->parameters;
@@ -114,8 +104,6 @@ class BaseQueryParser implements BaseQueryParserInterface
 
     /**
      * @param array $messages
-     *
-     * @return self
      */
     protected function setMessages(?array $messages): self
     {
@@ -124,11 +112,6 @@ class BaseQueryParser implements BaseQueryParserInterface
         return $this;
     }
 
-    /**
-     * @param string $message
-     *
-     * @return string
-     */
     protected function getMessage(string $message): string
     {
         return $this->messages[$message] ?? $message;

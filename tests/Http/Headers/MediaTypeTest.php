@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Http\Headers;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,17 +24,12 @@ use Neomerx\JsonApi\Exceptions\InvalidArgumentException;
 use Neomerx\JsonApi\Http\Headers\MediaType;
 use Neomerx\Tests\JsonApi\BaseTestCase;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class MediaTypeTest extends BaseTestCase
 {
     /**
      * Test invalid constructor parameters.
-     *
-     * @return void
      */
-    public function testInvalidConstructorParams1(): void
+    public function test_invalid_constructor_params1(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -41,10 +38,8 @@ class MediaTypeTest extends BaseTestCase
 
     /**
      * Test invalid constructor parameters.
-     *
-     * @return void
      */
-    public function testInvalidConstructorParams2(): void
+    public function test_invalid_constructor_params2(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -53,10 +48,8 @@ class MediaTypeTest extends BaseTestCase
 
     /**
      * Test full media type name combine.
-     *
-     * @return void
      */
-    public function testGetMediaType(): void
+    public function test_get_media_type(): void
     {
         $type = new MediaType('text', 'html', ['charset' => 'utf-8']);
 
@@ -64,11 +57,9 @@ class MediaTypeTest extends BaseTestCase
     }
 
     /**
-     * Test compare media types (case insensitive)
-     *
-     * @return void
+     * Test compare media types (case insensitive).
      */
-    public function testCompareMediaTypes(): void
+    public function test_compare_media_types(): void
     {
         $type1 = new MediaType('text', 'html', ['charset' => 'utf-8']);
         $type2 = new MediaType('Text', 'HTML', ['Charset' => 'utf-8']);
@@ -85,11 +76,9 @@ class MediaTypeTest extends BaseTestCase
     }
 
     /**
-     * Test compare media types (case sensitive)
-     *
-     * @return void
+     * Test compare media types (case sensitive).
      */
-    public function testCompareMediaTypes2(): void
+    public function test_compare_media_types2(): void
     {
         $type1 = new MediaType('text', 'html', ['case-sensitive-value' => 'whatever']);
         $type2 = new MediaType('text', 'html', ['case-sensitive-value' => 'WHATEVER']);
@@ -100,11 +89,9 @@ class MediaTypeTest extends BaseTestCase
     }
 
     /**
-     * Test compare media types
-     *
-     * @return void
+     * Test compare media types.
      */
-    public function testCompareMediaTypesWithoutParameters(): void
+    public function test_compare_media_types_without_parameters(): void
     {
         $type1 = new MediaType('text', 'html');
         $type2 = new MediaType('Text', 'HTML');
@@ -113,11 +100,9 @@ class MediaTypeTest extends BaseTestCase
     }
 
     /**
-     * Test compare media types
-     *
-     * @return void
+     * Test compare media types.
      */
-    public function testMatchMediaTypes(): void
+    public function test_match_media_types(): void
     {
         $type1 = new MediaType('text', 'html', ['charset' => 'utf-8']);
         $type2 = new MediaType('Text', 'HTML', ['Charset' => 'utf-8']);
@@ -130,11 +115,9 @@ class MediaTypeTest extends BaseTestCase
     }
 
     /**
-     * Test compare media types
-     *
-     * @return void
+     * Test compare media types.
      */
-    public function testMatchMediaTypesWithoutParameters(): void
+    public function test_match_media_types_without_parameters(): void
     {
         $type1 = new MediaType('text', 'html');
         $type2 = new MediaType('Text', 'HTML');
@@ -143,13 +126,11 @@ class MediaTypeTest extends BaseTestCase
     }
 
     /**
-     * Test compare media types
-     *
-     * @return void
+     * Test compare media types.
      *
      * @see https://github.com/neomerx/json-api/issues/221
      */
-    public function testMatchMediaTypesWithoutParameters2(): void
+    public function test_match_media_types_without_parameters2(): void
     {
         // match by mask
 

@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Parser;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,12 +31,10 @@ use Neomerx\JsonApi\Contracts\Schema\SchemaInterface;
 use Neomerx\JsonApi\Parser\RelationshipData\ParseRelationshipDataTrait;
 use Neomerx\JsonApi\Parser\RelationshipData\ParseRelationshipLinksTrait;
 
-/**
- * @package Neomerx\JsonApi
- */
 class IdentifierAndResource implements ResourceInterface
 {
-    use ParseRelationshipDataTrait, ParseRelationshipLinksTrait;
+    use ParseRelationshipDataTrait;
+    use ParseRelationshipLinksTrait;
 
     /** @var string */
     public const MSG_NO_SCHEMA_FOUND = 'No Schema found for resource `%s` at path `%s`.';
@@ -62,21 +62,17 @@ class IdentifierAndResource implements ResourceInterface
     private string $type;
 
     /**
-     * @var null|array
+     * @var array|null
      */
     private $links = null;
 
     /**
-     * @var null|array
+     * @var array|null
      */
     private $relationshipsCache = null;
 
     /**
-     * @param EditableContextInterface $context
-     * @param PositionInterface        $position
-     * @param FactoryInterface         $factory
-     * @param SchemaContainerInterface $container
-     * @param mixed                    $data
+     * @param mixed $data
      */
     public function __construct(
         EditableContextInterface $context,
@@ -89,18 +85,18 @@ class IdentifierAndResource implements ResourceInterface
 
         $schema = $container->getSchema($data);
 
-        $this->context         = $context;
-        $this->position        = $position;
-        $this->factory         = $factory;
+        $this->context = $context;
+        $this->position = $position;
+        $this->factory = $factory;
         $this->schemaContainer = $container;
-        $this->schema          = $schema;
-        $this->data            = $data;
-        $this->index           = $schema->getId($data);
-        $this->type            = $schema->getType();
+        $this->schema = $schema;
+        $this->data = $data;
+        $this->index = $schema->getId($data);
+        $this->type = $schema->getType();
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getPosition(): PositionInterface
     {
@@ -108,7 +104,7 @@ class IdentifierAndResource implements ResourceInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getId(): ?string
     {
@@ -116,7 +112,7 @@ class IdentifierAndResource implements ResourceInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getType(): string
     {
@@ -124,7 +120,7 @@ class IdentifierAndResource implements ResourceInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function hasIdentifierMeta(): bool
     {
@@ -132,7 +128,7 @@ class IdentifierAndResource implements ResourceInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getIdentifierMeta()
     {
@@ -140,7 +136,7 @@ class IdentifierAndResource implements ResourceInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getAttributes(): iterable
     {
@@ -150,13 +146,13 @@ class IdentifierAndResource implements ResourceInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      *
      * @SuppressWarnings(PHPMD.UndefinedVariable) PHPMD currently do not support `list` in `[]` syntax
      */
     public function getRelationships(): iterable
     {
-        if ($this->relationshipsCache !== null) {
+        if (null !== $this->relationshipsCache) {
             yield from $this->relationshipsCache;
 
             return;
@@ -164,12 +160,12 @@ class IdentifierAndResource implements ResourceInterface
 
         $this->relationshipsCache = [];
 
-        $currentPath    = $this->position->getPath();
-        $nextLevel      = $this->position->getLevel() + 1;
-        $nextPathPrefix = empty($currentPath) === true ? '' : $currentPath . PositionInterface::PATH_SEPARATOR;
+        $currentPath = $this->position->getPath();
+        $nextLevel = $this->position->getLevel() + 1;
+        $nextPathPrefix = true === empty($currentPath) ? '' : $currentPath . PositionInterface::PATH_SEPARATOR;
         $this->getContext()->setPosition($this->getPosition());
         foreach ($this->schema->getRelationships($this->data, $this->getContext()) as $name => $description) {
-            \assert($this->assertRelationshipNameAndDescription($name, $description) === true);
+            \assert(true === $this->assertRelationshipNameAndDescription($name, $description));
 
             [$hasData, $relationshipData, $nextPosition] = $this->parseRelationshipData(
                 $this->factory,
@@ -186,11 +182,11 @@ class IdentifierAndResource implements ResourceInterface
                 $this->parseRelationshipLinks($this->schema, $this->data, $name, $description);
 
             $hasMeta = \array_key_exists(SchemaInterface::RELATIONSHIP_META, $description);
-            $meta    = $hasMeta === true ? $description[SchemaInterface::RELATIONSHIP_META] : null;
+            $meta = true === $hasMeta ? $description[SchemaInterface::RELATIONSHIP_META] : null;
 
             \assert(
                 $hasData || $hasMeta || $hasLinks,
-                "Relationship `$name` for type `" . $this->getType() .
+                "Relationship `${name}` for type `" . $this->getType() .
                 '` MUST contain at least one of the following: links, data or meta.'
             );
 
@@ -211,17 +207,17 @@ class IdentifierAndResource implements ResourceInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function hasLinks(): bool
     {
         $this->cacheLinks();
 
-        return empty($this->links) === false;
+        return false === empty($this->links);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getLinks(): iterable
     {
@@ -231,7 +227,7 @@ class IdentifierAndResource implements ResourceInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function hasResourceMeta(): bool
     {
@@ -239,16 +235,13 @@ class IdentifierAndResource implements ResourceInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getResourceMeta()
     {
         return $this->schema->getResourceMeta($this->data);
     }
 
-    /**
-     * @return EditableContextInterface
-     */
     protected function getContext(): EditableContextInterface
     {
         return $this->context;
@@ -259,31 +252,25 @@ class IdentifierAndResource implements ResourceInterface
      */
     private function cacheLinks(): void
     {
-        if ($this->links === null) {
+        if (null === $this->links) {
             $this->links = [];
             foreach ($this->schema->getLinks($this->data) as $name => $link) {
-                \assert(\is_string($name) === true && empty($name) === false);
+                \assert(true === \is_string($name) && false === empty($name));
                 \assert($link instanceof LinkInterface);
                 $this->links[$name] = $link;
             }
         }
     }
 
-    /**
-     * @param string $name
-     * @param array  $description
-     *
-     * @return bool
-     */
     private function assertRelationshipNameAndDescription(string $name, array $description): bool
     {
         \assert(
-            \is_string($name) === true && empty($name) === false,
-            "Relationship names for type `" . $this->getType() . '` should be non-empty strings.'
+            true === \is_string($name) && false === empty($name),
+            'Relationship names for type `' . $this->getType() . '` should be non-empty strings.'
         );
         \assert(
-            \is_array($description) === true && empty($description) === false,
-            "Relationship `$name` for type `" . $this->getType() . '` should be a non-empty array.'
+            true === \is_array($description) && false === empty($description),
+            "Relationship `${name}` for type `" . $this->getType() . '` should be a non-empty array.'
         );
 
         return true;

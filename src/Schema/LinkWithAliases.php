@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Schema;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,9 +23,6 @@ namespace Neomerx\JsonApi\Schema;
 use Neomerx\JsonApi\Contracts\Schema\DocumentInterface;
 use Neomerx\JsonApi\Contracts\Schema\LinkWithAliasesInterface;
 
-/**
- * @package Neomerx\JsonApi
- */
 class LinkWithAliases extends Link implements LinkWithAliasesInterface
 {
     private array $aliases;
@@ -31,45 +30,41 @@ class LinkWithAliases extends Link implements LinkWithAliasesInterface
     private bool $hasAliases;
 
     /**
-     * @param bool     $isSubUrl
-     * @param string   $value
-     * @param iterable $aliases
-     * @param bool     $hasMeta
-     * @param null     $meta
+     * @param null $meta
      */
     public function __construct(bool $isSubUrl, string $value, iterable $aliases, bool $hasMeta, $meta = null)
     {
         $aliasesArray = [];
         foreach ($aliases as $name => $alias) {
-            \assert(\is_string($name) === true && empty($name) === false);
-            \assert(\is_string($alias) === true && empty($alias) === false);
+            \assert(true === \is_string($name) && false === empty($name));
+            \assert(true === \is_string($alias) && false === empty($alias));
             $aliasesArray[$name] = $alias;
         }
 
-        $this->aliases    = $aliasesArray;
+        $this->aliases = $aliasesArray;
         $this->hasAliases = !empty($aliasesArray);
 
         parent::__construct($isSubUrl, $value, $hasMeta, $meta);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function canBeShownAsString(): bool
     {
-        return parent::canBeShownAsString() && $this->hasAliases === false;
+        return parent::canBeShownAsString() && false === $this->hasAliases;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getArrayRepresentation(string $prefix): array
     {
-        $linkRepresentation = parent::canBeShownAsString() === true ? [
+        $linkRepresentation = true === parent::canBeShownAsString() ? [
             DocumentInterface::KEYWORD_HREF => $this->buildUrl($prefix),
         ] : parent::getArrayRepresentation($prefix);
 
-        if ($this->hasAliases === true) {
+        if (true === $this->hasAliases) {
             $linkRepresentation[DocumentInterface::KEYWORD_ALIASES] = $this->aliases;
         }
 

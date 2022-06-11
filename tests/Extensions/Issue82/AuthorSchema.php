@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue82;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,13 +23,10 @@ namespace Neomerx\Tests\JsonApi\Extensions\Issue82;
 use Neomerx\JsonApi\Contracts\Schema\ContextInterface;
 use Neomerx\JsonApi\Schema\BaseSchema;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class AuthorSchema extends BaseSchema
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getType(): string
     {
@@ -35,32 +34,32 @@ class AuthorSchema extends BaseSchema
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getId($author): ?string
     {
-        return (string)$author->author_id;
+        return (string) $author->author_id;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getAttributes($author, ContextInterface $context): iterable
     {
         return [
             'first-name' => $author->first_name,
-            'last-name'  => $author->last_name,
+            'last-name' => $author->last_name,
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getRelationships($author, ContextInterface $context): iterable
     {
         return [
             'comments' => [
-                self::RELATIONSHIP_LINKS_SELF    => false,
+                self::RELATIONSHIP_LINKS_SELF => false,
                 self::RELATIONSHIP_LINKS_RELATED => true,
 
                 // Data could be included as well

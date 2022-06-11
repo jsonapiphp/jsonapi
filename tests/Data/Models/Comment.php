@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Data\Models;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,9 +22,6 @@ namespace Neomerx\Tests\JsonApi\Data\Models;
 
 use stdClass;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class Comment extends stdClass
 {
     public const ATTRIBUTE_ID = 'comment_id';
@@ -30,8 +29,6 @@ class Comment extends stdClass
     public const LINK_AUTHOR = 'author';
 
     /**
-     * @param int    $identity
-     * @param string $body
      * @param Author $author
      *
      * @return Comment
@@ -40,7 +37,7 @@ class Comment extends stdClass
     {
         $comment = new self();
 
-        $comment->{self::ATTRIBUTE_ID}   = $identity;
+        $comment->{self::ATTRIBUTE_ID} = $identity;
         $comment->{self::ATTRIBUTE_BODY} = $body;
 
         $comment->{self::LINK_AUTHOR} = $author;

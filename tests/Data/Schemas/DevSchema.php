@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Data\Schemas;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,13 +23,9 @@ namespace Neomerx\Tests\JsonApi\Data\Schemas;
 use Closure;
 use Neomerx\JsonApi\Contracts\Schema\LinkInterface;
 use Neomerx\JsonApi\Schema\BaseSchema;
-use function assert;
-use function is_string;
 
 /**
  * Base schema provider for testing/development purposes. It's not intended to be used in production.
- *
- * @package Neomerx\Tests\JsonApi
  */
 abstract class DevSchema extends BaseSchema
 {
@@ -43,22 +41,17 @@ abstract class DevSchema extends BaseSchema
     private $resourceLinksClosure = null;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getLinks($resource): array
     {
         if (($linksClosure = $this->resourceLinksClosure) === null) {
             return parent::getLinks($resource);
-        } else {
-            return $linksClosure($resource);
         }
+
+        return $linksClosure($resource);
     }
 
-    /**
-     * @param Closure $linksClosure
-     *
-     * @return void
-     */
     public function setResourceLinksClosure(Closure $linksClosure): void
     {
         $this->resourceLinksClosure = $linksClosure;
@@ -67,11 +60,9 @@ abstract class DevSchema extends BaseSchema
     /**
      * Add value to relationship description.
      *
-     * @param string $name  Relationship name.
-     * @param int    $key   Description key.
-     * @param mixed  $value Value to add (might be array of links).
-     *
-     * @return void
+     * @param string $name  relationship name
+     * @param int    $key   description key
+     * @param mixed  $value value to add (might be array of links)
      */
     public function addToRelationship(string $name, int $key, $value): void
     {
@@ -81,10 +72,8 @@ abstract class DevSchema extends BaseSchema
     /**
      * Remove from relationship description.
      *
-     * @param string $name Relationship name.
-     * @param int    $key  Description key.
-     *
-     * @return void
+     * @param string $name relationship name
+     * @param int    $key  description key
      */
     public function removeFromRelationship(string $name, int $key): void
     {
@@ -94,20 +83,16 @@ abstract class DevSchema extends BaseSchema
     /**
      * Remove entire relationship from description.
      *
-     * @param string $name Relationship name.
-     *
-     * @return void
+     * @param string $name relationship name
      */
     public function removeRelationship(string $name): void
     {
-        assert(is_string($name));
+        \assert(\is_string($name));
         $this->relationshipToRemove[] = $name;
     }
 
     /**
      * @param mixed $resource
-     *
-     * @return string
      */
     public function getSelfSubUrl($resource): string
     {
@@ -116,8 +101,6 @@ abstract class DevSchema extends BaseSchema
 
     /**
      * Hide `self` link in relationship.
-     *
-     * @param string $name
      */
     public function hideSelfLinkInRelationship(string $name): void
     {
@@ -126,11 +109,6 @@ abstract class DevSchema extends BaseSchema
 
     /**
      * Set custom `self` link in relationship.
-     *
-     * @param string        $name
-     * @param LinkInterface $link
-     *
-     * @return void
      */
     public function setSelfLinkInRelationship(string $name, LinkInterface $link): void
     {
@@ -139,8 +117,6 @@ abstract class DevSchema extends BaseSchema
 
     /**
      * Hide `related` link in relationship.
-     *
-     * @param string $name
      */
     public function hideRelatedLinkInRelationship(string $name): void
     {
@@ -149,20 +125,12 @@ abstract class DevSchema extends BaseSchema
 
     /**
      * Set custom `related` link in relationship.
-     *
-     * @param string        $name
-     * @param LinkInterface $link
-     *
-     * @return void
      */
     public function setRelatedLinkInRelationship(string $name, LinkInterface $link): void
     {
         $this->addToRelationship($name, AuthorSchema::RELATIONSHIP_LINKS_RELATED, $link);
     }
 
-    /**
-     * @param string $name
-     */
     public function hideDefaultLinksInRelationship(string $name): void
     {
         $this->hideSelfLinkInRelationship($name);
@@ -175,7 +143,7 @@ abstract class DevSchema extends BaseSchema
     public function hideResourceLinks(): void
     {
         $this->setResourceLinksClosure(
-            fn(): array => []
+            fn (): array => []
         );
     }
 
@@ -183,16 +151,13 @@ abstract class DevSchema extends BaseSchema
      * Add/remove values in input array.
      *
      * @param object $resource
-     * @param array  $descriptions
-     *
-     * @return array
      */
     protected function fixDescriptions($resource, array $descriptions): array
     {
         foreach ($this->addToRelationship as [$name, $key, $value]) {
-            if ($key === self::RELATIONSHIP_LINKS) {
+            if (self::RELATIONSHIP_LINKS === $key) {
                 foreach ($value as $linkKey => $linkOrClosure) {
-                    $link                                = $linkOrClosure instanceof Closure ? $linkOrClosure(
+                    $link = $linkOrClosure instanceof Closure ? $linkOrClosure(
                         $this,
                         $resource
                     ) : $linkOrClosure;

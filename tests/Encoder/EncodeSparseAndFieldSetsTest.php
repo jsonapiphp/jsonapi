@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Encoder;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,9 +32,6 @@ use Neomerx\Tests\JsonApi\Data\Schemas\CommentSchema;
 use Neomerx\Tests\JsonApi\Data\Schemas\PostSchema;
 use Neomerx\Tests\JsonApi\Data\Schemas\SiteSchema;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class EncodeSparseAndFieldSetsTest extends BaseTestCase
 {
     private \Neomerx\Tests\JsonApi\Data\Models\Author $author;
@@ -53,25 +52,25 @@ class EncodeSparseAndFieldSetsTest extends BaseTestCase
     {
         parent::setUp();
 
-        $this->author   = Author::instance(9, 'Dan', 'Gebhardt');
+        $this->author = Author::instance(9, 'Dan', 'Gebhardt');
         $this->comments = [
             Comment::instance(5, 'First!', $this->author),
             Comment::instance(12, 'I like XML better', $this->author),
         ];
-        $this->post     = Post::instance(
+        $this->post = Post::instance(
             1,
             'JSON API paints my bikeshed!',
             'Outside every fat man there was an even fatter man trying to close in',
             $this->author,
             $this->comments
         );
-        $this->site     = Site::instance(2, 'site name', [$this->post]);
+        $this->site = Site::instance(2, 'site name', [$this->post]);
     }
 
     /**
      * Test encode nested included objects with cyclic dependencies and sparse support.
      */
-    public function testEncodeWithRecursiveIncludedObjects(): void
+    public function test_encode_with_recursive_included_objects(): void
     {
         $this->author->{Author::LINK_COMMENTS} = $this->comments;
 
@@ -160,7 +159,7 @@ EOL;
     /**
      * Test encode nested included objects with cyclic dependencies and sparse support.
      */
-    public function testEncodeOnlyFieldSets(): void
+    public function test_encode_only_field_sets(): void
     {
         $this->author->{Author::LINK_COMMENTS} = $this->comments;
 
@@ -169,8 +168,8 @@ EOL;
                 [
                     // note: no filter for 'comments'
                     'people' => [Author::ATTRIBUTE_LAST_NAME, Author::ATTRIBUTE_FIRST_NAME],
-                    'posts'  => [Post::LINK_COMMENTS, Post::LINK_AUTHOR],
-                    'sites'  => [Site::LINK_POSTS],
+                    'posts' => [Post::LINK_COMMENTS, Post::LINK_AUTHOR],
+                    'sites' => [Site::LINK_POSTS],
                 ]
             )->withIncludedPaths(
                 [
@@ -257,12 +256,9 @@ EOL;
 
     /**
      * Test that include and field-set parameters work without having to
-     * explicitly add the values from include in the field set as well
-     *
-     * @access public
-     * @return void
+     * explicitly add the values from include in the field set as well.
      */
-    public function testIncludeAndSparseFieldSets(): void
+    public function test_include_and_sparse_field_sets(): void
     {
         $actual = Encoder::instance($this->getSchemasWithoutDefaultLinksInRelationships())
             ->withUrlPrefix('http://example.com')
@@ -312,7 +308,7 @@ EOL;
     /**
      * Test meta closures are not executed in lazy relationships.
      */
-    public function testMetaNotLoadedInLazyRelationships(): void
+    public function test_meta_not_loaded_in_lazy_relationships(): void
     {
         $throwExClosure = function () {
             throw new Exception();
@@ -323,6 +319,7 @@ EOL;
                 Author::class => function ($factory) use ($throwExClosure) {
                     $schema = new AuthorSchema($factory);
                     $schema->addToRelationship(Author::LINK_COMMENTS, AuthorSchema::RELATIONSHIP_META, $throwExClosure);
+
                     return $schema;
                 },
             ]
@@ -357,7 +354,7 @@ EOL;
      *
      * @see https://github.com/neomerx/json-api/issues/105
      */
-    public function testIncludeAndSparseFieldSetsInGreedyMode(): void
+    public function test_include_and_sparse_field_sets_in_greedy_mode(): void
     {
         $this->author->{Author::LINK_COMMENTS} = $this->comments;
 
@@ -371,10 +368,10 @@ EOL;
             )->withFieldSets(
                 [
                     // include only these attributes and links
-                    'sites'    => [],                  // note relationship resources will NOT be in included
-                    'posts'    => [Post::LINK_AUTHOR], // note relationship resources will be in included
+                    'sites' => [],                  // note relationship resources will NOT be in included
+                    'posts' => [Post::LINK_AUTHOR], // note relationship resources will be in included
                     'comments' => [],                  // note relationship resources will NOT be in included
-                    'people'   => [Author::ATTRIBUTE_LAST_NAME, Author::LINK_COMMENTS],
+                    'people' => [Author::ATTRIBUTE_LAST_NAME, Author::LINK_COMMENTS],
                 ]
             )->encodeData($this->site);
 
@@ -409,12 +406,9 @@ EOL;
         self::assertJsonStringEqualsJsonString($expected, $actual);
     }
 
-    /**
-     * @return array
-     */
     private function getSchemasWithoutDefaultLinksInRelationships(): array
     {
-        $authorSchema  = function ($factory) {
+        $authorSchema = function ($factory) {
             $schema = new AuthorSchema($factory);
             $schema->hideResourceLinks();
             $schema->hideDefaultLinksInRelationship(Author::LINK_COMMENTS);
@@ -427,7 +421,7 @@ EOL;
 
             return $schema;
         };
-        $postSchema    = function ($factory) {
+        $postSchema = function ($factory) {
             $schema = new PostSchema($factory);
             $schema->hideResourceLinks();
             $schema->hideDefaultLinksInRelationship(Post::LINK_AUTHOR);
@@ -435,7 +429,7 @@ EOL;
 
             return $schema;
         };
-        $siteSchema    = function ($factory) {
+        $siteSchema = function ($factory) {
             $schema = new SiteSchema($factory);
             $schema->hideDefaultLinksInRelationship(Site::LINK_POSTS);
 
@@ -443,10 +437,10 @@ EOL;
         };
 
         return [
-            Author::class  => $authorSchema,
+            Author::class => $authorSchema,
             Comment::class => $commentSchema,
-            Post::class    => $postSchema,
-            Site::class    => $siteSchema,
+            Post::class => $postSchema,
+            Site::class => $siteSchema,
         ];
     }
 }

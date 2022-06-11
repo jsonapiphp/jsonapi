@@ -1,9 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Contracts\Parser;
 
 /**
- * Copyright 2015-2020 info@neomerx.com
+ * Copyright 2015-2020 info@neomerx.com.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,30 +19,20 @@ namespace Neomerx\JsonApi\Contracts\Parser;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-/**
- * @package Neomerx\JsonApi
- */
 interface IdentifierInterface extends ParsedResultInterface
 {
     /**
      * Get identifier's type.
-     *
-     * @return string
      */
     public function getType(): string;
 
     /**
      * Get identifier's ID.
-     *
-     * @return string|null
      */
     public function getId(): ?string;
 
     /**
      * If identifier has meta.
-     *
-     * @return bool
      */
     public function hasIdentifierMeta(): bool;
 

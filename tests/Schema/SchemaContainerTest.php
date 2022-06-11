@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Schema;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,28 +32,25 @@ use Neomerx\Tests\JsonApi\Data\Schemas\AuthorSchema;
 use Neomerx\Tests\JsonApi\Data\Schemas\CommentSchema;
 use Neomerx\Tests\JsonApi\Data\Schemas\PostSchema;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class SchemaContainerTest extends BaseTestCase
 {
     /**
      * Test register and get schema.
      */
-    public function testRegisterAndGet(): void
+    public function test_register_and_get(): void
     {
-        $factory       = $this->createFactory();
+        $factory = $this->createFactory();
         $commentSchema = new CommentSchema($factory);
-        $postSchema    = new PostSchema($factory);
-        $container     = $factory->createSchemaContainer([
-            Author::class  => AuthorSchema::class,
+        $postSchema = new PostSchema($factory);
+        $container = $factory->createSchemaContainer([
+            Author::class => AuthorSchema::class,
             Comment::class => $commentSchema,
-            Post::class    => fn(): SchemaInterface => $postSchema,
+            Post::class => fn (): SchemaInterface => $postSchema,
         ]);
 
-        $author  = $this->createAuthor();
+        $author = $this->createAuthor();
         $comment = $this->createComment();
-        $post    = $this->createPost();
+        $post = $this->createPost();
 
         self::assertTrue($container->hasSchema($author));
         self::assertNotNull($container->getSchema($author));
@@ -64,7 +63,7 @@ class SchemaContainerTest extends BaseTestCase
     /**
      * Test invalid model class.
      */
-    public function testInvalidModelClass(): void
+    public function test_invalid_model_class(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -76,7 +75,7 @@ class SchemaContainerTest extends BaseTestCase
     /**
      * Test invalid schema class.
      */
-    public function testInvalidSchemaClass(): void
+    public function test_invalid_schema_class(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -88,13 +87,13 @@ class SchemaContainerTest extends BaseTestCase
     /**
      * Test model cannot have more than one schema.
      */
-    public function testModelCannotHaveTwoSchemas(): void
+    public function test_model_cannot_have_two_schemas(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
-        $container = $this->createFactory()->createSchemaContainer([Author::class  => AuthorSchema::class]);
+        $container = $this->createFactory()->createSchemaContainer([Author::class => AuthorSchema::class]);
 
-        assert($container instanceof SchemaContainer);
+        \assert($container instanceof SchemaContainer);
 
         $container->register(Author::class, CommentSchema::class);
     }
@@ -102,7 +101,7 @@ class SchemaContainerTest extends BaseTestCase
     /**
      * Test default schema do not provide identifier meta.
      */
-    public function testDefaultSchemaDoNotProvideIdentifierMeta(): void
+    public function test_default_schema_do_not_provide_identifier_meta(): void
     {
         $this->expectException(LogicException::class);
 
@@ -114,7 +113,7 @@ class SchemaContainerTest extends BaseTestCase
     /**
      * Test default schema do not provide resource meta.
      */
-    public function testDefaultSchemaDoNotProvideResourceMeta(): void
+    public function test_default_schema_do_not_provide_resource_meta(): void
     {
         $this->expectException(LogicException::class);
 
@@ -123,25 +122,16 @@ class SchemaContainerTest extends BaseTestCase
         $schema->getResourceMeta($this->createComment());
     }
 
-    /**
-     * @return Author
-     */
     private function createAuthor(): Author
     {
         return Author::instance(1, 'FirstName', 'LastName');
     }
 
-    /**
-     * @return Comment
-     */
     private function createComment(): Comment
     {
         return Comment::instance(321, 'Comment body');
     }
 
-    /**
-     * @return Post
-     */
     private function createPost(): Post
     {
         return Post::instance(321, 'Post Title', 'Post body');

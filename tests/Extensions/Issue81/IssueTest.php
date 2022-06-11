@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue81;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,9 +25,6 @@ use Neomerx\Tests\JsonApi\BaseTestCase;
 use Neomerx\Tests\JsonApi\Data\Models\Author;
 use Neomerx\Tests\JsonApi\Data\Models\Comment;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class IssueTest extends BaseTestCase
 {
     /**
@@ -33,10 +32,10 @@ class IssueTest extends BaseTestCase
      *
      * @see https://github.com/neomerx/json-api/issues/81
      */
-    public function testEnheritedEncoder(): void
+    public function test_enherited_encoder(): void
     {
-        $author                          = Author::instance(321, 'John', 'Dow')->setIdentifierMeta('id meta');
-        $comment                         = Comment::instance(123, 'Comment body', $author);
+        $author = Author::instance(321, 'John', 'Dow')->setIdentifierMeta('id meta');
+        $comment = Comment::instance(123, 'Comment body', $author);
         $author->{Author::LINK_COMMENTS} = [$comment];
 
         $actual = Encoder::instance(

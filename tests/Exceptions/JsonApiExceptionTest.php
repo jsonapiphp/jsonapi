@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Exceptions;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,9 +25,6 @@ use Neomerx\JsonApi\Schema\Error;
 use Neomerx\JsonApi\Schema\ErrorCollection;
 use Neomerx\Tests\JsonApi\BaseTestCase;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class JsonApiExceptionTest extends BaseTestCase
 {
     private \Neomerx\JsonApi\Schema\ErrorCollection $collection;
@@ -33,20 +32,20 @@ class JsonApiExceptionTest extends BaseTestCase
     private \Neomerx\JsonApi\Schema\Error $error;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function setUp(): void
     {
         parent::setUp();
 
         $this->collection = new ErrorCollection();
-        $this->error      = new Error('some-id', null, null, '404', 'some-code', 'some title', 'some details');
+        $this->error = new Error('some-id', null, null, '404', 'some-code', 'some title', 'some details');
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function testCreateExceptionFromError(): void
+    public function test_create_exception_from_error(): void
     {
         $exception = new JsonApiException($this->error, 432);
         $this->assertEquals(432, $exception->getHttpCode());
@@ -55,9 +54,9 @@ class JsonApiExceptionTest extends BaseTestCase
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function testCreateExceptionFromErrorArray(): void
+    public function test_create_exception_from_error_array(): void
     {
         $exception = new JsonApiException([$this->error]);
         $this->assertEquals(JsonApiException::DEFAULT_HTTP_CODE, $exception->getHttpCode());
@@ -66,9 +65,9 @@ class JsonApiExceptionTest extends BaseTestCase
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
-    public function testCreateExceptionFromErrorCollection(): void
+    public function test_create_exception_from_error_collection(): void
     {
         $this->collection->add($this->error);
         $exception = new JsonApiException($this->collection);

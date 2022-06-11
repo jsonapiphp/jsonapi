@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Contracts\Representation;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,28 +23,17 @@ namespace Neomerx\JsonApi\Contracts\Representation;
 use Neomerx\JsonApi\Contracts\Parser\ResourceInterface;
 use Neomerx\JsonApi\Contracts\Schema\PositionInterface;
 
-/**
- * @package Neomerx\JsonApi
- */
 interface FieldSetFilterInterface
 {
     /**
      * Get resource's filtered attributes.
-     *
-     * @param ResourceInterface $resource
-     *
-     * @return iterable
      */
     public function getAttributes(ResourceInterface $resource): iterable;
 
     /**
      * Get resource's filtered relationships.
      *
-     * @param ResourceInterface $resource
-     *
      * @see RelationshipInterface
-     *
-     * @return iterable
      */
     public function getRelationships(ResourceInterface $resource): iterable;
 
@@ -52,10 +43,6 @@ interface FieldSetFilterInterface
      * returned along with the leaf nodes.
      *
      * This method answers if specific relationship passes field set filters and should be in output.
-     *
-     * @param PositionInterface $position
-     *
-     * @return bool
      */
     public function shouldOutputRelationship(PositionInterface $position): bool;
 }

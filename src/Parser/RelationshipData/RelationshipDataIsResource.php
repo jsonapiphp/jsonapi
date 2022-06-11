@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Parser\RelationshipData;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,9 +30,6 @@ use Neomerx\JsonApi\Contracts\Schema\SchemaContainerInterface;
 use Neomerx\JsonApi\Exceptions\LogicException;
 use function Neomerx\JsonApi\I18n\format as _;
 
-/**
- * @package Neomerx\JsonApi
- */
 class RelationshipDataIsResource extends BaseRelationshipData implements RelationshipDataInterface
 {
     /** @var string */
@@ -44,11 +43,7 @@ class RelationshipDataIsResource extends BaseRelationshipData implements Relatio
     private ?\Neomerx\JsonApi\Contracts\Parser\ResourceInterface $parsedResource = null;
 
     /**
-     * @param FactoryInterface         $factory
-     * @param SchemaContainerInterface $schemaContainer
-     * @param EditableContextInterface $context
-     * @param PositionInterface        $position
-     * @param mixed                    $resource
+     * @param mixed $resource
      */
     public function __construct(
         FactoryInterface $factory,
@@ -63,7 +58,7 @@ class RelationshipDataIsResource extends BaseRelationshipData implements Relatio
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function isCollection(): bool
     {
@@ -71,7 +66,7 @@ class RelationshipDataIsResource extends BaseRelationshipData implements Relatio
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function isNull(): bool
     {
@@ -79,7 +74,7 @@ class RelationshipDataIsResource extends BaseRelationshipData implements Relatio
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function isResource(): bool
     {
@@ -87,7 +82,7 @@ class RelationshipDataIsResource extends BaseRelationshipData implements Relatio
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function isIdentifier(): bool
     {
@@ -95,7 +90,7 @@ class RelationshipDataIsResource extends BaseRelationshipData implements Relatio
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getIdentifier(): IdentifierInterface
     {
@@ -103,7 +98,7 @@ class RelationshipDataIsResource extends BaseRelationshipData implements Relatio
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getIdentifiers(): iterable
     {
@@ -111,11 +106,11 @@ class RelationshipDataIsResource extends BaseRelationshipData implements Relatio
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getResource(): ResourceInterface
     {
-        if ($this->parsedResource === null) {
+        if (null === $this->parsedResource) {
             $this->parsedResource = $this->createParsedResource($this->resource);
         }
 
@@ -123,7 +118,7 @@ class RelationshipDataIsResource extends BaseRelationshipData implements Relatio
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getResources(): iterable
     {

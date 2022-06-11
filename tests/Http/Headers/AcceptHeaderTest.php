@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Http\Headers;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,17 +26,12 @@ use Neomerx\JsonApi\Exceptions\InvalidArgumentException;
 use Neomerx\JsonApi\Http\Headers\AcceptMediaType;
 use Neomerx\Tests\JsonApi\BaseTestCase;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class AcceptHeaderTest extends BaseTestCase
 {
     /**
      * Test compare.
-     *
-     * @return void
      */
-    public function testCompare1(): void
+    public function test_compare1(): void
     {
         $types = [
             new AcceptMediaType(0, 'foo', 'bar.baz', ['media' => 'param'], 0.5),
@@ -42,7 +39,7 @@ class AcceptHeaderTest extends BaseTestCase
             new AcceptMediaType(2, '*', '*'),
         ];
 
-        usort($types, AcceptMediaType::getCompare());
+        \usort($types, AcceptMediaType::getCompare());
 
         $this->checkSorting(
             [
@@ -57,13 +54,13 @@ class AcceptHeaderTest extends BaseTestCase
         self::assertEquals('*', $types[0]->getSubType());
         self::assertEquals('type/*', $types[0]->getMediaType());
         self::assertEquals(1, $types[0]->getQuality());
-        self::assertEquals(null, $types[0]->getParameters());
+        self::assertNull($types[0]->getParameters());
 
         self::assertEquals('*', $types[1]->getType());
         self::assertEquals('*', $types[1]->getSubType());
         self::assertEquals('*/*', $types[1]->getMediaType());
         self::assertEquals(1, $types[1]->getQuality());
-        self::assertEquals(null, $types[1]->getParameters());
+        self::assertNull($types[1]->getParameters());
 
         self::assertEquals('foo', $types[2]->getType());
         self::assertEquals('bar.baz', $types[2]->getSubType());
@@ -74,17 +71,15 @@ class AcceptHeaderTest extends BaseTestCase
 
     /**
      * Test compare.
-     *
-     * @return void
      */
-    public function testCompareByQuality1(): void
+    public function test_compare_by_quality1(): void
     {
         $types = [
             new AcceptMediaType(0, 'foo', 'bar', [], 0.5),
             new AcceptMediaType(1, 'boo', 'baz', [], 0.6),
         ];
 
-        usort($types, AcceptMediaType::getCompare());
+        \usort($types, AcceptMediaType::getCompare());
 
         $this->checkSorting(
             [
@@ -109,17 +104,15 @@ class AcceptHeaderTest extends BaseTestCase
 
     /**
      * Test compare.
-     *
-     * @return void
      */
-    public function testCompareByQuality2(): void
+    public function test_compare_by_quality2(): void
     {
         $types = [
             new AcceptMediaType(0, 'foo', 'bar', [], 0.5001),
             new AcceptMediaType(1, 'boo', 'baz', [], 0.5009),
         ];
 
-        usort($types, AcceptMediaType::getCompare());
+        \usort($types, AcceptMediaType::getCompare());
 
         $this->checkSorting(
             [
@@ -132,18 +125,16 @@ class AcceptHeaderTest extends BaseTestCase
 
     /**
      * Test compare.
-     *
-     * @return void
      */
-    public function testCompareBySubType(): void
+    public function test_compare_by_sub_type(): void
     {
         $types = [
             new AcceptMediaType(0, 'foo', '*'),
             new AcceptMediaType(1, 'boo', 'baz'),
         ];
 
-        /** @var MediaTypeInterface[] $types */
-        usort($types, AcceptMediaType::getCompare());
+        /* @var MediaTypeInterface[] $types */
+        \usort($types, AcceptMediaType::getCompare());
 
         $this->checkSorting(
             [
@@ -168,18 +159,16 @@ class AcceptHeaderTest extends BaseTestCase
 
     /**
      * Test compare.
-     *
-     * @return void
      */
-    public function testCompareByParams(): void
+    public function test_compare_by_params(): void
     {
         $types = [
             new AcceptMediaType(0, 'foo', 'bar'),
             new AcceptMediaType(1, 'boo', 'baz', ['param' => 'value']),
         ];
 
-        /** @var MediaTypeInterface[] $types */
-        usort($types, AcceptMediaType::getCompare());
+        /* @var MediaTypeInterface[] $types */
+        \usort($types, AcceptMediaType::getCompare());
 
         $this->checkSorting(
             [
@@ -204,17 +193,15 @@ class AcceptHeaderTest extends BaseTestCase
 
     /**
      * Test compare.
-     *
-     * @return void
      */
-    public function testCompareByPosition(): void
+    public function test_compare_by_position(): void
     {
         $types = [
             new AcceptMediaType(0, 'foo', 'bar', [], 0.5),
             new AcceptMediaType(1, 'boo', 'baz', [], 0.5),
         ];
 
-        usort($types, AcceptMediaType::getCompare());
+        \usort($types, AcceptMediaType::getCompare());
 
         $this->checkSorting(
             [
@@ -239,10 +226,8 @@ class AcceptHeaderTest extends BaseTestCase
 
     /**
      * Test invalid parameters.
-     *
-     * @return void
      */
-    public function testInvalidParameters1(): void
+    public function test_invalid_parameters1(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -251,10 +236,8 @@ class AcceptHeaderTest extends BaseTestCase
 
     /**
      * Test invalid parameters.
-     *
-     * @return void
      */
-    public function testInvalidParameters2(): void
+    public function test_invalid_parameters2(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -264,15 +247,15 @@ class AcceptHeaderTest extends BaseTestCase
     /**
      * Test sample from RFC.
      */
-    public function testParseHeaderRfcSample1(): void
+    public function test_parse_header_rfc_sample1(): void
     {
         $types = [
             new AcceptMediaType(0, 'audio', '*', null, 0.2),
             new AcceptMediaType(1, 'audio', 'basic'),
         ];
 
-        /** @var AcceptMediaTypeInterface[] $types */
-        usort($types, AcceptMediaType::getCompare());
+        /* @var AcceptMediaTypeInterface[] $types */
+        \usort($types, AcceptMediaType::getCompare());
 
         $this->checkSorting(
             [
@@ -286,7 +269,7 @@ class AcceptHeaderTest extends BaseTestCase
     /**
      * Test sample from RFC.
      */
-    public function testParseHeaderRfcSample2(): void
+    public function test_parse_header_rfc_sample2(): void
     {
         $types = [
             new AcceptMediaType(0, 'text', 'plain', null, 0.5),
@@ -295,8 +278,8 @@ class AcceptHeaderTest extends BaseTestCase
             new AcceptMediaType(3, 'text', 'x-c'),
         ];
 
-        /** @var AcceptMediaTypeInterface[] $types */
-        usort($types, AcceptMediaType::getCompare());
+        /* @var AcceptMediaTypeInterface[] $types */
+        \usort($types, AcceptMediaType::getCompare());
 
         $this->checkSorting(
             [
@@ -312,7 +295,7 @@ class AcceptHeaderTest extends BaseTestCase
     /**
      * Test sample from RFC.
      */
-    public function testParseHeaderRfcSample3(): void
+    public function test_parse_header_rfc_sample3(): void
     {
         $types = [
             new AcceptMediaType(0, 'text', '*'),
@@ -321,8 +304,8 @@ class AcceptHeaderTest extends BaseTestCase
             new AcceptMediaType(3, '*', '*'),
         ];
 
-        /** @var AcceptMediaTypeInterface[] $types */
-        usort($types, AcceptMediaType::getCompare());
+        /* @var AcceptMediaTypeInterface[] $types */
+        \usort($types, AcceptMediaType::getCompare());
 
         $this->checkSorting(
             [
@@ -340,7 +323,7 @@ class AcceptHeaderTest extends BaseTestCase
     /**
      * Test sample from RFC.
      */
-    public function testParseHeaderRfcSample4(): void
+    public function test_parse_header_rfc_sample4(): void
     {
         $types = [
             new AcceptMediaType(0, 'text', '*', null, 0.3),
@@ -350,8 +333,8 @@ class AcceptHeaderTest extends BaseTestCase
             new AcceptMediaType(4, '*', '*', null, 0.5),
         ];
 
-        /** @var AcceptMediaTypeInterface[] $types */
-        usort($types, AcceptMediaType::getCompare());
+        /* @var AcceptMediaTypeInterface[] $types */
+        \usort($types, AcceptMediaType::getCompare());
 
         $this->checkSorting(
             [
@@ -372,12 +355,10 @@ class AcceptHeaderTest extends BaseTestCase
     /**
      * @param string[]             $sorted
      * @param MediaTypeInterface[] $mediaTypes
-     *
-     * @return void
      */
     private function checkSorting(array $sorted, array $mediaTypes): void
     {
-        self::assertEquals($count = count($mediaTypes), count($sorted));
+        self::assertEquals($count = \count($mediaTypes), \count($sorted));
 
         for ($idx = 0; $idx < $count; ++$idx) {
             self::assertEquals($mediaTypes[$idx]->getMediaType(), $sorted[$idx]);

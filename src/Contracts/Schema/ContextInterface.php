@@ -1,9 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Contracts\Schema;
 
 /**
- * Copyright 2015-2020 info@neomerx.com
+ * Copyright 2015-2020 info@neomerx.com.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,30 +19,20 @@ namespace Neomerx\JsonApi\Contracts\Schema;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-/**
- * @package Neomerx\JsonApi
- */
 interface ContextInterface
 {
     /**
      * Get filter field sets from encoder.
-     *
-     * @return array
      */
     public function getFieldSets(): array;
 
     /**
      * Get include paths from encoder.
-     *
-     * @return array
      */
     public function getIncludePaths(): array;
 
     /**
      * Get position for the parsed data.
-     *
-     * @return PositionInterface
      */
     public function getPosition(): PositionInterface;
 }

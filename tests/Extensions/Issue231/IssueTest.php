@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue231;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,9 +31,6 @@ use Neomerx\Tests\JsonApi\Data\Schemas\CommentSchema;
 use Neomerx\Tests\JsonApi\Data\Schemas\PostSchema;
 use Neomerx\Tests\JsonApi\Data\Schemas\SiteSchema;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 final class IssueTest extends BaseTestCase
 {
     /**
@@ -39,7 +38,7 @@ final class IssueTest extends BaseTestCase
      *
      * @see https://github.com/neomerx/json-api/issues/231
      */
-    public function testDataSerializationWithPartialWildcard(): void
+    public function test_data_serialization_with_partial_wildcard(): void
     {
         $actual = CustomEncoder::instance($this->prepareSchemas())
             ->withUrlPrefix('http://example.com')
@@ -49,7 +48,7 @@ final class IssueTest extends BaseTestCase
                         . DocumentInterface::PATH_SEPARATOR
                         . Post::LINK_COMMENTS
                         . DocumentInterface::PATH_SEPARATOR
-                        . CustomEncoder::PATH_WILDCARD_ALL
+                        . CustomEncoder::PATH_WILDCARD_ALL,
                 ]
             )
             ->encodeData($this->prepareDataToEncode());
@@ -141,7 +140,7 @@ EOL;
      *
      * @see https://github.com/neomerx/json-api/issues/231
      */
-    public function testDataSerializationWithFullWildcard(): void
+    public function test_data_serialization_with_full_wildcard(): void
     {
         $actual = CustomEncoder::instance($this->prepareSchemas())
             ->withUrlPrefix('http://example.com')
@@ -244,12 +243,9 @@ EOL;
         self::assertJsonStringEqualsJsonString($expected, $actual);
     }
 
-    /**
-     * @return Site
-     */
     private function prepareDataToEncode(): Site
     {
-        $author        = Author::instance(9, 'Dan', 'Gebhardt');
+        $author = Author::instance(9, 'Dan', 'Gebhardt');
         $commentAuthor = Author::instance(42, 'Peter', 'Weller');
 
         $comments = [
@@ -268,9 +264,6 @@ EOL;
         return Site::instance(2, 'site name', [$post]);
     }
 
-    /**
-     * @return array
-     */
     private function prepareSchemas(): array
     {
         return [
@@ -300,7 +293,7 @@ EOL;
                 $schema->hideDefaultLinksInRelationship(Site::LINK_POSTS);
 
                 return $schema;
-            }
+            },
         ];
     }
 }

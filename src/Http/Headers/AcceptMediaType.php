@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Http\Headers;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,9 +24,6 @@ use Closure;
 use Neomerx\JsonApi\Contracts\Http\Headers\AcceptMediaTypeInterface;
 use Neomerx\JsonApi\Exceptions\InvalidArgumentException;
 
-/**
- * @package Neomerx\JsonApi
- */
 class AcceptMediaType extends MediaType implements AcceptMediaTypeInterface
 {
     /**
@@ -35,11 +34,7 @@ class AcceptMediaType extends MediaType implements AcceptMediaTypeInterface
     private int $position;
 
     /**
-     * @param int    $position
-     * @param string $type
-     * @param string $subType
      * @param array<string,string>|null $parameters
-     * @param float  $quality
      */
     public function __construct(
         int $position,
@@ -62,11 +57,11 @@ class AcceptMediaType extends MediaType implements AcceptMediaTypeInterface
         $quality = \floor($quality * 1000) / 1000;
 
         $this->position = $position;
-        $this->quality  = $quality;
+        $this->quality = $quality;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getPosition(): int
     {
@@ -74,49 +69,41 @@ class AcceptMediaType extends MediaType implements AcceptMediaTypeInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getQuality(): float
     {
         return $this->quality;
     }
 
-    /**
-     * @return Closure
-     */
     public static function getCompare(): Closure
     {
         return function (AcceptMediaTypeInterface $lhs, AcceptMediaTypeInterface $rhs) {
             $qualityCompare = self::compareQuality($lhs->getQuality(), $rhs->getQuality());
-            if ($qualityCompare !== 0) {
+            if (0 !== $qualityCompare) {
                 return $qualityCompare;
             }
 
             $typeCompare = self::compareStrings($lhs->getType(), $rhs->getType());
-            if ($typeCompare !== 0) {
+            if (0 !== $typeCompare) {
                 return $typeCompare;
             }
 
             $subTypeCompare = self::compareStrings($lhs->getSubType(), $rhs->getSubType());
-            if ($subTypeCompare !== 0) {
+            if (0 !== $subTypeCompare) {
                 return $subTypeCompare;
             }
 
             $parametersCompare = self::compareParameters($lhs->getParameters(), $rhs->getParameters());
-            if ($parametersCompare !== 0) {
+            if (0 !== $parametersCompare) {
                 return $parametersCompare;
             }
 
-            return ($lhs->getPosition() - $rhs->getPosition());
+            return $lhs->getPosition() - $rhs->getPosition();
         };
     }
 
     /**
-     * @param float $lhs
-     * @param float $rhs
-     *
-     * @return int
-     *
      * @SuppressWarnings(PHPMD.ElseExpression)
      */
     private static function compareQuality(float $lhs, float $rhs): int
@@ -126,30 +113,18 @@ class AcceptMediaType extends MediaType implements AcceptMediaTypeInterface
         // rfc2616: 3 digits are meaningful (#3.9 Quality Values)
         if (\abs($qualityDiff) < 0.001) {
             return 0;
-        } else {
-            return $lhs > $rhs ? -1 : 1;
         }
+
+        return $lhs > $rhs ? -1 : 1;
     }
 
-    /**
-     * @param string $lhs
-     * @param string $rhs
-     *
-     * @return int
-     */
     private static function compareStrings(string $lhs, string $rhs): int
     {
-        return ($rhs !== '*' ? 1 : 0) - ($lhs !== '*' ? 1 : 0);
+        return ('*' !== $rhs ? 1 : 0) - ('*' !== $lhs ? 1 : 0);
     }
 
-    /**
-     * @param array|null $lhs
-     * @param array|null $rhs
-     *
-     * @return int
-     */
     private static function compareParameters(?array $lhs, ?array $rhs): int
     {
-        return (empty($lhs) !== false ? 1 : 0) - (empty($rhs) !== false ? 1 : 0);
+        return (false !== empty($lhs) ? 1 : 0) - (false !== empty($rhs) ? 1 : 0);
     }
 }

@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue47;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,19 +23,16 @@ namespace Neomerx\Tests\JsonApi\Extensions\Issue47;
 use Neomerx\JsonApi\Representation\FieldSetFilter;
 use Traversable;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class CustomFieldsFilter extends FieldSetFilter
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function filterFields(string $type, iterable $fields): iterable
     {
-        if ($this->hasFilter($type) === true) {
+        if (true === $this->hasFilter($type)) {
             $allowedFields = $this->getAllowedFields($type);
-            $fields        = $this->iterableToArray($fields);
+            $fields = $this->iterableToArray($fields);
 
             $this->deepArrayFilter($fields, $allowedFields, '');
         }
@@ -41,34 +40,22 @@ class CustomFieldsFilter extends FieldSetFilter
         yield from $fields;
     }
 
-    /**
-     * @param iterable $iterable
-     *
-     * @return array
-     */
     private function iterableToArray(iterable $iterable): array
     {
-        if (is_array($iterable) === true) {
+        if (true === \is_array($iterable)) {
             return $iterable;
-        } else {
-            assert($iterable instanceof Traversable);
-            return iterator_to_array($iterable);
         }
+        \assert($iterable instanceof Traversable);
+
+        return \iterator_to_array($iterable);
     }
 
-    /**
-     * @param array  $array
-     * @param array  $filters
-     * @param string $parentPath
-     *
-     * @return void
-     */
     private function deepArrayFilter(array &$array, array $filters, string $parentPath): void
     {
         foreach ($array as $key => &$value) {
-            $filterKey = empty($parentPath) === true ? $key : $parentPath . '.' . $key;
-            if (is_array($value) === false) {
-                if (array_key_exists($filterKey, $filters) === false) {
+            $filterKey = true === empty($parentPath) ? $key : $parentPath . '.' . $key;
+            if (false === \is_array($value)) {
+                if (false === \array_key_exists($filterKey, $filters)) {
                     unset($array[$key]);
                 }
             } else {

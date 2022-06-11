@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue81;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,26 +26,23 @@ use Neomerx\Tests\JsonApi\Data\Models\AuthorIdentity;
 use Neomerx\Tests\JsonApi\Data\Models\Comment;
 use Neomerx\Tests\JsonApi\Data\Schemas\CommentSchema as ParentSchema;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class CommentSchema extends ParentSchema
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getRelationships($comment, ContextInterface $context): iterable
     {
-        assert($comment instanceof Comment);
+        \assert($comment instanceof Comment);
 
         // emulate situation when we have only ID in relationship (e.g. user ID) and know type.
-        $author   = $comment->{Comment::LINK_AUTHOR};
-        $authorId = (string)$author->{Author::ATTRIBUTE_ID};
+        $author = $comment->{Comment::LINK_AUTHOR};
+        $authorId = (string) $author->{Author::ATTRIBUTE_ID};
 
         $authorIdentity = new AuthorIdentity($authorId);
 
-        $hasMeta = property_exists($author, Author::IDENTIFIER_META);
-        if ($hasMeta === true) {
+        $hasMeta = \property_exists($author, Author::IDENTIFIER_META);
+        if (true === $hasMeta) {
             $authorIdentity->setIdentifierMeta($author->{Author::IDENTIFIER_META});
         }
 

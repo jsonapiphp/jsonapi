@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue236;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +20,6 @@ namespace Neomerx\Tests\JsonApi\Extensions\Issue236;
  * limitations under the License.
  */
 
-
 use Neomerx\JsonApi\Contracts\Factories\FactoryInterface;
 use Neomerx\JsonApi\Contracts\Parser\EditableContextInterface;
 use Neomerx\JsonApi\Contracts\Schema\PositionInterface;
@@ -28,12 +29,10 @@ use Neomerx\JsonApi\Parser\IdentifierAndResource;
 use Neomerx\JsonApi\Parser\RelationshipData\ParseRelationshipDataTrait;
 use Neomerx\JsonApi\Parser\RelationshipData\ParseRelationshipLinksTrait;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 final class CustomIdentifierAndResource extends IdentifierAndResource
 {
-    use ParseRelationshipDataTrait, ParseRelationshipLinksTrait;
+    use ParseRelationshipDataTrait;
+    use ParseRelationshipLinksTrait;
 
     /**
      * @var FactoryInterface
@@ -53,7 +52,7 @@ final class CustomIdentifierAndResource extends IdentifierAndResource
     private $data;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function __construct(
         EditableContextInterface $context,
@@ -64,9 +63,9 @@ final class CustomIdentifierAndResource extends IdentifierAndResource
     ) {
         parent::__construct($context, $position, $factory, $container, $data);
 
-        $this->factory   = $factory;
+        $this->factory = $factory;
         $this->container = $container;
-        $this->data      = $data;
+        $this->data = $data;
 
         $this->schema = $container->getSchema($data);
 
@@ -74,16 +73,16 @@ final class CustomIdentifierAndResource extends IdentifierAndResource
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getRelationships(): iterable
     {
-        $currentPath    = $this->getPosition()->getPath();
-        $nextLevel      = $this->getPosition()->getLevel() + 1;
-        $nextPathPrefix = empty($currentPath) === true ? '' : $currentPath . PositionInterface::PATH_SEPARATOR;
+        $currentPath = $this->getPosition()->getPath();
+        $nextLevel = $this->getPosition()->getLevel() + 1;
+        $nextPathPrefix = true === empty($currentPath) ? '' : $currentPath . PositionInterface::PATH_SEPARATOR;
         foreach ($this->schema->getNonHorrificRelationships($this->data, $currentPath) as $name => $description) {
-            if (\array_key_exists(BaseCustomSchema::RELATIONSHIP_HAS_DATA, $description) === true &&
-                $description[BaseCustomSchema::RELATIONSHIP_HAS_DATA] === false) {
+            if (true === \array_key_exists(BaseCustomSchema::RELATIONSHIP_HAS_DATA, $description) &&
+                false === $description[BaseCustomSchema::RELATIONSHIP_HAS_DATA]) {
                 unset($description[BaseCustomSchema::RELATIONSHIP_DATA]);
             }
             [$hasData, $relationshipData, $nextPosition] = $this->parseRelationshipData(
@@ -100,7 +99,7 @@ final class CustomIdentifierAndResource extends IdentifierAndResource
             [$hasLinks, $links] = $this->parseRelationshipLinks($this->schema, $this->data, $name, $description);
 
             $hasMeta = \array_key_exists(SchemaInterface::RELATIONSHIP_META, $description);
-            $meta    = $hasMeta === true ? $description[SchemaInterface::RELATIONSHIP_META] : null;
+            $meta = true === $hasMeta ? $description[SchemaInterface::RELATIONSHIP_META] : null;
 
             $relationship = $this->factory->createRelationship(
                 $nextPosition,
