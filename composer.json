@@ -1,5 +1,5 @@
 {
-  "name": "neomerx/json-api",
+  "name": "jsonapiphp/jsonapi",
   "description": "Framework agnostic JSON API (jsonapi.org) implementation",
   "keywords": [
     "jsonapi.org",
@@ -9,9 +9,9 @@
     "json",
     "api"
   ],
-  "homepage": "https://github.com/neomerx/json-api",
+  "homepage": "https://github.com/jsonapiphp/jsonapi",
   "support": {
-    "issues": "https://github.com/neomerx/json-api/issues"
+    "issues": "https://github.com/jsonapiphp/jsonapi/issues"
   },
   "license": "Apache-2.0",
   "authors": [
