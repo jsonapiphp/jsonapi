@@ -59,5 +59,11 @@
         "test-md": "./vendor/bin/phpmd ./src text codesize,controversial,cleancode,design,unusedcode,naming",
         "test-unit": "./vendor/phpunit/phpunit/phpunit --coverage-text",
         "test-unit-phpdbg": "phpdbg -qrr ./vendor/bin/phpunit --coverage-text"
-    }
+    },
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/PabloKowalczyk"
+        }
+    ]
 }
