@@ -388,14 +388,12 @@ EOL;
                         Author::LINK_COMMENTS,
                         AuthorSchema::RELATIONSHIP_LINKS,
                         [
-                            LinkInterface::SELF => function (AuthorSchema $schema, Author $author) {
-                                return new Link(
-                                    true,
-                                    $schema->getSelfSubUrl($author) . '/relationships/comments',
-                                    true,
-                                    ['some' => 'meta']
-                                );
-                            },
+                            LinkInterface::SELF => fn(AuthorSchema $schema, Author $author) => new Link(
+                                true,
+                                $schema->getSelfSubUrl($author) . '/relationships/comments',
+                                true,
+                                ['some' => 'meta']
+                            ),
                         ]
                     );
                     return $schema;
@@ -462,9 +460,7 @@ EOL;
                         Post::LINK_COMMENTS,
                         PostSchema::RELATIONSHIP_LINKS,
                         [
-                            'boo' => function (PostSchema $schema, Post $post) {
-                                return new Link(true, $schema->getSelfSubUrl($post) . '/another/link', false);
-                            },
+                            'boo' => fn(PostSchema $schema, Post $post) => new Link(true, $schema->getSelfSubUrl($post) . '/another/link', false),
                         ]
                     );
                     $schema->hideRelatedLinkInRelationship(Post::LINK_COMMENTS);
@@ -526,9 +522,7 @@ EOL;
                     $schema->addToRelationship(
                         Post::LINK_COMMENTS,
                         PostSchema::RELATIONSHIP_META,
-                        function () {
-                            return ['comments' => 'meta'];
-                        }
+                        fn() => ['comments' => 'meta']
                     );
                     return $schema;
                 },
@@ -584,9 +578,7 @@ EOL;
                         Post::LINK_COMMENTS,
                         PostSchema::RELATIONSHIP_LINKS,
                         [
-                            'boo' => function (PostSchema $schema, Post $post) {
-                                return new Link(true, $schema->getSelfSubUrl($post) . '/another/link', false);
-                            },
+                            'boo' => fn(PostSchema $schema, Post $post) => new Link(true, $schema->getSelfSubUrl($post) . '/another/link', false),
                         ]
                     );
                     $schema->hideRelatedLinkInRelationship(Post::LINK_COMMENTS);

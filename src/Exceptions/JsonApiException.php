@@ -28,32 +28,29 @@ use Neomerx\JsonApi\Schema\ErrorCollection;
 class JsonApiException extends BaseJsonApiException
 {
     /** Default HTTP code */
-    const HTTP_CODE_BAD_REQUEST = 400;
+    public const HTTP_CODE_BAD_REQUEST = 400;
 
     /** Default HTTP code */
-    const HTTP_CODE_FORBIDDEN = 403;
+    public const HTTP_CODE_FORBIDDEN = 403;
 
     /** Default HTTP code */
-    const HTTP_CODE_NOT_ACCEPTABLE = 406;
+    public const HTTP_CODE_NOT_ACCEPTABLE = 406;
 
     /** Default HTTP code */
-    const HTTP_CODE_CONFLICT = 409;
+    public const HTTP_CODE_CONFLICT = 409;
 
     /** Default HTTP code */
-    const HTTP_CODE_UNSUPPORTED_MEDIA_TYPE = 415;
+    public const HTTP_CODE_UNSUPPORTED_MEDIA_TYPE = 415;
 
     /** Default HTTP code */
-    const DEFAULT_HTTP_CODE = self::HTTP_CODE_BAD_REQUEST;
+    public const DEFAULT_HTTP_CODE = self::HTTP_CODE_BAD_REQUEST;
 
     /**
      * @var ErrorCollection
      */
     private $errors;
 
-    /**
-     * @var int
-     */
-    private $httpCode;
+    private int $httpCode;
 
     /**
      * @param ErrorInterface|iterable $errors

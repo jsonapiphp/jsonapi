@@ -122,12 +122,8 @@ EOL;
         $schemaFields = new SchemaFields($expectedIncludePaths, $expectedFieldSetFilters);
 
         return [
-            Author::class  => function ($factory) use ($expectedIncludePaths, $schemaFields) {
-                return new CustomAuthorSchema($factory, $schemaFields);
-            },
-            Comment::class => function ($factory) use ($expectedIncludePaths, $schemaFields) {
-                return new CustomCommentSchema($factory, $schemaFields);
-            },
+            Author::class  => fn($factory) => new CustomAuthorSchema($factory, $schemaFields),
+            Comment::class => fn($factory) => new CustomCommentSchema($factory, $schemaFields),
         ];
     }
 }

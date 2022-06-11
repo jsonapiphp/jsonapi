@@ -42,45 +42,24 @@ class IdentifierAndResource implements ResourceInterface
     /** @var string */
     public const MSG_INVALID_OPERATION = 'Invalid operation.';
 
-    /**
-     * @var EditableContextInterface
-     */
-    private $context;
+    private \Neomerx\JsonApi\Contracts\Parser\EditableContextInterface $context;
 
-    /**
-     * @var PositionInterface
-     */
-    private $position;
+    private \Neomerx\JsonApi\Contracts\Schema\PositionInterface $position;
 
-    /**
-     * @var FactoryInterface
-     */
-    private $factory;
+    private \Neomerx\JsonApi\Contracts\Factories\FactoryInterface $factory;
 
-    /**
-     * @var SchemaContainerInterface
-     */
-    private $schemaContainer;
+    private \Neomerx\JsonApi\Contracts\Schema\SchemaContainerInterface $schemaContainer;
 
-    /**
-     * @var SchemaInterface
-     */
-    private $schema;
+    private \Neomerx\JsonApi\Contracts\Schema\SchemaInterface $schema;
 
     /**
      * @var mixed
      */
     private $data;
 
-    /**
-     * @var string
-     */
-    private $index;
+    private ?string $index;
 
-    /**
-     * @var string
-     */
-    private $type;
+    private string $type;
 
     /**
      * @var null|array

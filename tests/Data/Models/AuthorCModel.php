@@ -27,17 +27,16 @@ use IteratorAggregate;
  */
 class AuthorCModel implements ArrayAccess, IteratorAggregate
 {
-    const ATTRIBUTE_ID = 'author_id';
-    const ATTRIBUTE_FIRST_NAME = 'first_name';
-    const ATTRIBUTE_LAST_NAME = 'last_name';
-    const LINK_COMMENTS = 'comments';
+    public const ATTRIBUTE_ID = 'author_id';
+    public const ATTRIBUTE_FIRST_NAME = 'first_name';
+    public const ATTRIBUTE_LAST_NAME = 'last_name';
+    public const LINK_COMMENTS = 'comments';
 
     /**
      * Resource properties.
      *
-     * @var array
      */
-    private $properties = [];
+    private array $properties = [];
 
     /**
      * @param int        $identity

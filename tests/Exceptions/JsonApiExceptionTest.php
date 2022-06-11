@@ -28,15 +28,9 @@ use Neomerx\Tests\JsonApi\BaseTestCase;
  */
 class JsonApiExceptionTest extends BaseTestCase
 {
-    /**
-     * @var ErrorCollection
-     */
-    private $collection;
+    private \Neomerx\JsonApi\Schema\ErrorCollection $collection;
 
-    /**
-     * @var Error
-     */
-    private $error;
+    private \Neomerx\JsonApi\Schema\Error $error;
 
     /**
      * @inheritdoc

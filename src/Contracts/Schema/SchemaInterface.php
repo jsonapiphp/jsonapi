@@ -24,19 +24,19 @@ namespace Neomerx\JsonApi\Contracts\Schema;
 interface SchemaInterface
 {
     /** @var int Relationship's data section */
-    const RELATIONSHIP_DATA = 0;
+    public const RELATIONSHIP_DATA = 0;
 
     /** @var int Relationship's links section */
-    const RELATIONSHIP_LINKS = self::RELATIONSHIP_DATA + 1;
+    public const RELATIONSHIP_LINKS = self::RELATIONSHIP_DATA + 1;
 
     /** @var int Relationship's meta section */
-    const RELATIONSHIP_META = self::RELATIONSHIP_LINKS + 1;
+    public const RELATIONSHIP_META = self::RELATIONSHIP_LINKS + 1;
 
     /** @var int If `self` link should be added in relationship */
-    const RELATIONSHIP_LINKS_SELF = self::RELATIONSHIP_META + 1;
+    public const RELATIONSHIP_LINKS_SELF = self::RELATIONSHIP_META + 1;
 
     /** @var int If `related` link should be added in relationship */
-    const RELATIONSHIP_LINKS_RELATED = self::RELATIONSHIP_LINKS_SELF + 1;
+    public const RELATIONSHIP_LINKS_RELATED = self::RELATIONSHIP_LINKS_SELF + 1;
 
     /**
      * Get resource type.

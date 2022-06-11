@@ -40,10 +40,7 @@ final class CustomIdentifierAndResource extends IdentifierAndResource
      */
     private $factory;
 
-    /**
-     * @var SchemaContainerInterface
-     */
-    private $container;
+    private \Neomerx\JsonApi\Contracts\Schema\SchemaContainerInterface $container;
 
     /**
      * @var BaseCustomSchema

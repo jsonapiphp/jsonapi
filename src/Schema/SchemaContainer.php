@@ -33,37 +33,28 @@ class SchemaContainer implements SchemaContainerInterface
     /**
      * Message code.
      */
-    const MSG_INVALID_MODEL_TYPE = 'Invalid model type.';
+    public const MSG_INVALID_MODEL_TYPE = 'Invalid model type.';
 
     /**
      * Message code.
      */
-    const MSG_INVALID_SCHEME = 'Schema for type `%s` must be non-empty string, callable or SchemaInterface instance.';
+    public const MSG_INVALID_SCHEME = 'Schema for type `%s` must be non-empty string, callable or SchemaInterface instance.';
 
     /**
      * Message code.
      */
-    const MSG_TYPE_REUSE_FORBIDDEN = 'Type should not be used more than once to register a schema (`%s`).';
+    public const MSG_TYPE_REUSE_FORBIDDEN = 'Type should not be used more than once to register a schema (`%s`).';
 
-    /**
-     * @var array
-     */
-    private $providerMapping = [];
+    private array $providerMapping = [];
 
     /**
      * @var SchemaInterface[]
      */
-    private $createdProviders = [];
+    private array $createdProviders = [];
 
-    /**
-     * @var array
-     */
-    private $resType2JsonType = [];
+    private array $resType2JsonType = [];
 
-    /**
-     * @var FactoryInterface
-     */
-    private $factory;
+    private \Neomerx\JsonApi\Contracts\Factories\FactoryInterface $factory;
 
     /**
      * @param FactoryInterface $factory

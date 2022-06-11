@@ -30,10 +30,10 @@ use Neomerx\JsonApi\Contracts\Schema\ErrorInterface;
 abstract class BaseResponses implements ResponsesInterface
 {
     /** Header name that contains format of input data from client */
-    const HEADER_CONTENT_TYPE = HeaderParametersParserInterface::HEADER_CONTENT_TYPE;
+    public const HEADER_CONTENT_TYPE = HeaderParametersParserInterface::HEADER_CONTENT_TYPE;
 
     /** Header name that location of newly created resource */
-    const HEADER_LOCATION = 'Location';
+    public const HEADER_LOCATION = 'Location';
 
     /**
      * Create HTTP response.

@@ -26,15 +26,9 @@ use Neomerx\JsonApi\Contracts\Schema\LinkWithAliasesInterface;
  */
 class LinkWithAliases extends Link implements LinkWithAliasesInterface
 {
-    /**
-     * @var array
-     */
-    private $aliases;
+    private array $aliases;
 
-    /**
-     * @var bool
-     */
-    private $hasAliases;
+    private bool $hasAliases;
 
     /**
      * @param bool     $isSubUrl

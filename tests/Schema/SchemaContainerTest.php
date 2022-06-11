@@ -46,9 +46,7 @@ class SchemaContainerTest extends BaseTestCase
         $container     = $factory->createSchemaContainer([
             Author::class  => AuthorSchema::class,
             Comment::class => $commentSchema,
-            Post::class    => function () use ($postSchema): SchemaInterface {
-                return $postSchema;
-            },
+            Post::class    => fn(): SchemaInterface => $postSchema,
         ]);
 
         $author  = $this->createAuthor();

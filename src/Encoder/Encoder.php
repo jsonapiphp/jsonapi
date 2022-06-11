@@ -44,31 +44,31 @@ class Encoder implements EncoderInterface
     /**
      * Default value.
      */
-    const DEFAULT_URL_PREFIX = '';
+    public const DEFAULT_URL_PREFIX = '';
 
     /**
      * Default value.
      */
-    const DEFAULT_INCLUDE_PATHS = [];
+    public const DEFAULT_INCLUDE_PATHS = [];
 
     /**
      * Default value.
      */
-    const DEFAULT_FIELD_SET_FILTERS = [];
+    public const DEFAULT_FIELD_SET_FILTERS = [];
 
     /**
      * Default encode options.
      *
      * @link http://php.net/manual/en/function.json-encode.php
      */
-    const DEFAULT_JSON_ENCODE_OPTIONS = 0;
+    public const DEFAULT_JSON_ENCODE_OPTIONS = 0;
 
     /**
      * Default encode depth.
      *
      * @link http://php.net/manual/en/function.json-encode.php
      */
-    const DEFAULT_JSON_ENCODE_DEPTH = 512;
+    public const DEFAULT_JSON_ENCODE_DEPTH = 512;
 
     /**
      * @param FactoryInterface         $factory

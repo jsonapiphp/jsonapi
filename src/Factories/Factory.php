@@ -86,25 +86,13 @@ class Factory implements FactoryInterface
     ): PositionInterface {
         return new class ($level, $path, $parentType, $parentRelationship) implements PositionInterface
         {
-            /**
-             * @var int
-             */
-            private $level;
+            private int $level;
 
-            /**
-             * @var string
-             */
-            private $path;
+            private string $path;
 
-            /**
-             * @var null|string
-             */
-            private $parentType;
+            private ?string $parentType;
 
-            /**
-             * @var null|string
-             */
-            private $parentRelationship;
+            private ?string $parentRelationship;
 
             /**
              * @param int         $level
@@ -209,15 +197,9 @@ class Factory implements FactoryInterface
     ): ParserIdentifierInterface {
         return new class ($position, $identifier) implements ParserIdentifierInterface
         {
-            /**
-             * @var PositionInterface
-             */
-            private $position;
+            private PositionInterface $position;
 
-            /**
-             * @var SchemaIdentifierInterface
-             */
-            private $identifier;
+            private SchemaIdentifierInterface $identifier;
 
             /**
              * @param PositionInterface         $position
@@ -309,45 +291,24 @@ class Factory implements FactoryInterface
             $meta
         ) implements RelationshipInterface
         {
-            /**
-             * @var PositionInterface
-             */
-            private $position;
+            private PositionInterface $position;
 
-            /**
-             * @var bool
-             */
-            private $hasData;
+            private bool $hasData;
 
-            /**
-             * @var ?RelationshipDataInterface
-             */
-            private $data;
+            private ?\Neomerx\JsonApi\Contracts\Parser\RelationshipDataInterface $data;
 
-            /**
-             * @var bool
-             */
-            private $hasLinks;
+            private bool $hasLinks;
 
-            /**
-             * @var ?iterable
-             */
-            private $links;
+            private ?iterable $links;
 
-            /**
-             * @var bool
-             */
-            private $hasMeta;
+            private bool $hasMeta;
 
             /**
              * @var mixed
              */
             private $meta;
 
-            /**
-             * @var bool
-             */
-            private $metaIsCallable;
+            private bool $metaIsCallable;
 
             /**
              * @param PositionInterface              $position
@@ -525,20 +486,11 @@ class Factory implements FactoryInterface
     {
         return new class ($fieldSets, $includePaths) implements EditableContextInterface
         {
-            /**
-             * @var array
-             */
-            private $fieldSets;
+            private array $fieldSets;
 
-            /**
-             * @var array
-             */
-            private $includePaths;
+            private array $includePaths;
 
-            /**
-             * @var PositionInterface|null
-             */
-            private $position = null;
+            private ?PositionInterface $position = null;
 
             /**
              * @param array $fieldSets

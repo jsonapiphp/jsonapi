@@ -35,25 +35,16 @@ use Neomerx\Tests\JsonApi\Data\Schemas\SiteSchema;
  */
 class EncodeIncludedObjectsTest extends BaseTestCase
 {
-    /**
-     * @var Author
-     */
-    private $author;
+    private \Neomerx\Tests\JsonApi\Data\Models\Author $author;
 
     /**
      * @var Comment[]
      */
-    private $comments;
+    private array $comments;
 
-    /**
-     * @var Post
-     */
-    private $post;
+    private \Neomerx\Tests\JsonApi\Data\Models\Post $post;
 
-    /**
-     * @var Site
-     */
-    private $site;
+    private \Neomerx\Tests\JsonApi\Data\Models\Site $site;
 
     /**
      * Set up.
@@ -476,9 +467,7 @@ EOL;
                         Post::LINK_COMMENTS,
                         PostSchema::RELATIONSHIP_LINKS,
                         [
-                            Link::FIRST => function (PostSchema $schema, Post $post) {
-                                return new Link(true, $schema->getSelfSubUrl($post) . '/comments/first', false);
-                            },
+                            Link::FIRST => fn(PostSchema $schema, Post $post) => new Link(true, $schema->getSelfSubUrl($post) . '/comments/first', false),
                         ]
                     );
                     return $schema;

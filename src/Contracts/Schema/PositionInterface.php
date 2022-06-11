@@ -26,7 +26,7 @@ interface PositionInterface
     /**
      * A symbol used to separate path's parts.
      */
-    const PATH_SEPARATOR = DocumentInterface::PATH_SEPARATOR;
+    public const PATH_SEPARATOR = DocumentInterface::PATH_SEPARATOR;
 
     /**
      * Get level (0 for root, 1 for their children, and so on).

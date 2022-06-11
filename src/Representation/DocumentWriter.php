@@ -269,7 +269,7 @@ class DocumentWriter extends BaseWriter implements DocumentWriterInterface
         $attributes = $this->getAttributesRepresentation($filter->getAttributes($resource));
         if (empty($attributes) === false) {
             \assert(
-                \json_encode($attributes) !== false,
+                \json_encode($attributes, JSON_THROW_ON_ERROR) !== false,
                 'Attributes for resource type `' . $resource->getType() .
                 '` cannot be converted into JSON. Please check its Schema returns valid data.'
             );
@@ -279,7 +279,7 @@ class DocumentWriter extends BaseWriter implements DocumentWriterInterface
         $relationships = $this->getRelationshipsRepresentation($filter->getRelationships($resource));
         if (empty($relationships) === false) {
             \assert(
-                \json_encode($relationships) !== false,
+                \json_encode($relationships, JSON_THROW_ON_ERROR) !== false,
                 'Relationships for resource type `' . $resource->getType() .
                 '` cannot be converted into JSON. Please check its Schema returns valid data.'
             );
@@ -289,7 +289,7 @@ class DocumentWriter extends BaseWriter implements DocumentWriterInterface
         if ($resource->hasLinks() === true) {
             $links = $this->getLinksRepresentation($this->getUrlPrefix(), $resource->getLinks());
             \assert(
-                \json_encode($links) !== false,
+                \json_encode($links, JSON_THROW_ON_ERROR) !== false,
                 'Links for resource type `' . $resource->getType() .
                 '` cannot be converted into JSON. Please check its Schema returns valid data.'
             );
@@ -299,7 +299,7 @@ class DocumentWriter extends BaseWriter implements DocumentWriterInterface
         if ($resource->hasResourceMeta() === true) {
             $meta = $resource->getResourceMeta();
             \assert(
-                \json_encode($meta) !== false,
+                \json_encode($meta, JSON_THROW_ON_ERROR) !== false,
                 'Meta for resource type `' . $resource->getType() .
                 '` cannot be converted into JSON. Please check its Schema returns valid data.'
             );

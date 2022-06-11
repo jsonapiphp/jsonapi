@@ -26,12 +26,12 @@ interface ParserInterface
     /**
      * Root level for parsed items.
      */
-    const ROOT_LEVEL = 0;
+    public const ROOT_LEVEL = 0;
 
     /**
      * Root path for parsed items.
      */
-    const ROOT_PATH = '';
+    public const ROOT_PATH = '';
 
     /**
      * Parse data.

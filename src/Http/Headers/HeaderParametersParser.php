@@ -28,10 +28,7 @@ use Neomerx\JsonApi\Exceptions\InvalidArgumentException;
  */
 class HeaderParametersParser implements HeaderParametersParserInterface
 {
-    /**
-     * @var FactoryInterface
-     */
-    private $factory;
+    private \Neomerx\JsonApi\Contracts\Factories\FactoryInterface $factory;
 
     /**
      * @param FactoryInterface $factory
@@ -51,7 +48,7 @@ class HeaderParametersParser implements HeaderParametersParserInterface
         }
 
         $ranges = \preg_split("/,(?=([^\"]*\"[^\"]*\")*[^\"]*$)/", $value);
-        $count  = \count($ranges);
+        $count  = is_countable($ranges) ? \count($ranges) : 0;
         for ($idx = 0; $idx < $count; ++$idx) {
             $fields = \explode(';', $ranges[$idx]);
 
@@ -59,8 +56,8 @@ class HeaderParametersParser implements HeaderParametersParserInterface
                 throw new InvalidArgumentException('mediaType');
             }
 
-            list($type, $subType) = \explode('/', $fields[0], 2);
-            list($parameters, $quality) = $this->parseQualityAndParameters($fields);
+            [$type, $subType] = \explode('/', $fields[0], 2);
+            [$parameters, $quality] = $this->parseQualityAndParameters($fields);
 
             $mediaType = $this->factory->createAcceptMediaType($idx, $type, $subType, $parameters, $quality);
 
@@ -79,7 +76,7 @@ class HeaderParametersParser implements HeaderParametersParserInterface
             throw new InvalidArgumentException('mediaType');
         }
 
-        list($type, $subType) = \explode('/', $fields[0], 2);
+        [$type, $subType] = \explode('/', $fields[0], 2);
 
         $parameters = null;
         $count      = \count($fields);
@@ -93,7 +90,7 @@ class HeaderParametersParser implements HeaderParametersParserInterface
                 throw new InvalidArgumentException('mediaType');
             }
 
-            list($key, $value) = \explode('=', $fieldValue, 2);
+            [$key, $value] = \explode('=', $fieldValue, 2);
             $parameters[\trim($key)] = \trim($value, ' "');
         }
 
@@ -122,7 +119,7 @@ class HeaderParametersParser implements HeaderParametersParserInterface
                 throw new InvalidArgumentException('mediaType');
             }
 
-            list($key, $value) = \explode('=', $fieldValue, 2);
+            [$key, $value] = \explode('=', $fieldValue, 2);
 
             $key   = \trim($key);
             $value = \trim($value, ' "');

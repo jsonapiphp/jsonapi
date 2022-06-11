@@ -29,15 +29,9 @@ use Neomerx\JsonApi\Exceptions\LogicException;
  */
 abstract class BaseSchema implements SchemaInterface
 {
-    /**
-     * @var FactoryInterface
-     */
-    private $factory;
+    private \Neomerx\JsonApi\Contracts\Factories\FactoryInterface $factory;
 
-    /**
-     * @var null|string
-     */
-    private $subUrl = null;
+    private ?string $subUrl = null;
 
     /**
      * @param FactoryInterface $factory
