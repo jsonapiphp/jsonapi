@@ -21,7 +21,7 @@
         "issues": "https://github.com/jsonapiphp/jsonapi/issues"
     },
     "require": {
-        "php": ">=7.1.0"
+        "php": ">=7.4.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.14",
