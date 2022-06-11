@@ -1,9 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Contracts\Schema;
 
 /**
- * Copyright 2015-2020 info@neomerx.com
+ * Copyright 2015-2020 info@neomerx.com.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +18,6 @@ namespace Neomerx\JsonApi\Contracts\Schema;
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
-
-/**
- * @package Neomerx\JsonApi
  */
 interface BaseLinkInterface
 {
@@ -40,26 +38,16 @@ interface BaseLinkInterface
 
     /**
      * If `string` or `array` representation should be used.
-     *
-     * @return bool
      */
     public function canBeShownAsString(): bool;
 
     /**
      * Get representation as string.
-     *
-     * @param string $prefix
-     *
-     * @return string
      */
     public function getStringRepresentation(string $prefix): string;
 
     /**
      * Get representation as array.
-     *
-     * @param string $prefix
-     *
-     * @return array
      */
     public function getArrayRepresentation(string $prefix): array;
 }

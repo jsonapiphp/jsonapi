@@ -1,9 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue91;
 
 /**
- * Copyright 2015-2020 info@neomerx.com
+ * Copyright 2015-2020 info@neomerx.com.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,32 +19,24 @@ namespace Neomerx\Tests\JsonApi\Extensions\Issue91;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class Category
 {
-    /** @var  int */
+    /** @var int */
     public $index = null;
 
-    /** @var  string */
+    /** @var string */
     public $description = null;
 
-    /** @var  Category|null */
+    /** @var Category|null */
     public $parent = null;
 
     /**
      * Category constructor.
-     *
-     * @param int           $index
-     * @param string        $description
-     * @param Category|null $parent
      */
     public function __construct(int $index, string $description, Category $parent = null)
     {
-        $this->index       = $index;
+        $this->index = $index;
         $this->description = $description;
-        $this->parent      = $parent;
+        $this->parent = $parent;
     }
 }

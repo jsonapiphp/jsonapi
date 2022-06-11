@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Encoder;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,15 +33,12 @@ use Neomerx\Tests\JsonApi\Data\Schemas\AuthorSchema;
 use Neomerx\Tests\JsonApi\Data\Schemas\CommentSchema;
 use Neomerx\Tests\JsonApi\Data\Schemas\PostSchema;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class EncoderTest extends BaseTestCase
 {
     /**
      * Test encode invalid data.
      */
-    public function testEncodeInvalidData(): void
+    public function test_encode_invalid_data(): void
     {
         $this->expectException(InvalidArgumentException::class);
 
@@ -49,21 +48,22 @@ class EncoderTest extends BaseTestCase
             ]
         )->withUrlPrefix('http://example.com');
 
-        /** @noinspection PhpParamsInspection */
+        /* @noinspection PhpParamsInspection */
         $encoder->encodeData('input must be an object or array of objects or iterator over objects');
     }
 
     /**
      * Test encode array of simple objects with attributes only.
      */
-    public function testEncodeArrayOfDuplicateObjectsWithAttributesOnly(): void
+    public function test_encode_array_of_duplicate_objects_with_attributes_only(): void
     {
-        $author  = Author::instance(9, 'Dan', 'Gebhardt');
+        $author = Author::instance(9, 'Dan', 'Gebhardt');
         $encoder = Encoder::instance(
             [
                 Author::class => function ($factory) {
                     $schema = new AuthorSchema($factory);
                     $schema->removeRelationship(Author::LINK_COMMENTS);
+
                     return $schema;
                 },
             ]
@@ -105,7 +105,7 @@ EOL;
     /**
      * Test encode 2 duplicate resources with circular link to each other.
      */
-    public function testEncodeDuplicatesWithCircularReferencesInData(): void
+    public function test_encode_duplicates_with_circular_references_in_data(): void
     {
         $author = Author::instance(9, 'Dan', 'Gebhardt');
 
@@ -172,16 +172,16 @@ EOL;
     /**
      * Test encode 2 main resource duplicates and try to apply field set filter on relations.
      */
-    public function testEncodeDuplicatesWithRelationFieldSetFilter(): void
+    public function test_encode_duplicates_with_relation_field_set_filter(): void
     {
-        $author   = Author::instance(9, 'Dan', 'Gebhardt');
+        $author = Author::instance(9, 'Dan', 'Gebhardt');
         $comments = [
             Comment::instance(5, 'First!', $author),
             Comment::instance(12, 'I like XML better', $author),
         ];
-        $encoder  = Encoder::instance(
+        $encoder = Encoder::instance(
             [
-                Author::class  => AuthorSchema::class,
+                Author::class => AuthorSchema::class,
                 Comment::class => CommentSchema::class,
             ]
         )->withUrlPrefix('http://example.com')->withFieldSets(
@@ -227,13 +227,13 @@ EOL;
     /**
      * Test encode simple resource object links.
      */
-    public function testEncodeSimpleLinks(): void
+    public function test_encode_simple_links(): void
     {
         $actual = Encoder::instance(
             [
-                Author::class  => AuthorSchema::class,
+                Author::class => AuthorSchema::class,
                 Comment::class => CommentSchema::class,
-                Post::class    => PostSchema::class,
+                Post::class => PostSchema::class,
             ]
         )->withUrlPrefix('http://example.com')->encodeData($this->getStandardPost());
 
@@ -277,13 +277,13 @@ EOL;
     /**
      * Test encode resource object links as references.
      */
-    public function testEncodeEmptyLinks(): void
+    public function test_encode_empty_links(): void
     {
         $actual = Encoder::instance(
             [
-                Author::class  => AuthorSchema::class,
+                Author::class => AuthorSchema::class,
                 Comment::class => CommentSchema::class,
-                Post::class    => function ($factory) {
+                Post::class => function ($factory) {
                     $schema = new PostSchema($factory);
                     $schema->addToRelationship(Post::LINK_AUTHOR, PostSchema::RELATIONSHIP_DATA, null);
                     $schema->addToRelationship(Post::LINK_COMMENTS, PostSchema::RELATIONSHIP_DATA, []);
@@ -322,13 +322,13 @@ EOL;
     /**
      * Test encode with 'self' and 'related' URLs in main document and relationships.
      */
-    public function testEncodeLinksInDocumentAndRelationships(): void
+    public function test_encode_links_in_document_and_relationships(): void
     {
         $actual = Encoder::instance(
             [
-                Author::class  => AuthorSchema::class,
+                Author::class => AuthorSchema::class,
                 Comment::class => CommentSchema::class,
-                Post::class    => PostSchema::class,
+                Post::class => PostSchema::class,
             ]
         )->withUrlPrefix('http://example.com')->encodeData($this->getStandardPost());
 
@@ -372,23 +372,23 @@ EOL;
     /**
      * Test encode with 'self' and 'related' URLs in main document and relationships.
      */
-    public function testEncodeLinkWithMeta(): void
+    public function test_encode_link_with_meta(): void
     {
         $comments = [
             Comment::instance(5, 'First!'),
             Comment::instance(12, 'I like XML better'),
         ];
-        $author   = Author::instance(9, 'Dan', 'Gebhardt', $comments);
-        $actual   = Encoder::instance(
+        $author = Author::instance(9, 'Dan', 'Gebhardt', $comments);
+        $actual = Encoder::instance(
             [
-                Author::class  => function ($factory) {
+                Author::class => function ($factory) {
                     $schema = new AuthorSchema($factory);
                     $schema->hideRelatedLinkInRelationship(Author::LINK_COMMENTS);
                     $schema->addToRelationship(
                         Author::LINK_COMMENTS,
                         AuthorSchema::RELATIONSHIP_LINKS,
                         [
-                            LinkInterface::SELF => fn(AuthorSchema $schema, Author $author) => new Link(
+                            LinkInterface::SELF => fn (AuthorSchema $schema, Author $author) => new Link(
                                 true,
                                 $schema->getSelfSubUrl($author) . '/relationships/comments',
                                 true,
@@ -396,6 +396,7 @@ EOL;
                             ),
                         ]
                     );
+
                     return $schema;
                 },
                 Comment::class => CommentSchema::class,
@@ -437,16 +438,16 @@ EOL;
     /**
      * Test add links to empty relationship.
      */
-    public function testAddLinksToEmptyRelationship(): void
+    public function test_add_links_to_empty_relationship(): void
     {
         $actual = Encoder::instance(
             [
-                Author::class  => AuthorSchema::class,
+                Author::class => AuthorSchema::class,
                 Comment::class => CommentSchema::class,
-                Post::class    => function ($factory) {
+                Post::class => function ($factory) {
                     $schema = new PostSchema($factory);
                     $schema->removeFromRelationship(Post::LINK_AUTHOR, PostSchema::RELATIONSHIP_DATA);
-                    $selfLink    = new Link(false, 'http://foo.boo/custom-self', false);
+                    $selfLink = new Link(false, 'http://foo.boo/custom-self', false);
                     $relatedLink = new Link(false, 'http://foo.boo/custom-related', false);
                     $schema->setSelfLinkInRelationship(Post::LINK_AUTHOR, $selfLink);
                     $schema->setRelatedLinkInRelationship(Post::LINK_AUTHOR, $relatedLink);
@@ -460,7 +461,7 @@ EOL;
                         Post::LINK_COMMENTS,
                         PostSchema::RELATIONSHIP_LINKS,
                         [
-                            'boo' => fn(PostSchema $schema, Post $post) => new Link(true, $schema->getSelfSubUrl($post) . '/another/link', false),
+                            'boo' => fn (PostSchema $schema, Post $post) => new Link(true, $schema->getSelfSubUrl($post) . '/another/link', false),
                         ]
                     );
                     $schema->hideRelatedLinkInRelationship(Post::LINK_COMMENTS);
@@ -506,13 +507,13 @@ EOL;
     /**
      * Test add meta to empty relationship.
      */
-    public function testAddMetaToEmptyRelationship(): void
+    public function test_add_meta_to_empty_relationship(): void
     {
         $actual = Encoder::instance(
             [
-                Author::class  => AuthorSchema::class,
+                Author::class => AuthorSchema::class,
                 Comment::class => CommentSchema::class,
-                Post::class    => function ($factory) {
+                Post::class => function ($factory) {
                     $schema = new PostSchema($factory);
                     $schema->removeFromRelationship(Post::LINK_AUTHOR, PostSchema::RELATIONSHIP_DATA);
                     $schema->hideDefaultLinksInRelationship(Post::LINK_AUTHOR);
@@ -522,8 +523,9 @@ EOL;
                     $schema->addToRelationship(
                         Post::LINK_COMMENTS,
                         PostSchema::RELATIONSHIP_META,
-                        fn() => ['comments' => 'meta']
+                        fn () => ['comments' => 'meta']
                     );
+
                     return $schema;
                 },
             ]
@@ -558,13 +560,13 @@ EOL;
     /**
      * Test hide data section if it is omitted in Schema.
      */
-    public function testHideDataSectionIfOmittedInSchema()
+    public function test_hide_data_section_if_omitted_in_schema()
     {
         $actual = Encoder::instance(
             [
-                Author::class  => AuthorSchema::class,
+                Author::class => AuthorSchema::class,
                 Comment::class => CommentSchema::class,
-                Post::class    => function ($factory) {
+                Post::class => function ($factory) {
                     $schema = new PostSchema($factory);
                     $schema->removeFromRelationship(Post::LINK_AUTHOR, PostSchema::RELATIONSHIP_DATA);
                     $schema->hideSelfLinkInRelationship(Post::LINK_AUTHOR);
@@ -578,7 +580,7 @@ EOL;
                         Post::LINK_COMMENTS,
                         PostSchema::RELATIONSHIP_LINKS,
                         [
-                            'boo' => fn(PostSchema $schema, Post $post) => new Link(true, $schema->getSelfSubUrl($post) . '/another/link', false),
+                            'boo' => fn (PostSchema $schema, Post $post) => new Link(true, $schema->getSelfSubUrl($post) . '/another/link', false),
                         ]
                     );
                     $schema->hideRelatedLinkInRelationship(Post::LINK_COMMENTS);
@@ -620,14 +622,15 @@ EOL;
     /**
      * Test encode Traversable (through Iterator) collection of resource(s).
      */
-    public function testEncodeTraversableObjectsWithAttributesOnly(): void
+    public function test_encode_traversable_objects_with_attributes_only(): void
     {
-        $author  = Author::instance(9, 'Dan', 'Gebhardt');
+        $author = Author::instance(9, 'Dan', 'Gebhardt');
         $encoder = Encoder::instance(
             [
-                Author::class  => function ($factory) {
+                Author::class => function ($factory) {
                     $schema = new AuthorSchema($factory);
                     $schema->hideDefaultLinksInRelationship(Author::LINK_COMMENTS);
+
                     return $schema;
                 },
                 Comment::class => CommentSchema::class,
@@ -644,7 +647,7 @@ EOL;
 
         // and iterator here
         $itemSet = new ArrayIterator(['what_if_its_not_zero_based_array' => $author]);
-        $actual  = $encoder->encodeData($itemSet);
+        $actual = $encoder->encodeData($itemSet);
 
         $expected = <<<EOL
         {
@@ -677,17 +680,18 @@ EOL;
     /**
      * Test encode resource with single item array relationship.
      */
-    public function testEncodeRelationshipWithSingleItem(): void
+    public function test_encode_relationship_with_single_item(): void
     {
         $post = Post::instance(1, 'Title', 'Body', null, [Comment::instance(5, 'First!')]);
 
         $actual = Encoder::instance(
             [
                 Comment::class => CommentSchema::class,
-                Post::class    => function ($factory) {
+                Post::class => function ($factory) {
                     $schema = new PostSchema($factory);
                     $schema->removeRelationship(Post::LINK_AUTHOR);
                     $schema->hideDefaultLinksInRelationship(Post::LINK_COMMENTS);
+
                     return $schema;
                 },
             ]
@@ -721,9 +725,9 @@ EOL;
     /**
      * Test encode with relationship self Link.
      */
-    public function testEncodeWithRelationshipSelfLink(): void
+    public function test_encode_with_relationship_self_link(): void
     {
-        $post   = $this->getStandardPost();
+        $post = $this->getStandardPost();
         $actual = Encoder::instance(
             [
                 Post::class => PostSchema::class,
@@ -744,9 +748,9 @@ EOL;
     /**
      * Test encode with relationship related Link.
      */
-    public function testEncodeWithRelationshipRelatedLink(): void
+    public function test_encode_with_relationship_related_link(): void
     {
-        $post   = $this->getStandardPost();
+        $post = $this->getStandardPost();
         $actual = Encoder::instance(
             [
                 Post::class => PostSchema::class,
@@ -767,7 +771,7 @@ EOL;
     /**
      * Test encode unrecognized resource (no registered Schema).
      */
-    public function testEncodeUnrecognizedResourceAtRoot(): void
+    public function test_encode_unrecognized_resource_at_root(): void
     {
         $author = Author::instance(9, 'Dan', 'Gebhardt');
 
@@ -790,10 +794,10 @@ EOL;
     /**
      * Test encode unrecognized resource (no registered Schema).
      */
-    public function testEncodeUnrecognizedResourceInRelationship(): void
+    public function test_encode_unrecognized_resource_in_relationship(): void
     {
         $author = Author::instance(9, 'Dan', 'Gebhardt');
-        $post   = Post::instance(1, 'Title', 'Body', null, [Comment::instance(5, 'First!', $author)]);
+        $post = Post::instance(1, 'Title', 'Body', null, [Comment::instance(5, 'First!', $author)]);
 
         /** @var InvalidArgumentException $catch */
         $catch = null;
@@ -801,7 +805,7 @@ EOL;
             Encoder::instance(
                 [
                     Comment::class => CommentSchema::class,
-                    Post::class    => PostSchema::class,
+                    Post::class => PostSchema::class,
                 ]
             )->withUrlPrefix('http://example.com')->withIncludedPaths(
                 [
@@ -821,12 +825,12 @@ EOL;
      */
     private function getStandardPost()
     {
-        $author   = Author::instance(9, 'Dan', 'Gebhardt');
+        $author = Author::instance(9, 'Dan', 'Gebhardt');
         $comments = [
             Comment::instance(5, 'First!'),
             Comment::instance(12, 'I like XML better'),
         ];
-        $post     = Post::instance(
+        $post = Post::instance(
             1,
             'JSON API paints my bikeshed!',
             'Outside every fat man there was an even fatter man trying to close in',

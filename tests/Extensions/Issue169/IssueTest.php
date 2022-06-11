@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue169;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,9 +25,6 @@ use Neomerx\Tests\JsonApi\BaseTestCase;
 use Neomerx\Tests\JsonApi\Data\Models\Author;
 use Neomerx\Tests\JsonApi\Data\Schemas\AuthorSchema;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class IssueTest extends BaseTestCase
 {
     /**
@@ -33,7 +32,7 @@ class IssueTest extends BaseTestCase
      *
      * @see https://github.com/neomerx/json-api/issues/169
      */
-    public function testDataSerialization(): void
+    public function test_data_serialization(): void
     {
         $author = Author::instance(9, 'Dan', 'Gebhardt');
         /** @var CustomEncoder $encoder */
@@ -42,6 +41,7 @@ class IssueTest extends BaseTestCase
                 Author::class => function ($factory) {
                     $schema = new AuthorSchema($factory);
                     $schema->removeRelationship(Author::LINK_COMMENTS);
+
                     return $schema;
                 },
             ]
@@ -51,13 +51,13 @@ class IssueTest extends BaseTestCase
 
         $expected = [
             'data' => [
-                'type'       => 'people',
-                'id'         => '9',
+                'type' => 'people',
+                'id' => '9',
                 'attributes' => [
                     'first_name' => 'Dan',
-                    'last_name'  => 'Gebhardt',
+                    'last_name' => 'Gebhardt',
                 ],
-                'links'      => [
+                'links' => [
                     'self' => '/people/9',
                 ],
             ],
@@ -71,7 +71,7 @@ class IssueTest extends BaseTestCase
      *
      * @see https://github.com/neomerx/json-api/issues/169
      */
-    public function testIdentifiersSerialization(): void
+    public function test_identifiers_serialization(): void
     {
         $author = Author::instance(9, 'Dan', 'Gebhardt');
         /** @var CustomEncoder $encoder */
@@ -86,7 +86,7 @@ class IssueTest extends BaseTestCase
         $expected = [
             'data' => [
                 'type' => 'people',
-                'id'   => '9',
+                'id' => '9',
             ],
         ];
 
@@ -98,7 +98,7 @@ class IssueTest extends BaseTestCase
      *
      * @see https://github.com/neomerx/json-api/issues/169
      */
-    public function testErrorSerialization(): void
+    public function test_error_serialization(): void
     {
         $error = new Error('some-id');
         /** @var CustomEncoder $encoder */
@@ -113,7 +113,7 @@ class IssueTest extends BaseTestCase
      *
      * @see https://github.com/neomerx/json-api/issues/169
      */
-    public function testMetaSerialization(): void
+    public function test_meta_serialization(): void
     {
         $meta = ['some meta'];
         /** @var CustomEncoder $encoder */

@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Data\Models;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,9 +22,6 @@ namespace Neomerx\Tests\JsonApi\Data\Models;
 
 use stdClass;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class Site extends stdClass
 {
     public const ATTRIBUTE_ID = 'site_id';
@@ -30,20 +29,16 @@ class Site extends stdClass
     public const LINK_POSTS = 'posts';
 
     /**
-     * @param int        $identity
-     * @param string     $name
-     * @param array|null $posts
-     *
      * @return Site
      */
     public static function instance(int $identity, string $name, array $posts = null)
     {
         $site = new self();
 
-        $site->{self::ATTRIBUTE_ID}   = $identity;
+        $site->{self::ATTRIBUTE_ID} = $identity;
         $site->{self::ATTRIBUTE_NAME} = $name;
 
-        $posts === null ?: $site->{self::LINK_POSTS} = $posts;
+        null === $posts ?: $site->{self::LINK_POSTS} = $posts;
 
         return $site;
     }

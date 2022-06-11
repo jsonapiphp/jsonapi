@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Parser\RelationshipData;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,25 +29,13 @@ use Neomerx\JsonApi\Contracts\Schema\PositionInterface;
 use Neomerx\JsonApi\Contracts\Schema\SchemaContainerInterface;
 use Neomerx\JsonApi\Contracts\Schema\SchemaInterface;
 use Neomerx\JsonApi\Exceptions\InvalidArgumentException;
+use function Neomerx\JsonApi\I18n\format as _;
 use Neomerx\JsonApi\Parser\IdentifierAndResource;
 use Traversable;
-use function Neomerx\JsonApi\I18n\format as _;
 
-/**
- * @package Neomerx\JsonApi
- */
 trait ParseRelationshipDataTrait
 {
     /**
-     * @param FactoryInterface         $factory
-     * @param SchemaContainerInterface $container
-     * @param EditableContextInterface $context
-     * @param string                   $parentType
-     * @param string                   $name
-     * @param array                    $description
-     * @param int                      $nextLevel
-     * @param string                   $nextPathPrefix
-     *
      * @return array [has data, parsed data, next position]
      */
     private function parseRelationshipData(
@@ -61,11 +51,11 @@ trait ParseRelationshipDataTrait
         $hasData = \array_key_exists(SchemaInterface::RELATIONSHIP_DATA, $description);
         // either no data or data should be array/object/null
         \assert(
-            $hasData === false ||
+            false === $hasData ||
             (
-                \is_array($data = $description[SchemaInterface::RELATIONSHIP_DATA]) === true ||
-                \is_object($data) === true ||
-                $data === null
+                true === \is_array($data = $description[SchemaInterface::RELATIONSHIP_DATA]) ||
+                true === \is_object($data) ||
+                null === $data
             )
         );
 
@@ -76,7 +66,7 @@ trait ParseRelationshipDataTrait
             $name
         );
 
-        $relationshipData = $hasData === true ? $this->parseData(
+        $relationshipData = true === $hasData ? $this->parseData(
             $factory,
             $container,
             $context,
@@ -88,13 +78,7 @@ trait ParseRelationshipDataTrait
     }
 
     /**
-     * @param FactoryInterface         $factory
-     * @param SchemaContainerInterface $container
-     * @param EditableContextInterface $context
-     * @param PositionInterface        $position
-     * @param mixed                    $data
-     *
-     * @return RelationshipDataInterface
+     * @param mixed $data
      */
     private function parseData(
         FactoryInterface $factory,
@@ -104,15 +88,15 @@ trait ParseRelationshipDataTrait
         $data
     ): RelationshipDataInterface {
         // support if data is callable (e.g. a closure used to postpone actual data reading)
-        if (\is_callable($data) === true) {
+        if (true === \is_callable($data)) {
             $data = \call_user_func($data);
         }
 
-        if ($container->hasSchema($data) === true) {
+        if (true === $container->hasSchema($data)) {
             return $factory->createRelationshipDataIsResource($container, $context, $position, $data);
         } elseif ($data instanceof IdentifierInterface) {
             return $factory->createRelationshipDataIsIdentifier($container, $context, $position, $data);
-        } elseif (\is_array($data) === true) {
+        } elseif (true === \is_array($data)) {
             return $factory->createRelationshipDataIsCollection($container, $context, $position, $data);
         } elseif ($data instanceof Traversable) {
             return $factory->createRelationshipDataIsCollection(
@@ -121,7 +105,7 @@ trait ParseRelationshipDataTrait
                 $position,
                 $data instanceof IteratorAggregate ? $data->getIterator() : $data
             );
-        } elseif ($data === null) {
+        } elseif (null === $data) {
             return $factory->createRelationshipDataIsNull();
         }
 

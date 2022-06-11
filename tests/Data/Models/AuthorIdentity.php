@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Data\Models;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,14 +22,8 @@ namespace Neomerx\Tests\JsonApi\Data\Models;
 
 use Neomerx\JsonApi\Schema\Identifier;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class AuthorIdentity extends Identifier
 {
-    /**
-     * @param string $index
-     */
     public function __construct(string $index)
     {
         parent::__construct($index, 'people');

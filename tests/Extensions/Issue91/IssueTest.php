@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue91;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,15 +23,12 @@ namespace Neomerx\Tests\JsonApi\Extensions\Issue91;
 use Neomerx\JsonApi\Encoder\Encoder;
 use Neomerx\Tests\JsonApi\BaseTestCase;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class IssueTest extends BaseTestCase
 {
     /**
      * Test encode Category hierarchy.
      */
-    public function testEncodeHierarchy(): void
+    public function test_encode_hierarchy(): void
     {
         $hierarchy = $this->createHierarchy();
 
@@ -138,12 +137,12 @@ EOL;
      */
     private function createHierarchy()
     {
-        $main   = new Category(1, 'Main');
+        $main = new Category(1, 'Main');
         $laptop = new Category(2, 'Laptop', $main);
-        $pc     = new Category(3, 'PC', $main);
+        $pc = new Category(3, 'PC', $main);
         $screen = new Category(4, 'Screen', $laptop);
-        $big    = new Category(5, 'Big', $screen);
-        $small  = new Category(6, 'Small', $screen);
+        $big = new Category(5, 'Big', $screen);
+        $small = new Category(6, 'Small', $screen);
 
         return [$main, $laptop, $pc, $screen, $big, $small];
     }

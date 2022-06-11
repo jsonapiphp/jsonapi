@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Schema;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,9 +22,6 @@ namespace Neomerx\JsonApi\Schema;
 
 use Neomerx\JsonApi\Contracts\Schema\IdentifierInterface;
 
-/**
- * @package Neomerx\JsonApi
- */
 class Identifier implements IdentifierInterface
 {
     private string $index;
@@ -37,10 +36,7 @@ class Identifier implements IdentifierInterface
     private $meta;
 
     /**
-     * @param string $index
-     * @param string $type
-     * @param bool   $hasMeta
-     * @param mixed  $meta
+     * @param mixed $meta
      *
      * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
      */
@@ -50,22 +46,17 @@ class Identifier implements IdentifierInterface
         $this->setType($type);
 
         $this->hasMeta = $hasMeta;
-        $this->meta    = $meta;
+        $this->meta = $meta;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getId(): string
     {
         return $this->index;
     }
 
-    /**
-     * @param string $index
-     *
-     * @return self
-     */
     public function setId(string $index): self
     {
         $this->index = $index;
@@ -74,18 +65,13 @@ class Identifier implements IdentifierInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getType(): string
     {
         return $this->type;
     }
 
-    /**
-     * @param string $type
-     *
-     * @return self
-     */
     public function setType(string $type): self
     {
         $this->type = $type;
@@ -94,7 +80,7 @@ class Identifier implements IdentifierInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function hasIdentifierMeta(): bool
     {
@@ -102,7 +88,7 @@ class Identifier implements IdentifierInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getIdentifierMeta()
     {
@@ -111,12 +97,10 @@ class Identifier implements IdentifierInterface
 
     /**
      * @param mixed $meta
-     *
-     * @return self
      */
     public function setIdentifierMeta($meta): self
     {
-        $this->meta    = $meta;
+        $this->meta = $meta;
         $this->hasMeta = true;
 
         return $this;

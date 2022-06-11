@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue231;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,9 +23,6 @@ namespace Neomerx\Tests\JsonApi\Extensions\Issue231;
 use Neomerx\JsonApi\Contracts\Schema\DocumentInterface;
 use Neomerx\JsonApi\Parser\Parser;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 final class CustomParser extends Parser
 {
     /** @var string Special value to be used in include paths */
@@ -32,16 +31,16 @@ final class CustomParser extends Parser
     private array $cachedPathsResults = [];
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function isPathRequested(string $path): bool
     {
-        if (\array_key_exists($path, $this->cachedPathsResults) === true) {
+        if (true === \array_key_exists($path, $this->cachedPathsResults)) {
             return $this->cachedPathsResults[$path];
         }
 
         $normalizedPaths = $this->getNormalizedPaths();
-        $result          =
+        $result =
             isset($normalizedPaths[$path]) ||
             isset($normalizedPaths[static::PATH_WILDCARD_ALL]) ||
             $this->doesMatchSubPath($path);
@@ -51,20 +50,15 @@ final class CustomParser extends Parser
         return $result;
     }
 
-    /**
-     * @param string $path
-     *
-     * @return bool
-     */
     private function doesMatchSubPath(string $path): bool
     {
         $normalizedPaths = $this->getNormalizedPaths();
-        $separator       = DocumentInterface::PATH_SEPARATOR;
+        $separator = DocumentInterface::PATH_SEPARATOR;
 
         // check if any wildcard like a.*, a.b.* is requested
         $curPath = '';
         foreach (\explode($separator, $path) as $part) {
-            $curPath     .= $part . $separator;
+            $curPath .= $part . $separator;
             $wildcardPath = $curPath . static::PATH_WILDCARD_ALL;
             if (isset($normalizedPaths[$wildcardPath])) {
                 return true;

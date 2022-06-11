@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Data\Schemas;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,16 +23,11 @@ namespace Neomerx\Tests\JsonApi\Data\Schemas;
 use Neomerx\JsonApi\Contracts\Schema\ContextInterface;
 use Neomerx\JsonApi\Contracts\Schema\LinkInterface;
 use Neomerx\Tests\JsonApi\Data\Models\AuthorCModel;
-use function array_key_exists;
-use function assert;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class AuthorCModelSchema extends DevSchema
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getType(): string
     {
@@ -38,41 +35,41 @@ class AuthorCModelSchema extends DevSchema
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getId($resource): ?string
     {
-        assert($resource instanceof AuthorCModel);
+        \assert($resource instanceof AuthorCModel);
 
         $index = $resource[AuthorCModel::ATTRIBUTE_ID];
 
-        return $index === null ? $index : (string)$index;
+        return null === $index ? $index : (string) $index;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getAttributes($resource, ContextInterface $context): iterable
     {
-        assert($resource instanceof AuthorCModel);
+        \assert($resource instanceof AuthorCModel);
 
         return [
             AuthorCModel::ATTRIBUTE_FIRST_NAME => $resource[AuthorCModel::ATTRIBUTE_FIRST_NAME],
-            AuthorCModel::ATTRIBUTE_LAST_NAME  => $resource[AuthorCModel::ATTRIBUTE_LAST_NAME],
+            AuthorCModel::ATTRIBUTE_LAST_NAME => $resource[AuthorCModel::ATTRIBUTE_LAST_NAME],
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getRelationships($resource, ContextInterface $context): iterable
     {
-        assert($resource instanceof AuthorCModel);
+        \assert($resource instanceof AuthorCModel);
 
-        if (array_key_exists(AuthorCModel::LINK_COMMENTS, (array)$resource) === true) {
+        if (true === \array_key_exists(AuthorCModel::LINK_COMMENTS, (array) $resource)) {
             $description = [self::RELATIONSHIP_DATA => $resource[AuthorCModel::LINK_COMMENTS]];
         } else {
-            $selfLink    = $this->getRelationshipSelfLink($resource, AuthorCModel::LINK_COMMENTS);
+            $selfLink = $this->getRelationshipSelfLink($resource, AuthorCModel::LINK_COMMENTS);
             $description = [self::RELATIONSHIP_LINKS => [LinkInterface::SELF => $selfLink]];
         }
 

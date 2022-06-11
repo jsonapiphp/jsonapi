@@ -1,9 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\I18n;
 
 /**
- * Copyright 2015-2020 info@neomerx.com
+ * Copyright 2015-2020 info@neomerx.com.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,12 +21,9 @@ namespace Neomerx\JsonApi\I18n;
  */
 
 /**
- * @param string $message
- * @param mixed  ...$parameters
+ * @param mixed ...$parameters
  *
  * @see Messages::compose
- *
- * @return string
  *
  * @SuppressWarnings(PHPMD.StaticAccess)
  */

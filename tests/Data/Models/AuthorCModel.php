@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Data\Models;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,9 +24,6 @@ use ArrayAccess;
 use ArrayIterator;
 use IteratorAggregate;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class AuthorCModel implements ArrayAccess, IteratorAggregate
 {
     public const ATTRIBUTE_ID = 'author_id';
@@ -34,29 +33,22 @@ class AuthorCModel implements ArrayAccess, IteratorAggregate
 
     /**
      * Resource properties.
-     *
      */
     private array $properties = [];
 
-    /**
-     * @param int        $identity
-     * @param string     $firstName
-     * @param string     $lastName
-     * @param array|null $comments
-     */
     public function __construct(int $identity, string $firstName, string $lastName, array $comments = null)
     {
-        $this[self::ATTRIBUTE_ID]         = $identity;
+        $this[self::ATTRIBUTE_ID] = $identity;
         $this[self::ATTRIBUTE_FIRST_NAME] = $firstName;
-        $this[self::ATTRIBUTE_LAST_NAME]  = $lastName;
+        $this[self::ATTRIBUTE_LAST_NAME] = $lastName;
 
-        if ($comments !== null) {
+        if (null !== $comments) {
             $this[self::LINK_COMMENTS] = $comments;
         }
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getIterator()
     {
@@ -64,15 +56,15 @@ class AuthorCModel implements ArrayAccess, IteratorAggregate
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function offsetExists($offset)
     {
-        return array_key_exists($offset, $this->properties);
+        return \array_key_exists($offset, $this->properties);
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function offsetGet($offset)
     {
@@ -80,7 +72,7 @@ class AuthorCModel implements ArrayAccess, IteratorAggregate
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function offsetSet($offset, $value)
     {
@@ -88,7 +80,7 @@ class AuthorCModel implements ArrayAccess, IteratorAggregate
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function offsetUnset($offset)
     {

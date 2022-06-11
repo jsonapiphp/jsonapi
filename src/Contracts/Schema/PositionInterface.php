@@ -1,9 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Contracts\Schema;
 
 /**
- * Copyright 2015-2020 info@neomerx.com
+ * Copyright 2015-2020 info@neomerx.com.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +19,6 @@ namespace Neomerx\JsonApi\Contracts\Schema;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-/**
- * @package Neomerx\JsonApi
- */
 interface PositionInterface
 {
     /**
@@ -30,30 +28,22 @@ interface PositionInterface
 
     /**
      * Get level (0 for root, 1 for their children, and so on).
-     *
-     * @return int
      */
     public function getLevel(): int;
 
     /**
      * Get level ('' for root, 'relationship-name' for their children,
      * 'relationship-name.another-name' and so on).
-     *
-     * @return string
      */
     public function getPath(): string;
 
     /**
      * Get JSON type of the parent parsed result (if parent exists).
-     *
-     * @return null|string
      */
     public function getParentType(): ?string;
 
     /**
      * Get parent's relationship where this result is located (if parent exists).
-     *
-     * @return null|string
      */
     public function getParentRelationship(): ?string;
 }

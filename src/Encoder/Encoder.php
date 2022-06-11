@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Encoder;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,8 +35,6 @@ use Neomerx\JsonApi\Exceptions\InvalidArgumentException;
 use Neomerx\JsonApi\Factories\Factory;
 
 /**
- * @package Neomerx\JsonApi
- *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class Encoder implements EncoderInterface
@@ -59,21 +59,17 @@ class Encoder implements EncoderInterface
     /**
      * Default encode options.
      *
-     * @link http://php.net/manual/en/function.json-encode.php
+     * @see http://php.net/manual/en/function.json-encode.php
      */
     public const DEFAULT_JSON_ENCODE_OPTIONS = 0;
 
     /**
      * Default encode depth.
      *
-     * @link http://php.net/manual/en/function.json-encode.php
+     * @see http://php.net/manual/en/function.json-encode.php
      */
     public const DEFAULT_JSON_ENCODE_DEPTH = 512;
 
-    /**
-     * @param FactoryInterface         $factory
-     * @param SchemaContainerInterface $container
-     */
     public function __construct(
         FactoryInterface $factory,
         SchemaContainerInterface $container
@@ -84,105 +80,98 @@ class Encoder implements EncoderInterface
     /**
      * Create encoder instance.
      *
-     * @param array $schemas Schema providers.
-     *
-     * @return EncoderInterface
+     * @param array $schemas schema providers
      */
     public static function instance(array $schemas = []): EncoderInterface
     {
-        $factory   = static::createFactory();
+        $factory = static::createFactory();
         $container = $factory->createSchemaContainer($schemas);
-        $encoder   = $factory->createEncoder($container);
+        $encoder = $factory->createEncoder($container);
 
         return $encoder;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function encodeData($data): string
     {
         // encode to json
-        $array  = $this->encodeDataToArray($data);
+        $array = $this->encodeDataToArray($data);
         $result = $this->encodeToJson($array);
 
         return $result;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function encodeIdentifiers($data): string
     {
         // encode to json
-        $array  = $this->encodeIdentifiersToArray($data);
+        $array = $this->encodeIdentifiersToArray($data);
         $result = $this->encodeToJson($array);
 
         return $result;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function encodeError(ErrorInterface $error): string
     {
         // encode to json
-        $array  = $this->encodeErrorToArray($error);
+        $array = $this->encodeErrorToArray($error);
         $result = $this->encodeToJson($array);
 
         return $result;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function encodeErrors(iterable $errors): string
     {
         // encode to json
-        $array  = $this->encodeErrorsToArray($errors);
+        $array = $this->encodeErrorsToArray($errors);
         $result = $this->encodeToJson($array);
 
         return $result;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function encodeMeta($meta): string
     {
         // encode to json
-        $array  = $this->encodeMetaToArray($meta);
+        $array = $this->encodeMetaToArray($meta);
         $result = $this->encodeToJson($array);
 
         return $result;
     }
 
-    /**
-     * @return FactoryInterface
-     */
     protected static function createFactory(): FactoryInterface
     {
         return new Factory();
     }
 
     /**
-     * @param object|iterable|null $data Data to encode.
-     *
-     * @return array
+     * @param object|iterable|null $data data to encode
      *
      * @SuppressWarnings(PHPMD.ElseExpression)
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
     protected function encodeDataToArray($data): array
     {
-        if (\is_array($data) === false && \is_object($data) === false && $data !== null) {
+        if (false === \is_array($data) && false === \is_object($data) && null !== $data) {
             throw new InvalidArgumentException();
         }
 
         $context = $this->getFactory()->createParserContext($this->getFieldSets(), $this->getIncludePaths());
-        $parser  = $this->getFactory()->createParser($this->getSchemaContainer(), $context);
-        $writer  = $this->createDocumentWriter();
-        $filter  = $this->getFactory()->createFieldSetFilter($this->getFieldSets());
+        $parser = $this->getFactory()->createParser($this->getSchemaContainer(), $context);
+        $writer = $this->createDocumentWriter();
+        $filter = $this->getFactory()->createFieldSetFilter($this->getFieldSets());
 
         // write header
         $this->writeHeader($writer);
@@ -191,7 +180,7 @@ class Encoder implements EncoderInterface
         foreach ($parser->parse($data, $this->getIncludePaths()) as $item) {
             if ($item instanceof ResourceInterface) {
                 if ($item->getPosition()->getLevel() > ParserInterface::ROOT_LEVEL) {
-                    if ($filter->shouldOutputRelationship($item->getPosition()) === true) {
+                    if (true === $filter->shouldOutputRelationship($item->getPosition())) {
                         $writer->addResourceToIncluded($item, $filter);
                     }
                 } else {
@@ -202,10 +191,10 @@ class Encoder implements EncoderInterface
                 $writer->addIdentifierToData($item);
             } else {
                 \assert($item instanceof DocumentDataInterface);
-                \assert($item->getPosition()->getLevel() === 0);
-                if ($item->isCollection() === true) {
+                \assert(0 === $item->getPosition()->getLevel());
+                if (true === $item->isCollection()) {
                     $writer->setDataAsArray();
-                } elseif ($item->isNull() === true) {
+                } elseif (true === $item->isNull()) {
                     $writer->setNullToData();
                 }
             }
@@ -220,25 +209,23 @@ class Encoder implements EncoderInterface
     }
 
     /**
-     * @param object|iterable|null $data Data to encode.
-     *
-     * @return array
+     * @param object|iterable|null $data data to encode
      *
      * @SuppressWarnings(PHPMD.ElseExpression)
      */
     protected function encodeIdentifiersToArray($data): array
     {
         $context = $this->getFactory()->createParserContext($this->getFieldSets(), $this->getIncludePaths());
-        $parser  = $this->getFactory()->createParser($this->getSchemaContainer(), $context);
-        $writer  = $this->createDocumentWriter();
-        $filter  = $this->getFactory()->createFieldSetFilter($this->getFieldSets());
+        $parser = $this->getFactory()->createParser($this->getSchemaContainer(), $context);
+        $writer = $this->createDocumentWriter();
+        $filter = $this->getFactory()->createFieldSetFilter($this->getFieldSets());
 
         // write header
         $this->writeHeader($writer);
 
         // write body
-        $includePaths   = $this->getIncludePaths();
-        $expectIncluded = empty($includePaths) === false;
+        $includePaths = $this->getIncludePaths();
+        $expectIncluded = false === empty($includePaths);
 
         // https://github.com/neomerx/json-api/issues/218
         //
@@ -255,13 +242,13 @@ class Encoder implements EncoderInterface
         foreach ($parser->parse($data, $includePaths) as $item) {
             if ($item instanceof ResourceInterface) {
                 if ($item->getPosition()->getLevel() > ParserInterface::ROOT_LEVEL) {
-                    \assert($expectIncluded === true);
-                    if ($filter->shouldOutputRelationship($item->getPosition()) === true) {
+                    \assert(true === $expectIncluded);
+                    if (true === $filter->shouldOutputRelationship($item->getPosition())) {
                         $writer->addResourceToIncluded($item, $filter);
                     }
                 } else {
                     $writer->addIdentifierToData($item);
-                    if ($expectIncluded === true) {
+                    if (true === $expectIncluded) {
                         $writer->addResourceToIncluded($item, $filter);
                     }
                 }
@@ -270,10 +257,10 @@ class Encoder implements EncoderInterface
                 $writer->addIdentifierToData($item);
             } else {
                 \assert($item instanceof DocumentDataInterface);
-                \assert($item->getPosition()->getLevel() === 0);
-                if ($item->isCollection() === true) {
+                \assert(0 === $item->getPosition()->getLevel());
+                if (true === $item->isCollection()) {
                     $writer->setDataAsArray();
-                } elseif ($item->isNull() === true) {
+                } elseif (true === $item->isNull()) {
                     $writer->setNullToData();
                 }
             }
@@ -287,11 +274,6 @@ class Encoder implements EncoderInterface
         return $array;
     }
 
-    /**
-     * @param ErrorInterface $error
-     *
-     * @return array
-     */
     protected function encodeErrorToArray(ErrorInterface $error): array
     {
         $writer = $this->createErrorWriter();
@@ -310,11 +292,6 @@ class Encoder implements EncoderInterface
         return $array;
     }
 
-    /**
-     * @param iterable $errors
-     *
-     * @return array
-     */
     protected function encodeErrorsToArray(iterable $errors): array
     {
         $writer = $this->createErrorWriter();
@@ -339,8 +316,6 @@ class Encoder implements EncoderInterface
 
     /**
      * @param $meta
-     *
-     * @return array
      */
     protected function encodeMetaToArray($meta): array
     {
@@ -362,59 +337,42 @@ class Encoder implements EncoderInterface
         return $array;
     }
 
-    /**
-     * @param BaseWriterInterface $writer
-     *
-     * @return void
-     */
     protected function writeHeader(BaseWriterInterface $writer): void
     {
-        if ($this->hasMeta() === true) {
+        if (true === $this->hasMeta()) {
             $writer->setMeta($this->getMeta());
         }
 
-        if ($this->hasJsonApiVersion() === true) {
+        if (true === $this->hasJsonApiVersion()) {
             $writer->setJsonApiVersion($this->getJsonApiVersion());
         }
 
-        if ($this->hasJsonApiMeta() === true) {
+        if (true === $this->hasJsonApiMeta()) {
             $writer->setJsonApiMeta($this->getJsonApiMeta());
         }
 
-        if ($this->hasLinks() === true) {
+        if (true === $this->hasLinks()) {
             $writer->setLinks($this->getLinks());
         }
 
-        if ($this->hasProfile() === true) {
+        if (true === $this->hasProfile()) {
             $writer->setProfile($this->getProfile());
         }
     }
 
-    /**
-     * @param BaseWriterInterface $writer
-     *
-     * @return void
-     */
     protected function writeFooter(BaseWriterInterface $writer): void
     {
-        \assert($writer !== null);
+        \assert(null !== $writer);
     }
 
     /**
      * Encode array to JSON.
-     *
-     * @param array $document
-     *
-     * @return string
      */
     protected function encodeToJson(array $document): string
     {
         return \json_encode($document, $this->getEncodeOptions(), $this->getEncodeDepth());
     }
 
-    /**
-     * @return DocumentWriterInterface
-     */
     private function createDocumentWriter(): DocumentWriterInterface
     {
         $writer = $this->getFactory()->createDocumentWriter();
@@ -423,9 +381,6 @@ class Encoder implements EncoderInterface
         return $writer;
     }
 
-    /**
-     * @return ErrorWriterInterface
-     */
     private function createErrorWriter(): ErrorWriterInterface
     {
         $writer = $this->getFactory()->createErrorWriter();

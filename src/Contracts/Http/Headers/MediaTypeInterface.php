@@ -1,9 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Contracts\Http\Headers;
 
 /**
- * Copyright 2015-2020 info@neomerx.com
+ * Copyright 2015-2020 info@neomerx.com.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +18,6 @@ namespace Neomerx\JsonApi\Contracts\Http\Headers;
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
-
-/**
- * @package Neomerx\JsonApi
  */
 interface MediaTypeInterface
 {
@@ -34,22 +32,16 @@ interface MediaTypeInterface
 
     /**
      * Get media type (no subtype).
-     *
-     * @return string
      */
     public function getType(): string;
 
     /**
      * Get media subtype.
-     *
-     * @return string
      */
     public function getSubType(): string;
 
     /**
      * Get full media type (type/subtype).
-     *
-     * @return string
      */
     public function getMediaType(): string;
 
@@ -62,19 +54,11 @@ interface MediaTypeInterface
 
     /**
      * Compare media types.
-     *
-     * @param MediaTypeInterface $mediaType
-     *
-     * @return bool
      */
     public function matchesTo(MediaTypeInterface $mediaType): bool;
 
     /**
      * Compare media types.
-     *
-     * @param MediaTypeInterface $mediaType
-     *
-     * @return bool
      */
     public function equalsTo(MediaTypeInterface $mediaType): bool;
 }

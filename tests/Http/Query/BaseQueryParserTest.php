@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Http\Query;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,15 +31,12 @@ use Neomerx\Tests\JsonApi\Data\Models\Comment;
 use Neomerx\Tests\JsonApi\Data\Schemas\AuthorSchema;
 use Neomerx\Tests\JsonApi\Data\Schemas\CommentSchema;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class BaseQueryParserTest extends BaseTestCase
 {
     /**
      * Test query.
      */
-    public function testEmptyQueryParams(): void
+    public function test_empty_query_params(): void
     {
         $queryParameters = [];
 
@@ -50,7 +49,7 @@ class BaseQueryParserTest extends BaseTestCase
     /**
      * Test query.
      */
-    public function testIncludes(): void
+    public function test_includes(): void
     {
         $queryParameters = [
             BaseQueryParser::PARAM_INCLUDE => 'comments,   comments.author',
@@ -60,7 +59,7 @@ class BaseQueryParserTest extends BaseTestCase
 
         self::assertEquals(
             [
-                'comments'        => ['comments'],
+                'comments' => ['comments'],
                 'comments.author' => ['comments', 'author'],
             ],
             $this->iterableToArray($parser->getIncludes())
@@ -70,7 +69,7 @@ class BaseQueryParserTest extends BaseTestCase
     /**
      * Test query.
      */
-    public function testIncludePaths(): void
+    public function test_include_paths(): void
     {
         $queryParameters = [
             BaseQueryParser::PARAM_INCLUDE => 'comments,   comments.author',
@@ -90,7 +89,7 @@ class BaseQueryParserTest extends BaseTestCase
     /**
      * That's a special case to test possible issues with `empty` function which thinks "0" is an empty string.
      */
-    public function testIncludesForStringWithZeroes1(): void
+    public function test_includes_for_string_with_zeroes1(): void
     {
         $queryParameters = [
             BaseQueryParser::PARAM_INCLUDE => '0',
@@ -109,7 +108,7 @@ class BaseQueryParserTest extends BaseTestCase
     /**
      * That's a special case to test possible issues with `empty` function which thinks "0" is an empty string.
      */
-    public function testIncludesForStringWithZeroes2(): void
+    public function test_includes_for_string_with_zeroes2(): void
     {
         $queryParameters = [
             BaseQueryParser::PARAM_INCLUDE => '0,1',
@@ -129,12 +128,12 @@ class BaseQueryParserTest extends BaseTestCase
     /**
      * Test query.
      */
-    public function testFields(): void
+    public function test_fields(): void
     {
         $queryParameters = [
             BaseQueryParser::PARAM_FIELDS => [
                 'articles' => 'title,     body      ',
-                'people'   => 'name',
+                'people' => 'name',
             ],
         ];
 
@@ -143,7 +142,7 @@ class BaseQueryParserTest extends BaseTestCase
         self::assertEquals(
             [
                 'articles' => ['title', 'body'],
-                'people'   => ['name'],
+                'people' => ['name'],
             ],
             $this->iterableToArray($parser->getFields())
         );
@@ -152,7 +151,7 @@ class BaseQueryParserTest extends BaseTestCase
     /**
      * Test query.
      */
-    public function testSorts(): void
+    public function test_sorts(): void
     {
         $queryParameters = [
             BaseQueryParser::PARAM_SORT => '-created,title,+updated',
@@ -163,7 +162,7 @@ class BaseQueryParserTest extends BaseTestCase
         self::assertEquals(
             [
                 'created' => false,
-                'title'   => true,
+                'title' => true,
                 'updated' => true,
             ],
             $this->iterableToArray($parser->getSorts())
@@ -173,7 +172,7 @@ class BaseQueryParserTest extends BaseTestCase
     /**
      * Test query.
      */
-    public function testInvalidIncludesEmptyValue(): void
+    public function test_invalid_includes_empty_value(): void
     {
         $this->expectException(JsonApiException::class);
 
@@ -187,7 +186,7 @@ class BaseQueryParserTest extends BaseTestCase
     /**
      * Test query.
      */
-    public function testInvalidIncludesNotString1(): void
+    public function test_invalid_includes_not_string1(): void
     {
         $this->expectException(JsonApiException::class);
 
@@ -201,7 +200,7 @@ class BaseQueryParserTest extends BaseTestCase
     /**
      * Test query.
      */
-    public function testInvalidIncludesNotString2(): void
+    public function test_invalid_includes_not_string2(): void
     {
         $this->expectException(JsonApiException::class);
 
@@ -215,7 +214,7 @@ class BaseQueryParserTest extends BaseTestCase
     /**
      * Test query.
      */
-    public function testInvalidIncludesEmptyString1(): void
+    public function test_invalid_includes_empty_string1(): void
     {
         $this->expectException(JsonApiException::class);
 
@@ -229,7 +228,7 @@ class BaseQueryParserTest extends BaseTestCase
     /**
      * Test query.
      */
-    public function testInvalidIncludesEmptyString2(): void
+    public function test_invalid_includes_empty_string2(): void
     {
         $this->expectException(JsonApiException::class);
 
@@ -243,7 +242,7 @@ class BaseQueryParserTest extends BaseTestCase
     /**
      * Test query.
      */
-    public function testInvalidFields(): void
+    public function test_invalid_fields(): void
     {
         $this->expectException(JsonApiException::class);
 
@@ -257,31 +256,28 @@ class BaseQueryParserTest extends BaseTestCase
     /**
      * Shows how to integrate base query parser with EncodingParameters.
      *
-     * @return void
-     *
      * @see https://github.com/neomerx/json-api/issues/198
      */
-    public function testIntegrationWithEncodingParameters(): void
+    public function test_integration_with_encoding_parameters(): void
     {
         $profileUrl1 = 'http://example1.com/foo';
         $profileUrl2 = 'http://example2.com/boo';
 
         $queryParameters = [
-            BaseQueryParser::PARAM_FIELDS  => [
+            BaseQueryParser::PARAM_FIELDS => [
                 'comments' => Comment::LINK_AUTHOR . ',     ' . Comment::ATTRIBUTE_BODY . '      ',
-                'people'   => Author::ATTRIBUTE_FIRST_NAME,
+                'people' => Author::ATTRIBUTE_FIRST_NAME,
             ],
-            BaseQueryParser::PARAM_SORT    => '-created,title,+updated',
+            BaseQueryParser::PARAM_SORT => '-created,title,+updated',
             BaseQueryParser::PARAM_INCLUDE => Comment::LINK_AUTHOR . ',   ' .
                 Comment::LINK_AUTHOR . '.' . Author::LINK_COMMENTS,
-            BaseQueryParser::PARAM_PROFILE => urlencode(implode(' ', [$profileUrl1, $profileUrl2])),
+            BaseQueryParser::PARAM_PROFILE => \urlencode(\implode(' ', [$profileUrl1, $profileUrl2])),
         ];
 
         // It is expected that classes that encapsulate/extend BaseQueryParser would add features
         // such filters/pagination parsing, validation, etc. Though for simplicity we omit adding
         // them here and check how it integrates with EncodingParameters.
-        $parser = new class ($queryParameters) extends BaseQueryParser
-        {
+        $parser = new class($queryParameters) extends BaseQueryParser {
             private ?array $fields = null;
 
             private ?array $sorts = null;
@@ -290,59 +286,42 @@ class BaseQueryParserTest extends BaseTestCase
 
             private ?array $profile = null;
 
-            /**
-             * @return array
-             */
             public function getFields(): array
             {
-                if ($this->fields === null) {
+                if (null === $this->fields) {
                     $this->fields = $this->iterableToArray(parent::getFields());
                 }
 
                 return $this->fields;
             }
 
-            /**
-             * @return array
-             */
             public function getSorts(): array
             {
-                if ($this->sorts === null) {
+                if (null === $this->sorts) {
                     $this->sorts = $this->iterableToArray(parent::getSorts());
                 }
 
                 return $this->sorts;
             }
 
-            /**
-             * @return array
-             */
             public function getProfileUrls(): array
             {
-                if ($this->profile === null) {
+                if (null === $this->profile) {
                     $this->profile = $this->iterableToArray(parent::getProfileUrls());
                 }
 
                 return $this->profile;
             }
 
-            /**
-             * @return array
-             */
             public function getIncludes(): array
             {
-                if ($this->includes === null) {
-                    $this->includes = array_keys($this->iterableToArray(parent::getIncludes()));
+                if (null === $this->includes) {
+                    $this->includes = \array_keys($this->iterableToArray(parent::getIncludes()));
                 }
 
                 return $this->includes;
             }
 
-            /**
-             * @param iterable $iterable
-             *
-             * @return array
-             */
             private function iterableToArray(iterable $iterable): array
             {
                 $result = [];
@@ -359,14 +338,14 @@ class BaseQueryParserTest extends BaseTestCase
         self::assertSame(
             [
                 'comments' => [Comment::LINK_AUTHOR, Comment::ATTRIBUTE_BODY],
-                'people'   => [Author::ATTRIBUTE_FIRST_NAME],
+                'people' => [Author::ATTRIBUTE_FIRST_NAME],
             ],
             $parser->getFields()
         );
         self::assertSame(
             [
                 'created' => false,
-                'title'   => true,
+                'title' => true,
                 'updated' => true,
             ],
             $parser->getSorts()
@@ -391,8 +370,8 @@ class BaseQueryParserTest extends BaseTestCase
         //
 
         // firstly setup some data
-        $author                          = Author::instance(9, 'Dan', 'Gebhardt');
-        $comments                        = [
+        $author = Author::instance(9, 'Dan', 'Gebhardt');
+        $comments = [
             Comment::instance(5, 'First!', $author),
             Comment::instance(12, 'I like XML better', $author),
         ];
@@ -401,7 +380,7 @@ class BaseQueryParserTest extends BaseTestCase
         // and encode with params taken from the parser
         $actual = Encoder::instance(
             [
-                Author::class  => AuthorSchema::class,
+                Author::class => AuthorSchema::class,
                 Comment::class => CommentSchema::class,
             ]
         )
@@ -468,21 +447,11 @@ EOL;
         self::assertJsonStringEqualsJsonString($expected, $actual);
     }
 
-    /**
-     * @param array $queryParameters
-     *
-     * @return BaseQueryParserInterface
-     */
     private function createParser(array $queryParameters): BaseQueryParserInterface
     {
         return new BaseQueryParser($queryParameters);
     }
 
-    /**
-     * @param iterable $iterable
-     *
-     * @return array
-     */
     private function iterableToArray(iterable $iterable): array
     {
         $result = [];

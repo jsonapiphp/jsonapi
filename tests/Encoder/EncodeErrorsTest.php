@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Encoder;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,20 +28,17 @@ use Neomerx\JsonApi\Schema\Link;
 use Neomerx\JsonApi\Schema\LinkWithAliases;
 use Neomerx\Tests\JsonApi\BaseTestCase;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class EncodeErrorsTest extends BaseTestCase
 {
     /**
      * Test encode error.
      */
-    public function testEncodeError(): void
+    public function test_encode_error(): void
     {
-        $error   = $this->getError();
+        $error = $this->getError();
         $encoder = Encoder::instance();
 
-        $actual   = $encoder->encodeError($error);
+        $actual = $encoder->encodeError($error);
         $expected = <<<EOL
         {
             "errors":[{
@@ -63,9 +62,9 @@ EOL;
     /**
      * Test encode error array.
      */
-    public function testEncodeErrorsArray(): void
+    public function test_encode_errors_array(): void
     {
-        $error   = $this->getError();
+        $error = $this->getError();
         $encoder = Encoder::instance();
 
         $actual = $encoder->encodeErrors([$error]);
@@ -93,7 +92,7 @@ EOL;
     /**
      * Test encode error array.
      */
-    public function testEncodeErrorsCollection(): void
+    public function test_encode_errors_collection(): void
     {
         $errors = new ErrorCollection();
         $errors->add($this->getError());
@@ -127,11 +126,11 @@ EOL;
      *
      * @see https://github.com/neomerx/json-api/issues/62
      */
-    public function testEncodeEmptyError(): void
+    public function test_encode_empty_error(): void
     {
-        $error   = new Error();
+        $error = new Error();
         $encoder = Encoder::instance();
-        $actual  = $encoder->encodeError($error);
+        $actual = $encoder->encodeError($error);
 
         $expected = <<<EOL
         {
@@ -148,7 +147,7 @@ EOL;
      *
      * @see https://github.com/neomerx/json-api/issues/151
      */
-    public function testEncodeEmptyErrorArray(): void
+    public function test_encode_empty_error_array(): void
     {
         $actual = Encoder::instance()->encodeErrors([]);
 
@@ -165,15 +164,15 @@ EOL;
      *
      * @see https://github.com/neomerx/json-api/issues/171
      */
-    public function testEncodeErrorWithMetaAndJsonApi(): void
+    public function test_encode_error_with_meta_and_json_api(): void
     {
-        $error   = $this->getError();
+        $error = $this->getError();
         $encoder = Encoder::instance();
 
         $actual = $encoder
             ->withJsonApiVersion(Encoder::JSON_API_VERSION)
             ->withJsonApiMeta(['some' => 'meta'])
-            ->withMeta(["copyright" => "Copyright 2015 Example Corp."])
+            ->withMeta(['copyright' => 'Copyright 2015 Example Corp.'])
             ->encodeError($error);
 
         $expected = <<<EOL
@@ -203,9 +202,6 @@ EOL;
         self::assertJsonStringEqualsJsonString($expected, $actual);
     }
 
-    /**
-     * @return ErrorInterface
-     */
     private function getError(): ErrorInterface
     {
         return new Error(

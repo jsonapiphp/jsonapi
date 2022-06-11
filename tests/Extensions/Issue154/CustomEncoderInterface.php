@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue154;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,16 +23,10 @@ namespace Neomerx\Tests\JsonApi\Extensions\Issue154;
 use Closure;
 use Neomerx\JsonApi\Contracts\Encoder\EncoderInterface;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 interface CustomEncoderInterface extends EncoderInterface
 {
     /**
-     * @param string         $type
      * @param string|Closure $schema
-     *
-     * @return self
      */
     public function addSchema(string $type, $schema): self;
 }

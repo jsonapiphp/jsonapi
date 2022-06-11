@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue236;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,13 +23,10 @@ namespace Neomerx\Tests\JsonApi\Extensions\Issue236;
 use Neomerx\JsonApi\Contracts\Schema\ContextInterface;
 use Neomerx\Tests\JsonApi\Data\Models\Author;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 final class CustomAuthorSchema extends BaseCustomSchema
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getType(): string
     {
@@ -35,17 +34,17 @@ final class CustomAuthorSchema extends BaseCustomSchema
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getId($resource): ?string
     {
         \assert($resource instanceof Author);
 
-        return (string)$resource->{Author::ATTRIBUTE_ID};
+        return (string) $resource->{Author::ATTRIBUTE_ID};
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getAttributes($resource, ContextInterface $context): iterable
     {
@@ -53,12 +52,12 @@ final class CustomAuthorSchema extends BaseCustomSchema
 
         return [
             Author::ATTRIBUTE_FIRST_NAME => $resource->{Author::ATTRIBUTE_FIRST_NAME},
-            Author::ATTRIBUTE_LAST_NAME  => $resource->{Author::ATTRIBUTE_LAST_NAME},
+            Author::ATTRIBUTE_LAST_NAME => $resource->{Author::ATTRIBUTE_LAST_NAME},
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getNonHorrificRelationships($resource, string $currentPath): iterable
     {
@@ -70,16 +69,16 @@ final class CustomAuthorSchema extends BaseCustomSchema
         return [
             Author::LINK_COMMENTS => [
                 self::RELATIONSHIP_LINKS_RELATED => false,
-                self::RELATIONSHIP_HAS_DATA      => false,
-                self::RELATIONSHIP_DATA          => function (): void {
+                self::RELATIONSHIP_HAS_DATA => false,
+                self::RELATIONSHIP_DATA => function (): void {
                     throw new \LogicException('I told you, I don\'t have any data.');
                 },
-                self::RELATIONSHIP_META          => [
-                    'current_path'             => $currentPath,
-                    'fields_filter'            => $this->getSchemaFields()->getRequestedFields($this->getType()),
+                self::RELATIONSHIP_META => [
+                    'current_path' => $currentPath,
+                    'fields_filter' => $this->getSchemaFields()->getRequestedFields($this->getType()),
                     'relationships_to_include' => $this->getSchemaFields()->getRequestedRelationships($currentPath),
                 ],
-            ]
+            ],
         ];
     }
 }

@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Parser\RelationshipData;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,9 +29,6 @@ use Neomerx\JsonApi\Contracts\Schema\IdentifierInterface as SchemaIdentifierInte
 use Neomerx\JsonApi\Contracts\Schema\PositionInterface;
 use Neomerx\JsonApi\Contracts\Schema\SchemaContainerInterface;
 
-/**
- * @package Neomerx\JsonApi
- */
 abstract class BaseRelationshipData implements RelationshipDataInterface
 {
     private \Neomerx\JsonApi\Contracts\Factories\FactoryInterface $factory;
@@ -40,28 +39,20 @@ abstract class BaseRelationshipData implements RelationshipDataInterface
 
     private \Neomerx\JsonApi\Contracts\Schema\PositionInterface $position;
 
-    /**
-     * @param FactoryInterface         $factory
-     * @param SchemaContainerInterface $schemaContainer
-     * @param EditableContextInterface $context
-     * @param PositionInterface        $position
-     */
     public function __construct(
         FactoryInterface $factory,
         SchemaContainerInterface $schemaContainer,
         EditableContextInterface $context,
         PositionInterface $position
     ) {
-        $this->factory         = $factory;
+        $this->factory = $factory;
         $this->schemaContainer = $schemaContainer;
-        $this->context         = $context;
-        $this->position        = $position;
+        $this->context = $context;
+        $this->position = $position;
     }
 
     /**
      * @param mixed $resource
-     *
-     * @return ResourceInterface
      */
     protected function createParsedResource($resource): ResourceInterface
     {
@@ -79,8 +70,6 @@ abstract class BaseRelationshipData implements RelationshipDataInterface
     }
 
     /**
-     * @param SchemaIdentifierInterface $identifier
-     *
      * @return ResourceInterface
      */
     protected function createParsedIdentifier(SchemaIdentifierInterface $identifier): ParserIdentifierInterface

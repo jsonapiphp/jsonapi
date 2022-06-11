@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Contracts\Encoder;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,9 +24,6 @@ use Neomerx\JsonApi\Contracts\Schema\ErrorInterface;
 use Neomerx\JsonApi\Contracts\Schema\LinkInterface;
 use Neomerx\JsonApi\Contracts\Schema\LinkWithAliasesInterface;
 
-/**
- * @package Neomerx\JsonApi
- */
 interface EncoderInterface
 {
     /** JSON API version implemented by the encoder */
@@ -32,10 +31,6 @@ interface EncoderInterface
 
     /**
      * This prefix will be used for URL links while encoding.
-     *
-     * @param string $prefix
-     *
-     * @return self
      */
     public function withUrlPrefix(string $prefix): self;
 
@@ -47,10 +42,6 @@ interface EncoderInterface
      *     'relationship1',
      *     'relationship1.sub-relationship2',
      * ]
-     *
-     * @param iterable $paths
-     *
-     * @return self
      */
     public function withIncludedPaths(iterable $paths): self;
 
@@ -64,54 +55,34 @@ interface EncoderInterface
      *
      *     // 'type3' is not on the list so all its attributes and relationships will be in output.
      * ]
-     *
-     * @param array $fieldSets
-     *
-     * @return self
      */
     public function withFieldSets(array $fieldSets): self;
 
     /**
      * Set JSON encode options.
      *
-     * @link http://php.net/manual/en/function.json-encode.php
-     *
-     * @param int $options
-     *
-     * @return self
+     * @see http://php.net/manual/en/function.json-encode.php
      */
     public function withEncodeOptions(int $options): self;
 
     /**
      * Set JSON encode depth.
      *
-     * @link http://php.net/manual/en/function.json-encode.php
-     *
-     * @param int $depth
-     *
-     * @return self
+     * @see http://php.net/manual/en/function.json-encode.php
      */
     public function withEncodeDepth(int $depth): self;
 
     /**
      * Add links that will be encoded with data. Links must be in `$name => $link, ...` format.
      *
-     * @param array $links
-     *
      * @see LinkInterface
-     *
-     * @return self
      */
     public function withLinks(array $links): self;
 
     /**
      * Add profile links that will be encoded with data. Links must be in `$link1, $link2, ...` format.
      *
-     * @param iterable $links
-     *
      * @see LinkWithAliasesInterface
-     *
-     * @return self
      */
     public function withProfile(iterable $links): self;
 
@@ -119,17 +90,11 @@ interface EncoderInterface
      * Add meta information that will be encoded with data. If 'null' meta will not appear in a document.
      *
      * @param mixed|null $meta
-     *
-     * @return self
      */
     public function withMeta($meta): self;
 
     /**
      * If called JSON API version information will be added to a document.
-     *
-     * @param string $version
-     *
-     * @return self
      *
      * @see http://jsonapi.org/format/#document-jsonapi-object
      */
@@ -140,8 +105,6 @@ interface EncoderInterface
      *
      * @param mixed $meta
      *
-     * @return self
-     *
      * @see http://jsonapi.org/format/#document-jsonapi-object
      */
     public function withJsonApiMeta($meta): self;
@@ -150,11 +113,8 @@ interface EncoderInterface
      * Add 'self' Link to top-level document's 'links' section for relationship specified.
      *
      * @param object $resource
-     * @param string $relationshipName
      *
      * @see http://jsonapi.org/format/#fetching-relationships
-     *
-     * @return self
      */
     public function withRelationshipSelfLink($resource, string $relationshipName): self;
 
@@ -162,45 +122,32 @@ interface EncoderInterface
      * Add 'related' Link to top-level document's 'links' section for relationship specified.
      *
      * @param object $resource
-     * @param string $relationshipName
      *
      * @see http://jsonapi.org/format/#fetching-relationships
-     *
-     * @return self
      */
     public function withRelationshipRelatedLink($resource, string $relationshipName): self;
 
     /**
      * Reset encoder settings to defaults.
-     *
-     * @return self
      */
     public function reset(): self;
 
     /**
      * Encode input as JSON API string.
      *
-     * @param object|iterable|null $data Data to encode.
-     *
-     * @return string
+     * @param object|iterable|null $data data to encode
      */
     public function encodeData($data): string;
 
     /**
      * Encode input as JSON API string with a list of resource identifiers.
      *
-     * @param object|iterable|null $data Data to encode.
-     *
-     * @return string
+     * @param object|iterable|null $data data to encode
      */
     public function encodeIdentifiers($data): string;
 
     /**
      * Encode error as JSON API string.
-     *
-     * @param ErrorInterface $error
-     *
-     * @return string
      */
     public function encodeError(ErrorInterface $error): string;
 
@@ -208,19 +155,13 @@ interface EncoderInterface
      * Encode errors as JSON API string.
      *
      * @see ErrorInterface
-     *
-     * @param iterable $errors
-     *
-     * @return string
      */
     public function encodeErrors(iterable $errors): string;
 
     /**
      * Encode input meta as JSON API string.
      *
-     * @param mixed $meta Meta information.
-     *
-     * @return string
+     * @param mixed $meta meta information
      */
     public function encodeMeta($meta): string;
 }

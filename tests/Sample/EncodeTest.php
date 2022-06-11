@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Sample;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,9 +23,6 @@ namespace Neomerx\Tests\JsonApi\Sample;
 use Neomerx\Samples\JsonApi\Application\EncodeSamples;
 use Neomerx\Tests\JsonApi\BaseTestCase;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class EncodeTest extends BaseTestCase
 {
     private \Neomerx\Samples\JsonApi\Application\EncodeSamples $samples;
@@ -40,9 +39,9 @@ class EncodeTest extends BaseTestCase
     /**
      * Test encode sample.
      */
-    public function testBasicExample(): void
+    public function test_basic_example(): void
     {
-        $actual   = $this->samples->getBasicExample();
+        $actual = $this->samples->getBasicExample();
         $expected = <<<EOL
         {
             "data" : {
@@ -65,9 +64,9 @@ EOL;
     /**
      * Test encode sample.
      */
-    public function testIncludedObjectsExample(): void
+    public function test_included_objects_example(): void
     {
-        $actual   = $this->samples->getIncludedObjectsExample();
+        $actual = $this->samples->getIncludedObjectsExample();
         $expected = <<<EOL
         {
             "data" : {
@@ -163,9 +162,9 @@ EOL;
     /**
      * Test encode sample.
      */
-    public function testSparseAndFieldSetsExample(): void
+    public function test_sparse_and_field_sets_example(): void
     {
-        $actual   = $this->samples->getSparseAndFieldSetsExample();
+        $actual = $this->samples->getSparseAndFieldSetsExample();
         $expected = <<<EOL
         {
             "data" : {
@@ -220,9 +219,9 @@ EOL;
     /**
      * Test encode sample.
      */
-    public function testTopLevelMetaAndLinksExample(): void
+    public function test_top_level_meta_and_links_example(): void
     {
-        $actual   = $this->samples->getTopLevelMetaAndLinksExample();
+        $actual = $this->samples->getTopLevelMetaAndLinksExample();
         $expected = <<<EOL
         {
             "meta" : {
@@ -259,9 +258,9 @@ EOL;
     /**
      * Test encode sample.
      */
-    public function testDynamicSchemaExample(): void
+    public function test_dynamic_schema_example(): void
     {
-        $actual   = $this->samples->getDynamicSchemaExample();
+        $actual = $this->samples->getDynamicSchemaExample();
         $expected = <<<EOL
         {
             "data" : {
@@ -318,7 +317,7 @@ EOL;
     /**
      * Test performance sample.
      */
-    public function testPerformanceTestForSmallNestedResources(): void
+    public function test_performance_test_for_small_nested_resources(): void
     {
         self::assertGreaterThan(0, $this->samples->runPerformanceTestForSmallNestedResources(10)[0]);
     }
@@ -326,7 +325,7 @@ EOL;
     /**
      * Test performance sample.
      */
-    public function testPerformanceTestForBigCollection(): void
+    public function test_performance_test_for_big_collection(): void
     {
         self::assertGreaterThan(0, $this->samples->runPerformanceTestForBigCollection(10)[0]);
     }

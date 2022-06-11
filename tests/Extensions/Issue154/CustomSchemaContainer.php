@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue154;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,15 +23,12 @@ namespace Neomerx\Tests\JsonApi\Extensions\Issue154;
 use Neomerx\JsonApi\Contracts\Schema\SchemaInterface;
 use Neomerx\JsonApi\Schema\SchemaContainer;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class CustomSchemaContainer extends SchemaContainer implements CustomContainerInterface
 {
     /**
      * This function guarantees that method can be used in child classes which is used in 3rd party libs.
      *
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function getSchemaByType(string $type): SchemaInterface
     {

@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Representation;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,9 +28,6 @@ use Neomerx\JsonApi\Contracts\Representation\DocumentWriterInterface;
 use Neomerx\JsonApi\Contracts\Representation\FieldSetFilterInterface;
 use Neomerx\JsonApi\Contracts\Schema\DocumentInterface;
 
-/**
- * @package Neomerx\JsonApi
- */
 class DocumentWriter extends BaseWriter implements DocumentWriterInterface
 {
     /**
@@ -37,19 +36,19 @@ class DocumentWriter extends BaseWriter implements DocumentWriterInterface
     private $addedResources;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function setNullToData(): DocumentWriterInterface
     {
         // check data has not been added yet
-        \assert(isset($this->data[DocumentInterface::KEYWORD_DATA]) === false);
+        \assert(false === isset($this->data[DocumentInterface::KEYWORD_DATA]));
         $this->data[DocumentInterface::KEYWORD_DATA] = null;
 
         return $this;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function addIdentifierToData(IdentifierInterface $identifier): DocumentWriterInterface
     {
@@ -59,7 +58,7 @@ class DocumentWriter extends BaseWriter implements DocumentWriterInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function addResourceToData(
         ResourceInterface $resource,
@@ -71,7 +70,7 @@ class DocumentWriter extends BaseWriter implements DocumentWriterInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function addResourceToIncluded(
         ResourceInterface $resource,
@@ -84,7 +83,7 @@ class DocumentWriter extends BaseWriter implements DocumentWriterInterface
         //
         // The spec seems to be OK with it.
 
-        if ($this->hasNotBeenAdded($resource) === true) {
+        if (true === $this->hasNotBeenAdded($resource)) {
             $this->registerResource($resource);
             $this->addToIncluded($this->getResourceRepresentation($resource, $filter));
         }
@@ -93,7 +92,7 @@ class DocumentWriter extends BaseWriter implements DocumentWriterInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function reset(): void
     {
@@ -104,21 +103,12 @@ class DocumentWriter extends BaseWriter implements DocumentWriterInterface
 
     /**
      * If full resource has not been added yet either to includes section.
-     *
-     * @param ResourceInterface $resource
-     *
-     * @return bool
      */
     protected function hasNotBeenAdded(ResourceInterface $resource): bool
     {
-        return isset($this->addedResources[$resource->getId()][$resource->getType()]) === false;
+        return false === isset($this->addedResources[$resource->getId()][$resource->getType()]);
     }
 
-    /**
-     * @param ResourceInterface $resource
-     *
-     * @return void
-     */
     protected function registerResource(ResourceInterface $resource): void
     {
         \assert($this->hasNotBeenAdded($resource));
@@ -126,48 +116,33 @@ class DocumentWriter extends BaseWriter implements DocumentWriterInterface
         $this->addedResources[$resource->getId()][$resource->getType()] = true;
     }
 
-    /**
-     * @param IdentifierInterface $identifier
-     *
-     * @return array
-     */
     protected function getIdentifierRepresentation(IdentifierInterface $identifier): array
     {
         // it's odd not to have actual ID for identifier (which is OK for newly created resource).
-        \assert($identifier->getId() !== null);
+        \assert(null !== $identifier->getId());
 
-        return $identifier->hasIdentifierMeta() === false ? [
+        return false === $identifier->hasIdentifierMeta() ? [
             DocumentInterface::KEYWORD_TYPE => $identifier->getType(),
-            DocumentInterface::KEYWORD_ID   => $identifier->getId(),
+            DocumentInterface::KEYWORD_ID => $identifier->getId(),
         ] : [
             DocumentInterface::KEYWORD_TYPE => $identifier->getType(),
-            DocumentInterface::KEYWORD_ID   => $identifier->getId(),
+            DocumentInterface::KEYWORD_ID => $identifier->getId(),
             DocumentInterface::KEYWORD_META => $identifier->getIdentifierMeta(),
         ];
     }
 
-    /**
-     * @param ResourceInterface $resource
-     *
-     * @return array
-     */
     protected function getIdentifierRepresentationFromResource(ResourceInterface $resource): array
     {
-        return $resource->hasIdentifierMeta() === false ? [
+        return false === $resource->hasIdentifierMeta() ? [
             DocumentInterface::KEYWORD_TYPE => $resource->getType(),
-            DocumentInterface::KEYWORD_ID   => $resource->getId(),
+            DocumentInterface::KEYWORD_ID => $resource->getId(),
         ] : [
             DocumentInterface::KEYWORD_TYPE => $resource->getType(),
-            DocumentInterface::KEYWORD_ID   => $resource->getId(),
+            DocumentInterface::KEYWORD_ID => $resource->getId(),
             DocumentInterface::KEYWORD_META => $resource->getIdentifierMeta(),
         ];
     }
 
-    /**
-     * @param iterable $attributes
-     *
-     * @return array
-     */
     protected function getAttributesRepresentation(iterable $attributes): array
     {
         $representation = [];
@@ -178,16 +153,11 @@ class DocumentWriter extends BaseWriter implements DocumentWriterInterface
         return $representation;
     }
 
-    /**
-     * @param iterable $relationships
-     *
-     * @return array
-     */
     protected function getRelationshipsRepresentation(iterable $relationships): array
     {
         $representation = [];
         foreach ($relationships as $name => $relationship) {
-            \assert(\is_string($name) === true && empty($name) === false);
+            \assert(true === \is_string($name) && false === empty($name));
             \assert($relationship instanceof RelationshipInterface);
             $representation[$name] = $this->getRelationshipRepresentation($relationship);
         }
@@ -195,45 +165,35 @@ class DocumentWriter extends BaseWriter implements DocumentWriterInterface
         return $representation;
     }
 
-    /**
-     * @param RelationshipInterface $relationship
-     *
-     * @return array
-     */
     protected function getRelationshipRepresentation(RelationshipInterface $relationship): array
     {
         $representation = [];
 
-        if ($relationship->hasLinks() === true) {
+        if (true === $relationship->hasLinks()) {
             $representation[DocumentInterface::KEYWORD_LINKS] =
                 $this->getLinksRepresentation($this->getUrlPrefix(), $relationship->getLinks());
         }
 
-        if ($relationship->hasData() === true) {
+        if (true === $relationship->hasData()) {
             $representation[DocumentInterface::KEYWORD_DATA] = $this->getRelationshipDataRepresentation(
                 $relationship->getData()
             );
         }
 
-        if ($relationship->hasMeta() === true) {
+        if (true === $relationship->hasMeta()) {
             $representation[DocumentInterface::KEYWORD_META] = $relationship->getMeta();
         }
 
         return $representation;
     }
 
-    /**
-     * @param RelationshipDataInterface $data
-     *
-     * @return array|null
-     */
     protected function getRelationshipDataRepresentation(RelationshipDataInterface $data): ?array
     {
-        if ($data->isResource() === true) {
+        if (true === $data->isResource()) {
             return $this->getIdentifierRepresentationFromResource($data->getResource());
-        } elseif ($data->isIdentifier() === true) {
+        } elseif (true === $data->isIdentifier()) {
             return $this->getIdentifierRepresentation($data->getIdentifier());
-        } elseif ($data->isCollection() === true) {
+        } elseif (true === $data->isCollection()) {
             $representation = [];
             foreach ($data->getIdentifiers() as $identifier) {
                 \assert($identifier instanceof IdentifierInterface);
@@ -243,17 +203,12 @@ class DocumentWriter extends BaseWriter implements DocumentWriterInterface
             return $representation;
         }
 
-        \assert($data->isNull() === true);
+        \assert(true === $data->isNull());
 
         return null;
     }
 
     /**
-     * @param ResourceInterface       $resource
-     * @param FieldSetFilterInterface $filter
-     *
-     * @return array
-     *
      * @SuppressWarnings(PHPMD.IfStatementAssignment)
      */
     protected function getResourceRepresentation(ResourceInterface $resource, FieldSetFilterInterface $filter): array
@@ -267,9 +222,9 @@ class DocumentWriter extends BaseWriter implements DocumentWriterInterface
         }
 
         $attributes = $this->getAttributesRepresentation($filter->getAttributes($resource));
-        if (empty($attributes) === false) {
+        if (false === empty($attributes)) {
             \assert(
-                \json_encode($attributes, JSON_THROW_ON_ERROR) !== false,
+                false !== \json_encode($attributes, JSON_THROW_ON_ERROR),
                 'Attributes for resource type `' . $resource->getType() .
                 '` cannot be converted into JSON. Please check its Schema returns valid data.'
             );
@@ -277,29 +232,29 @@ class DocumentWriter extends BaseWriter implements DocumentWriterInterface
         }
 
         $relationships = $this->getRelationshipsRepresentation($filter->getRelationships($resource));
-        if (empty($relationships) === false) {
+        if (false === empty($relationships)) {
             \assert(
-                \json_encode($relationships, JSON_THROW_ON_ERROR) !== false,
+                false !== \json_encode($relationships, JSON_THROW_ON_ERROR),
                 'Relationships for resource type `' . $resource->getType() .
                 '` cannot be converted into JSON. Please check its Schema returns valid data.'
             );
             $representation[DocumentInterface::KEYWORD_RELATIONSHIPS] = $relationships;
         }
 
-        if ($resource->hasLinks() === true) {
+        if (true === $resource->hasLinks()) {
             $links = $this->getLinksRepresentation($this->getUrlPrefix(), $resource->getLinks());
             \assert(
-                \json_encode($links, JSON_THROW_ON_ERROR) !== false,
+                false !== \json_encode($links, JSON_THROW_ON_ERROR),
                 'Links for resource type `' . $resource->getType() .
                 '` cannot be converted into JSON. Please check its Schema returns valid data.'
             );
             $representation[DocumentInterface::KEYWORD_LINKS] = $links;
         }
 
-        if ($resource->hasResourceMeta() === true) {
+        if (true === $resource->hasResourceMeta()) {
             $meta = $resource->getResourceMeta();
             \assert(
-                \json_encode($meta, JSON_THROW_ON_ERROR) !== false,
+                false !== \json_encode($meta, JSON_THROW_ON_ERROR),
                 'Meta for resource type `' . $resource->getType() .
                 '` cannot be converted into JSON. Please check its Schema returns valid data.'
             );
@@ -309,29 +264,19 @@ class DocumentWriter extends BaseWriter implements DocumentWriterInterface
         return $representation;
     }
 
-    /**
-     * @param array $representation
-     *
-     * @return void
-     */
     private function addToData(array $representation): void
     {
-        if ($this->isDataAnArray() === true) {
+        if (true === $this->isDataAnArray()) {
             $this->data[DocumentInterface::KEYWORD_DATA][] = $representation;
 
             return;
         }
 
         // check data has not been added yet
-        \assert(\array_key_exists(DocumentInterface::KEYWORD_DATA, $this->data) === false);
+        \assert(false === \array_key_exists(DocumentInterface::KEYWORD_DATA, $this->data));
         $this->data[DocumentInterface::KEYWORD_DATA] = $representation;
     }
 
-    /**
-     * @param array $representation
-     *
-     * @return void
-     */
     private function addToIncluded(array $representation): void
     {
         $this->data[DocumentInterface::KEYWORD_INCLUDED][] = $representation;

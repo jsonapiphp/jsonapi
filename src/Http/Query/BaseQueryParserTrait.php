@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Http\Query;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,54 +25,33 @@ use Neomerx\JsonApi\Contracts\Schema\ErrorInterface;
 use Neomerx\JsonApi\Exceptions\JsonApiException;
 use Neomerx\JsonApi\Schema\Error;
 
-/**
- * @package Neomerx\JsonApi
- */
 trait BaseQueryParserTrait
 {
-    /**
-     * @param array  $parameters
-     * @param string $errorTitle
-     *
-     * @return iterable
-     */
     protected function getIncludes(array $parameters, string $errorTitle): iterable
     {
-        if (\array_key_exists(P::PARAM_INCLUDE, $parameters) === true) {
+        if (true === \array_key_exists(P::PARAM_INCLUDE, $parameters)) {
             $includes = $parameters[P::PARAM_INCLUDE];
-            $paths    = $this->splitCommaSeparatedStringAndCheckNoEmpties(P::PARAM_INCLUDE, $includes, $errorTitle);
+            $paths = $this->splitCommaSeparatedStringAndCheckNoEmpties(P::PARAM_INCLUDE, $includes, $errorTitle);
             foreach ($paths as $path) {
                 yield $path => $this->splitStringAndCheckNoEmpties(P::PARAM_INCLUDE, $path, '.', $errorTitle);
             }
         }
     }
 
-    /**
-     * @param array  $parameters
-     * @param string $errorTitle
-     *
-     * @return iterable
-     */
     protected function getIncludePaths(array $parameters, string $errorTitle): iterable
     {
         $aIncludes = $this->getIncludes($parameters, $errorTitle);
         foreach ($aIncludes as $path => $parsed) {
-            \assert($parsed !== null);
+            \assert(null !== $parsed);
             yield $path;
         }
     }
 
-    /**
-     * @param array  $parameters
-     * @param string $errorTitle
-     *
-     * @return iterable
-     */
     protected function getFields(array $parameters, string $errorTitle): iterable
     {
-        if (\array_key_exists(P::PARAM_FIELDS, $parameters) === true) {
+        if (true === \array_key_exists(P::PARAM_FIELDS, $parameters)) {
             $fields = $parameters[P::PARAM_FIELDS];
-            if (\is_array($fields) === false || empty($fields) === true) {
+            if (false === \is_array($fields) || true === empty($fields)) {
                 throw new JsonApiException($this->createParameterError(P::PARAM_FIELDS, $errorTitle));
             }
 
@@ -80,26 +61,20 @@ trait BaseQueryParserTrait
         }
     }
 
-    /**
-     * @param array  $parameters
-     * @param string $errorTitle
-     *
-     * @return iterable
-     */
     protected function getSorts(array $parameters, string $errorTitle): iterable
     {
-        if (\array_key_exists(P::PARAM_SORT, $parameters) === true) {
-            $sorts  = $parameters[P::PARAM_SORT];
+        if (true === \array_key_exists(P::PARAM_SORT, $parameters)) {
+            $sorts = $parameters[P::PARAM_SORT];
             $values = $this->splitCommaSeparatedStringAndCheckNoEmpties(P::PARAM_SORT, $sorts, $errorTitle);
             foreach ($values as $orderAndField) {
                 switch ($orderAndField[0]) {
                     case '-':
                         $isAsc = false;
-                        $field = \substr($orderAndField, 1);
+                        $field = \mb_substr($orderAndField, 1);
                         break;
                     case '+':
                         $isAsc = true;
-                        $field = \substr($orderAndField, 1);
+                        $field = \mb_substr($orderAndField, 1);
                         break;
                     default:
                         $isAsc = true;
@@ -112,15 +87,9 @@ trait BaseQueryParserTrait
         }
     }
 
-    /**
-     * @param array  $parameters
-     * @param string $errorTitle
-     *
-     * @return iterable
-     */
     protected function getProfileUrls(array $parameters, string $errorTitle): iterable
     {
-        if (\array_key_exists(P::PARAM_PROFILE, $parameters) === true) {
+        if (true === \array_key_exists(P::PARAM_PROFILE, $parameters)) {
             $encodedUrls = $parameters[P::PARAM_PROFILE];
             $decodedUrls = \urldecode($encodedUrls);
             yield from $this->splitSpaceSeparatedStringAndCheckNoEmpties(
@@ -132,11 +101,7 @@ trait BaseQueryParserTrait
     }
 
     /**
-     * @param string       $paramName
      * @param string|mixed $shouldBeString
-     * @param string       $errorTitle
-     *
-     * @return iterable
      */
     private function splitCommaSeparatedStringAndCheckNoEmpties(
         string $paramName,
@@ -147,11 +112,7 @@ trait BaseQueryParserTrait
     }
 
     /**
-     * @param string       $paramName
      * @param string|mixed $shouldBeString
-     * @param string       $errorTitle
-     *
-     * @return iterable
      */
     private function splitSpaceSeparatedStringAndCheckNoEmpties(
         string $paramName,
@@ -162,12 +123,7 @@ trait BaseQueryParserTrait
     }
 
     /**
-     * @param string       $paramName
      * @param string|mixed $shouldBeString
-     * @param string       $separator
-     * @param string       $errorTitle
-     *
-     * @return iterable
      *
      * @SuppressWarnings(PHPMD.IfStatementAssignment)
      */
@@ -177,13 +133,13 @@ trait BaseQueryParserTrait
         string $separator,
         string $errorTitle
     ): iterable {
-        if (\is_string($shouldBeString) === false || ($trimmed = \trim($shouldBeString)) === '') {
+        if (false === \is_string($shouldBeString) || ($trimmed = \trim($shouldBeString)) === '') {
             throw new JsonApiException($this->createParameterError($paramName, $errorTitle));
         }
 
         foreach (\explode($separator, $trimmed) as $value) {
             $trimmedValue = \trim($value);
-            if ($trimmedValue === '') {
+            if ('' === $trimmedValue) {
                 throw new JsonApiException($this->createParameterError($paramName, $errorTitle));
             }
 
@@ -191,16 +147,10 @@ trait BaseQueryParserTrait
         }
     }
 
-    /**
-     * @param string $paramName
-     * @param string $errorTitle
-     *
-     * @return ErrorInterface
-     */
     private function createParameterError(string $paramName, string $errorTitle): ErrorInterface
     {
         $source = [Error::SOURCE_PARAMETER => $paramName];
-        $error  = new Error(null, null, null, null, null, $errorTitle, null, $source);
+        $error = new Error(null, null, null, null, null, $errorTitle, null, $source);
 
         return $error;
     }

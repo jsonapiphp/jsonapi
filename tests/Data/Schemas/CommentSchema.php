@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Data\Schemas;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,15 +22,11 @@ namespace Neomerx\Tests\JsonApi\Data\Schemas;
 
 use Neomerx\JsonApi\Contracts\Schema\ContextInterface;
 use Neomerx\Tests\JsonApi\Data\Models\Comment;
-use function assert;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class CommentSchema extends DevSchema
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getType(): string
     {
@@ -36,23 +34,23 @@ class CommentSchema extends DevSchema
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getId($resource): ?string
     {
-        assert($resource instanceof Comment);
+        \assert($resource instanceof Comment);
 
         $index = $resource->{Comment::ATTRIBUTE_ID};
 
-        return $index === null ? $index : (string)$index;
+        return null === $index ? $index : (string) $index;
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getAttributes($resource, ContextInterface $context): iterable
     {
-        assert($resource instanceof Comment);
+        \assert($resource instanceof Comment);
 
         return [
             Comment::ATTRIBUTE_BODY => $resource->{Comment::ATTRIBUTE_BODY},
@@ -60,11 +58,11 @@ class CommentSchema extends DevSchema
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getRelationships($resource, ContextInterface $context): iterable
     {
-        assert($resource instanceof Comment);
+        \assert($resource instanceof Comment);
 
         // NOTE: The `fixing` thing is for testing purposes only. Not for production.
         return $this->fixDescriptions(

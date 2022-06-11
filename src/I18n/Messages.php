@@ -1,9 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\I18n;
 
 /**
- * Copyright 2015-2020 info@neomerx.com
+ * Copyright 2015-2020 info@neomerx.com.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,10 +19,6 @@ namespace Neomerx\JsonApi\I18n;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-/**
- * @package Neomerx\JsonApi
- */
 class Messages
 {
     private static array $translations = [];
@@ -28,25 +26,18 @@ class Messages
     /**
      * Try to translate the message and format it with the given parameters.
      *
-     * @param string $message
-     * @param mixed  ...$parameters
-     *
-     * @return string
+     * @param mixed ...$parameters
      */
     public static function compose(string $message, ...$parameters): string
     {
         $translation = static::getTranslation($message);
-        $result      = empty($parameters) === false ? \vsprintf($translation, $parameters) : $translation;
+        $result = false === empty($parameters) ? \vsprintf($translation, $parameters) : $translation;
 
         return $result;
     }
 
     /**
      * Translate message if configured or return the original untranslated message.
-     *
-     * @param string $message
-     *
-     * @return string
      *
      * @SuppressWarnings(PHPMD.UndefinedVariable) PHPMD currently has a glitch with `$message`
      */
@@ -57,10 +48,6 @@ class Messages
 
     /**
      * Set translations for messages.
-     *
-     * @param array $translations
-     *
-     * @return void
      */
     public static function setTranslations(array $translations): void
     {

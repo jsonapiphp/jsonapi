@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue154;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,13 +23,10 @@ namespace Neomerx\Tests\JsonApi\Extensions\Issue154;
 use Neomerx\JsonApi\Contracts\Factories\FactoryInterface;
 use Neomerx\JsonApi\Encoder\Encoder;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class CustomEncoder extends Encoder implements CustomEncoderInterface
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function addSchema(string $type, $schema): CustomEncoderInterface
     {
@@ -38,9 +37,6 @@ class CustomEncoder extends Encoder implements CustomEncoderInterface
         return $this;
     }
 
-    /**
-     * @return FactoryInterface
-     */
     protected static function createFactory(): FactoryInterface
     {
         return new CustomFactory();

@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Encoder;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,9 +26,6 @@ use Neomerx\JsonApi\Contracts\Schema\LinkInterface;
 use Neomerx\JsonApi\Contracts\Schema\SchemaContainerInterface;
 use Traversable;
 
-/**
- * @package Neomerx\JsonApi
- */
 trait EncoderPropertiesTrait
 {
     /**
@@ -102,12 +101,6 @@ trait EncoderPropertiesTrait
     /**
      * Reset to initial state.
      *
-     * @param string   $urlPrefix
-     * @param iterable $includePaths
-     * @param array    $fieldSets
-     * @param int      $encodeOptions
-     * @param int      $encodeDepth
-     *
      * @return self|EncoderInterface
      */
     public function reset(
@@ -117,12 +110,12 @@ trait EncoderPropertiesTrait
         int $encodeOptions = Encoder::DEFAULT_JSON_ENCODE_OPTIONS,
         int $encodeDepth = Encoder::DEFAULT_JSON_ENCODE_DEPTH
     ): EncoderInterface {
-        $this->links          = null;
-        $this->profile        = null;
-        $this->hasMeta        = false;
-        $this->meta           = null;
+        $this->links = null;
+        $this->profile = null;
+        $this->hasMeta = false;
+        $this->meta = null;
         $this->jsonApiVersion = null;
-        $this->jsonApiMeta    = null;
+        $this->jsonApiMeta = null;
         $this->hasJsonApiMeta = false;
 
         $this
@@ -135,19 +128,6 @@ trait EncoderPropertiesTrait
         return $this;
     }
 
-    /**
-     * @return SchemaContainerInterface
-     */
-    protected function getSchemaContainer(): SchemaContainerInterface
-    {
-        return $this->container;
-    }
-
-    /**
-     * @param SchemaContainerInterface $container
-     *
-     * @return self
-     */
     public function setContainer(SchemaContainerInterface $container): self
     {
         $this->container = $container;
@@ -155,19 +135,6 @@ trait EncoderPropertiesTrait
         return $this;
     }
 
-    /**
-     * @return FactoryInterface
-     */
-    protected function getFactory(): FactoryInterface
-    {
-        return $this->factory;
-    }
-
-    /**
-     * @param FactoryInterface $factory
-     *
-     * @return self
-     */
     public function setFactory(FactoryInterface $factory): self
     {
         $this->factory = $factory;
@@ -176,8 +143,6 @@ trait EncoderPropertiesTrait
     }
 
     /**
-     * @param string $prefix
-     *
      * @return self|EncoderInterface
      */
     public function withUrlPrefix(string $prefix): EncoderInterface
@@ -186,17 +151,8 @@ trait EncoderPropertiesTrait
 
         return $this;
     }
-    /**
-     * @return string
-     */
-    protected function getUrlPrefix(): string
-    {
-        return $this->urlPrefix;
-    }
 
     /**
-     * @param iterable $paths
-     *
      * @return self|EncoderInterface
      */
     public function withIncludedPaths(iterable $paths): EncoderInterface
@@ -208,7 +164,7 @@ trait EncoderPropertiesTrait
                 function (array $paths): bool {
                     $pathsOk = true;
                     foreach ($paths as $path) {
-                        $pathsOk = $pathsOk === true && \is_string($path) === true && empty($path) === false;
+                        $pathsOk = true === $pathsOk && true === \is_string($path) && false === empty($path);
                     }
 
                     return $pathsOk;
@@ -223,16 +179,6 @@ trait EncoderPropertiesTrait
     }
 
     /**
-     * @return array
-     */
-    protected function getIncludePaths(): array
-    {
-        return $this->includePaths;
-    }
-
-    /**
-     * @param array $fieldSets
-     *
      * @return self|EncoderInterface
      */
     public function withFieldSets(array $fieldSets): EncoderInterface
@@ -242,18 +188,7 @@ trait EncoderPropertiesTrait
         return $this;
     }
 
-
     /**
-     * @return array
-     */
-    protected function getFieldSets(): array
-    {
-        return $this->fieldSets;
-    }
-
-    /**
-     * @param int $options
-     *
      * @return self|EncoderInterface
      */
     public function withEncodeOptions(int $options): EncoderInterface
@@ -264,16 +199,6 @@ trait EncoderPropertiesTrait
     }
 
     /**
-     * @return int
-     */
-    protected function getEncodeOptions(): int
-    {
-        return $this->encodeOptions;
-    }
-
-    /**
-     * @param int $depth
-     *
      * @return self|EncoderInterface
      */
     public function withEncodeDepth(int $depth): EncoderInterface
@@ -286,21 +211,11 @@ trait EncoderPropertiesTrait
     }
 
     /**
-     * @return int
-     */
-    protected function getEncodeDepth(): int
-    {
-        return $this->encodeDepth;
-    }
-
-    /**
-     * @param iterable $links
-     *
      * @return self|EncoderInterface
      */
     public function withLinks(iterable $links): EncoderInterface
     {
-        $this->links = $this->hasLinks() === false ?
+        $this->links = false === $this->hasLinks() ?
             $links :
             $this->links = \array_merge(
                 $this->iterableToArray($this->getLinks()),
@@ -311,24 +226,6 @@ trait EncoderPropertiesTrait
     }
 
     /**
-     * @return bool
-     */
-    protected function hasLinks(): bool
-    {
-        return $this->links !== null;
-    }
-
-    /**
-     * @return iterable
-     */
-    protected function getLinks(): iterable
-    {
-        return $this->links;
-    }
-
-    /**
-     * @param iterable $links
-     *
      * @return self|EncoderInterface
      */
     public function withProfile(iterable $links): EncoderInterface
@@ -339,40 +236,16 @@ trait EncoderPropertiesTrait
     }
 
     /**
-     * @return bool
-     */
-    protected function hasProfile(): bool
-    {
-        return $this->profile !== null;
-    }
-
-    /**
-     * @return iterable
-     */
-    protected function getProfile(): iterable
-    {
-        return $this->profile;
-    }
-
-    /**
      * @param mixed $meta
      *
      * @return self|EncoderInterface
      */
     public function withMeta($meta): EncoderInterface
     {
-        $this->meta    = $meta;
+        $this->meta = $meta;
         $this->hasMeta = true;
 
         return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    protected function hasMeta(): bool
-    {
-        return $this->hasMeta;
     }
 
     /**
@@ -384,8 +257,6 @@ trait EncoderPropertiesTrait
     }
 
     /**
-     * @param string $version
-     *
      * @return self|EncoderInterface
      */
     public function withJsonApiVersion(string $version): EncoderInterface
@@ -396,53 +267,20 @@ trait EncoderPropertiesTrait
     }
 
     /**
-     * @return bool
-     */
-    protected function hasJsonApiVersion(): bool
-    {
-        return $this->jsonApiVersion !== null;
-    }
-
-    /**
-     * @return string
-     */
-    protected function getJsonApiVersion(): string
-    {
-        return $this->jsonApiVersion;
-    }
-
-    /**
      * @param mixed $meta
      *
      * @return self|EncoderInterface
      */
     public function withJsonApiMeta($meta): EncoderInterface
     {
-        $this->jsonApiMeta    = $meta;
+        $this->jsonApiMeta = $meta;
         $this->hasJsonApiMeta = true;
 
         return $this;
     }
 
     /**
-     * @return bool
-     */
-    protected function hasJsonApiMeta(): bool
-    {
-        return $this->hasJsonApiMeta;
-    }
-
-    /**
-     * @return mixed
-     */
-    protected function getJsonApiMeta()
-    {
-        return $this->jsonApiMeta;
-    }
-
-    /**
-     * @param mixed  $resource
-     * @param string $relationshipName
+     * @param mixed $resource
      *
      * @return self|EncoderInterface
      */
@@ -458,8 +296,7 @@ trait EncoderPropertiesTrait
     }
 
     /**
-     * @param mixed  $resource
-     * @param string $relationshipName
+     * @param mixed $resource
      *
      * @return self|EncoderInterface
      */
@@ -474,14 +311,92 @@ trait EncoderPropertiesTrait
         ]);
     }
 
+    protected function getSchemaContainer(): SchemaContainerInterface
+    {
+        return $this->container;
+    }
+
+    protected function getFactory(): FactoryInterface
+    {
+        return $this->factory;
+    }
+
+    protected function getUrlPrefix(): string
+    {
+        return $this->urlPrefix;
+    }
+
+    protected function getIncludePaths(): array
+    {
+        return $this->includePaths;
+    }
+
+    protected function getFieldSets(): array
+    {
+        return $this->fieldSets;
+    }
+
+    protected function getEncodeOptions(): int
+    {
+        return $this->encodeOptions;
+    }
+
+    protected function getEncodeDepth(): int
+    {
+        return $this->encodeDepth;
+    }
+
+    protected function hasLinks(): bool
+    {
+        return null !== $this->links;
+    }
+
+    protected function getLinks(): iterable
+    {
+        return $this->links;
+    }
+
+    protected function hasProfile(): bool
+    {
+        return null !== $this->profile;
+    }
+
+    protected function getProfile(): iterable
+    {
+        return $this->profile;
+    }
+
+    protected function hasMeta(): bool
+    {
+        return $this->hasMeta;
+    }
+
+    protected function hasJsonApiVersion(): bool
+    {
+        return null !== $this->jsonApiVersion;
+    }
+
+    protected function getJsonApiVersion(): string
+    {
+        return $this->jsonApiVersion;
+    }
+
+    protected function hasJsonApiMeta(): bool
+    {
+        return $this->hasJsonApiMeta;
+    }
+
     /**
-     * @param iterable $value
-     *
-     * @return array
+     * @return mixed
      */
+    protected function getJsonApiMeta()
+    {
+        return $this->jsonApiMeta;
+    }
+
     private function iterableToArray(iterable $value): array
     {
-        /** @var Traversable|array $value */
-        return \is_array($value) === true ? $value : \iterator_to_array($value);
+        /* @var Traversable|array $value */
+        return true === \is_array($value) ? $value : \iterator_to_array($value);
     }
 }

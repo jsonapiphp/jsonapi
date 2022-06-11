@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Exceptions;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,9 +22,6 @@ namespace Neomerx\JsonApi\Exceptions;
 
 use RuntimeException;
 
-/**
- * @package Neomerx\JsonApi
- */
 abstract class BaseJsonApiException extends RuntimeException
 {
 }

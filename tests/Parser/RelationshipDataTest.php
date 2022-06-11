@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Parser;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,15 +32,12 @@ use Neomerx\JsonApi\Parser\RelationshipData\RelationshipDataIsResource;
 use Neomerx\Tests\JsonApi\BaseTestCase;
 use stdClass;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 class RelationshipDataTest extends BaseTestCase
 {
     /**
      * Test relationship data.
      */
-    public function testIsCollection(): void
+    public function test_is_collection(): void
     {
         $data = $this->createRelationshipData(RelationshipDataIsCollection::class, []);
 
@@ -53,7 +52,7 @@ class RelationshipDataTest extends BaseTestCase
     /**
      * Test relationship data.
      */
-    public function testIsIdentifier(): void
+    public function test_is_identifier(): void
     {
         $data = $this->createRelationshipData(
             RelationshipDataIsIdentifier::class,
@@ -72,7 +71,7 @@ class RelationshipDataTest extends BaseTestCase
     /**
      * Test relationship data.
      */
-    public function testIsNull(): void
+    public function test_is_null(): void
     {
         $data = $this->createRelationshipData(
             RelationshipDataIsNull::class,
@@ -92,7 +91,7 @@ class RelationshipDataTest extends BaseTestCase
     /**
      * Test relationship data.
      */
-    public function testIsResource(): void
+    public function test_is_resource(): void
     {
         $data = $this->createRelationshipData(
             RelationshipDataIsResource::class,
@@ -109,17 +108,14 @@ class RelationshipDataTest extends BaseTestCase
     }
 
     /**
-     * @param string $className
-     * @param mixed  $specificParam
-     *
-     * @return RelationshipDataInterface
+     * @param mixed $specificParam
      */
     private function createRelationshipData(string $className, $specificParam): RelationshipDataInterface
     {
-        $factory   = $this->createFactory();
+        $factory = $this->createFactory();
         $container = $factory->createSchemaContainer([]);
-        $context   = $factory->createParserContext([], []);
-        $position  = $factory->createPosition(
+        $context = $factory->createParserContext([], []);
+        $position = $factory->createPosition(
             ParserInterface::ROOT_LEVEL,
             ParserInterface::ROOT_PATH,
             null,
@@ -131,19 +127,13 @@ class RelationshipDataTest extends BaseTestCase
         return $data;
     }
 
-    /**
-     * @param RelationshipDataInterface $data
-     * @param string                    $method
-     *
-     * @return void
-     */
     private function assertMethodThrowsLogicException(RelationshipDataInterface $data, string $method): void
     {
-        $this->assertTrue(method_exists($data, $method));
+        $this->assertTrue(\method_exists($data, $method));
 
         $wasThrown = false;
         try {
-            call_user_func([$data, $method]);
+            \call_user_func([$data, $method]);
         } catch (LogicException $exception) {
             $wasThrown = true;
         }

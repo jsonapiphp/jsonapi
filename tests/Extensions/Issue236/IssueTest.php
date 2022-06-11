@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue236;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,9 +24,6 @@ use Neomerx\Tests\JsonApi\BaseTestCase;
 use Neomerx\Tests\JsonApi\Data\Models\Author;
 use Neomerx\Tests\JsonApi\Data\Models\Comment;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 final class IssueTest extends BaseTestCase
 {
     /**
@@ -32,9 +31,9 @@ final class IssueTest extends BaseTestCase
      *
      * @see https://github.com/neomerx/json-api/issues/236
      */
-    public function testDataSerializationWithPartialWildcard(): void
+    public function test_data_serialization_with_partial_wildcard(): void
     {
-        $pathsToInclude  = [Comment::LINK_AUTHOR];
+        $pathsToInclude = [Comment::LINK_AUTHOR];
         $fieldSetFilters = [];
 
         $actual = CustomEncoder::instance($this->prepareSchemas($pathsToInclude, $fieldSetFilters))
@@ -100,30 +99,21 @@ EOL;
         self::assertJsonStringEqualsJsonString($expected, $actual);
     }
 
-    /**
-     * @return Comment
-     */
     private function prepareDataToEncode(): Comment
     {
-        $author  = Author::instance(42, 'Peter', 'Weller');
+        $author = Author::instance(42, 'Peter', 'Weller');
         $comment = Comment::instance(5, 'First!', $author);
 
         return $comment;
     }
 
-    /**
-     * @param iterable $expectedIncludePaths
-     * @param iterable $expectedFieldSetFilters
-     *
-     * @return array
-     */
     private function prepareSchemas(iterable $expectedIncludePaths, iterable $expectedFieldSetFilters): array
     {
         $schemaFields = new SchemaFields($expectedIncludePaths, $expectedFieldSetFilters);
 
         return [
-            Author::class  => fn($factory) => new CustomAuthorSchema($factory, $schemaFields),
-            Comment::class => fn($factory) => new CustomCommentSchema($factory, $schemaFields),
+            Author::class => fn ($factory) => new CustomAuthorSchema($factory, $schemaFields),
+            Comment::class => fn ($factory) => new CustomCommentSchema($factory, $schemaFields),
         ];
     }
 }

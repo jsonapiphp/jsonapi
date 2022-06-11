@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Factories;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -51,8 +53,6 @@ use Neomerx\JsonApi\Schema\Link;
 use Neomerx\JsonApi\Schema\SchemaContainer;
 
 /**
- * @package Neomerx\JsonApi
- *
  * @SuppressWarnings(PHPMD.TooManyFields)
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -60,7 +60,7 @@ use Neomerx\JsonApi\Schema\SchemaContainer;
 class Factory implements FactoryInterface
 {
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function createEncoder(SchemaContainerInterface $container): EncoderInterface
     {
@@ -68,7 +68,7 @@ class Factory implements FactoryInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function createSchemaContainer(iterable $schemas): SchemaContainerInterface
     {
@@ -76,7 +76,7 @@ class Factory implements FactoryInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function createPosition(
         int $level,
@@ -84,8 +84,7 @@ class Factory implements FactoryInterface
         ?string $parentType,
         ?string $parentRelationship
     ): PositionInterface {
-        return new class ($level, $path, $parentType, $parentRelationship) implements PositionInterface
-        {
+        return new class($level, $path, $parentType, $parentRelationship) implements PositionInterface {
             private int $level;
 
             private string $path;
@@ -94,22 +93,16 @@ class Factory implements FactoryInterface
 
             private ?string $parentRelationship;
 
-            /**
-             * @param int         $level
-             * @param string      $path
-             * @param null|string $parentType
-             * @param null|string $parentRelationship
-             */
             public function __construct(int $level, string $path, ?string $parentType, ?string $parentRelationship)
             {
-                $this->level              = $level;
-                $this->path               = $path;
-                $this->parentType         = $parentType;
+                $this->level = $level;
+                $this->path = $path;
+                $this->parentType = $parentType;
                 $this->parentRelationship = $parentRelationship;
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function getLevel(): int
             {
@@ -117,7 +110,7 @@ class Factory implements FactoryInterface
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function getPath(): string
             {
@@ -125,7 +118,7 @@ class Factory implements FactoryInterface
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function getParentType(): ?string
             {
@@ -133,7 +126,7 @@ class Factory implements FactoryInterface
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function getParentRelationship(): ?string
             {
@@ -143,7 +136,7 @@ class Factory implements FactoryInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function createParser(
         SchemaContainerInterface $container,
@@ -153,7 +146,7 @@ class Factory implements FactoryInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function createDocumentWriter(): DocumentWriterInterface
     {
@@ -161,7 +154,7 @@ class Factory implements FactoryInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function createErrorWriter(): ErrorWriterInterface
     {
@@ -169,7 +162,7 @@ class Factory implements FactoryInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function createFieldSetFilter(array $fieldSets): FieldSetFilterInterface
     {
@@ -177,7 +170,7 @@ class Factory implements FactoryInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function createParsedResource(
         EditableContextInterface $context,
@@ -189,35 +182,30 @@ class Factory implements FactoryInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function createParsedIdentifier(
         PositionInterface $position,
         SchemaIdentifierInterface $identifier
     ): ParserIdentifierInterface {
-        return new class ($position, $identifier) implements ParserIdentifierInterface
-        {
+        return new class($position, $identifier) implements ParserIdentifierInterface {
             private PositionInterface $position;
 
             private SchemaIdentifierInterface $identifier;
 
-            /**
-             * @param PositionInterface         $position
-             * @param SchemaIdentifierInterface $identifier
-             */
             public function __construct(
                 PositionInterface $position,
                 SchemaIdentifierInterface $identifier
             ) {
-                $this->position   = $position;
+                $this->position = $position;
                 $this->identifier = $identifier;
 
                 // for test coverage only
-                \assert($this->getPosition() !== null);
+                \assert(null !== $this->getPosition());
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function getType(): string
             {
@@ -225,7 +213,7 @@ class Factory implements FactoryInterface
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function getId(): ?string
             {
@@ -233,7 +221,7 @@ class Factory implements FactoryInterface
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function hasIdentifierMeta(): bool
             {
@@ -241,7 +229,7 @@ class Factory implements FactoryInterface
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function getIdentifierMeta()
             {
@@ -249,7 +237,7 @@ class Factory implements FactoryInterface
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function getPosition(): PositionInterface
             {
@@ -259,7 +247,7 @@ class Factory implements FactoryInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function createLink(bool $isSubUrl, string $value, bool $hasMeta, $meta = null): LinkInterface
     {
@@ -267,7 +255,7 @@ class Factory implements FactoryInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      *
      * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
@@ -281,16 +269,7 @@ class Factory implements FactoryInterface
         bool $hasMeta,
         $meta
     ): RelationshipInterface {
-        return new class (
-            $position,
-            $hasData,
-            $data,
-            $hasLinks,
-            $links,
-            $hasMeta,
-            $meta
-        ) implements RelationshipInterface
-        {
+        return new class($position, $hasData, $data, $hasLinks, $links, $hasMeta, $meta) implements RelationshipInterface {
             private PositionInterface $position;
 
             private bool $hasData;
@@ -311,13 +290,7 @@ class Factory implements FactoryInterface
             private bool $metaIsCallable;
 
             /**
-             * @param PositionInterface              $position
-             * @param bool                           $hasData
-             * @param RelationshipDataInterface|null $data
-             * @param bool                           $hasLinks
-             * @param iterable|null                  $links
-             * @param bool                           $hasMeta
-             * @param mixed                          $meta
+             * @param mixed $meta
              */
             public function __construct(
                 PositionInterface $position,
@@ -329,22 +302,22 @@ class Factory implements FactoryInterface
                 $meta
             ) {
                 \assert($position->getLevel() > ParserInterface::ROOT_LEVEL);
-                \assert(empty($position->getPath()) === false);
-                \assert(($hasData === false && $data === null) || ($hasData === true && $data !== null));
-                \assert(($hasLinks === false && $links === null) || ($hasLinks === true && $links !== null));
+                \assert(false === empty($position->getPath()));
+                \assert((false === $hasData && null === $data) || (true === $hasData && null !== $data));
+                \assert((false === $hasLinks && null === $links) || (true === $hasLinks && null !== $links));
 
-                $this->position       = $position;
-                $this->hasData        = $hasData;
-                $this->data           = $data;
-                $this->hasLinks       = $hasLinks;
-                $this->links          = $links;
-                $this->hasMeta        = $hasMeta;
-                $this->meta           = $meta;
+                $this->position = $position;
+                $this->hasData = $hasData;
+                $this->data = $data;
+                $this->hasLinks = $hasLinks;
+                $this->links = $links;
+                $this->hasMeta = $hasMeta;
+                $this->meta = $meta;
                 $this->metaIsCallable = \is_callable($meta);
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function getPosition(): PositionInterface
             {
@@ -352,7 +325,7 @@ class Factory implements FactoryInterface
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function hasData(): bool
             {
@@ -360,7 +333,7 @@ class Factory implements FactoryInterface
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function getData(): RelationshipDataInterface
             {
@@ -370,7 +343,7 @@ class Factory implements FactoryInterface
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function hasLinks(): bool
             {
@@ -378,7 +351,7 @@ class Factory implements FactoryInterface
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function getLinks(): iterable
             {
@@ -388,7 +361,7 @@ class Factory implements FactoryInterface
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function hasMeta(): bool
             {
@@ -396,14 +369,14 @@ class Factory implements FactoryInterface
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function getMeta()
             {
                 \assert($this->hasMeta());
 
-                if ($this->metaIsCallable === true) {
-                    $this->meta           = \call_user_func($this->meta);
+                if (true === $this->metaIsCallable) {
+                    $this->meta = \call_user_func($this->meta);
                     $this->metaIsCallable = false;
                 }
 
@@ -413,7 +386,7 @@ class Factory implements FactoryInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function createRelationshipDataIsResource(
         SchemaContainerInterface $schemaContainer,
@@ -425,7 +398,7 @@ class Factory implements FactoryInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function createRelationshipDataIsIdentifier(
         SchemaContainerInterface $schemaContainer,
@@ -437,7 +410,7 @@ class Factory implements FactoryInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function createRelationshipDataIsCollection(
         SchemaContainerInterface $schemaContainer,
@@ -449,7 +422,7 @@ class Factory implements FactoryInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function createRelationshipDataIsNull(): RelationshipDataInterface
     {
@@ -457,7 +430,7 @@ class Factory implements FactoryInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function createMediaType(string $type, string $subType, array $parameters = null): MediaTypeInterface
     {
@@ -465,7 +438,7 @@ class Factory implements FactoryInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function createAcceptMediaType(
         int $position,
@@ -478,32 +451,27 @@ class Factory implements FactoryInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      *
      * @SuppressWarnings(PHPMD.UndefinedVariable) PHPMD currently has a glitch with `$position` in `setPosition`
      */
     public function createParserContext(array $fieldSets, array $includePaths): EditableContextInterface
     {
-        return new class ($fieldSets, $includePaths) implements EditableContextInterface
-        {
+        return new class($fieldSets, $includePaths) implements EditableContextInterface {
             private array $fieldSets;
 
             private array $includePaths;
 
             private ?PositionInterface $position = null;
 
-            /**
-             * @param array $fieldSets
-             * @param array $includePaths
-             */
             public function __construct(array $fieldSets, array $includePaths)
             {
-                $this->fieldSets    = $fieldSets;
+                $this->fieldSets = $fieldSets;
                 $this->includePaths = $includePaths;
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function getFieldSets(): array
             {
@@ -511,7 +479,7 @@ class Factory implements FactoryInterface
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function getIncludePaths(): array
             {
@@ -519,19 +487,19 @@ class Factory implements FactoryInterface
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function getPosition(): PositionInterface
             {
                 // parser's implementation should guarantee that position will always be initialized
                 // before use in a schema.
-                \assert($this->position !== null);
+                \assert(null !== $this->position);
 
                 return $this->position;
             }
 
             /**
-             * @inheritdoc
+             * {@inheritdoc}
              */
             public function setPosition(PositionInterface $position): void
             {

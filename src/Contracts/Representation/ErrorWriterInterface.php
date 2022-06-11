@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\JsonApi\Contracts\Representation;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,15 +22,7 @@ namespace Neomerx\JsonApi\Contracts\Representation;
 
 use Neomerx\JsonApi\Contracts\Schema\ErrorInterface;
 
-/**
- * @package Neomerx\JsonApi
- */
 interface ErrorWriterInterface extends BaseWriterInterface
 {
-    /**
-     * @param ErrorInterface $error
-     *
-     * @return self
-     */
     public function addError(ErrorInterface $error): self;
 }

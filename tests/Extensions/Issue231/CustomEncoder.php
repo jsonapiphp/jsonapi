@@ -1,8 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Neomerx\Tests\JsonApi\Extensions\Issue231;
 
-/**
+/*
  * Copyright 2015-2020 info@neomerx.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,17 +23,11 @@ namespace Neomerx\Tests\JsonApi\Extensions\Issue231;
 use Neomerx\JsonApi\Contracts\Factories\FactoryInterface;
 use Neomerx\JsonApi\Encoder\Encoder;
 
-/**
- * @package Neomerx\Tests\JsonApi
- */
 final class CustomEncoder extends Encoder
 {
     /** @var string Special value to be used in include paths */
     public const PATH_WILDCARD_ALL = CustomParser::PATH_WILDCARD_ALL;
 
-    /**
-     * @return FactoryInterface
-     */
     protected static function createFactory(): FactoryInterface
     {
         return new CustomFactory();
