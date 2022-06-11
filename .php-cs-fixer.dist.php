@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 return (new PhpCsFixer\Config())
-    ->setUsingCache(false)
     ->setRules([
         'native_function_invocation' => [
             'exclude' => [
