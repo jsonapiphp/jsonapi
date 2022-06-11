@@ -1,7 +1,4 @@
-[![Build Status](https://travis-ci.org/neomerx/json-api.svg?branch=master)](https://travis-ci.org/neomerx/json-api)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/neomerx/json-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/neomerx/json-api/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/neomerx/json-api/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/neomerx/json-api/?branch=master)
-[![License](https://img.shields.io/packagist/l/neomerx/json-api.svg)](https://packagist.org/packages/neomerx/json-api)
+[![License](https://img.shields.io/packagist/l/jsonapiphp/jsonapi.svg)](https://packagist.org/packages/jsonapiphp/jsonapi)
 
 ## Description 
 
@@ -23,7 +20,7 @@ This framework agnostic package implements [JSON API](http://jsonapi.org/) speci
 
 High code quality and **100% test coverage** with **150+ tests**. Production ready.
 
-**To find out more, please check out the [Wiki](https://github.com/neomerx/json-api/wiki) and [Sample App](/sample)**.
+**To find out more, please check out the [Wiki](https://github.com/jsonapiphp/jsonapi/wiki) and [Sample App](/sample)**.
 
 <blockquote align="right">
     &ldquo;I'm loving how easy it makes it to quickly implement an api&rdquo;
@@ -127,7 +124,7 @@ Parameter ```JSON_PRETTY_PRINT``` is a PHP predefined [JSON constant](http://php
 
 A sample program with encoding of multiple, nested, filtered objects and more is [here](sample).
 
-**For more advanced usage please check out the [Wiki](https://github.com/neomerx/json-api/wiki)**.
+**For more advanced usage please check out the [Wiki](https://github.com/jsonapiphp/jsonapi/wiki)**.
 
 ## Versions
 
@@ -135,7 +132,7 @@ Current version is 4.x (PHP 7.1+) for older PHP (PHP 5.5 - 7.0, HHVM) please use
 
 ## Questions?
 
-Do not hesitate to check [issues](https://github.com/neomerx/json-api/issues) or post a new one.
+Do not hesitate to check [issues](https://github.com/jsonapiphp/jsonapi/issues) or post a new one.
 
 ## Need help?
 
@@ -143,7 +140,7 @@ Are you planning to add JSON API and need help? We'd love to talk to you [sales@
 
 ## Contributing
 
-If you have spotted any specification changes that are not reflected in this package please post an [issue](https://github.com/neomerx/json-api/issues). Pull requests for documentation and code improvements are welcome.
+If you have spotted any specification changes that are not reflected in this package please post an [issue](https://github.com/jsonapiphp/jsonapi/issues). Pull requests for documentation and code improvements are welcome.
 
 There are 2 ways to send pull requests
 - small pull requests should be sent to `develop` branch as **1 commit**
