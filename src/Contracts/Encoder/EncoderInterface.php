@@ -28,7 +28,7 @@ use Neomerx\JsonApi\Contracts\Schema\LinkWithAliasesInterface;
 interface EncoderInterface
 {
     /** JSON API version implemented by the encoder */
-    const JSON_API_VERSION = '1.1';
+    public const JSON_API_VERSION = '1.1';
 
     /**
      * This prefix will be used for URL links while encoding.

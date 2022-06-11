@@ -32,25 +32,13 @@ use Neomerx\JsonApi\Contracts\Schema\SchemaContainerInterface;
  */
 abstract class BaseRelationshipData implements RelationshipDataInterface
 {
-    /**
-     * @var FactoryInterface
-     */
-    private $factory;
+    private \Neomerx\JsonApi\Contracts\Factories\FactoryInterface $factory;
 
-    /**
-     * @var SchemaContainerInterface
-     */
-    private $schemaContainer;
+    private \Neomerx\JsonApi\Contracts\Schema\SchemaContainerInterface $schemaContainer;
 
-    /**
-     * @var EditableContextInterface
-     */
-    private $context;
+    private \Neomerx\JsonApi\Contracts\Parser\EditableContextInterface $context;
 
-    /**
-     * @var PositionInterface
-     */
-    private $position;
+    private \Neomerx\JsonApi\Contracts\Schema\PositionInterface $position;
 
     /**
      * @param FactoryInterface         $factory

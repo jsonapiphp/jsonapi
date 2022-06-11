@@ -37,15 +37,9 @@ class RelationshipDataIsCollection extends BaseRelationshipData implements Relat
     /** @var string */
     public const MSG_INVALID_OPERATION = 'Invalid operation.';
 
-    /**
-     * @var iterable
-     */
-    private $resources;
+    private iterable $resources;
 
-    /**
-     * @var iterable
-     */
-    private $parsedResources = null;
+    private ?iterable $parsedResources = null;
 
     /**
      * @param FactoryInterface         $factory

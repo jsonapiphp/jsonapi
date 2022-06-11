@@ -32,18 +32,15 @@ use Neomerx\Tests\JsonApi\BaseTestCase;
 class HeaderParametersParserTest extends BaseTestCase
 {
     /** JSON API type */
-    const MEDIA_TYPE = MediaTypeInterface::JSON_API_MEDIA_TYPE;
+    public const MEDIA_TYPE = MediaTypeInterface::JSON_API_MEDIA_TYPE;
 
     /** Header name */
-    const HEADER_ACCEPT = HeaderParametersParserInterface::HEADER_ACCEPT;
+    public const HEADER_ACCEPT = HeaderParametersParserInterface::HEADER_ACCEPT;
 
     /** Header name */
-    const HEADER_CONTENT_TYPE = HeaderParametersParserInterface::HEADER_CONTENT_TYPE;
+    public const HEADER_CONTENT_TYPE = HeaderParametersParserInterface::HEADER_CONTENT_TYPE;
 
-    /**
-     * @var HeaderParametersParserInterface
-     */
-    private $parser;
+    private \Neomerx\JsonApi\Contracts\Http\Headers\HeaderParametersParserInterface $parser;
 
     /**
      * @inheritdoc

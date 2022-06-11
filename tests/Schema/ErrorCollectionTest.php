@@ -28,24 +28,21 @@ use Neomerx\Tests\JsonApi\BaseTestCase;
 class ErrorCollectionTest extends BaseTestCase
 {
     /** Path constant */
-    const DATA_PATH = '/data';
+    public const DATA_PATH = '/data';
 
     /** Path constant */
-    const DATA_TYPE_PATH = '/data/type';
+    public const DATA_TYPE_PATH = '/data/type';
 
     /** Path constant */
-    const DATA_ID_PATH = '/data/id';
+    public const DATA_ID_PATH = '/data/id';
 
     /** Path constant */
-    const ATTR_PATH = '/data/attributes';
+    public const ATTR_PATH = '/data/attributes';
 
     /** Path constant */
-    const RELS_PATH = '/data/relationships';
+    public const RELS_PATH = '/data/relationships';
 
-    /**
-     * @var ErrorCollection
-     */
-    private $collection;
+    private \Neomerx\JsonApi\Schema\ErrorCollection $collection;
 
     /**
      * @inheritdoc

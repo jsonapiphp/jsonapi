@@ -282,25 +282,13 @@ class BaseQueryParserTest extends BaseTestCase
         // them here and check how it integrates with EncodingParameters.
         $parser = new class ($queryParameters) extends BaseQueryParser
         {
-            /**
-             * @var null|array
-             */
-            private $fields = null;
+            private ?array $fields = null;
 
-            /**
-             * @var null|array
-             */
-            private $sorts = null;
+            private ?array $sorts = null;
 
-            /**
-             * @var null|array
-             */
-            private $includes = null;
+            private ?array $includes = null;
 
-            /**
-             * @var null|array
-             */
-            private $profile = null;
+            private ?array $profile = null;
 
             /**
              * @return array

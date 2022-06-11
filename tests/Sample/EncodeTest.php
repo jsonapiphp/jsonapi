@@ -26,10 +26,7 @@ use Neomerx\Tests\JsonApi\BaseTestCase;
  */
 class EncodeTest extends BaseTestCase
 {
-    /**
-     * @var EncodeSamples
-     */
-    private $samples;
+    private \Neomerx\Samples\JsonApi\Application\EncodeSamples $samples;
 
     /**
      * Set up.

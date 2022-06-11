@@ -35,10 +35,7 @@ use Serializable;
  */
 class ErrorCollection implements IteratorAggregate, ArrayAccess, Serializable, Countable
 {
-    /**
-     * @var array
-     */
-    private $items = [];
+    private array $items = [];
 
     /**
      * @inheritdoc

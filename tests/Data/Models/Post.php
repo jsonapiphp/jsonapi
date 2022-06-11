@@ -25,11 +25,11 @@ use stdClass;
  */
 class Post extends stdClass
 {
-    const ATTRIBUTE_ID = 'post_id';
-    const ATTRIBUTE_TITLE = 'title';
-    const ATTRIBUTE_BODY = 'body';
-    const LINK_AUTHOR = 'author';
-    const LINK_COMMENTS = 'comments';
+    public const ATTRIBUTE_ID = 'post_id';
+    public const ATTRIBUTE_TITLE = 'title';
+    public const ATTRIBUTE_BODY = 'body';
+    public const LINK_AUTHOR = 'author';
+    public const LINK_COMMENTS = 'comments';
 
     /**
      * @param int    $identity

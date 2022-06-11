@@ -31,20 +31,11 @@ use function is_string;
  */
 abstract class DevSchema extends BaseSchema
 {
-    /**
-     * @var array
-     */
-    private $addToRelationship = [];
+    private array $addToRelationship = [];
 
-    /**
-     * @var array
-     */
-    private $removeFromRelationship = [];
+    private array $removeFromRelationship = [];
 
-    /**
-     * @var array
-     */
-    private $relationshipToRemove = [];
+    private array $relationshipToRemove = [];
 
     /**
      * @var Closure
@@ -184,9 +175,7 @@ abstract class DevSchema extends BaseSchema
     public function hideResourceLinks(): void
     {
         $this->setResourceLinksClosure(
-            function (): array {
-                return [];
-            }
+            fn(): array => []
         );
     }
 
@@ -200,7 +189,7 @@ abstract class DevSchema extends BaseSchema
      */
     protected function fixDescriptions($resource, array $descriptions): array
     {
-        foreach ($this->addToRelationship as list($name, $key, $value)) {
+        foreach ($this->addToRelationship as [$name, $key, $value]) {
             if ($key === self::RELATIONSHIP_LINKS) {
                 foreach ($value as $linkKey => $linkOrClosure) {
                     $link                                = $linkOrClosure instanceof Closure ? $linkOrClosure(
@@ -214,7 +203,7 @@ abstract class DevSchema extends BaseSchema
             }
         }
 
-        foreach ($this->removeFromRelationship as list($name, $key)) {
+        foreach ($this->removeFromRelationship as [$name, $key]) {
             unset($descriptions[$name][$key]);
         }
 

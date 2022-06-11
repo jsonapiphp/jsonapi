@@ -25,9 +25,9 @@ use stdClass;
  */
 class Site extends stdClass
 {
-    const ATTRIBUTE_ID = 'site_id';
-    const ATTRIBUTE_NAME = 'name';
-    const LINK_POSTS = 'posts';
+    public const ATTRIBUTE_ID = 'site_id';
+    public const ATTRIBUTE_NAME = 'name';
+    public const LINK_POSTS = 'posts';
 
     /**
      * @param int        $identity

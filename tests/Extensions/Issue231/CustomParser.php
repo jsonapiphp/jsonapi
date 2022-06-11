@@ -29,10 +29,7 @@ final class CustomParser extends Parser
     /** @var string Special value to be used in include paths */
     public const PATH_WILDCARD_ALL = '*';
 
-    /**
-     * @var array
-     */
-    private $cachedPathsResults = [];
+    private array $cachedPathsResults = [];
 
     /**
      * @inheritdoc

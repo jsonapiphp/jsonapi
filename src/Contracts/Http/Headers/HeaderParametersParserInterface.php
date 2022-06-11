@@ -24,10 +24,10 @@ namespace Neomerx\JsonApi\Contracts\Http\Headers;
 interface HeaderParametersParserInterface
 {
     /** Header name that contains format of output data from client */
-    const HEADER_ACCEPT = 'Accept';
+    public const HEADER_ACCEPT = 'Accept';
 
     /** Header name that contains format of input data from client */
-    const HEADER_CONTENT_TYPE = 'Content-Type';
+    public const HEADER_CONTENT_TYPE = 'Content-Type';
 
     /**
      * Parse input as `Accept` header.

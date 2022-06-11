@@ -942,10 +942,7 @@ EOL;
                     $schema->addToRelationship(
                         $secondRelName,
                         AuthorSchema::RELATIONSHIP_DATA,
-                        function () use ($comment5
-                        ) {
-                            return [$comment5];
-                        }
+                        fn() => [$comment5]
                     );
 
                     // hide links

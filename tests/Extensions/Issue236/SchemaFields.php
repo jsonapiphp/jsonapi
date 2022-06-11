@@ -35,17 +35,13 @@ final class SchemaFields
     /** @var string Path constant */
     private const FIELD_SEPARATOR = ',';
 
-    /** @var array */
-    private $fastRelationships;
+    private ?array $fastRelationships = null;
 
-    /** @var array */
-    private $fastRelationshipLists;
+    private ?array $fastRelationshipLists = null;
 
-    /** @var array */
-    private $fastFields;
+    private ?array $fastFields = null;
 
-    /** @var array */
-    private $fastFieldLists;
+    private ?array $fastFieldLists = null;
 
     /**
      * @param iterable $paths

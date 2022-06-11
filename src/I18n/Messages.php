@@ -23,10 +23,7 @@ namespace Neomerx\JsonApi\I18n;
  */
 class Messages
 {
-    /**
-     * @var array
-     */
-    private static $translations = [];
+    private static array $translations = [];
 
     /**
      * Try to translate the message and format it with the given parameters.

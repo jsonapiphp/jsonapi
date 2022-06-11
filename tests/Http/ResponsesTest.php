@@ -34,15 +34,9 @@ use stdClass;
  */
 class ResponsesTest extends BaseTestCase
 {
-    /**
-     * @var MockInterface
-     */
-    private $mock;
+    private \Mockery\MockInterface $mock;
 
-    /**
-     * @var ResponsesInterface
-     */
-    private $responses;
+    private \Neomerx\JsonApi\Contracts\Http\ResponsesInterface $responses;
 
     /**
      * Set up tests.

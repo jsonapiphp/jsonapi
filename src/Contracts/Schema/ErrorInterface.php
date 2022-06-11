@@ -26,12 +26,12 @@ interface ErrorInterface
     /**
      * Key for 'Source' field.
      */
-    const SOURCE_POINTER = 'pointer';
+    public const SOURCE_POINTER = 'pointer';
 
     /**
      * Key for 'Source' field.
      */
-    const SOURCE_PARAMETER = 'parameter';
+    public const SOURCE_PARAMETER = 'parameter';
 
     /**
      * Get a unique identifier for this particular occurrence of the problem.

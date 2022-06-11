@@ -27,10 +27,7 @@ use IteratorAggregate;
  */
 class Collection implements ArrayAccess, IteratorAggregate
 {
-    /**
-     * @var array
-     */
-    private $data = [];
+    private array $data = [];
 
     /**
      * @inheritdoc

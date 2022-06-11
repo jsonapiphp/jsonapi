@@ -57,30 +57,15 @@ class Parser implements ParserInterface
     public const MSG_PATHS_HAVE_NOT_BEEN_NORMALIZED_YET =
         'Paths have not been normalized yet. Have you called `parse` method already?';
 
-    /**
-     * @var SchemaContainerInterface
-     */
-    private $schemaContainer;
+    private \Neomerx\JsonApi\Contracts\Schema\SchemaContainerInterface $schemaContainer;
 
-    /**
-     * @var FactoryInterface
-     */
-    private $factory;
+    private \Neomerx\JsonApi\Contracts\Factories\FactoryInterface $factory;
 
-    /**
-     * @var array
-     */
-    private $paths;
+    private ?array $paths = null;
 
-    /**
-     * @var array
-     */
-    private $resourcesTracker;
+    private array $resourcesTracker;
 
-    /**
-     * @var EditableContextInterface
-     */
-    private $context;
+    private \Neomerx\JsonApi\Contracts\Parser\EditableContextInterface $context;
 
     /**
      * @param FactoryInterface         $factory
@@ -280,15 +265,9 @@ class Parser implements ParserInterface
     ): IdentifierInterface {
         return new class ($position, $identifier) implements IdentifierInterface
         {
-            /**
-             * @var PositionInterface
-             */
-            private $position;
+            private \Neomerx\JsonApi\Contracts\Schema\PositionInterface $position;
 
-            /**
-             * @var SchemaIdentifierInterface
-             */
-            private $identifier;
+            private SchemaIdentifierInterface $identifier;
 
             /**
              * @param PositionInterface         $position
@@ -400,19 +379,10 @@ class Parser implements ParserInterface
             $isNull
         ) implements DocumentDataInterface
         {
-            /**
-             * @var PositionInterface
-             */
-            private $position;
-            /**
-             * @var bool
-             */
-            private $isCollection;
+            private \Neomerx\JsonApi\Contracts\Schema\PositionInterface $position;
+            private bool $isCollection;
 
-            /**
-             * @var bool
-             */
-            private $isNull;
+            private bool $isNull;
 
             /**
              * @param PositionInterface $position

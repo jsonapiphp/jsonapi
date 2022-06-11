@@ -28,17 +28,17 @@ interface ResponsesInterface
     /**
      * HTTP code constant.
      */
-    const HTTP_OK = 200;
+    public const HTTP_OK = 200;
 
     /**
      * HTTP code constant.
      */
-    const HTTP_CREATED = 201;
+    public const HTTP_CREATED = 201;
 
     /**
      * HTTP code constant.
      */
-    const HTTP_BAD_REQUEST = 400;
+    public const HTTP_BAD_REQUEST = 400;
 
     /**
      * Get response with regular JSON API Document in body.

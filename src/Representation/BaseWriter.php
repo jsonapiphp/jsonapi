@@ -33,15 +33,9 @@ abstract class BaseWriter implements BaseWriterInterface
      */
     protected $data;
 
-    /**
-     * @var string
-     */
-    private $urlPrefix;
+    private string $urlPrefix;
 
-    /**
-     * @var bool
-     */
-    private $isDataAnArray;
+    private bool $isDataAnArray;
 
     /**
      * Constructor.

@@ -42,10 +42,7 @@ class RelationshipDataIsIdentifier extends BaseRelationshipData implements Relat
      */
     private $identifier;
 
-    /**
-     * @var null|ParserIdentifierInterface
-     */
-    private $parsedIdentifier = null;
+    private ?ParserIdentifierInterface $parsedIdentifier = null;
 
     /**
      * @param FactoryInterface          $factory

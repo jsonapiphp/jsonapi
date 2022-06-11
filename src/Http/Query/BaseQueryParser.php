@@ -36,10 +36,7 @@ class BaseQueryParser implements BaseQueryParserInterface
     /** Message */
     public const MSG_ERR_INVALID_PARAMETER = 'Invalid Parameter.';
 
-    /**
-     * @var array
-     */
-    private $parameters;
+    private ?array $parameters = null;
 
     /**
      * @var string[]|null

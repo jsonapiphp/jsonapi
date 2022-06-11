@@ -41,10 +41,7 @@ class RelationshipDataIsResource extends BaseRelationshipData implements Relatio
      */
     private $resource;
 
-    /**
-     * @var null|ResourceInterface
-     */
-    private $parsedResource = null;
+    private ?\Neomerx\JsonApi\Contracts\Parser\ResourceInterface $parsedResource = null;
 
     /**
      * @param FactoryInterface         $factory

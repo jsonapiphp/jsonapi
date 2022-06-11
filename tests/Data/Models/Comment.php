@@ -25,9 +25,9 @@ use stdClass;
  */
 class Comment extends stdClass
 {
-    const ATTRIBUTE_ID = 'comment_id';
-    const ATTRIBUTE_BODY = 'body';
-    const LINK_AUTHOR = 'author';
+    public const ATTRIBUTE_ID = 'comment_id';
+    public const ATTRIBUTE_BODY = 'body';
+    public const LINK_AUTHOR = 'author';
 
     /**
      * @param int    $identity
