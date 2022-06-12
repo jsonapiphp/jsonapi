@@ -1,0 +1,41 @@
+name: Code_Checks
+
+on: [push, pull_request]
+
+jobs:
+    tests:
+        runs-on: ubuntu-20.04
+        strategy:
+            matrix:
+                php:
+                    - '7.4'
+                    - '8.0'
+                    - '8.1'
+
+        name: PHP ${{ matrix.php }} / Ubuntu
+        steps:
+            -   uses: actions/checkout@v2
+
+            -   uses: shivammathur/setup-php@v2
+                with:
+                    php-version: ${{ matrix.php }}
+                    coverage: none # disable xdebug, pcov
+
+            -   run: composer install -a --no-interaction --no-progress --prefer-dist
+
+            -   run: vendor/bin/phpunit
+
+    static_analysis:
+        runs-on: ubuntu-20.04
+        name: Static analysis
+        steps:
+            -   uses: actions/checkout@v2
+
+            -   uses: shivammathur/setup-php@v2
+                with:
+                    php-version: 8.1
+                    coverage: none # disable xdebug, pcov
+
+            -   run: composer install -a --no-interaction --no-progress --prefer-dist
+
+            -   run: composer test-cs-fixer
