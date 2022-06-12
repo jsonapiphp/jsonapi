@@ -29,7 +29,10 @@
         "phpmd/phpmd": "^2.6",
         "phpunit/phpunit": "^9.5",
         "squizlabs/php_codesniffer": "^2.9",
-        "symfony/phpunit-bridge": "^6.1"
+        "symfony/phpunit-bridge": "^6.1",
+        "phpstan/phpstan": "^1.7",
+        "phpstan/phpstan-phpunit": "^1.1",
+        "phpstan/phpstan-strict-rules": "^1.2"
     },
     "minimum-stability": "stable",
     "autoload": {
@@ -58,7 +61,8 @@
         "test-cs-fixer": "./vendor/bin/php-cs-fixer fix --diff --dry-run -v",
         "test-md": "./vendor/bin/phpmd ./src text codesize,controversial,cleancode,design,unusedcode,naming",
         "test-unit": "./vendor/phpunit/phpunit/phpunit --coverage-text",
-        "test-unit-phpdbg": "phpdbg -qrr ./vendor/bin/phpunit --coverage-text"
+        "test-unit-phpdbg": "phpdbg -qrr ./vendor/bin/phpunit --coverage-text",
+        "phpstan:check": "@php vendor/bin/phpstan analyse -c phpstan.neon src tests"
     },
     "funding": [
         {
