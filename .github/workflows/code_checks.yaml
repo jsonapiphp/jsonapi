@@ -62,6 +62,11 @@ jobs:
 
             -   run: composer install -a --no-interaction --no-progress --prefer-dist
 
+            -   uses: actions/cache@v3
+                with:
+                    path: .php-cs-fixer.cache
+                    key: php-cs-fixer-cache
+
             -   run: composer test-cs-fixer
 
             -   run: composer phpstan:check
