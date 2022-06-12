@@ -9,3 +9,4 @@
 /.gitattributes     export-ignore
 /.gitignore         export-ignore
 /.php-cs-fixer.dist.php       export-ignore
+/.github            export-ignore
