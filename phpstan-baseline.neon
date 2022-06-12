@@ -1,0 +1,2326 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Encoder\\\\EncoderInterface\\:\\:encodeData\\(\\) has parameter \\$data with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Encoder/EncoderInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Encoder\\\\EncoderInterface\\:\\:encodeErrors\\(\\) has parameter \\$errors with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Encoder/EncoderInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Encoder\\\\EncoderInterface\\:\\:encodeIdentifiers\\(\\) has parameter \\$data with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Encoder/EncoderInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Encoder\\\\EncoderInterface\\:\\:withFieldSets\\(\\) has parameter \\$fieldSets with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Contracts/Encoder/EncoderInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Encoder\\\\EncoderInterface\\:\\:withIncludedPaths\\(\\) has parameter \\$paths with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Encoder/EncoderInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Encoder\\\\EncoderInterface\\:\\:withLinks\\(\\) has parameter \\$links with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Contracts/Encoder/EncoderInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Encoder\\\\EncoderInterface\\:\\:withProfile\\(\\) has parameter \\$links with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Encoder/EncoderInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Factories\\\\FactoryInterface\\:\\:createFieldSetFilter\\(\\) has parameter \\$fieldSets with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Contracts/Factories/FactoryInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Factories\\\\FactoryInterface\\:\\:createParserContext\\(\\) has parameter \\$fieldSets with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Contracts/Factories/FactoryInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Factories\\\\FactoryInterface\\:\\:createParserContext\\(\\) has parameter \\$includePaths with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Contracts/Factories/FactoryInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Factories\\\\FactoryInterface\\:\\:createRelationship\\(\\) has parameter \\$links with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Factories/FactoryInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Factories\\\\FactoryInterface\\:\\:createRelationshipDataIsCollection\\(\\) has parameter \\$resources with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Factories/FactoryInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Factories\\\\FactoryInterface\\:\\:createSchemaContainer\\(\\) has parameter \\$schemas with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Factories/FactoryInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Http\\\\Headers\\\\HeaderParametersParserInterface\\:\\:parseAcceptHeader\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Http/Headers/HeaderParametersParserInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Http\\\\Query\\\\BaseQueryParserInterface\\:\\:getFields\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Http/Query/BaseQueryParserInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Http\\\\Query\\\\BaseQueryParserInterface\\:\\:getIncludes\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Http/Query/BaseQueryParserInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Http\\\\Query\\\\BaseQueryParserInterface\\:\\:getSorts\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Http/Query/BaseQueryParserInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Http\\\\ResponsesInterface\\:\\:getCodeResponse\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Contracts/Http/ResponsesInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Http\\\\ResponsesInterface\\:\\:getContentResponse\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Contracts/Http/ResponsesInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Http\\\\ResponsesInterface\\:\\:getContentResponse\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Contracts/Http/ResponsesInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Http\\\\ResponsesInterface\\:\\:getCreatedResponse\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Contracts/Http/ResponsesInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Http\\\\ResponsesInterface\\:\\:getErrorResponse\\(\\) has parameter \\$errors with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Http/ResponsesInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Http\\\\ResponsesInterface\\:\\:getErrorResponse\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Contracts/Http/ResponsesInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Http\\\\ResponsesInterface\\:\\:getIdentifiersResponse\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Contracts/Http/ResponsesInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Http\\\\ResponsesInterface\\:\\:getIdentifiersResponse\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Contracts/Http/ResponsesInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Http\\\\ResponsesInterface\\:\\:getMetaResponse\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Contracts/Http/ResponsesInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Http\\\\ResponsesInterface\\:\\:getMetaResponse\\(\\) has parameter \\$meta with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Contracts/Http/ResponsesInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Parser\\\\ParserInterface\\:\\:parse\\(\\) has parameter \\$paths with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Contracts/Parser/ParserInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Parser\\\\ParserInterface\\:\\:parse\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Parser/ParserInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Parser\\\\RelationshipDataInterface\\:\\:getIdentifiers\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Parser/RelationshipDataInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Parser\\\\RelationshipDataInterface\\:\\:getResources\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Parser/RelationshipDataInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Parser\\\\RelationshipInterface\\:\\:getLinks\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Parser/RelationshipInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Parser\\\\ResourceInterface\\:\\:getAttributes\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Parser/ResourceInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Parser\\\\ResourceInterface\\:\\:getLinks\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Parser/ResourceInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Parser\\\\ResourceInterface\\:\\:getRelationships\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Parser/ResourceInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Representation\\\\BaseWriterInterface\\:\\:getDocument\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Contracts/Representation/BaseWriterInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Representation\\\\BaseWriterInterface\\:\\:setLinks\\(\\) has parameter \\$links with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Representation/BaseWriterInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Representation\\\\BaseWriterInterface\\:\\:setProfile\\(\\) has parameter \\$links with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Representation/BaseWriterInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Representation\\\\FieldSetFilterInterface\\:\\:getAttributes\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Representation/FieldSetFilterInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Representation\\\\FieldSetFilterInterface\\:\\:getRelationships\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Representation/FieldSetFilterInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\BaseLinkInterface\\:\\:getArrayRepresentation\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Contracts/Schema/BaseLinkInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\ContextInterface\\:\\:getFieldSets\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Contracts/Schema/ContextInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\ContextInterface\\:\\:getIncludePaths\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Contracts/Schema/ContextInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\ErrorInterface\\:\\:getLinks\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Schema/ErrorInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\ErrorInterface\\:\\:getSource\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Contracts/Schema/ErrorInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\ErrorInterface\\:\\:getTypeLinks\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Schema/ErrorInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\SchemaInterface\\:\\:getAttributes\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Schema/SchemaInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\SchemaInterface\\:\\:getLinks\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Schema/SchemaInterface.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\SchemaInterface\\:\\:getRelationships\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Contracts/Schema/SchemaInterface.php
+
+		-
+			message: "#^Call to function assert\\(\\) with true will always evaluate to true\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
+			count: 2
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:encodeData\\(\\) has parameter \\$data with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:encodeDataToArray\\(\\) has parameter \\$data with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:encodeDataToArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:encodeErrorToArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:encodeErrors\\(\\) has parameter \\$errors with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:encodeErrorsToArray\\(\\) has parameter \\$errors with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:encodeErrorsToArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:encodeIdentifiers\\(\\) has parameter \\$data with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:encodeIdentifiersToArray\\(\\) has parameter \\$data with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:encodeIdentifiersToArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:encodeMetaToArray\\(\\) has parameter \\$meta with no type specified\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:encodeMetaToArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:encodeToJson\\(\\) has parameter \\$document with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:encodeToJson\\(\\) should return string but returns string\\|false\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:getFieldSets\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:getIncludePaths\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:getJsonApiVersion\\(\\) should return string but returns string\\|null\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:getLinks\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:getProfile\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:instance\\(\\) has parameter \\$schemas with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:iterableToArray\\(\\) has parameter \\$value with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:iterableToArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:reset\\(\\) has parameter \\$fieldSets with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:reset\\(\\) has parameter \\$includePaths with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:withFieldSets\\(\\) has parameter \\$fieldSets with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:withIncludedPaths\\(\\) has parameter \\$paths with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:withLinks\\(\\) has parameter \\$links with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:withProfile\\(\\) has parameter \\$links with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Parameter \\#1 \\$assertion of function assert expects bool\\|string, mixed given\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Parameter \\#1 \\$resourceObject of method Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\SchemaContainerInterface\\:\\:getSchema\\(\\) expects object, mixed given\\.$#"
+			count: 2
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Parameter \\#3 \\$depth of function json_encode expects int\\<1, max\\>, int given\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:\\$fieldSets type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:\\$includePaths type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:\\$links \\(iterable\\) does not accept null\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:\\$links type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:\\$profile \\(iterable\\) does not accept null\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Encoder\\\\Encoder\\:\\:\\$profile type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Result of && is always false\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Strict comparison using \\!\\=\\= between null and Neomerx\\\\JsonApi\\\\Contracts\\\\Representation\\\\BaseWriterInterface will always evaluate to true\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Strict comparison using \\!\\=\\= between null and null will always evaluate to false\\.$#"
+			count: 1
+			path: src/Encoder/Encoder.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Exceptions\\\\JsonApiException\\:\\:__construct\\(\\) has parameter \\$errors with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Exceptions/JsonApiException.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Exceptions\\\\JsonApiException\\:\\:addErrors\\(\\) has parameter \\$errors with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Exceptions/JsonApiException.php
+
+		-
+			message: "#^Call to function assert\\(\\) with true will always evaluate to true\\.$#"
+			count: 1
+			path: src/Factories/Factory.php
+
+		-
+			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
+			count: 1
+			path: src/Factories/Factory.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Factories\\\\Factory\\:\\:createFieldSetFilter\\(\\) has parameter \\$fieldSets with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Factories/Factory.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Factories\\\\Factory\\:\\:createParserContext\\(\\) has parameter \\$fieldSets with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Factories/Factory.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Factories\\\\Factory\\:\\:createParserContext\\(\\) has parameter \\$includePaths with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Factories/Factory.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Factories\\\\Factory\\:\\:createRelationship\\(\\) has parameter \\$links with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Factories/Factory.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Factories\\\\Factory\\:\\:createRelationshipDataIsCollection\\(\\) has parameter \\$resources with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Factories/Factory.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Factories\\\\Factory\\:\\:createSchemaContainer\\(\\) has parameter \\$schemas with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Factories/Factory.php
+
+		-
+			message: "#^Method class@anonymous/src/Factories/Factory\\.php\\:272\\:\\:__construct\\(\\) has parameter \\$links with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Factories/Factory.php
+
+		-
+			message: "#^Method class@anonymous/src/Factories/Factory\\.php\\:272\\:\\:getData\\(\\) should return Neomerx\\\\JsonApi\\\\Contracts\\\\Parser\\\\RelationshipDataInterface but returns Neomerx\\\\JsonApi\\\\Contracts\\\\Parser\\\\RelationshipDataInterface\\|null\\.$#"
+			count: 1
+			path: src/Factories/Factory.php
+
+		-
+			message: "#^Method class@anonymous/src/Factories/Factory\\.php\\:272\\:\\:getLinks\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Factories/Factory.php
+
+		-
+			message: "#^Method class@anonymous/src/Factories/Factory\\.php\\:272\\:\\:getLinks\\(\\) should return iterable but returns iterable\\|null\\.$#"
+			count: 1
+			path: src/Factories/Factory.php
+
+		-
+			message: "#^Method class@anonymous/src/Factories/Factory\\.php\\:460\\:\\:__construct\\(\\) has parameter \\$fieldSets with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Factories/Factory.php
+
+		-
+			message: "#^Method class@anonymous/src/Factories/Factory\\.php\\:460\\:\\:__construct\\(\\) has parameter \\$includePaths with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Factories/Factory.php
+
+		-
+			message: "#^Method class@anonymous/src/Factories/Factory\\.php\\:460\\:\\:getFieldSets\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Factories/Factory.php
+
+		-
+			message: "#^Method class@anonymous/src/Factories/Factory\\.php\\:460\\:\\:getIncludePaths\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Factories/Factory.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of function call_user_func expects callable\\(\\)\\: mixed, mixed given\\.$#"
+			count: 1
+			path: src/Factories/Factory.php
+
+		-
+			message: "#^Property class@anonymous/src/Factories/Factory\\.php\\:272\\:\\:\\$links type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Factories/Factory.php
+
+		-
+			message: "#^Property class@anonymous/src/Factories/Factory\\.php\\:460\\:\\:\\$fieldSets type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Factories/Factory.php
+
+		-
+			message: "#^Property class@anonymous/src/Factories/Factory\\.php\\:460\\:\\:\\$includePaths type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Factories/Factory.php
+
+		-
+			message: "#^Strict comparison using \\!\\=\\= between null and Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\PositionInterface will always evaluate to true\\.$#"
+			count: 1
+			path: src/Factories/Factory.php
+
+		-
+			message: "#^Call to function assert\\(\\) with true will always evaluate to true\\.$#"
+			count: 1
+			path: src/Http/BaseResponses.php
+
+		-
+			message: "#^Instanceof between Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\ErrorInterface and Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\ErrorInterface will always evaluate to true\\.$#"
+			count: 1
+			path: src/Http/BaseResponses.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\BaseResponses\\:\\:createJsonApiResponse\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Http/BaseResponses.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\BaseResponses\\:\\:createResponse\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Http/BaseResponses.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\BaseResponses\\:\\:getCodeResponse\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Http/BaseResponses.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\BaseResponses\\:\\:getContentResponse\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Http/BaseResponses.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\BaseResponses\\:\\:getContentResponse\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Http/BaseResponses.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\BaseResponses\\:\\:getCreatedResponse\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Http/BaseResponses.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\BaseResponses\\:\\:getErrorResponse\\(\\) has parameter \\$errors with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Http/BaseResponses.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\BaseResponses\\:\\:getErrorResponse\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Http/BaseResponses.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\BaseResponses\\:\\:getIdentifiersResponse\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Http/BaseResponses.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\BaseResponses\\:\\:getIdentifiersResponse\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Http/BaseResponses.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\BaseResponses\\:\\:getMetaResponse\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Http/BaseResponses.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\BaseResponses\\:\\:getMetaResponse\\(\\) has parameter \\$meta with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Http/BaseResponses.php
+
+		-
+			message: "#^PHPDoc tag @var for variable \\$errors has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Http/BaseResponses.php
+
+		-
+			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
+			count: 2
+			path: src/Http/Headers/AcceptMediaType.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\Headers\\\\AcceptMediaType\\:\\:compareParameters\\(\\) has parameter \\$lhs with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Http/Headers/AcceptMediaType.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\Headers\\\\AcceptMediaType\\:\\:compareParameters\\(\\) has parameter \\$rhs with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Http/Headers/AcceptMediaType.php
+
+		-
+			message: "#^Cannot access offset int\\<0, max\\> on array\\<int, string\\>\\|false\\.$#"
+			count: 1
+			path: src/Http/Headers/HeaderParametersParser.php
+
+		-
+			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
+			count: 3
+			path: src/Http/Headers/HeaderParametersParser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\Headers\\\\HeaderParametersParser\\:\\:parseAcceptHeader\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Http/Headers/HeaderParametersParser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\Headers\\\\HeaderParametersParser\\:\\:parseQualityAndParameters\\(\\) has parameter \\$fields with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Http/Headers/HeaderParametersParser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\Headers\\\\HeaderParametersParser\\:\\:parseQualityAndParameters\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Http/Headers/HeaderParametersParser.php
+
+		-
+			message: "#^Constant Neomerx\\\\JsonApi\\\\Http\\\\Headers\\\\MediaType\\:\\:PARAMETER_NAMES type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Http/Headers/MediaType.php
+
+		-
+			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
+			count: 6
+			path: src/Http/Headers/MediaType.php
+
+		-
+			message: "#^Parameter \\#1 \\$array of function array_change_key_case expects array, array\\<string, string\\>\\|null given\\.$#"
+			count: 4
+			path: src/Http/Headers/MediaType.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\Query\\\\BaseQueryParser\\:\\:__construct\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Http/Query/BaseQueryParser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\Query\\\\BaseQueryParser\\:\\:getFields\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Http/Query/BaseQueryParser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\Query\\\\BaseQueryParser\\:\\:getIncludePaths\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Http/Query/BaseQueryParser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\Query\\\\BaseQueryParser\\:\\:getIncludes\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Http/Query/BaseQueryParser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\Query\\\\BaseQueryParser\\:\\:getParameters\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Http/Query/BaseQueryParser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\Query\\\\BaseQueryParser\\:\\:getParameters\\(\\) should return array but returns array\\|null\\.$#"
+			count: 1
+			path: src/Http/Query/BaseQueryParser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\Query\\\\BaseQueryParser\\:\\:getProfileUrls\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Http/Query/BaseQueryParser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\Query\\\\BaseQueryParser\\:\\:getSorts\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Http/Query/BaseQueryParser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\Query\\\\BaseQueryParser\\:\\:setMessages\\(\\) has parameter \\$messages with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Http/Query/BaseQueryParser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\Query\\\\BaseQueryParser\\:\\:setParameters\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Http/Query/BaseQueryParser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\Query\\\\BaseQueryParser\\:\\:splitCommaSeparatedStringAndCheckNoEmpties\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Http/Query/BaseQueryParser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\Query\\\\BaseQueryParser\\:\\:splitSpaceSeparatedStringAndCheckNoEmpties\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Http/Query/BaseQueryParser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Http\\\\Query\\\\BaseQueryParser\\:\\:splitStringAndCheckNoEmpties\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Http/Query/BaseQueryParser.php
+
+		-
+			message: "#^Parameter \\#1 \\$separator of function explode expects non\\-empty\\-string, string given\\.$#"
+			count: 1
+			path: src/Http/Query/BaseQueryParser.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Http\\\\Query\\\\BaseQueryParser\\:\\:\\$parameters type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Http/Query/BaseQueryParser.php
+
+		-
+			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
+			count: 1
+			path: src/I18n/Messages.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\I18n\\\\Messages\\:\\:setTranslations\\(\\) has parameter \\$translations with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/I18n/Messages.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\I18n\\\\Messages\\:\\:\\$translations type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/I18n/Messages.php
+
+		-
+			message: "#^Unsafe access to private property Neomerx\\\\JsonApi\\\\I18n\\\\Messages\\:\\:\\$translations through static\\:\\:\\.$#"
+			count: 2
+			path: src/I18n/Messages.php
+
+		-
+			message: "#^Parameter \\#1 \\$message of static method Neomerx\\\\JsonApi\\\\I18n\\\\Messages\\:\\:compose\\(\\) expects string, mixed given\\.$#"
+			count: 1
+			path: src/I18n/format.php
+
+		-
+			message: "#^Call to function assert\\(\\) with true will always evaluate to true\\.$#"
+			count: 2
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Call to function is_array\\(\\) with array will always evaluate to true\\.$#"
+			count: 1
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Call to function is_bool\\(\\) with bool will always evaluate to true\\.$#"
+			count: 2
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Call to function is_string\\(\\) with string will always evaluate to true\\.$#"
+			count: 1
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
+			count: 7
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\IdentifierAndResource\\:\\:assertRelationshipNameAndDescription\\(\\) has parameter \\$description with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\IdentifierAndResource\\:\\:getAttributes\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\IdentifierAndResource\\:\\:getLinks\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\IdentifierAndResource\\:\\:getLinks\\(\\) should return iterable but returns array\\|null\\.$#"
+			count: 1
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\IdentifierAndResource\\:\\:getRelationships\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\IdentifierAndResource\\:\\:parseLinks\\(\\) has parameter \\$schemaLinks with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\IdentifierAndResource\\:\\:parseLinks\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\IdentifierAndResource\\:\\:parseRelationshipData\\(\\) has parameter \\$description with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\IdentifierAndResource\\:\\:parseRelationshipData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\IdentifierAndResource\\:\\:parseRelationshipLinks\\(\\) has parameter \\$description with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\IdentifierAndResource\\:\\:parseRelationshipLinks\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Parameter \\#1 \\$object of function get_class expects object, mixed given\\.$#"
+			count: 1
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Parameter \\#1 \\$resource of method Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\SchemaInterface\\:\\:getId\\(\\) expects object, mixed given\\.$#"
+			count: 1
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Parameter \\#1 \\$resourceObject of method Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\SchemaContainerInterface\\:\\:getSchema\\(\\) expects object, mixed given\\.$#"
+			count: 1
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Parser\\\\IdentifierAndResource\\:\\:\\$links type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Parser\\\\IdentifierAndResource\\:\\:\\$relationshipsCache type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Result of && is always true\\.$#"
+			count: 1
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between true and true will always evaluate to true\\.$#"
+			count: 4
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Variable \\$extraSchemaLinks in isset\\(\\) always exists and is not nullable\\.$#"
+			count: 1
+			path: src/Parser/IdentifierAndResource.php
+
+		-
+			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
+			count: 1
+			path: src/Parser/Parser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\Parser\\:\\:getNormalizedPaths\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Parser/Parser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\Parser\\:\\:normalizePaths\\(\\) has parameter \\$paths with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Parser/Parser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\Parser\\:\\:normalizePaths\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Parser/Parser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\Parser\\:\\:parse\\(\\) has parameter \\$paths with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Parser/Parser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\Parser\\:\\:parse\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Parser/Parser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\Parser\\:\\:parseAsResource\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Parser/Parser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\Parser\\:\\:parseAsResourcesOrIdentifiers\\(\\) has parameter \\$dataOrIds with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Parser/Parser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\Parser\\:\\:parseAsResourcesOrIdentifiers\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Parser/Parser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\Parser\\:\\:parseResource\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Parser/Parser.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Parser\\\\Parser\\:\\:\\$paths type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Parser/Parser.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Parser\\\\Parser\\:\\:\\$resourcesTracker type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Parser/Parser.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\RelationshipData\\\\BaseRelationshipData\\:\\:createParsedIdentifier\\(\\) should return Neomerx\\\\JsonApi\\\\Contracts\\\\Parser\\\\ResourceInterface but returns Neomerx\\\\JsonApi\\\\Contracts\\\\Parser\\\\IdentifierInterface\\.$#"
+			count: 1
+			path: src/Parser/RelationshipData/BaseRelationshipData.php
+
+		-
+			message: "#^Parameter \\#1 \\$object of function get_class expects object, mixed given\\.$#"
+			count: 1
+			path: src/Parser/RelationshipData/BaseRelationshipData.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\RelationshipData\\\\RelationshipDataIsCollection\\:\\:__construct\\(\\) has parameter \\$resources with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Parser/RelationshipData/RelationshipDataIsCollection.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\RelationshipData\\\\RelationshipDataIsCollection\\:\\:getIdentifiers\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Parser/RelationshipData/RelationshipDataIsCollection.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\RelationshipData\\\\RelationshipDataIsCollection\\:\\:getResources\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Parser/RelationshipData/RelationshipDataIsCollection.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Parser\\\\RelationshipData\\\\RelationshipDataIsCollection\\:\\:\\$parsedResources type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Parser/RelationshipData/RelationshipDataIsCollection.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Parser\\\\RelationshipData\\\\RelationshipDataIsCollection\\:\\:\\$resources type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Parser/RelationshipData/RelationshipDataIsCollection.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\RelationshipData\\\\RelationshipDataIsIdentifier\\:\\:getIdentifiers\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Parser/RelationshipData/RelationshipDataIsIdentifier.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\RelationshipData\\\\RelationshipDataIsIdentifier\\:\\:getResources\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Parser/RelationshipData/RelationshipDataIsIdentifier.php
+
+		-
+			message: "#^Parameter \\#1 \\$identifier of method Neomerx\\\\JsonApi\\\\Parser\\\\RelationshipData\\\\BaseRelationshipData\\:\\:createParsedIdentifier\\(\\) expects Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\IdentifierInterface, mixed given\\.$#"
+			count: 1
+			path: src/Parser/RelationshipData/RelationshipDataIsIdentifier.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\RelationshipData\\\\RelationshipDataIsNull\\:\\:getIdentifiers\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Parser/RelationshipData/RelationshipDataIsNull.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\RelationshipData\\\\RelationshipDataIsNull\\:\\:getResources\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Parser/RelationshipData/RelationshipDataIsNull.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\RelationshipData\\\\RelationshipDataIsResource\\:\\:getIdentifiers\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Parser/RelationshipData/RelationshipDataIsResource.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Parser\\\\RelationshipData\\\\RelationshipDataIsResource\\:\\:getResources\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Parser/RelationshipData/RelationshipDataIsResource.php
+
+		-
+			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
+			count: 2
+			path: src/Representation/BaseWriter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\BaseWriter\\:\\:getDocument\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Representation/BaseWriter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\BaseWriter\\:\\:getLinksListRepresentation\\(\\) has parameter \\$links with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Representation/BaseWriter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\BaseWriter\\:\\:getLinksListRepresentation\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Representation/BaseWriter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\BaseWriter\\:\\:getLinksRepresentation\\(\\) has parameter \\$links with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Representation/BaseWriter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\BaseWriter\\:\\:getLinksRepresentation\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Representation/BaseWriter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\BaseWriter\\:\\:setLinks\\(\\) has parameter \\$links with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Representation/BaseWriter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\BaseWriter\\:\\:setProfile\\(\\) has parameter \\$links with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Representation/BaseWriter.php
+
+		-
+			message: "#^Parameter \\#1 \\$prefix of method Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\BaseLinkInterface\\:\\:getArrayRepresentation\\(\\) expects string, string\\|null given\\.$#"
+			count: 2
+			path: src/Representation/BaseWriter.php
+
+		-
+			message: "#^Parameter \\#1 \\$prefix of method Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\BaseLinkInterface\\:\\:getStringRepresentation\\(\\) expects string, string\\|null given\\.$#"
+			count: 2
+			path: src/Representation/BaseWriter.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Representation\\\\BaseWriter\\:\\:\\$data type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Representation/BaseWriter.php
+
+		-
+			message: "#^Call to function assert\\(\\) with true and non\\-empty\\-string will always evaluate to true\\.$#"
+			count: 4
+			path: src/Representation/DocumentWriter.php
+
+		-
+			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
+			count: 3
+			path: src/Representation/DocumentWriter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\DocumentWriter\\:\\:addToData\\(\\) has parameter \\$representation with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Representation/DocumentWriter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\DocumentWriter\\:\\:addToIncluded\\(\\) has parameter \\$representation with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Representation/DocumentWriter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\DocumentWriter\\:\\:getAttributesRepresentation\\(\\) has parameter \\$attributes with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Representation/DocumentWriter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\DocumentWriter\\:\\:getAttributesRepresentation\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Representation/DocumentWriter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\DocumentWriter\\:\\:getIdentifierRepresentation\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Representation/DocumentWriter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\DocumentWriter\\:\\:getIdentifierRepresentationFromResource\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Representation/DocumentWriter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\DocumentWriter\\:\\:getRelationshipDataRepresentation\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Representation/DocumentWriter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\DocumentWriter\\:\\:getRelationshipRepresentation\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Representation/DocumentWriter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\DocumentWriter\\:\\:getRelationshipsRepresentation\\(\\) has parameter \\$relationships with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Representation/DocumentWriter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\DocumentWriter\\:\\:getRelationshipsRepresentation\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Representation/DocumentWriter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\DocumentWriter\\:\\:getResourceRepresentation\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Representation/DocumentWriter.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Representation\\\\DocumentWriter\\:\\:\\$addedResources type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Representation/DocumentWriter.php
+
+		-
+			message: "#^Strict comparison using \\!\\=\\= between false and string will always evaluate to true\\.$#"
+			count: 4
+			path: src/Representation/DocumentWriter.php
+
+		-
+			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
+			count: 1
+			path: src/Representation/ErrorWriter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\ErrorWriter\\:\\:getErrorLinksRepresentation\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Representation/ErrorWriter.php
+
+		-
+			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
+			count: 2
+			path: src/Representation/FieldSetFilter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\FieldSetFilter\\:\\:__construct\\(\\) has parameter \\$fieldSets with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Representation/FieldSetFilter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\FieldSetFilter\\:\\:filterFields\\(\\) has parameter \\$fields with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Representation/FieldSetFilter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\FieldSetFilter\\:\\:filterFields\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Representation/FieldSetFilter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\FieldSetFilter\\:\\:getAllowedFields\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Representation/FieldSetFilter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\FieldSetFilter\\:\\:getAttributes\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Representation/FieldSetFilter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Representation\\\\FieldSetFilter\\:\\:getRelationships\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Representation/FieldSetFilter.php
+
+		-
+			message: "#^PHPDoc tag @param for parameter \\$fieldSets with type array\\|null is not subtype of native type array\\.$#"
+			count: 1
+			path: src/Representation/FieldSetFilter.php
+
+		-
+			message: "#^Parameter \\#1 \\$type of method Neomerx\\\\JsonApi\\\\Representation\\\\FieldSetFilter\\:\\:getAllowedFields\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Representation/FieldSetFilter.php
+
+		-
+			message: "#^Parameter \\#1 \\$type of method Neomerx\\\\JsonApi\\\\Representation\\\\FieldSetFilter\\:\\:hasFilter\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Representation/FieldSetFilter.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Representation\\\\FieldSetFilter\\:\\:\\$fieldSets type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Representation/FieldSetFilter.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\BaseSchema\\:\\:getLinks\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Schema/BaseSchema.php
+
+		-
+			message: "#^Parameter \\#1 \\$resource of method Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\SchemaInterface\\:\\:getId\\(\\) expects object, mixed given\\.$#"
+			count: 1
+			path: src/Schema/BaseSchema.php
+
+		-
+			message: "#^Call to function assert\\(\\) with true will always evaluate to true\\.$#"
+			count: 1
+			path: src/Schema/Error.php
+
+		-
+			message: "#^Call to function is_string\\(\\) with string will always evaluate to true\\.$#"
+			count: 1
+			path: src/Schema/Error.php
+
+		-
+			message: "#^Cannot access offset string on iterable\\|null\\.$#"
+			count: 2
+			path: src/Schema/Error.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\Error\\:\\:__construct\\(\\) has parameter \\$source with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Schema/Error.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\Error\\:\\:__construct\\(\\) has parameter \\$typeLinks with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Schema/Error.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\Error\\:\\:getLinks\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Schema/Error.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\Error\\:\\:getSource\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Schema/Error.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\Error\\:\\:getTypeLinks\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Schema/Error.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\Error\\:\\:hasMeta\\(\\) should return bool but returns bool\\|null\\.$#"
+			count: 1
+			path: src/Schema/Error.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\Error\\:\\:setSource\\(\\) has parameter \\$source with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Schema/Error.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\Error\\:\\:setTypeLinks\\(\\) has parameter \\$typeLinks with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Schema/Error.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Schema\\\\Error\\:\\:\\$links type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Schema/Error.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Schema\\\\Error\\:\\:\\$source type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Schema/Error.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Schema\\\\Error\\:\\:\\$typeLinks type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Schema/Error.php
+
+		-
+			message: "#^Result of \\|\\| is always true\\.$#"
+			count: 1
+			path: src/Schema/Error.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between true and true will always evaluate to true\\.$#"
+			count: 1
+			path: src/Schema/Error.php
+
+		-
+			message: "#^Class Neomerx\\\\JsonApi\\\\Schema\\\\ErrorCollection implements generic interface ArrayAccess but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Schema/ErrorCollection.php
+
+		-
+			message: "#^Class Neomerx\\\\JsonApi\\\\Schema\\\\ErrorCollection implements generic interface IteratorAggregate but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: src/Schema/ErrorCollection.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\ErrorCollection\\:\\:__serialize\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Schema/ErrorCollection.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\ErrorCollection\\:\\:__unserialize\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Schema/ErrorCollection.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\ErrorCollection\\:\\:addAttributesError\\(\\) has parameter \\$typeLinks with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Schema/ErrorCollection.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\ErrorCollection\\:\\:addDataAttributeError\\(\\) has parameter \\$typeLinks with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Schema/ErrorCollection.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\ErrorCollection\\:\\:addDataError\\(\\) has parameter \\$typeLinks with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Schema/ErrorCollection.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\ErrorCollection\\:\\:addDataIdError\\(\\) has parameter \\$typeLinks with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Schema/ErrorCollection.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\ErrorCollection\\:\\:addDataTypeError\\(\\) has parameter \\$typeLinks with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Schema/ErrorCollection.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\ErrorCollection\\:\\:addQueryParameterError\\(\\) has parameter \\$typeLinks with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Schema/ErrorCollection.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\ErrorCollection\\:\\:addRelationshipError\\(\\) has parameter \\$typeLinks with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Schema/ErrorCollection.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\ErrorCollection\\:\\:addRelationshipIdError\\(\\) has parameter \\$typeLinks with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Schema/ErrorCollection.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\ErrorCollection\\:\\:addRelationshipTypeError\\(\\) has parameter \\$typeLinks with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Schema/ErrorCollection.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\ErrorCollection\\:\\:addRelationshipsError\\(\\) has parameter \\$typeLinks with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Schema/ErrorCollection.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\ErrorCollection\\:\\:addResourceError\\(\\) has parameter \\$typeLinks with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Schema/ErrorCollection.php
+
+		-
+			message: "#^Parameter \\#1 \\$error of method Neomerx\\\\JsonApi\\\\Schema\\\\ErrorCollection\\:\\:add\\(\\) expects Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\ErrorInterface, mixed given\\.$#"
+			count: 1
+			path: src/Schema/ErrorCollection.php
+
+		-
+			message: "#^Parameter \\#5 \\$idx of method Neomerx\\\\JsonApi\\\\Schema\\\\ErrorCollection\\:\\:addResourceError\\(\\) expects null, int\\|string\\|null given\\.$#"
+			count: 9
+			path: src/Schema/ErrorCollection.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Schema\\\\ErrorCollection\\:\\:\\$items \\(array\\) does not accept mixed\\.$#"
+			count: 1
+			path: src/Schema/ErrorCollection.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Schema\\\\ErrorCollection\\:\\:\\$items type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Schema/ErrorCollection.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\Link\\:\\:getArrayRepresentation\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Schema/Link.php
+
+		-
+			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
+			count: 3
+			path: src/Schema/LinkWithAliases.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\LinkWithAliases\\:\\:__construct\\(\\) has parameter \\$aliases with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Schema/LinkWithAliases.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\LinkWithAliases\\:\\:getArrayRepresentation\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Schema/LinkWithAliases.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Schema\\\\LinkWithAliases\\:\\:\\$aliases type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Schema/LinkWithAliases.php
+
+		-
+			message: "#^Call to function assert\\(\\) with true and 'Unable to get a…' will always evaluate to true\\.$#"
+			count: 1
+			path: src/Schema/SchemaContainer.php
+
+		-
+			message: "#^Call to function is_object\\(\\) with object will always evaluate to true\\.$#"
+			count: 1
+			path: src/Schema/SchemaContainer.php
+
+		-
+			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
+			count: 2
+			path: src/Schema/SchemaContainer.php
+
+		-
+			message: "#^Instanceof between \\(callable&string\\)\\|class\\-string\\|Closure and Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\SchemaInterface will always evaluate to false\\.$#"
+			count: 1
+			path: src/Schema/SchemaContainer.php
+
+		-
+			message: "#^Instanceof between string and Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\SchemaInterface will always evaluate to false\\.$#"
+			count: 1
+			path: src/Schema/SchemaContainer.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\SchemaContainer\\:\\:__construct\\(\\) has parameter \\$schemas with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Schema/SchemaContainer.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\SchemaContainer\\:\\:createSchemaFromCallable\\(\\) should return Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\SchemaInterface but returns mixed\\.$#"
+			count: 1
+			path: src/Schema/SchemaContainer.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\SchemaContainer\\:\\:createSchemaFromClassName\\(\\) should return Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\SchemaInterface but returns object\\.$#"
+			count: 1
+			path: src/Schema/SchemaContainer.php
+
+		-
+			message: "#^Method Neomerx\\\\JsonApi\\\\Schema\\\\SchemaContainer\\:\\:registerCollection\\(\\) has parameter \\$schemas with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: src/Schema/SchemaContainer.php
+
+		-
+			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<string, string\\>\\|false given\\.$#"
+			count: 1
+			path: src/Schema/SchemaContainer.php
+
+		-
+			message: "#^Parameter \\#2 \\$schema of method Neomerx\\\\JsonApi\\\\Schema\\\\SchemaContainer\\:\\:setProviderMapping\\(\\) expects Closure\\|string, false given\\.$#"
+			count: 1
+			path: src/Schema/SchemaContainer.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Schema\\\\SchemaContainer\\:\\:\\$providerMapping type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Schema/SchemaContainer.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Schema\\\\SchemaContainer\\:\\:\\$resType2JsonType is never read, only written\\.$#"
+			count: 1
+			path: src/Schema/SchemaContainer.php
+
+		-
+			message: "#^Property Neomerx\\\\JsonApi\\\\Schema\\\\SchemaContainer\\:\\:\\$resType2JsonType type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: src/Schema/SchemaContainer.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between true and true will always evaluate to true\\.$#"
+			count: 1
+			path: src/Schema/SchemaContainer.php
+
+		-
+			message: "#^Class Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Collection implements generic interface ArrayAccess but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: tests/Data/Collection.php
+
+		-
+			message: "#^Class Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Collection implements generic interface IteratorAggregate but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: tests/Data/Collection.php
+
+		-
+			message: "#^Parameter \\#1 \\$key of function array_key_exists expects int\\|string, mixed given\\.$#"
+			count: 1
+			path: tests/Data/Collection.php
+
+		-
+			message: "#^Property Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Collection\\:\\:\\$data type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Data/Collection.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Models\\\\Author\\:\\:instance\\(\\) has parameter \\$comments with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Data/Models/Author.php
+
+		-
+			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
+			count: 1
+			path: tests/Data/Models/Author.php
+
+		-
+			message: "#^Class Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Models\\\\AuthorCModel implements generic interface ArrayAccess but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: tests/Data/Models/AuthorCModel.php
+
+		-
+			message: "#^Class Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Models\\\\AuthorCModel implements generic interface IteratorAggregate but does not specify its types\\: TKey, TValue$#"
+			count: 1
+			path: tests/Data/Models/AuthorCModel.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Models\\\\AuthorCModel\\:\\:__construct\\(\\) has parameter \\$comments with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Data/Models/AuthorCModel.php
+
+		-
+			message: "#^Parameter \\#1 \\$key of function array_key_exists expects int\\|string, mixed given\\.$#"
+			count: 1
+			path: tests/Data/Models/AuthorCModel.php
+
+		-
+			message: "#^Property Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Models\\\\AuthorCModel\\:\\:\\$properties type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Data/Models/AuthorCModel.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Models\\\\Post\\:\\:instance\\(\\) has parameter \\$comments with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Data/Models/Post.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Models\\\\Site\\:\\:instance\\(\\) has parameter \\$posts with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Data/Models/Site.php
+
+		-
+			message: "#^Short ternary operator is not allowed\\. Use null coalesce operator if applicable or consider using long ternary\\.$#"
+			count: 1
+			path: tests/Data/Models/Site.php
+
+		-
+			message: "#^Call to function array_key_exists\\(\\) with 'comments' and array\\{\\000Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Models\\\\AuthorCModel\\000properties\\: array\\} will always evaluate to false\\.$#"
+			count: 1
+			path: tests/Data/Schemas/AuthorCModelSchema.php
+
+		-
+			message: "#^Cannot cast mixed to string\\.$#"
+			count: 1
+			path: tests/Data/Schemas/AuthorCModelSchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Schemas\\\\AuthorCModelSchema\\:\\:getAttributes\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Data/Schemas/AuthorCModelSchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Schemas\\\\AuthorCModelSchema\\:\\:getRelationships\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Data/Schemas/AuthorCModelSchema.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between true and false will always evaluate to false\\.$#"
+			count: 1
+			path: tests/Data/Schemas/AuthorCModelSchema.php
+
+		-
+			message: "#^Call to function assert\\(\\) with true will always evaluate to true\\.$#"
+			count: 4
+			path: tests/Data/Schemas/AuthorSchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Schemas\\\\AuthorSchema\\:\\:getAttributes\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Data/Schemas/AuthorSchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Schemas\\\\AuthorSchema\\:\\:getRelationships\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Data/Schemas/AuthorSchema.php
+
+		-
+			message: "#^Strict comparison using \\!\\=\\= between null and Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\LinkInterface will always evaluate to true\\.$#"
+			count: 1
+			path: tests/Data/Schemas/AuthorSchema.php
+
+		-
+			message: "#^Strict comparison using \\!\\=\\= between null and Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\PositionInterface will always evaluate to true\\.$#"
+			count: 1
+			path: tests/Data/Schemas/AuthorSchema.php
+
+		-
+			message: "#^Strict comparison using \\!\\=\\= between null and array will always evaluate to true\\.$#"
+			count: 2
+			path: tests/Data/Schemas/AuthorSchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Schemas\\\\CommentSchema\\:\\:getAttributes\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Data/Schemas/CommentSchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Schemas\\\\CommentSchema\\:\\:getRelationships\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Data/Schemas/CommentSchema.php
+
+		-
+			message: "#^Call to function assert\\(\\) with true will always evaluate to true\\.$#"
+			count: 1
+			path: tests/Data/Schemas/DevSchema.php
+
+		-
+			message: "#^Call to function is_string\\(\\) with string will always evaluate to true\\.$#"
+			count: 1
+			path: tests/Data/Schemas/DevSchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Schemas\\\\DevSchema\\:\\:fixDescriptions\\(\\) has parameter \\$descriptions with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Data/Schemas/DevSchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Schemas\\\\DevSchema\\:\\:fixDescriptions\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Data/Schemas/DevSchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Schemas\\\\DevSchema\\:\\:getLinks\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Data/Schemas/DevSchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Schemas\\\\DevSchema\\:\\:getLinks\\(\\) should return array but returns iterable\\.$#"
+			count: 1
+			path: tests/Data/Schemas/DevSchema.php
+
+		-
+			message: "#^Property Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Schemas\\\\DevSchema\\:\\:\\$addToRelationship type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Data/Schemas/DevSchema.php
+
+		-
+			message: "#^Property Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Schemas\\\\DevSchema\\:\\:\\$relationshipToRemove type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Data/Schemas/DevSchema.php
+
+		-
+			message: "#^Property Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Schemas\\\\DevSchema\\:\\:\\$removeFromRelationship type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Data/Schemas/DevSchema.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between Closure and null will always evaluate to false\\.$#"
+			count: 1
+			path: tests/Data/Schemas/DevSchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Schemas\\\\PostSchema\\:\\:getAttributes\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Data/Schemas/PostSchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Schemas\\\\PostSchema\\:\\:getRelationships\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Data/Schemas/PostSchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Schemas\\\\SiteSchema\\:\\:getAttributes\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Data/Schemas/SiteSchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Data\\\\Schemas\\\\SiteSchema\\:\\:getRelationships\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Data/Schemas/SiteSchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Encoder\\\\EncodeIncludedObjectsTest\\:\\:generateIncludeList\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Encoder/EncodeIncludedObjectsTest.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Encoder\\\\EncodeSparseAndFieldSetsTest\\:\\:getSchemasWithoutDefaultLinksInRelationships\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Encoder/EncodeSparseAndFieldSetsTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertNotNull\\(\\) with Neomerx\\\\JsonApi\\\\Exceptions\\\\InvalidArgumentException will always evaluate to true\\.$#"
+			count: 2
+			path: tests/Encoder/EncoderTest.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Encoder\\\\EncoderTest\\:\\:test_hide_data_section_if_omitted_in_schema\\(\\) has no return type specified\\.$#"
+			count: 1
+			path: tests/Encoder/EncoderTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$data of method Neomerx\\\\JsonApi\\\\Contracts\\\\Encoder\\\\EncoderInterface\\:\\:encodeData\\(\\) expects iterable\\|object\\|null, string given\\.$#"
+			count: 1
+			path: tests/Encoder/EncoderTest.php
+
+		-
+			message: "#^Dynamic call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertCount\\(\\)\\.$#"
+			count: 3
+			path: tests/Exceptions/JsonApiExceptionTest.php
+
+		-
+			message: "#^Dynamic call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertEquals\\(\\)\\.$#"
+			count: 6
+			path: tests/Exceptions/JsonApiExceptionTest.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue154\\\\CustomFactory\\:\\:createSchemaContainer\\(\\) has parameter \\$schemas with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue154/CustomFactory.php
+
+		-
+			message: "#^Call to an undefined method Neomerx\\\\JsonApi\\\\Contracts\\\\Encoder\\\\EncoderInterface\\:\\:addSchema\\(\\)\\.$#"
+			count: 1
+			path: tests/Extensions/Issue154/IssueTest.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue169\\\\CustomEncoder\\:\\:serializeData\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue169/CustomEncoder.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue169\\\\CustomEncoder\\:\\:serializeData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue169/CustomEncoder.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue169\\\\CustomEncoder\\:\\:serializeError\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue169/CustomEncoder.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue169\\\\CustomEncoder\\:\\:serializeErrors\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue169/CustomEncoder.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue169\\\\CustomEncoder\\:\\:serializeIdentifiers\\(\\) has parameter \\$data with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue169/CustomEncoder.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue169\\\\CustomEncoder\\:\\:serializeIdentifiers\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue169/CustomEncoder.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue169\\\\CustomEncoder\\:\\:serializeMeta\\(\\) has parameter \\$meta with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue169/CustomEncoder.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue169\\\\CustomEncoder\\:\\:serializeMeta\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue169/CustomEncoder.php
+
+		-
+			message: "#^Dynamic call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertEquals\\(\\)\\.$#"
+			count: 5
+			path: tests/Extensions/Issue169/IssueTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$errors of method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue169\\\\CustomEncoder\\:\\:serializeErrors\\(\\) expects iterable\\<Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\ErrorInterface\\>&Neomerx\\\\JsonApi\\\\Schema\\\\ErrorCollection, array\\<int, Neomerx\\\\JsonApi\\\\Schema\\\\Error\\> given\\.$#"
+			count: 1
+			path: tests/Extensions/Issue169/IssueTest.php
+
+		-
+			message: "#^Property Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue231\\\\CustomParser\\:\\:\\$cachedPathsResults type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue231/CustomParser.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue231\\\\IssueTest\\:\\:prepareSchemas\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue231/IssueTest.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\BaseCustomSchema\\:\\:getNonHorrificRelationships\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/BaseCustomSchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\BaseCustomSchema\\:\\:getRelationships\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/BaseCustomSchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\CustomAuthorSchema\\:\\:getAttributes\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/CustomAuthorSchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\CustomAuthorSchema\\:\\:getNonHorrificRelationships\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/CustomAuthorSchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\CustomCommentSchema\\:\\:getAttributes\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/CustomCommentSchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\CustomCommentSchema\\:\\:getNonHorrificRelationships\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/CustomCommentSchema.php
+
+		-
+			message: "#^Call to function assert\\(\\) with true will always evaluate to true\\.$#"
+			count: 2
+			path: tests/Extensions/Issue236/CustomIdentifierAndResource.php
+
+		-
+			message: "#^Call to function is_bool\\(\\) with bool will always evaluate to true\\.$#"
+			count: 2
+			path: tests/Extensions/Issue236/CustomIdentifierAndResource.php
+
+		-
+			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
+			count: 3
+			path: tests/Extensions/Issue236/CustomIdentifierAndResource.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\CustomIdentifierAndResource\\:\\:getRelationships\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/CustomIdentifierAndResource.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\CustomIdentifierAndResource\\:\\:parseLinks\\(\\) has parameter \\$schemaLinks with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/CustomIdentifierAndResource.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\CustomIdentifierAndResource\\:\\:parseLinks\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/CustomIdentifierAndResource.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\CustomIdentifierAndResource\\:\\:parseRelationshipData\\(\\) has parameter \\$description with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/CustomIdentifierAndResource.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\CustomIdentifierAndResource\\:\\:parseRelationshipData\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/CustomIdentifierAndResource.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\CustomIdentifierAndResource\\:\\:parseRelationshipLinks\\(\\) has parameter \\$description with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/CustomIdentifierAndResource.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\CustomIdentifierAndResource\\:\\:parseRelationshipLinks\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/CustomIdentifierAndResource.php
+
+		-
+			message: "#^Parameter \\#1 \\$object of function get_class expects object, mixed given\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/CustomIdentifierAndResource.php
+
+		-
+			message: "#^Parameter \\#1 \\$resourceObject of method Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\SchemaContainerInterface\\:\\:getSchema\\(\\) expects object, mixed given\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/CustomIdentifierAndResource.php
+
+		-
+			message: "#^Property Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\CustomIdentifierAndResource\\:\\:\\$schema \\(Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\BaseCustomSchema\\) does not accept Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\SchemaInterface\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/CustomIdentifierAndResource.php
+
+		-
+			message: "#^Result of && is always true\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/CustomIdentifierAndResource.php
+
+		-
+			message: "#^Strict comparison using \\=\\=\\= between true and true will always evaluate to true\\.$#"
+			count: 2
+			path: tests/Extensions/Issue236/CustomIdentifierAndResource.php
+
+		-
+			message: "#^Variable \\$extraSchemaLinks in isset\\(\\) always exists and is not nullable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/CustomIdentifierAndResource.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\IssueTest\\:\\:prepareSchemas\\(\\) has parameter \\$expectedFieldSetFilters with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/IssueTest.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\IssueTest\\:\\:prepareSchemas\\(\\) has parameter \\$expectedIncludePaths with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/IssueTest.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\IssueTest\\:\\:prepareSchemas\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/IssueTest.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\SchemaFields\\:\\:__construct\\(\\) has parameter \\$fieldSets with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/SchemaFields.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\SchemaFields\\:\\:__construct\\(\\) has parameter \\$paths with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/SchemaFields.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\SchemaFields\\:\\:getRequestedFields\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/SchemaFields.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\SchemaFields\\:\\:getRequestedRelationships\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/SchemaFields.php
+
+		-
+			message: "#^Parameter \\#2 \\$array of function array_key_exists expects array, array\\|null given\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/SchemaFields.php
+
+		-
+			message: "#^Property Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\SchemaFields\\:\\:\\$fastFieldLists type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/SchemaFields.php
+
+		-
+			message: "#^Property Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\SchemaFields\\:\\:\\$fastFields type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/SchemaFields.php
+
+		-
+			message: "#^Property Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\SchemaFields\\:\\:\\$fastRelationshipLists type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/SchemaFields.php
+
+		-
+			message: "#^Property Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue236\\\\SchemaFields\\:\\:\\$fastRelationships type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue236/SchemaFields.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue47\\\\CustomFactory\\:\\:createFieldSetFilter\\(\\) has parameter \\$fieldSets with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue47/CustomFactory.php
+
+		-
+			message: "#^Call to function assert\\(\\) with true will always evaluate to true\\.$#"
+			count: 1
+			path: tests/Extensions/Issue47/CustomFieldsFilter.php
+
+		-
+			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
+			count: 1
+			path: tests/Extensions/Issue47/CustomFieldsFilter.php
+
+		-
+			message: "#^Instanceof between Traversable\\<mixed, mixed\\> and Traversable will always evaluate to true\\.$#"
+			count: 1
+			path: tests/Extensions/Issue47/CustomFieldsFilter.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue47\\\\CustomFieldsFilter\\:\\:deepArrayFilter\\(\\) has parameter \\$array with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue47/CustomFieldsFilter.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue47\\\\CustomFieldsFilter\\:\\:deepArrayFilter\\(\\) has parameter \\$filters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue47/CustomFieldsFilter.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue47\\\\CustomFieldsFilter\\:\\:filterFields\\(\\) has parameter \\$fields with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue47/CustomFieldsFilter.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue47\\\\CustomFieldsFilter\\:\\:filterFields\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue47/CustomFieldsFilter.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue47\\\\CustomFieldsFilter\\:\\:iterableToArray\\(\\) has parameter \\$iterable with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue47/CustomFieldsFilter.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue47\\\\CustomFieldsFilter\\:\\:iterableToArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue47/CustomFieldsFilter.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue47\\\\User\\:\\:__construct\\(\\) has parameter \\$contactDetails with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue47/User.php
+
+		-
+			message: "#^Property Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue47\\\\User\\:\\:\\$contactDetails type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Extensions/Issue47/User.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue47\\\\UserBaseSchema\\:\\:getAttributes\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue47/UserBaseSchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue47\\\\UserBaseSchema\\:\\:getRelationships\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue47/UserBaseSchema.php
+
+		-
+			message: "#^Dynamic call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertEquals\\(\\)\\.$#"
+			count: 1
+			path: tests/Extensions/Issue67/IssueTest.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue81\\\\CommentSchema\\:\\:getRelationships\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue81/CommentSchema.php
+
+		-
+			message: "#^Variable property access on mixed\\.$#"
+			count: 2
+			path: tests/Extensions/Issue81/CommentSchema.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$author_id\\.$#"
+			count: 1
+			path: tests/Extensions/Issue82/AuthorSchema.php
+
+		-
+			message: "#^Cannot access property \\$first_name on mixed\\.$#"
+			count: 1
+			path: tests/Extensions/Issue82/AuthorSchema.php
+
+		-
+			message: "#^Cannot access property \\$last_name on mixed\\.$#"
+			count: 1
+			path: tests/Extensions/Issue82/AuthorSchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue82\\\\AuthorSchema\\:\\:getAttributes\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue82/AuthorSchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue82\\\\AuthorSchema\\:\\:getRelationships\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue82/AuthorSchema.php
+
+		-
+			message: "#^Cannot access property \\$description on mixed\\.$#"
+			count: 1
+			path: tests/Extensions/Issue91/CategorySchema.php
+
+		-
+			message: "#^Cannot access property \\$parent on mixed\\.$#"
+			count: 1
+			path: tests/Extensions/Issue91/CategorySchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue91\\\\CategorySchema\\:\\:getAttributes\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue91/CategorySchema.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Extensions\\\\Issue91\\\\CategorySchema\\:\\:getRelationships\\(\\) return type has no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Extensions/Issue91/CategorySchema.php
+
+		-
+			message: "#^Cannot call method getMediaType\\(\\) on mixed\\.$#"
+			count: 1
+			path: tests/Http/Headers/HeaderParametersParserTest.php
+
+		-
+			message: "#^Cannot call method getParameters\\(\\) on mixed\\.$#"
+			count: 1
+			path: tests/Http/Headers/HeaderParametersParserTest.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Http\\\\Headers\\\\HeaderParametersParserTest\\:\\:first\\(\\) has parameter \\$iterable with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Http/Headers/HeaderParametersParserTest.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Http\\\\Headers\\\\HeaderParametersParserTest\\:\\:iterableToArray\\(\\) has parameter \\$iterable with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Http/Headers/HeaderParametersParserTest.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Http\\\\Headers\\\\HeaderParametersParserTest\\:\\:iterableToArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Http/Headers/HeaderParametersParserTest.php
+
+		-
+			message: "#^Variable \\$accept in PHPDoc tag @var does not match assigned variable \\$contentType\\.$#"
+			count: 1
+			path: tests/Http/Headers/HeaderParametersParserTest.php
+
+		-
+			message: "#^Call to an undefined method Neomerx\\\\JsonApi\\\\Contracts\\\\Http\\\\Query\\\\BaseQueryParserInterface\\:\\:getIncludePaths\\(\\)\\.$#"
+			count: 1
+			path: tests/Http/Query/BaseQueryParserTest.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Http\\\\Query\\\\BaseQueryParserTest\\:\\:createParser\\(\\) has parameter \\$queryParameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Http/Query/BaseQueryParserTest.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Http\\\\Query\\\\BaseQueryParserTest\\:\\:iterableToArray\\(\\) has parameter \\$iterable with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Http/Query/BaseQueryParserTest.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Http\\\\Query\\\\BaseQueryParserTest\\:\\:iterableToArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Http/Query/BaseQueryParserTest.php
+
+		-
+			message: "#^Method class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:280\\:\\:getFields\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Http/Query/BaseQueryParserTest.php
+
+		-
+			message: "#^Method class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:280\\:\\:getIncludes\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Http/Query/BaseQueryParserTest.php
+
+		-
+			message: "#^Method class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:280\\:\\:getProfileUrls\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Http/Query/BaseQueryParserTest.php
+
+		-
+			message: "#^Method class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:280\\:\\:getSorts\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Http/Query/BaseQueryParserTest.php
+
+		-
+			message: "#^Method class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:280\\:\\:iterableToArray\\(\\) has parameter \\$iterable with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Http/Query/BaseQueryParserTest.php
+
+		-
+			message: "#^Method class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:280\\:\\:iterableToArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Http/Query/BaseQueryParserTest.php
+
+		-
+			message: "#^Property class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:280\\:\\:\\$fields type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Http/Query/BaseQueryParserTest.php
+
+		-
+			message: "#^Property class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:280\\:\\:\\$includes type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Http/Query/BaseQueryParserTest.php
+
+		-
+			message: "#^Property class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:280\\:\\:\\$profile type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Http/Query/BaseQueryParserTest.php
+
+		-
+			message: "#^Property class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:280\\:\\:\\$sorts type has no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Http/Query/BaseQueryParserTest.php
+
+		-
+			message: "#^Call to an undefined method Mockery\\\\ExpectationInterface\\|Mockery\\\\HigherOrderMessage\\:\\:once\\(\\)\\.$#"
+			count: 8
+			path: tests/Http/ResponsesTest.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Http\\\\ResponsesTest\\:\\:willBeCalledCreateResponse\\(\\) has parameter \\$headers with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Http/ResponsesTest.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Http\\\\ResponsesTest\\:\\:willBeCalledEncoderForErrors\\(\\) has parameter \\$errors with no value type specified in iterable type iterable\\.$#"
+			count: 1
+			path: tests/Http/ResponsesTest.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Http\\\\ResponsesTest\\:\\:willBeCalledGetEncoder\\(\\) should return Mockery\\\\MockInterface but returns Mockery\\\\LegacyMockInterface\\.$#"
+			count: 1
+			path: tests/Http/ResponsesTest.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Http\\\\ResponsesTest\\:\\:willBeCalledGetMediaType\\(\\) has parameter \\$parameters with no value type specified in iterable type array\\.$#"
+			count: 1
+			path: tests/Http/ResponsesTest.php
+
+		-
+			message: "#^Property Neomerx\\\\Tests\\\\JsonApi\\\\Http\\\\ResponsesTest\\:\\:\\$responses \\(Neomerx\\\\JsonApi\\\\Contracts\\\\Http\\\\ResponsesInterface\\) does not accept Mockery\\\\Mock\\.$#"
+			count: 1
+			path: tests/Http/ResponsesTest.php
+
+		-
+			message: "#^Dynamic call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertFalse\\(\\)\\.$#"
+			count: 12
+			path: tests/Parser/RelationshipDataTest.php
+
+		-
+			message: "#^Dynamic call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertTrue\\(\\)\\.$#"
+			count: 6
+			path: tests/Parser/RelationshipDataTest.php
+
+		-
+			message: "#^Method Neomerx\\\\Tests\\\\JsonApi\\\\Parser\\\\RelationshipDataTest\\:\\:createRelationshipData\\(\\) should return Neomerx\\\\JsonApi\\\\Contracts\\\\Parser\\\\RelationshipDataInterface but returns object\\.$#"
+			count: 1
+			path: tests/Parser/RelationshipDataTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$callback of function call_user_func expects callable\\(\\)\\: mixed, array\\{Neomerx\\\\JsonApi\\\\Contracts\\\\Parser\\\\RelationshipDataInterface, string\\} given\\.$#"
+			count: 1
+			path: tests/Parser/RelationshipDataTest.php
+
+		-
+			message: "#^Dynamic call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertCount\\(\\)\\.$#"
+			count: 7
+			path: tests/Schema/ErrorCollectionTest.php
+
+		-
+			message: "#^Dynamic call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertEquals\\(\\)\\.$#"
+			count: 15
+			path: tests/Schema/ErrorCollectionTest.php
+
+		-
+			message: "#^Dynamic call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\)\\.$#"
+			count: 1
+			path: tests/Schema/ErrorCollectionTest.php
+
+		-
+			message: "#^Dynamic call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertNotEmpty\\(\\)\\.$#"
+			count: 10
+			path: tests/Schema/ErrorCollectionTest.php
+
+		-
+			message: "#^Dynamic call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertTrue\\(\\)\\.$#"
+			count: 2
+			path: tests/Schema/ErrorCollectionTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$serialized of method Neomerx\\\\JsonApi\\\\Schema\\\\ErrorCollection\\:\\:unserialize\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: tests/Schema/ErrorCollectionTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertNotNull\\(\\) with Neomerx\\\\JsonApi\\\\Contracts\\\\Schema\\\\SchemaInterface will always evaluate to true\\.$#"
+			count: 1
+			path: tests/Schema/SchemaContainerTest.php
