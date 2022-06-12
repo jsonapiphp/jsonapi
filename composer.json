@@ -61,7 +61,8 @@
         "test-cs-fixer": "./vendor/bin/php-cs-fixer fix --diff --dry-run -v",
         "test-md": "./vendor/bin/phpmd ./src text codesize,controversial,cleancode,design,unusedcode,naming",
         "test-unit": "./vendor/phpunit/phpunit/phpunit --coverage-text",
-        "test-unit-phpdbg": "phpdbg -qrr ./vendor/bin/phpunit --coverage-text"
+        "test-unit-phpdbg": "phpdbg -qrr ./vendor/bin/phpunit --coverage-text",
+        "phpstan:check": "@php vendor/bin/phpstan analyse -c phpstan.neon src tests"
     },
     "funding": [
         {

@@ -39,3 +39,5 @@ jobs:
             -   run: composer install -a --no-interaction --no-progress --prefer-dist
 
             -   run: composer test-cs-fixer
+
+            -   run: composer phpstan:check
