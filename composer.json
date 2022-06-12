@@ -32,7 +32,8 @@
         "symfony/phpunit-bridge": "^6.1",
         "phpstan/phpstan": "^1.7",
         "phpstan/phpstan-phpunit": "^1.1",
-        "phpstan/phpstan-strict-rules": "^1.2"
+        "phpstan/phpstan-strict-rules": "^1.2",
+        "ergebnis/composer-normalize": "^2.28"
     },
     "minimum-stability": "stable",
     "autoload": {
@@ -69,5 +70,10 @@
             "type": "github",
             "url": "https://github.com/sponsors/PabloKowalczyk"
         }
-    ]
+    ],
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true
+        }
+    }
 }
