@@ -37,10 +37,20 @@ class ErrorCollection implements IteratorAggregate, ArrayAccess, Serializable, C
 {
     private array $items = [];
 
+    public function __serialize(): array
+    {
+        return ['items' => $this->items];
+    }
+
+    public function __unserialize(array $data): void
+    {
+        $this->items = $data['items'];
+    }
+
     /**
      * {@inheritdoc}
      */
-    public function getIterator()
+    public function getIterator(): \Traversable
     {
         return new ArrayIterator($this->items);
     }
@@ -48,7 +58,7 @@ class ErrorCollection implements IteratorAggregate, ArrayAccess, Serializable, C
     /**
      * {@inheritdoc}
      */
-    public function count()
+    public function count(): int
     {
         return \count($this->items);
     }
@@ -72,7 +82,7 @@ class ErrorCollection implements IteratorAggregate, ArrayAccess, Serializable, C
     /**
      * {@inheritdoc}
      */
-    public function offsetExists($offset)
+    public function offsetExists($offset): bool
     {
         return isset($this->items[$offset]);
     }
@@ -82,6 +92,7 @@ class ErrorCollection implements IteratorAggregate, ArrayAccess, Serializable, C
      *
      * @return ErrorInterface
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         return $this->items[$offset];
@@ -90,7 +101,8 @@ class ErrorCollection implements IteratorAggregate, ArrayAccess, Serializable, C
     /**
      * {@inheritdoc}
      */
-    public function offsetSet($offset, $value)
+    #[\ReturnTypeWillChange]
+    public function offsetSet($offset, $value): void
     {
         null === $offset ? $this->add($value) : $this->items[$offset] = $value;
     }
@@ -98,7 +110,8 @@ class ErrorCollection implements IteratorAggregate, ArrayAccess, Serializable, C
     /**
      * {@inheritdoc}
      */
-    public function offsetUnset($offset)
+    #[\ReturnTypeWillChange]
+    public function offsetUnset($offset): void
     {
         unset($this->items[$offset]);
     }
