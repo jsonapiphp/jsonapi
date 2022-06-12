@@ -21,23 +21,36 @@ jobs:
                     php-version: ${{ matrix.php }}
                     coverage: none # disable xdebug, pcov
 
-            -   run: composer install -a --no-interaction --no-progress --prefer-dist
+            -   name: Get Composer Cache Directory
+                id: composer-cache
+                run: |
+                    echo "::set-output name=dir::$(composer config cache-files-dir)"
 
-            -   run: vendor/bin/phpunit
-
-    static_analysis:
-        runs-on: ubuntu-20.04
-        name: Static analysis
-        steps:
-            -   uses: actions/checkout@v2
-
-            -   uses: shivammathur/setup-php@v2
+            -   uses: actions/cache@v3
                 with:
-                    php-version: 8.1
-                    coverage: none # disable xdebug, pcov
+                    path: ${{ steps.composer-cache.outputs.dir }}
+                    key: php-${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}
+                    restore-keys: |
+                        php-${{ matrix.php }}-composer-
 
             -   run: composer install -a --no-interaction --no-progress --prefer-dist
+
+            -   uses: actions/cache@v3
+                if: ${{ matrix.php == '8.1' }}
+                with:
+                    path: .php-cs-fixer.cache
+                    key: php-cs-fixer-cache
 
             -   run: composer test-cs-fixer
+                if: ${{ matrix.php == '8.1' }}
+
+            -   uses: actions/cache@v3
+                if: ${{ matrix.php == '8.1' }}
+                with:
+                    path: /tmp/phpstan
+                    key: phpstan-cache
 
             -   run: composer phpstan:check
+                if: ${{ matrix.php == '8.1' }}
+
+            -   run: vendor/bin/phpunit
