@@ -21,6 +21,18 @@ jobs:
                     php-version: ${{ matrix.php }}
                     coverage: none # disable xdebug, pcov
 
+            -   name: Get Composer Cache Directory
+                id: composer-cache
+                run: |
+                    echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+            -   uses: actions/cache@v3
+                with:
+                    path: ${{ steps.composer-cache.outputs.dir }}
+                    key: php-${{ matrix.php }}-composer-${{ hashFiles('**/composer.lock') }}
+                    restore-keys: |
+                        php-${{ matrix.php }}-composer-
+
             -   run: composer install -a --no-interaction --no-progress --prefer-dist
 
             -   run: vendor/bin/phpunit
@@ -35,6 +47,18 @@ jobs:
                 with:
                     php-version: 8.1
                     coverage: none # disable xdebug, pcov
+
+            -   name: Get Composer Cache Directory
+                id: composer-cache
+                run: |
+                    echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+            -   uses: actions/cache@v3
+                with:
+                    path: ${{ steps.composer-cache.outputs.dir }}
+                    key: php-8.1-composer-${{ hashFiles('**/composer.lock') }}
+                    restore-keys: |
+                        php-8.1-composer-
 
             -   run: composer install -a --no-interaction --no-progress --prefer-dist
 
