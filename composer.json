@@ -20,20 +20,26 @@
     "support": {
         "issues": "https://github.com/jsonapiphp/jsonapi/issues"
     },
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/PabloKowalczyk"
+        }
+    ],
     "require": {
         "php": ">=7.4.0"
     },
     "require-dev": {
+        "ergebnis/composer-normalize": "^2.28",
         "friendsofphp/php-cs-fixer": "^3.8",
         "mockery/mockery": "^1.0",
         "phpmd/phpmd": "^2.6",
-        "phpunit/phpunit": "^9.5",
-        "squizlabs/php_codesniffer": "^2.9",
-        "symfony/phpunit-bridge": "^6.1",
         "phpstan/phpstan": "^1.7",
         "phpstan/phpstan-phpunit": "^1.1",
         "phpstan/phpstan-strict-rules": "^1.2",
-        "ergebnis/composer-normalize": "^2.28"
+        "phpunit/phpunit": "^9.5",
+        "squizlabs/php_codesniffer": "^2.9",
+        "symfony/phpunit-bridge": "^6.1"
     },
     "minimum-stability": "stable",
     "autoload": {
@@ -50,8 +56,14 @@
             "Neomerx\\Samples\\JsonApi\\": "sample/"
         }
     },
+    "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true
+        }
+    },
     "scripts": {
         "cs-fixer": "./vendor/bin/php-cs-fixer fix --diff -v --ansi",
+        "phpstan:check": "@php vendor/bin/phpstan analyse -c phpstan.neon src tests",
         "test": [
             "@test-unit",
             "@test-cs",
@@ -62,18 +74,6 @@
         "test-cs-fixer": "./vendor/bin/php-cs-fixer fix --diff --dry-run -v",
         "test-md": "./vendor/bin/phpmd ./src text codesize,controversial,cleancode,design,unusedcode,naming",
         "test-unit": "./vendor/phpunit/phpunit/phpunit --coverage-text",
-        "test-unit-phpdbg": "phpdbg -qrr ./vendor/bin/phpunit --coverage-text",
-        "phpstan:check": "@php vendor/bin/phpstan analyse -c phpstan.neon src tests"
-    },
-    "funding": [
-        {
-            "type": "github",
-            "url": "https://github.com/sponsors/PabloKowalczyk"
-        }
-    ],
-    "config": {
-        "allow-plugins": {
-            "ergebnis/composer-normalize": true
-        }
+        "test-unit-phpdbg": "phpdbg -qrr ./vendor/bin/phpunit --coverage-text"
     }
 }
