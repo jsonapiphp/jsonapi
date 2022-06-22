@@ -12,3 +12,5 @@
 /.github            export-ignore
 /phpstan.neon       export-ignore
 /phpstan-baseline.neon        export-ignore
+/NOTICE export-ignore
+/README.md export-ignore
