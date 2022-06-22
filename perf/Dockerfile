@@ -1,6 +1,4 @@
-FROM php:7.3-cli
-
-ARG DEBIAN_FRONTEND=noninteractive
+FROM php:8.1.7-cli-alpine
 
 RUN version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
     && mkdir -p /tmp/blackfire \
