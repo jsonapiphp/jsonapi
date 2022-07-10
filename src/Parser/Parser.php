@@ -178,7 +178,9 @@ class Parser implements ParserInterface
      */
     private function parseResource(ResourceInterface $resource): iterable
     {
-        $seenBefore = isset($this->resourcesTracker[$resource->getId()][$resource->getType()]);
+        $id = $resource->getId();
+        $type = $resource->getType();
+        $seenBefore = isset($this->resourcesTracker[$id][$type]);
 
         // top level resources should be yielded in any case as it could be an array of the resources
         // for deeper levels it's not needed as they go to `included` section and it must have no more
@@ -191,7 +193,7 @@ class Parser implements ParserInterface
         // parse relationships only for resources not seen before (prevents infinite loop for circular references)
         if (false === $seenBefore) {
             // remember by id and type
-            $this->resourcesTracker[$resource->getId()][$resource->getType()] = true;
+            $this->resourcesTracker[$id][$type] = true;
 
             foreach ($resource->getRelationships() as $name => $relationship) {
                 \assert(\is_string($name));
