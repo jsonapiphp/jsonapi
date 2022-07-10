@@ -140,9 +140,9 @@ class IdentifierAndResource implements ResourceInterface
      */
     public function getAttributes(): iterable
     {
-        $this->getContext()->setPosition($this->getPosition());
+        $this->context->setPosition($this->getPosition());
 
-        return $this->schema->getAttributes($this->data, $this->getContext());
+        return $this->schema->getAttributes($this->data, $this->context);
     }
 
     /**
@@ -163,14 +163,14 @@ class IdentifierAndResource implements ResourceInterface
         $currentPath = $this->position->getPath();
         $nextLevel = $this->position->getLevel() + 1;
         $nextPathPrefix = true === empty($currentPath) ? '' : $currentPath . PositionInterface::PATH_SEPARATOR;
-        $this->getContext()->setPosition($this->getPosition());
-        foreach ($this->schema->getRelationships($this->data, $this->getContext()) as $name => $description) {
+        $this->context->setPosition($this->getPosition());
+        foreach ($this->schema->getRelationships($this->data, $this->context) as $name => $description) {
             \assert(true === $this->assertRelationshipNameAndDescription($name, $description));
 
             [$hasData, $relationshipData, $nextPosition] = $this->parseRelationshipData(
                 $this->factory,
                 $this->schemaContainer,
-                $this->getContext(),
+                $this->context,
                 $this->type,
                 $name,
                 $description,
