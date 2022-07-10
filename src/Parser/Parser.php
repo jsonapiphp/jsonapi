@@ -63,7 +63,7 @@ class Parser implements ParserInterface
 
     private ?array $paths = null;
 
-    private array $resourcesTracker;
+    private array $resourcesTracker = [];
 
     private \Neomerx\JsonApi\Contracts\Parser\EditableContextInterface $context;
 
@@ -72,7 +72,6 @@ class Parser implements ParserInterface
         SchemaContainerInterface $container,
         EditableContextInterface $context
     ) {
-        $this->resourcesTracker = [];
         $this->factory = $factory;
         $this->schemaContainer = $container;
         $this->context = $context;
