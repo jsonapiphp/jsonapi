@@ -51,8 +51,6 @@ class SchemaContainer implements SchemaContainerInterface
      */
     private array $createdProviders = [];
 
-    private array $resType2JsonType = [];
-
     private \Neomerx\JsonApi\Contracts\Factories\FactoryInterface $factory;
 
     public function __construct(FactoryInterface $factory, iterable $schemas)
@@ -96,7 +94,6 @@ class SchemaContainer implements SchemaContainerInterface
 
         if ($schema instanceof SchemaInterface) {
             $this->setProviderMapping($type, \get_class($schema));
-            $this->setResourceToJsonTypeMapping($schema->getType(), $type);
             $this->setCreatedProvider($type, $schema);
         } else {
             $this->setProviderMapping($type, $schema);
@@ -157,8 +154,6 @@ class SchemaContainer implements SchemaContainerInterface
 
         /* @var SchemaInterface $schema */
 
-        $this->setResourceToJsonTypeMapping($schema->getType(), $type);
-
         return $schema;
     }
 
@@ -196,11 +191,6 @@ class SchemaContainer implements SchemaContainerInterface
     protected function setCreatedProvider(string $type, SchemaInterface $provider): void
     {
         $this->createdProviders[$type] = $provider;
-    }
-
-    protected function setResourceToJsonTypeMapping(string $resourceType, string $jsonType): void
-    {
-        $this->resType2JsonType[$resourceType] = $jsonType;
     }
 
     /**

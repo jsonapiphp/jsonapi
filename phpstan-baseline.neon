@@ -1516,16 +1516,6 @@ parameters:
 			path: src/Schema/SchemaContainer.php
 
 		-
-			message: "#^Property Neomerx\\\\JsonApi\\\\Schema\\\\SchemaContainer\\:\\:\\$resType2JsonType is never read, only written\\.$#"
-			count: 1
-			path: src/Schema/SchemaContainer.php
-
-		-
-			message: "#^Property Neomerx\\\\JsonApi\\\\Schema\\\\SchemaContainer\\:\\:\\$resType2JsonType type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Schema/SchemaContainer.php
-
-		-
 			message: "#^Strict comparison using \\=\\=\\= between true and true will always evaluate to true\\.$#"
 			count: 1
 			path: src/Schema/SchemaContainer.php
