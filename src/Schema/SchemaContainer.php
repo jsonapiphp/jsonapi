@@ -139,8 +139,8 @@ class SchemaContainer implements SchemaContainerInterface
      */
     protected function getSchemaByType(string $type): SchemaInterface
     {
-        if (true === $this->hasCreatedProvider($type)) {
-            return $this->getCreatedProvider($type);
+        if (true === isset($this->createdProviders[$type])) {
+            return $this->createdProviders[$type];
         }
 
         $classNameOrCallable = $this->getProviderMapping($type);
@@ -176,16 +176,6 @@ class SchemaContainer implements SchemaContainerInterface
     protected function setProviderMapping(string $type, $schema): void
     {
         $this->providerMapping[$type] = $schema;
-    }
-
-    protected function hasCreatedProvider(string $type): bool
-    {
-        return isset($this->createdProviders[$type]);
-    }
-
-    protected function getCreatedProvider(string $type): SchemaInterface
-    {
-        return $this->createdProviders[$type];
     }
 
     protected function setCreatedProvider(string $type, SchemaInterface $provider): void
