@@ -32,4 +32,19 @@ final class CitySchema extends BaseSchema
     {
         return [];
     }
+
+    public function isAddSelfLinkInRelationshipByDefault(string $relationshipName): bool
+    {
+        return false;
+    }
+
+    public function isAddRelatedLinkInRelationshipByDefault(string $relationshipName): bool
+    {
+        return false;
+    }
+
+    public function getLinks($resource): iterable
+    {
+        return [];
+    }
 }
