@@ -283,69 +283,38 @@ class Parser implements ParserInterface
 
     private function createDocumentDataIsCollection(PositionInterface $position): DocumentDataInterface
     {
-        return $this->createParsedDocumentData($position, true, false);
+        return new ParsedDocumentData(
+            $position,
+            true,
+            false,
+        );
     }
 
     private function createDocumentDataIsNull(PositionInterface $position): DocumentDataInterface
     {
-        return $this->createParsedDocumentData($position, false, true);
+        return new ParsedDocumentData(
+            $position,
+            false,
+            true,
+        );
     }
 
     private function createDocumentDataIsResource(PositionInterface $position): DocumentDataInterface
     {
-        return $this->createParsedDocumentData($position, false, false);
+        return new ParsedDocumentData(
+            $position,
+            false,
+            false,
+        );
     }
 
     private function createDocumentDataIsIdentifier(PositionInterface $position): DocumentDataInterface
     {
-        return $this->createParsedDocumentData($position, false, false);
-    }
-
-    private function createParsedDocumentData(
-        PositionInterface $position,
-        bool $isCollection,
-        bool $isNull
-    ): DocumentDataInterface {
-        return new class($position, $isCollection, $isNull) implements DocumentDataInterface {
-            private \Neomerx\JsonApi\Contracts\Schema\PositionInterface $position;
-            private bool $isCollection;
-
-            private bool $isNull;
-
-            public function __construct(
-                PositionInterface $position,
-                bool $isCollection,
-                bool $isNull
-            ) {
-                $this->position = $position;
-                $this->isCollection = $isCollection;
-                $this->isNull = $isNull;
-            }
-
-            /**
-             * {@inheritdoc}
-             */
-            public function getPosition(): PositionInterface
-            {
-                return $this->position;
-            }
-
-            /**
-             * {@inheritdoc}
-             */
-            public function isCollection(): bool
-            {
-                return $this->isCollection;
-            }
-
-            /**
-             * {@inheritdoc}
-             */
-            public function isNull(): bool
-            {
-                return $this->isNull;
-            }
-        };
+        return new ParsedDocumentData(
+            $position,
+            false,
+            false,
+        );
     }
 
     private function normalizePaths(iterable $paths): array
