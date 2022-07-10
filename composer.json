@@ -63,6 +63,8 @@
         }
     },
     "scripts": {
+        "bench-01": "docker compose -f ./perf/docker-compose.yml run --rm cli_php blackfire --samples 40 run php -d zend.assertions=-1 01-encode-simple-single-resource.php",
+        "bench-02": "docker compose -f ./perf/docker-compose.yml run --rm cli_php blackfire --samples 40 run php -d zend.assertions=-1 02-encode-long-list-of-simple-resources.php",
         "cs-fixer": "./vendor/bin/php-cs-fixer fix --diff -v --ansi",
         "phpstan:check": "@php vendor/bin/phpstan analyse -c phpstan.neon src tests",
         "test": [
@@ -75,8 +77,6 @@
         "test-cs-fixer": "./vendor/bin/php-cs-fixer fix --diff --dry-run -v",
         "test-md": "./vendor/bin/phpmd ./src text codesize,controversial,cleancode,design,unusedcode,naming",
         "test-unit": "./vendor/phpunit/phpunit/phpunit --coverage-text",
-        "test-unit-phpdbg": "phpdbg -qrr ./vendor/bin/phpunit --coverage-text",
-        "bench-01": "docker compose -f ./perf/docker-compose.yml run --rm cli_php blackfire --samples 40 run php -d zend.assertions=-1 01-encode-simple-single-resource.php",
-        "bench-02": "docker compose -f ./perf/docker-compose.yml run --rm cli_php blackfire --samples 40 run php -d zend.assertions=-1 02-encode-long-list-of-simple-resources.php"
+        "test-unit-phpdbg": "phpdbg -qrr ./vendor/bin/phpunit --coverage-text"
     }
 }
