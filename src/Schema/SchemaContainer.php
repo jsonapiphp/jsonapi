@@ -117,7 +117,7 @@ class SchemaContainer implements SchemaContainerInterface
     {
         \assert($this->hasSchema($resource));
 
-        $resourceType = $this->getResourceType($resource);
+        $resourceType = \get_class($resource);
 
         return $this->getSchemaByType($resourceType);
     }
@@ -128,7 +128,7 @@ class SchemaContainer implements SchemaContainerInterface
     public function hasSchema($resourceObject): bool
     {
         return true === \is_object($resourceObject) &&
-            true === $this->hasProviderMapping($this->getResourceType($resourceObject));
+            true === $this->hasProviderMapping(\get_class($resourceObject));
     }
 
     /**
@@ -181,19 +181,6 @@ class SchemaContainer implements SchemaContainerInterface
     protected function setCreatedProvider(string $type, SchemaInterface $provider): void
     {
         $this->createdProviders[$type] = $provider;
-    }
-
-    /**
-     * @param object $resource
-     */
-    protected function getResourceType($resource): string
-    {
-        \assert(
-            true === \is_object($resource),
-            'Unable to get a type of the resource as it is not an object.'
-        );
-
-        return \get_class($resource);
     }
 
     protected function createSchemaFromCallable(callable $callable): SchemaInterface

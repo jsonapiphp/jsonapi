@@ -1446,16 +1446,6 @@ parameters:
 			path: src/Schema/LinkWithAliases.php
 
 		-
-			message: "#^Call to function assert\\(\\) with true and 'Unable to get a…' will always evaluate to true\\.$#"
-			count: 1
-			path: src/Schema/SchemaContainer.php
-
-		-
-			message: "#^Call to function is_object\\(\\) with object will always evaluate to true\\.$#"
-			count: 1
-			path: src/Schema/SchemaContainer.php
-
-		-
 			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
 			count: 2
 			path: src/Schema/SchemaContainer.php
@@ -1502,11 +1492,6 @@ parameters:
 
 		-
 			message: "#^Property Neomerx\\\\JsonApi\\\\Schema\\\\SchemaContainer\\:\\:\\$providerMapping type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Schema/SchemaContainer.php
-
-		-
-			message: "#^Strict comparison using \\=\\=\\= between true and true will always evaluate to true\\.$#"
 			count: 1
 			path: src/Schema/SchemaContainer.php
 
