@@ -1231,16 +1231,6 @@ parameters:
 			path: src/Representation/FieldSetFilter.php
 
 		-
-			message: "#^Parameter \\#1 \\$type of method Neomerx\\\\JsonApi\\\\Representation\\\\FieldSetFilter\\:\\:getAllowedFields\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/Representation/FieldSetFilter.php
-
-		-
-			message: "#^Parameter \\#1 \\$type of method Neomerx\\\\JsonApi\\\\Representation\\\\FieldSetFilter\\:\\:hasFilter\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/Representation/FieldSetFilter.php
-
-		-
 			message: "#^Property Neomerx\\\\JsonApi\\\\Representation\\\\FieldSetFilter\\:\\:\\$fieldSets type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Representation/FieldSetFilter.php
@@ -1456,16 +1446,6 @@ parameters:
 			path: src/Schema/LinkWithAliases.php
 
 		-
-			message: "#^Call to function assert\\(\\) with true and 'Unable to get a…' will always evaluate to true\\.$#"
-			count: 1
-			path: src/Schema/SchemaContainer.php
-
-		-
-			message: "#^Call to function is_object\\(\\) with object will always evaluate to true\\.$#"
-			count: 1
-			path: src/Schema/SchemaContainer.php
-
-		-
 			message: "#^Construct empty\\(\\) is not allowed\\. Use more strict comparison\\.$#"
 			count: 2
 			path: src/Schema/SchemaContainer.php
@@ -1512,21 +1492,6 @@ parameters:
 
 		-
 			message: "#^Property Neomerx\\\\JsonApi\\\\Schema\\\\SchemaContainer\\:\\:\\$providerMapping type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Schema/SchemaContainer.php
-
-		-
-			message: "#^Property Neomerx\\\\JsonApi\\\\Schema\\\\SchemaContainer\\:\\:\\$resType2JsonType is never read, only written\\.$#"
-			count: 1
-			path: src/Schema/SchemaContainer.php
-
-		-
-			message: "#^Property Neomerx\\\\JsonApi\\\\Schema\\\\SchemaContainer\\:\\:\\$resType2JsonType type has no value type specified in iterable type array\\.$#"
-			count: 1
-			path: src/Schema/SchemaContainer.php
-
-		-
-			message: "#^Strict comparison using \\=\\=\\= between true and true will always evaluate to true\\.$#"
 			count: 1
 			path: src/Schema/SchemaContainer.php
 

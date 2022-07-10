@@ -63,7 +63,7 @@ class Parser implements ParserInterface
 
     private ?array $paths = null;
 
-    private array $resourcesTracker;
+    private array $resourcesTracker = [];
 
     private \Neomerx\JsonApi\Contracts\Parser\EditableContextInterface $context;
 
@@ -72,7 +72,6 @@ class Parser implements ParserInterface
         SchemaContainerInterface $container,
         EditableContextInterface $context
     ) {
-        $this->resourcesTracker = [];
         $this->factory = $factory;
         $this->schemaContainer = $container;
         $this->context = $context;
@@ -179,7 +178,9 @@ class Parser implements ParserInterface
      */
     private function parseResource(ResourceInterface $resource): iterable
     {
-        $seenBefore = isset($this->resourcesTracker[$resource->getId()][$resource->getType()]);
+        $id = $resource->getId();
+        $type = $resource->getType();
+        $seenBefore = isset($this->resourcesTracker[$id][$type]);
 
         // top level resources should be yielded in any case as it could be an array of the resources
         // for deeper levels it's not needed as they go to `included` section and it must have no more
@@ -192,7 +193,7 @@ class Parser implements ParserInterface
         // parse relationships only for resources not seen before (prevents infinite loop for circular references)
         if (false === $seenBefore) {
             // remember by id and type
-            $this->resourcesTracker[$resource->getId()][$resource->getType()] = true;
+            $this->resourcesTracker[$id][$type] = true;
 
             foreach ($resource->getRelationships() as $name => $relationship) {
                 \assert(\is_string($name));
@@ -206,7 +207,9 @@ class Parser implements ParserInterface
                         yield from $this->parseResource($relData->getResource());
 
                         continue;
-                    } elseif (true === $relData->isCollection()) {
+                    }
+
+                    if (true === $relData->isCollection()) {
                         foreach ($relData->getResources() as $relResource) {
                             \assert($relResource instanceof ResourceInterface ||
                                 $relResource instanceof IdentifierInterface);
@@ -283,69 +286,38 @@ class Parser implements ParserInterface
 
     private function createDocumentDataIsCollection(PositionInterface $position): DocumentDataInterface
     {
-        return $this->createParsedDocumentData($position, true, false);
+        return new ParsedDocumentData(
+            $position,
+            true,
+            false,
+        );
     }
 
     private function createDocumentDataIsNull(PositionInterface $position): DocumentDataInterface
     {
-        return $this->createParsedDocumentData($position, false, true);
+        return new ParsedDocumentData(
+            $position,
+            false,
+            true,
+        );
     }
 
     private function createDocumentDataIsResource(PositionInterface $position): DocumentDataInterface
     {
-        return $this->createParsedDocumentData($position, false, false);
+        return new ParsedDocumentData(
+            $position,
+            false,
+            false,
+        );
     }
 
     private function createDocumentDataIsIdentifier(PositionInterface $position): DocumentDataInterface
     {
-        return $this->createParsedDocumentData($position, false, false);
-    }
-
-    private function createParsedDocumentData(
-        PositionInterface $position,
-        bool $isCollection,
-        bool $isNull
-    ): DocumentDataInterface {
-        return new class($position, $isCollection, $isNull) implements DocumentDataInterface {
-            private \Neomerx\JsonApi\Contracts\Schema\PositionInterface $position;
-            private bool $isCollection;
-
-            private bool $isNull;
-
-            public function __construct(
-                PositionInterface $position,
-                bool $isCollection,
-                bool $isNull
-            ) {
-                $this->position = $position;
-                $this->isCollection = $isCollection;
-                $this->isNull = $isNull;
-            }
-
-            /**
-             * {@inheritdoc}
-             */
-            public function getPosition(): PositionInterface
-            {
-                return $this->position;
-            }
-
-            /**
-             * {@inheritdoc}
-             */
-            public function isCollection(): bool
-            {
-                return $this->isCollection;
-            }
-
-            /**
-             * {@inheritdoc}
-             */
-            public function isNull(): bool
-            {
-                return $this->isNull;
-            }
-        };
+        return new ParsedDocumentData(
+            $position,
+            false,
+            false,
+        );
     }
 
     private function normalizePaths(iterable $paths): array

@@ -51,8 +51,6 @@ class SchemaContainer implements SchemaContainerInterface
      */
     private array $createdProviders = [];
 
-    private array $resType2JsonType = [];
-
     private \Neomerx\JsonApi\Contracts\Factories\FactoryInterface $factory;
 
     public function __construct(FactoryInterface $factory, iterable $schemas)
@@ -96,7 +94,6 @@ class SchemaContainer implements SchemaContainerInterface
 
         if ($schema instanceof SchemaInterface) {
             $this->setProviderMapping($type, \get_class($schema));
-            $this->setResourceToJsonTypeMapping($schema->getType(), $type);
             $this->setCreatedProvider($type, $schema);
         } else {
             $this->setProviderMapping($type, $schema);
@@ -120,7 +117,7 @@ class SchemaContainer implements SchemaContainerInterface
     {
         \assert($this->hasSchema($resource));
 
-        $resourceType = $this->getResourceType($resource);
+        $resourceType = \get_class($resource);
 
         return $this->getSchemaByType($resourceType);
     }
@@ -131,7 +128,7 @@ class SchemaContainer implements SchemaContainerInterface
     public function hasSchema($resourceObject): bool
     {
         return true === \is_object($resourceObject) &&
-            true === $this->hasProviderMapping($this->getResourceType($resourceObject));
+            true === $this->hasProviderMapping(\get_class($resourceObject));
     }
 
     /**
@@ -142,8 +139,8 @@ class SchemaContainer implements SchemaContainerInterface
      */
     protected function getSchemaByType(string $type): SchemaInterface
     {
-        if (true === $this->hasCreatedProvider($type)) {
-            return $this->getCreatedProvider($type);
+        if (true === isset($this->createdProviders[$type])) {
+            return $this->createdProviders[$type];
         }
 
         $classNameOrCallable = $this->getProviderMapping($type);
@@ -156,8 +153,6 @@ class SchemaContainer implements SchemaContainerInterface
         $this->setCreatedProvider($type, $schema);
 
         /* @var SchemaInterface $schema */
-
-        $this->setResourceToJsonTypeMapping($schema->getType(), $type);
 
         return $schema;
     }
@@ -183,37 +178,9 @@ class SchemaContainer implements SchemaContainerInterface
         $this->providerMapping[$type] = $schema;
     }
 
-    protected function hasCreatedProvider(string $type): bool
-    {
-        return isset($this->createdProviders[$type]);
-    }
-
-    protected function getCreatedProvider(string $type): SchemaInterface
-    {
-        return $this->createdProviders[$type];
-    }
-
     protected function setCreatedProvider(string $type, SchemaInterface $provider): void
     {
         $this->createdProviders[$type] = $provider;
-    }
-
-    protected function setResourceToJsonTypeMapping(string $resourceType, string $jsonType): void
-    {
-        $this->resType2JsonType[$resourceType] = $jsonType;
-    }
-
-    /**
-     * @param object $resource
-     */
-    protected function getResourceType($resource): string
-    {
-        \assert(
-            true === \is_object($resource),
-            'Unable to get a type of the resource as it is not an object.'
-        );
-
-        return \get_class($resource);
     }
 
     protected function createSchemaFromCallable(callable $callable): SchemaInterface
