@@ -26,15 +26,13 @@ use Neomerx\JsonApi\Contracts\Schema\PositionInterface;
 
 class FieldSetFilter implements FieldSetFilterInterface
 {
-    private array $fieldSets;
+    private array $fieldSets = [];
 
     /**
      * @param array|null $fieldSets
      */
     public function __construct(array $fieldSets)
     {
-        $this->fieldSets = [];
-
         foreach ($fieldSets as $type => $fields) {
             \assert(true === \is_string($type) && false === empty($type));
             \assert(true === \is_iterable($fields));
@@ -72,8 +70,8 @@ class FieldSetFilter implements FieldSetFilterInterface
     public function shouldOutputRelationship(PositionInterface $position): bool
     {
         $parentType = $position->getParentType();
-        if (true === $this->hasFilter($parentType)) {
-            return isset($this->getAllowedFields($parentType)[$position->getParentRelationship()]);
+        if (true === isset($this->fieldSets[$parentType])) {
+            return isset($this->fieldSets[$parentType][$position->getParentRelationship()]);
         }
 
         return true;
@@ -93,15 +91,14 @@ class FieldSetFilter implements FieldSetFilterInterface
 
     protected function filterFields(string $type, iterable $fields): iterable
     {
-        if (false === $this->hasFilter($type)) {
+        if (false === isset($this->fieldSets[$type])) {
             yield from $fields;
 
             return;
         }
 
-        $allowedFields = $this->getAllowedFields($type);
         foreach ($fields as $name => $value) {
-            if (true === isset($allowedFields[$name])) {
+            if (true === isset($this->fieldSets[$type][$name])) {
                 yield $name => $value;
             }
         }

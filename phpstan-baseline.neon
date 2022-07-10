@@ -1231,16 +1231,6 @@ parameters:
 			path: src/Representation/FieldSetFilter.php
 
 		-
-			message: "#^Parameter \\#1 \\$type of method Neomerx\\\\JsonApi\\\\Representation\\\\FieldSetFilter\\:\\:getAllowedFields\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/Representation/FieldSetFilter.php
-
-		-
-			message: "#^Parameter \\#1 \\$type of method Neomerx\\\\JsonApi\\\\Representation\\\\FieldSetFilter\\:\\:hasFilter\\(\\) expects string, string\\|null given\\.$#"
-			count: 1
-			path: src/Representation/FieldSetFilter.php
-
-		-
 			message: "#^Property Neomerx\\\\JsonApi\\\\Representation\\\\FieldSetFilter\\:\\:\\$fieldSets type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: src/Representation/FieldSetFilter.php
