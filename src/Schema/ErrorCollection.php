@@ -20,20 +20,15 @@ namespace Neomerx\JsonApi\Schema;
  * limitations under the License.
  */
 
-use ArrayAccess;
-use ArrayIterator;
-use Countable;
-use IteratorAggregate;
 use Neomerx\JsonApi\Contracts\Schema\DocumentInterface;
 use Neomerx\JsonApi\Contracts\Schema\ErrorInterface;
 use Neomerx\JsonApi\Contracts\Schema\LinkInterface;
-use Serializable;
 
 /**
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  * @SuppressWarnings(PHPMD.BooleanArgumentFlag)
  */
-class ErrorCollection implements IteratorAggregate, ArrayAccess, Serializable, Countable
+class ErrorCollection implements \IteratorAggregate, \ArrayAccess, \Serializable, \Countable
 {
     private array $items = [];
 
@@ -52,7 +47,7 @@ class ErrorCollection implements IteratorAggregate, ArrayAccess, Serializable, C
      */
     public function getIterator(): \Traversable
     {
-        return new ArrayIterator($this->items);
+        return new \ArrayIterator($this->items);
     }
 
     /**

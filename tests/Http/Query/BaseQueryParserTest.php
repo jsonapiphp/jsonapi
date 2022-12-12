@@ -20,7 +20,6 @@ namespace Neomerx\Tests\JsonApi\Http\Query;
  * limitations under the License.
  */
 
-use Generator;
 use Neomerx\JsonApi\Contracts\Http\Query\BaseQueryParserInterface;
 use Neomerx\JsonApi\Encoder\Encoder;
 use Neomerx\JsonApi\Exceptions\JsonApiException;
@@ -327,7 +326,7 @@ class BaseQueryParserTest extends BaseTestCase
                 $result = [];
 
                 foreach ($iterable as $key => $value) {
-                    $result[$key] = $value instanceof Generator ? $this->iterableToArray($value) : $value;
+                    $result[$key] = $value instanceof \Generator ? $this->iterableToArray($value) : $value;
                 }
 
                 return $result;
@@ -457,7 +456,7 @@ EOL;
         $result = [];
 
         foreach ($iterable as $key => $value) {
-            $result[$key] = $value instanceof Generator ? $this->iterableToArray($value) : $value;
+            $result[$key] = $value instanceof \Generator ? $this->iterableToArray($value) : $value;
         }
 
         return $result;

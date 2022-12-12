@@ -311,7 +311,7 @@ EOL;
     public function test_meta_not_loaded_in_lazy_relationships(): void
     {
         $throwExClosure = function () {
-            throw new Exception();
+            throw new \Exception();
         };
 
         $actual = Encoder::instance(

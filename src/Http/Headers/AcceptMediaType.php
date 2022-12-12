@@ -20,7 +20,6 @@ namespace Neomerx\JsonApi\Http\Headers;
  * limitations under the License.
  */
 
-use Closure;
 use Neomerx\JsonApi\Contracts\Http\Headers\AcceptMediaTypeInterface;
 use Neomerx\JsonApi\Exceptions\InvalidArgumentException;
 
@@ -76,7 +75,7 @@ class AcceptMediaType extends MediaType implements AcceptMediaTypeInterface
         return $this->quality;
     }
 
-    public static function getCompare(): Closure
+    public static function getCompare(): \Closure
     {
         return function (AcceptMediaTypeInterface $lhs, AcceptMediaTypeInterface $rhs) {
             $qualityCompare = self::compareQuality($lhs->getQuality(), $rhs->getQuality());

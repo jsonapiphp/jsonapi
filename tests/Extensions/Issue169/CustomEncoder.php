@@ -20,7 +20,6 @@ namespace Neomerx\Tests\JsonApi\Extensions\Issue169;
  * limitations under the License.
  */
 
-use Iterator;
 use Neomerx\JsonApi\Contracts\Factories\FactoryInterface;
 use Neomerx\JsonApi\Contracts\Schema\ErrorInterface;
 use Neomerx\JsonApi\Encoder\Encoder;
@@ -29,7 +28,7 @@ use Neomerx\JsonApi\Schema\ErrorCollection;
 class CustomEncoder extends Encoder
 {
     /**
-     * @param object|array|Iterator|null $data
+     * @param object|array|\Iterator|null $data
      */
     public function serializeData($data): array
     {
@@ -37,7 +36,7 @@ class CustomEncoder extends Encoder
     }
 
     /**
-     * @param object|array|Iterator|null $data
+     * @param object|array|\Iterator|null $data
      */
     public function serializeIdentifiers($data): array
     {

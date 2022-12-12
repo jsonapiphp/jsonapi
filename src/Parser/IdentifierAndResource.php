@@ -186,7 +186,7 @@ class IdentifierAndResource implements ResourceInterface
 
             \assert(
                 $hasData || $hasMeta || $hasLinks,
-                "Relationship `${name}` for type `" . $this->getType() .
+                "Relationship `{$name}` for type `" . $this->getType() .
                 '` MUST contain at least one of the following: links, data or meta.'
             );
 
@@ -270,7 +270,7 @@ class IdentifierAndResource implements ResourceInterface
         );
         \assert(
             true === \is_array($description) && false === empty($description),
-            "Relationship `${name}` for type `" . $this->getType() . '` should be a non-empty array.'
+            "Relationship `{$name}` for type `" . $this->getType() . '` should be a non-empty array.'
         );
 
         return true;

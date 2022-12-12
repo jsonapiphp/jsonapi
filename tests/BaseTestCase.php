@@ -20,7 +20,6 @@ namespace Neomerx\Tests\JsonApi;
  * limitations under the License.
  */
 
-use Mockery;
 use Neomerx\JsonApi\Contracts\Factories\FactoryInterface;
 use Neomerx\JsonApi\Factories\Factory;
 use PHPUnit\Framework\TestCase;
@@ -33,7 +32,7 @@ abstract class BaseTestCase extends TestCase
     protected function tearDown(): void
     {
         parent::tearDown();
-        Mockery::close();
+        \Mockery::close();
     }
 
     protected function createFactory(): FactoryInterface

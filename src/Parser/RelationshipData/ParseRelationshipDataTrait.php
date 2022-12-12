@@ -20,7 +20,6 @@ namespace Neomerx\JsonApi\Parser\RelationshipData;
  * limitations under the License.
  */
 
-use IteratorAggregate;
 use Neomerx\JsonApi\Contracts\Factories\FactoryInterface;
 use Neomerx\JsonApi\Contracts\Parser\EditableContextInterface;
 use Neomerx\JsonApi\Contracts\Parser\RelationshipDataInterface;
@@ -29,9 +28,10 @@ use Neomerx\JsonApi\Contracts\Schema\PositionInterface;
 use Neomerx\JsonApi\Contracts\Schema\SchemaContainerInterface;
 use Neomerx\JsonApi\Contracts\Schema\SchemaInterface;
 use Neomerx\JsonApi\Exceptions\InvalidArgumentException;
+
 use function Neomerx\JsonApi\I18n\format as _;
+
 use Neomerx\JsonApi\Parser\IdentifierAndResource;
-use Traversable;
 
 trait ParseRelationshipDataTrait
 {
@@ -98,12 +98,12 @@ trait ParseRelationshipDataTrait
             return $factory->createRelationshipDataIsIdentifier($container, $context, $position, $data);
         } elseif (true === \is_array($data)) {
             return $factory->createRelationshipDataIsCollection($container, $context, $position, $data);
-        } elseif ($data instanceof Traversable) {
+        } elseif ($data instanceof \Traversable) {
             return $factory->createRelationshipDataIsCollection(
                 $container,
                 $context,
                 $position,
-                $data instanceof IteratorAggregate ? $data->getIterator() : $data
+                $data instanceof \IteratorAggregate ? $data->getIterator() : $data
             );
         } elseif (null === $data) {
             return $factory->createRelationshipDataIsNull();

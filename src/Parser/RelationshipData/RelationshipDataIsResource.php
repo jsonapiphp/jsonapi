@@ -28,6 +28,7 @@ use Neomerx\JsonApi\Contracts\Parser\ResourceInterface;
 use Neomerx\JsonApi\Contracts\Schema\PositionInterface;
 use Neomerx\JsonApi\Contracts\Schema\SchemaContainerInterface;
 use Neomerx\JsonApi\Exceptions\LogicException;
+
 use function Neomerx\JsonApi\I18n\format as _;
 
 class RelationshipDataIsResource extends BaseRelationshipData implements RelationshipDataInterface

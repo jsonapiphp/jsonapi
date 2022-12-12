@@ -20,11 +20,7 @@ namespace Neomerx\Tests\JsonApi\Data;
  * limitations under the License.
  */
 
-use ArrayAccess;
-use ArrayIterator;
-use IteratorAggregate;
-
-class Collection implements ArrayAccess, IteratorAggregate
+class Collection implements \ArrayAccess, \IteratorAggregate
 {
     private array $data = [];
 
@@ -63,6 +59,6 @@ class Collection implements ArrayAccess, IteratorAggregate
      */
     public function getIterator(): \Traversable
     {
-        return new ArrayIterator($this->data);
+        return new \ArrayIterator($this->data);
     }
 }

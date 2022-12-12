@@ -20,7 +20,6 @@ namespace Neomerx\Tests\JsonApi\Http;
  * limitations under the License.
  */
 
-use Mockery;
 use Mockery\MockInterface;
 use Neomerx\JsonApi\Contracts\Encoder\EncoderInterface;
 use Neomerx\JsonApi\Http\BaseResponses;
@@ -28,7 +27,6 @@ use Neomerx\JsonApi\Http\Headers\MediaType;
 use Neomerx\JsonApi\Schema\Error;
 use Neomerx\JsonApi\Schema\ErrorCollection;
 use Neomerx\Tests\JsonApi\BaseTestCase;
-use stdClass;
 
 class ResponsesTest extends BaseTestCase
 {
@@ -43,7 +41,7 @@ class ResponsesTest extends BaseTestCase
     {
         parent::setUp();
 
-        $this->mock = Mockery::mock(BaseResponses::class)->makePartial()->shouldAllowMockingProtectedMethods();
+        $this->mock = \Mockery::mock(BaseResponses::class)->makePartial()->shouldAllowMockingProtectedMethods();
         $this->responses = $this->mock;
     }
 
@@ -62,7 +60,7 @@ class ResponsesTest extends BaseTestCase
      */
     public function test_content_response1(): void
     {
-        $data = new stdClass();
+        $data = new \stdClass();
         $this->willBeCalledGetMediaType('some', 'type');
         $this->willBeCalledEncoderForData($data, 'some json api');
         $headers = [BaseResponses::HEADER_CONTENT_TYPE => 'some/type'];
@@ -75,7 +73,7 @@ class ResponsesTest extends BaseTestCase
      */
     public function test_content_response2(): void
     {
-        $data = new stdClass();
+        $data = new \stdClass();
         $this->willBeCalledGetMediaType('some', 'type');
         $this->willBeCalledEncoderForData($data, 'some json api');
         $headers = [BaseResponses::HEADER_CONTENT_TYPE => 'some/type', 'X-Custom' => 'Custom-Header'];
@@ -97,7 +95,7 @@ class ResponsesTest extends BaseTestCase
      */
     public function test_created_response1(): void
     {
-        $resource = new stdClass();
+        $resource = new \stdClass();
         $location = 'http://server.tld/resource-type/123';
         $this->willBeCalledGetMediaType('some', 'type');
         $this->willBeCalledEncoderForData($resource, 'some json api');
@@ -114,7 +112,7 @@ class ResponsesTest extends BaseTestCase
      */
     public function test_created_response2(): void
     {
-        $resource = new stdClass();
+        $resource = new \stdClass();
         $location = 'http://server.tld';
         $this->willBeCalledGetMediaType('some', 'type');
         $this->willBeCalledEncoderForData($resource, 'some json api');
@@ -141,7 +139,7 @@ class ResponsesTest extends BaseTestCase
      */
     public function test_meta_response1(): void
     {
-        $meta = new stdClass();
+        $meta = new \stdClass();
         $this->willBeCalledGetMediaType('some', 'type');
         $this->willBeCalledEncoderForMeta($meta, 'some json api');
         $headers = [BaseResponses::HEADER_CONTENT_TYPE => 'some/type'];
@@ -154,7 +152,7 @@ class ResponsesTest extends BaseTestCase
      */
     public function test_meta_response2(): void
     {
-        $meta = new stdClass();
+        $meta = new \stdClass();
         $this->willBeCalledGetMediaType('some', 'type');
         $this->willBeCalledEncoderForMeta($meta, 'some json api');
         $headers = [BaseResponses::HEADER_CONTENT_TYPE => 'some/type', 'X-Custom' => 'Custom-Header'];
@@ -176,7 +174,7 @@ class ResponsesTest extends BaseTestCase
      */
     public function test_identifiers_response1(): void
     {
-        $data = new stdClass();
+        $data = new \stdClass();
         $this->willBeCalledGetMediaType('some', 'type');
         $this->willBeCalledEncoderForIdentifiers($data, 'some json api');
         $headers = [BaseResponses::HEADER_CONTENT_TYPE => 'some/type'];
@@ -189,7 +187,7 @@ class ResponsesTest extends BaseTestCase
      */
     public function test_identifiers_response2(): void
     {
-        $data = new stdClass();
+        $data = new \stdClass();
         $this->willBeCalledGetMediaType('some', 'type');
         $this->willBeCalledEncoderForIdentifiers($data, 'some json api');
         $headers = [BaseResponses::HEADER_CONTENT_TYPE => 'some/type', 'X-Custom' => 'Custom-Header'];
@@ -288,7 +286,7 @@ class ResponsesTest extends BaseTestCase
 
     private function willBeCalledGetEncoder(): MockInterface
     {
-        $encoderMock = Mockery::mock(EncoderInterface::class);
+        $encoderMock = \Mockery::mock(EncoderInterface::class);
         /* @noinspection PhpMethodParametersCountMismatchInspection */
         $this->mock->shouldReceive('getEncoder')->once()->withNoArgs()->andReturn($encoderMock);
 

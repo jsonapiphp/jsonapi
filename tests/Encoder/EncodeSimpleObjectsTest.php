@@ -20,7 +20,6 @@ namespace Neomerx\Tests\JsonApi\Encoder;
  * limitations under the License.
  */
 
-use ArrayIterator;
 use Neomerx\JsonApi\Encoder\Encoder;
 use Neomerx\JsonApi\Factories\Factory;
 use Neomerx\JsonApi\Schema\Link;
@@ -94,7 +93,7 @@ EOL;
             ]
         );
 
-        $actual = $encoder->encodeData(new ArrayIterator([]));
+        $actual = $encoder->encodeData(new \ArrayIterator([]));
 
         $expected = <<<EOL
         {

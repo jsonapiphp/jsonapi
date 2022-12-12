@@ -20,7 +20,6 @@ namespace Neomerx\JsonApi\Parser;
  * limitations under the License.
  */
 
-use IteratorAggregate;
 use Neomerx\JsonApi\Contracts\Factories\FactoryInterface;
 use Neomerx\JsonApi\Contracts\Parser\DocumentDataInterface;
 use Neomerx\JsonApi\Contracts\Parser\EditableContextInterface;
@@ -33,8 +32,8 @@ use Neomerx\JsonApi\Contracts\Schema\IdentifierInterface as SchemaIdentifierInte
 use Neomerx\JsonApi\Contracts\Schema\PositionInterface;
 use Neomerx\JsonApi\Contracts\Schema\SchemaContainerInterface;
 use Neomerx\JsonApi\Exceptions\InvalidArgumentException;
+
 use function Neomerx\JsonApi\I18n\format as _;
-use Traversable;
 
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
@@ -104,8 +103,8 @@ class Parser implements ParserInterface
         } elseif (true === \is_array($data)) {
             yield $this->createDocumentDataIsCollection($rootPosition);
             yield from $this->parseAsResourcesOrIdentifiers($rootPosition, $data);
-        } elseif ($data instanceof Traversable) {
-            $data = $data instanceof IteratorAggregate ? $data->getIterator() : $data;
+        } elseif ($data instanceof \Traversable) {
+            $data = $data instanceof \IteratorAggregate ? $data->getIterator() : $data;
             yield $this->createDocumentDataIsCollection($rootPosition);
             yield from $this->parseAsResourcesOrIdentifiers($rootPosition, $data);
         } elseif (null === $data) {

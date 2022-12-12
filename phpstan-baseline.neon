@@ -1106,7 +1106,7 @@ parameters:
 			path: src/Representation/BaseWriter.php
 
 		-
-			message: "#^Call to function assert\\(\\) with true and non\\-empty\\-string will always evaluate to true\\.$#"
+			message: "#^Call to function assert\\(\\) with true and non\\-falsy\\-string will always evaluate to true\\.$#"
 			count: 4
 			path: src/Representation/DocumentWriter.php
 
@@ -1176,7 +1176,7 @@ parameters:
 			path: src/Representation/DocumentWriter.php
 
 		-
-			message: "#^Strict comparison using \\!\\=\\= between false and string will always evaluate to true\\.$#"
+			message: "#^Strict comparison using \\!\\=\\= between false and non\\-empty\\-string will always evaluate to true\\.$#"
 			count: 4
 			path: src/Representation/DocumentWriter.php
 
@@ -1257,7 +1257,7 @@ parameters:
 
 		-
 			message: "#^Cannot access offset string on iterable\\|null\\.$#"
-			count: 2
+			count: 1
 			path: src/Schema/Error.php
 
 		-
@@ -1481,7 +1481,7 @@ parameters:
 			path: src/Schema/SchemaContainer.php
 
 		-
-			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<string, string\\>\\|false given\\.$#"
+			message: "#^Parameter \\#2 \\$haystack of function in_array expects array, array\\<string, class\\-string\\>\\|false given\\.$#"
 			count: 1
 			path: src/Schema/SchemaContainer.php
 
@@ -2156,52 +2156,52 @@ parameters:
 			path: tests/Http/Query/BaseQueryParserTest.php
 
 		-
-			message: "#^Method class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:280\\:\\:getFields\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:279\\:\\:getFields\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: tests/Http/Query/BaseQueryParserTest.php
 
 		-
-			message: "#^Method class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:280\\:\\:getIncludes\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:279\\:\\:getIncludes\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: tests/Http/Query/BaseQueryParserTest.php
 
 		-
-			message: "#^Method class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:280\\:\\:getProfileUrls\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:279\\:\\:getProfileUrls\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: tests/Http/Query/BaseQueryParserTest.php
 
 		-
-			message: "#^Method class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:280\\:\\:getSorts\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:279\\:\\:getSorts\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: tests/Http/Query/BaseQueryParserTest.php
 
 		-
-			message: "#^Method class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:280\\:\\:iterableToArray\\(\\) has parameter \\$iterable with no value type specified in iterable type iterable\\.$#"
+			message: "#^Method class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:279\\:\\:iterableToArray\\(\\) has parameter \\$iterable with no value type specified in iterable type iterable\\.$#"
 			count: 1
 			path: tests/Http/Query/BaseQueryParserTest.php
 
 		-
-			message: "#^Method class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:280\\:\\:iterableToArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: "#^Method class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:279\\:\\:iterableToArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: tests/Http/Query/BaseQueryParserTest.php
 
 		-
-			message: "#^Property class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:280\\:\\:\\$fields type has no value type specified in iterable type array\\.$#"
+			message: "#^Property class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:279\\:\\:\\$fields type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: tests/Http/Query/BaseQueryParserTest.php
 
 		-
-			message: "#^Property class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:280\\:\\:\\$includes type has no value type specified in iterable type array\\.$#"
+			message: "#^Property class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:279\\:\\:\\$includes type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: tests/Http/Query/BaseQueryParserTest.php
 
 		-
-			message: "#^Property class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:280\\:\\:\\$profile type has no value type specified in iterable type array\\.$#"
+			message: "#^Property class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:279\\:\\:\\$profile type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: tests/Http/Query/BaseQueryParserTest.php
 
 		-
-			message: "#^Property class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:280\\:\\:\\$sorts type has no value type specified in iterable type array\\.$#"
+			message: "#^Property class@anonymous/tests/Http/Query/BaseQueryParserTest\\.php\\:279\\:\\:\\$sorts type has no value type specified in iterable type array\\.$#"
 			count: 1
 			path: tests/Http/Query/BaseQueryParserTest.php
 

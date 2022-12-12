@@ -20,7 +20,6 @@ namespace Neomerx\Tests\JsonApi\Data\Schemas;
  * limitations under the License.
  */
 
-use Closure;
 use Neomerx\JsonApi\Contracts\Schema\LinkInterface;
 use Neomerx\JsonApi\Schema\BaseSchema;
 
@@ -36,7 +35,7 @@ abstract class DevSchema extends BaseSchema
     private array $relationshipToRemove = [];
 
     /**
-     * @var Closure
+     * @var \Closure
      */
     private $resourceLinksClosure = null;
 
@@ -52,7 +51,7 @@ abstract class DevSchema extends BaseSchema
         return $linksClosure($resource);
     }
 
-    public function setResourceLinksClosure(Closure $linksClosure): void
+    public function setResourceLinksClosure(\Closure $linksClosure): void
     {
         $this->resourceLinksClosure = $linksClosure;
     }
@@ -157,7 +156,7 @@ abstract class DevSchema extends BaseSchema
         foreach ($this->addToRelationship as [$name, $key, $value]) {
             if (self::RELATIONSHIP_LINKS === $key) {
                 foreach ($value as $linkKey => $linkOrClosure) {
-                    $link = $linkOrClosure instanceof Closure ? $linkOrClosure(
+                    $link = $linkOrClosure instanceof \Closure ? $linkOrClosure(
                         $this,
                         $resource
                     ) : $linkOrClosure;
