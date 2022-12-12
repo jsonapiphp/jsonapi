@@ -20,9 +20,7 @@ namespace Neomerx\Tests\JsonApi\Data\Models;
  * limitations under the License.
  */
 
-use stdClass;
-
-class Post extends stdClass
+class Post extends \stdClass
 {
     public const ATTRIBUTE_ID = 'post_id';
     public const ATTRIBUTE_TITLE = 'title';

@@ -20,7 +20,6 @@ namespace Neomerx\JsonApi\Exceptions;
  * limitations under the License.
  */
 
-use Exception;
 use Neomerx\JsonApi\Contracts\Schema\ErrorInterface;
 use Neomerx\JsonApi\Schema\ErrorCollection;
 
@@ -57,7 +56,7 @@ class JsonApiException extends BaseJsonApiException
      * @SuppressWarnings(PHPMD.StaticAccess)
      * @SuppressWarnings(PHPMD.ElseExpression)
      */
-    public function __construct($errors, int $httpCode = self::DEFAULT_HTTP_CODE, Exception $previous = null)
+    public function __construct($errors, int $httpCode = self::DEFAULT_HTTP_CODE, \Exception $previous = null)
     {
         parent::__construct('JSON API error', 0, $previous);
 

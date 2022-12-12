@@ -20,7 +20,6 @@ namespace Neomerx\Tests\JsonApi\Parser;
  * limitations under the License.
  */
 
-use Mockery;
 use Neomerx\JsonApi\Contracts\Parser\ParserInterface;
 use Neomerx\JsonApi\Contracts\Parser\RelationshipDataInterface;
 use Neomerx\JsonApi\Contracts\Schema\IdentifierInterface;
@@ -30,7 +29,6 @@ use Neomerx\JsonApi\Parser\RelationshipData\RelationshipDataIsIdentifier;
 use Neomerx\JsonApi\Parser\RelationshipData\RelationshipDataIsNull;
 use Neomerx\JsonApi\Parser\RelationshipData\RelationshipDataIsResource;
 use Neomerx\Tests\JsonApi\BaseTestCase;
-use stdClass;
 
 class RelationshipDataTest extends BaseTestCase
 {
@@ -56,7 +54,7 @@ class RelationshipDataTest extends BaseTestCase
     {
         $data = $this->createRelationshipData(
             RelationshipDataIsIdentifier::class,
-            Mockery::mock(IdentifierInterface::class)
+            \Mockery::mock(IdentifierInterface::class)
         );
 
         $this->assertFalse($data->isCollection());
@@ -95,7 +93,7 @@ class RelationshipDataTest extends BaseTestCase
     {
         $data = $this->createRelationshipData(
             RelationshipDataIsResource::class,
-            new stdClass()
+            new \stdClass()
         );
 
         $this->assertFalse($data->isCollection());

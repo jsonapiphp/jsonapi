@@ -314,9 +314,6 @@ class Encoder implements EncoderInterface
         return $array;
     }
 
-    /**
-     * @param $meta
-     */
     protected function encodeMetaToArray($meta): array
     {
         $this->withMeta($meta);

@@ -20,8 +20,6 @@ namespace Neomerx\JsonApi\Exceptions;
  * limitations under the License.
  */
 
-use RuntimeException;
-
-abstract class BaseJsonApiException extends RuntimeException
+abstract class BaseJsonApiException extends \RuntimeException
 {
 }

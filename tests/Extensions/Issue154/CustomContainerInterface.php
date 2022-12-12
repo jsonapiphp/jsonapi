@@ -20,7 +20,6 @@ namespace Neomerx\Tests\JsonApi\Extensions\Issue154;
  * limitations under the License.
  */
 
-use Closure;
 use Neomerx\JsonApi\Contracts\Schema\SchemaContainerInterface;
 
 interface CustomContainerInterface extends SchemaContainerInterface
@@ -28,7 +27,7 @@ interface CustomContainerInterface extends SchemaContainerInterface
     /**
      * Register provider for resource type.
      *
-     * @param string|Closure $schema
+     * @param string|\Closure $schema
      */
     public function register(string $type, $schema): void;
 }

@@ -21,6 +21,7 @@ namespace Neomerx\Tests\JsonApi\I18n;
  */
 
 use function Neomerx\JsonApi\I18n\format as _;
+
 use Neomerx\JsonApi\I18n\Messages;
 use Neomerx\Tests\JsonApi\BaseTestCase;
 

@@ -20,11 +20,7 @@ namespace Neomerx\Tests\JsonApi\Data\Models;
  * limitations under the License.
  */
 
-use ArrayAccess;
-use ArrayIterator;
-use IteratorAggregate;
-
-class AuthorCModel implements ArrayAccess, IteratorAggregate
+class AuthorCModel implements \ArrayAccess, \IteratorAggregate
 {
     public const ATTRIBUTE_ID = 'author_id';
     public const ATTRIBUTE_FIRST_NAME = 'first_name';
@@ -52,7 +48,7 @@ class AuthorCModel implements ArrayAccess, IteratorAggregate
      */
     public function getIterator(): \Traversable
     {
-        return new ArrayIterator($this->properties);
+        return new \ArrayIterator($this->properties);
     }
 
     /**

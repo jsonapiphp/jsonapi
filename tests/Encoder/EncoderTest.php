@@ -20,7 +20,6 @@ namespace Neomerx\Tests\JsonApi\Encoder;
  * limitations under the License.
  */
 
-use ArrayIterator;
 use Neomerx\JsonApi\Contracts\Schema\LinkInterface;
 use Neomerx\JsonApi\Encoder\Encoder;
 use Neomerx\JsonApi\Exceptions\InvalidArgumentException;
@@ -638,7 +637,7 @@ EOL;
         )->withUrlPrefix('http://example.com');
 
         // iterator here
-        $author->{Author::LINK_COMMENTS} = new ArrayIterator(
+        $author->{Author::LINK_COMMENTS} = new \ArrayIterator(
             [
                 'comment1' => Comment::instance(5, 'First!'),
                 'comment2' => Comment::instance(12, 'I like XML better'),
@@ -646,7 +645,7 @@ EOL;
         );
 
         // and iterator here
-        $itemSet = new ArrayIterator(['what_if_its_not_zero_based_array' => $author]);
+        $itemSet = new \ArrayIterator(['what_if_its_not_zero_based_array' => $author]);
         $actual = $encoder->encodeData($itemSet);
 
         $expected = <<<EOL

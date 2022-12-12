@@ -20,11 +20,11 @@ namespace Neomerx\JsonApi\Schema;
  * limitations under the License.
  */
 
-use Closure;
 use Neomerx\JsonApi\Contracts\Factories\FactoryInterface;
 use Neomerx\JsonApi\Contracts\Schema\SchemaContainerInterface;
 use Neomerx\JsonApi\Contracts\Schema\SchemaInterface;
 use Neomerx\JsonApi\Exceptions\InvalidArgumentException;
+
 use function Neomerx\JsonApi\I18n\format as _;
 
 class SchemaContainer implements SchemaContainerInterface
@@ -62,7 +62,7 @@ class SchemaContainer implements SchemaContainerInterface
     /**
      * Register provider for resource type.
      *
-     * @param string|Closure $schema
+     * @param string|\Closure $schema
      *
      * @SuppressWarnings(PHPMD.StaticAccess)
      * @SuppressWarnings(PHPMD.ElseExpression)
@@ -171,7 +171,7 @@ class SchemaContainer implements SchemaContainerInterface
     }
 
     /**
-     * @param string|Closure $schema
+     * @param string|\Closure $schema
      */
     protected function setProviderMapping(string $type, $schema): void
     {

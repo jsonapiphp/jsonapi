@@ -24,6 +24,7 @@ use Neomerx\JsonApi\Contracts\Parser\IdentifierInterface;
 use Neomerx\JsonApi\Contracts\Parser\RelationshipDataInterface;
 use Neomerx\JsonApi\Contracts\Parser\ResourceInterface;
 use Neomerx\JsonApi\Exceptions\LogicException;
+
 use function Neomerx\JsonApi\I18n\format as _;
 
 class RelationshipDataIsNull implements RelationshipDataInterface

@@ -21,7 +21,6 @@ namespace Neomerx\Tests\JsonApi\Extensions\Issue47;
  */
 
 use Neomerx\JsonApi\Representation\FieldSetFilter;
-use Traversable;
 
 class CustomFieldsFilter extends FieldSetFilter
 {
@@ -45,7 +44,7 @@ class CustomFieldsFilter extends FieldSetFilter
         if (true === \is_array($iterable)) {
             return $iterable;
         }
-        \assert($iterable instanceof Traversable);
+        \assert($iterable instanceof \Traversable);
 
         return \iterator_to_array($iterable);
     }

@@ -20,13 +20,12 @@ namespace Neomerx\Tests\JsonApi\Extensions\Issue154;
  * limitations under the License.
  */
 
-use Closure;
 use Neomerx\JsonApi\Contracts\Encoder\EncoderInterface;
 
 interface CustomEncoderInterface extends EncoderInterface
 {
     /**
-     * @param string|Closure $schema
+     * @param string|\Closure $schema
      */
     public function addSchema(string $type, $schema): self;
 }

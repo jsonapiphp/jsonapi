@@ -29,6 +29,7 @@ use Neomerx\JsonApi\Contracts\Schema\IdentifierInterface as SchemaIdentifierInte
 use Neomerx\JsonApi\Contracts\Schema\PositionInterface;
 use Neomerx\JsonApi\Contracts\Schema\SchemaContainerInterface;
 use Neomerx\JsonApi\Exceptions\LogicException;
+
 use function Neomerx\JsonApi\I18n\format as _;
 
 class RelationshipDataIsCollection extends BaseRelationshipData implements RelationshipDataInterface
